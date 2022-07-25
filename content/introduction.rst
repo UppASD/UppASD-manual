@@ -41,42 +41,35 @@ Installation
 
 The source code is distributed along with documentation and a growing set of examples. To install, perform the following actions
 
-  - Obtain the code, by extracting the downloaded archive (or by pulling from the git repository).
-    
-    ::
+  - Obtain the code, by extracting the downloaded archive (or by pulling from the git repository)::
+      
       tar xvzf UppASD_dist.tar.gz
 
-    or in the case of git
-
-    ::
+    or in the case of git::
+      
       git clone github:uppasd
 
-    or alternatively using git
+    or alternatively using git::
 
-    ::
       git clone github:uppasd
 
-  - Generate the dependencies needed for compiling the code
+  - Generate the dependencies needed for compiling the code::
 
-    ::
       make deps
 
-    (Optional) Perform a system check for available compiler profiles
+    (Optional) Perform a system check for available compiler profiles::
 
-    ::
       make probe
 
-    Compile the code with the selected compiler profile
+    Compile the code with the selected compiler profile::
 
-    ::
       make <profile>
 
     where ``<profile>`` is the name of the profile, i.e. ``ifort``, ``ifort-cuda``, ``gfortran``,
     ``gfortran-osx``, and so on,  e.g. ``make ifort``.
     
-  - Test the compiled program against a selection of realistic runs
+  - Test the compiled program against a selection of realistic runs::
 
-    ::
       make asd-tests
 
 In addition to the source files, the UppASD distribution also contains several examples (in the directory ``examples/``), documentation, including this file (in  ``docs/``) and routines and reference data (``tests/``) for validating the installation of the UppASD program.
