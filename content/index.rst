@@ -19,14 +19,16 @@ Intro
 
 
 .. toctree::
-   :maxdepth: 1
-   :caption: The lesson
+   :maxdepth: 2
+   :caption: UppASD manual
 
    introduction
+   input
+   output
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Reference
+   :maxdepth: 2
+   :caption: References
 
    quick-reference
    guide
