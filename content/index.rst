@@ -22,6 +22,7 @@ Intro
    :maxdepth: 1
    :caption: The lesson
 
+   introduction
 
 .. toctree::
    :maxdepth: 1
