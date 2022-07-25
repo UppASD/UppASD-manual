@@ -63,46 +63,33 @@ Further information concerning the license and contact information of the develo
 Installation
 ------------
 
-The source code is distributed along with documentation and a growing set of examples. To install, perform the following actions.
-%uncompress the file \texttt{UppASD_dist.tar.gz}, enter the \texttt{source} directory, and compile with the supplied Makefiles. If possible, compilation with the Intel Fortran compiler is recommended, using the command
+The source code is distributed along with documentation and a growing set of examples. To install, perform the following actions
 
-\begin{gBox}
-\begin{enumerate}
-\item Obtain the code, by extracting the downloaded archive (or by pulling from the git repository)
-\begin{verbatim}
-tar xvzf  UppASD_dist.tar.gz
-\end{verbatim}
-or in the case of git
-\begin{verbatim}
-git clone github:uppasd
-\end{verbatim}
-%(\texttt{UppASD_dist.tar.gz}) or alternatively using git (\texttt{git clone github:uppasd}. 
-\item Generate the dependencies needed for compiling the code
-\begin{verbatim}
-make deps
-\end{verbatim}
-\item (Optional) Perform a system check for available compiler profiles
-\begin{verbatim}
-make probe
-\end{verbatim} 
-\item Compile the code with the selected compiler profile
-\begin{verbatim}
-make <profile>
-\end{verbatim}
-where \texttt{<profile>}is the name of the profile, i.e. \texttt{ifort}, \texttt{ifort-cuda}, \texttt{gfortran}, \\
-\texttt{gfortran-osx}, and so on. Eg. \texttt{make ifort} \\
-\item (Optional) Test the compiled program against a selection of realistic runs
-\begin{verbatim}
-make tests
-\end{verbatim}
-\end{enumerate}
-\end{gBox}
-%\begin{verbatim}
-%make -f MakefileIfort
-%\end{verbatim}
+  - Obtain the code, by extracting the downloaded archive (or by pulling from the git repository).
+    ::
+       tar xvzf  UppASD_dist.tar.gz
+    or in the case of git
+    ::
+       git clone github:uppasd
+    or alternatively using git
+    ::
+       git clone github:uppasd
+  - Generate the dependencies needed for compiling the code
+    ::
+       make deps
+    (Optional) Perform a system check for available compiler profiles
+    ::
+       make probe
+    Compile the code with the selected compiler profile
+    ::
+       make <profile>
+    where ``<profile>`` is the name of the profile, i.e. ``ifort``, ``ifort-cuda``, ``gfortran``,
+    ``gfortran-osx``, and so on,  e.g. ``make ifort``.
+  -  Test the compiled program against a selection of realistic runs
+     ::
+	make asd-tests
 
-\noindent In addition to the source files, the UppASD distribution also contains several examples (in the directory \texttt{examples/}), documentation, including this file (in  \texttt{docs/}) and routines and reference data (\texttt{tests/}) for validating the installation of the UppASD program.
-%Other than the \texttt{source} directory, the current UppASD distribution also contains an \texttt{examples} directory, and a \texttt{docs} directory, in which this user manual is located. Included is also a directory \texttt{tests} that contains routines and reference data to validate the installation of the UppASD program.
+In addition to the source files, the UppASD distribution also contains several examples (in the directory ``examples/``), documentation, including this file (in  ``docs/``) and routines and reference data (``tests/``) for validating the installation of the UppASD program.
 
 
 Principles of the Code
