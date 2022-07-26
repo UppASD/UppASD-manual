@@ -17,10 +17,10 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "LESSON NAME"
-copyright = "2020, The contributors"
-author = "The contributors"
-github_user = "coderefinery"
+project = "UppASD Manual"
+copyright = "2017-2022, Uppsala University"
+author = "J. Hellsvik, L. Bergqvist, A. Bergman, J. Chico, et al"
+github_user = "johanhellsvik"
 github_repo_name = ""  # auto-detected from dirname if blank
 github_version = "main"
 conf_py_path = "/content/"  # with leading and trailing slash
@@ -43,7 +43,7 @@ extensions = [
 # jupyter_execute_notebooks = "off"
 # jupyter_execute_notebooks = "auto"   # *only* execute if at least one output is missing.
 # jupyter_execute_notebooks = "force"
-jupyter_execute_notebooks = "cache"
+# jupyter_execute_notebooks = "cache"
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates']
