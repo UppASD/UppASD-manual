@@ -203,48 +203,76 @@ Input Entries
 
 The following entries are currently implemented in UppASD. Where applicable, the default entry setting is underlined.
 
-\subsection{System parameters}\index{System parameters}
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
-%simulation parameters
-%%%%%%
-\litem{simid} The 8 character long simulation id. All output files will include the \rkeyword{simid} as a label.
-%%%%%%
-\litem{cell} The three lattice vectors describing the cell. 
-%%%%%%
-\litem{ncell} Number of repetitions of the cell in each of the lattice vector directions. 
-%%%%%%
-\litem{bc} Boundary conditions (P=periodic, 0=free). 
-%%%%%%
-\litem{natoms} Number of atoms in one cell. (Not needed if a \rfilename{posfile} is provided)
-%%%%%%
-\litem{ntypes} Number of types atoms in one cell. (Not needed if a \rfilename{posfile} is provided)
-%%%%%%
-%\subsubsection*{External files}
-\litem{momfile}  External file describing the magnitudes and directions of magnetic moments.
-%%%%%%
-\litem{posfile} External file for the positions of the atoms in one cell, accompanied with the site number and type of the atom.
-%%%%%%
-\litem{posfiletype} Flag to change between \emph{C=Cartesian} or D=direct coordinates in posfile.
-%%%%%%
-\litem{set_landeg} Flag for assigning different values of the gyromagnetic factor for the moments. Set to 0 by default.
-%%%%%%
-\end{description}
+System parameters
+^^^^^^^^^^^^^^^^^
+
+.. tabularcolumns:: |l|l|
+
++---------------+--------------------------------------------------------------------------------------------------------+
+|  simid        |    The 8 character long simulation id. All output files will include the ``simid`` as a label.         |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  cell         |    The three lattice vectors describing the cell.                                                      |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ncell        |    Number of repetitions of the cell in each of the lattice vector directions.                         |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  bc           |    Boundary conditions (P=periodic, 0=free).                                                           |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  natoms       |    Number of atoms in one cell. (Not needed if a ``posfile`` is provided)                              |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ntypes       |    Number of types atoms in one cell. (Not needed if a ``posfile`` is provided)                        |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  posfile      |    External file for the positions of the atoms in one cell, with the site number and type of the atom.|
++---------------+--------------------------------------------------------------------------------------------------------+
+|  momfile      |    External file describing the magnitudes and directions of magnetic moments.                         |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  posfiletype  |    Flag to change between \emph{C=Cartesian} or D=direct coordinates in posfile.                       |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  set_landeg   |    Flag for assigning different values of the gyromagnetic factor for the moments. Set to 0 by default.|
++---------------+--------------------------------------------------------------------------------------------------------+
+
+.. \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
+.. %simulation parameters
+.. %%%%%%
+.. \litem{simid} The 8 character long simulation id. All output files will include the \rkeyword{simid} as a label.
+.. %%%%%%
+.. \litem{cell} The three lattice vectors describing the cell. 
+.. %%%%%%
+.. \litem{ncell} Number of repetitions of the cell in each of the lattice vector directions. 
+.. %%%%%%
+.. \litem{bc} Boundary conditions (P=periodic, 0=free). 
+.. %%%%%%
+.. \litem{natoms} Number of atoms in one cell. (Not needed if a \rfilename{posfile} is provided)
+.. %%%%%%
+.. \litem{ntypes} Number of types atoms in one cell. (Not needed if a \rfilename{posfile} is provided)
+.. %%%%%%
+.. %\subsubsection*{External files}
+.. \litem{momfile}  External file describing the magnitudes and directions of magnetic moments.
+.. %%%%%%
+.. \litem{posfile} External file for the positions of the atoms in one cell, accompanied with the site number and type of the atom.
+.. %%%%%%
+.. \litem{posfiletype} Flag to change between \emph{C=Cartesian} or D=direct coordinates in posfile.
+.. %%%%%%
+.. \litem{set_landeg} Flag for assigning different values of the gyromagnetic factor for the moments. Set to 0 by default.
+.. %%%%%%
+.. \end{description}
 
 
-\subsection{Hamiltonian parameters}
-%%%%%%
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
+Hamiltonian parameters
+^^^^^^^^^^^^^^^^^^^^^^
 
-% external files to read in
-%%%%%%
-\litem{exchange}\label{jfile}\index{jfile} External file for Heisenberg exchange couplings on the form 
-
-\begin{declaration}[Heisenberg exchange]\index{Heisenberg exchange}
-\begin{equation}
-\mathcal{H}_{\mathrm{XC}} = - \sum_{i\neq j}J_{ij}  \mathbf{e}_i \cdot \mathbf{e}_j ,
-   \label{XC_ham}
-\end{equation}
-\end{declaration}
+.. %%%%%%
+.. \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
+.. 
+.. % external files to read in
+.. %%%%%%
+.. \litem{exchange}\label{jfile}\index{jfile} External file for Heisenberg exchange couplings on the form 
+.. 
+.. \begin{declaration}[Heisenberg exchange]\index{Heisenberg exchange}
+.. \begin{equation}
+.. \mathcal{H}_{\mathrm{XC}} = - \sum_{i\neq j}J_{ij}  \mathbf{e}_i \cdot \mathbf{e}_j ,
+..    \label{XC_ham}
+.. \end{equation}
+.. \end{declaration}
 
 \noindent where $J_{ij}$ is the Heisenberg exchange interaction between atoms $i$ and $j$. For an example of the file, see the description in Sec.\ref{fxc}.
 %%%%%%
