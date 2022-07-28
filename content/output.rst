@@ -8,7 +8,7 @@ Simulation and Hamiltonian output
 
 **aniso1.simid.out** is written if the anisotropy is defined. Prints the anisotropy parameters for each atom in the format::
 
-  aniso1.simid.out:  e_x,e_y,e_z,k_1,k_2
+  aniso1.simid.out:   e_x, e_y, e_z, k_1, k_2
 
 where the three first entries are the direction of the anisotropy axis.
 
@@ -35,34 +35,29 @@ where the three first entries are the direction of the anisotropy axis.
 Measured observables
 --------------------
 
-\subsubsection*{averages.simid.out} \vindex{averages.simid.out} \index{Magnetization}
-Is written if measurement phase is run in SD mode. Prints out the average magnetization as a function of simulation time, in the format
-\begin{fileinfo}[averages.simid.out:]
-\begin{lstlisting}
-  step, $m_x$, $m_y$, $m_z$, $m$, $\sigma$(m)
-\end{lstlisting}
-\end{fileinfo}
-\noindent where $step$ is the simulation time expressed in terms of the number of time steps, $m_x$, $m_y$ and $m_z$ are the components of the intensive average magnetization (\textit{i.e.}, $m_x=\frac{1}{N}\sum_i m_{x,i}$), $m=\sqrt{m_x^2+m_y^2+m_z^2}$, and so on. $\sigma(m)$ is the standard deviation of $m$ when the number of ensembles is larger than one.
-%%%%%%
-\subsubsection*{cumulants.simid.out} \vindex{cumulants.simid.out} \index{Binder cumulant} \index{Susceptibility} \index{Specific heat}
-Prints out the running time averages of the intensive magnetization and its higher order moments, in the format  
-\begin{fileinfo}[cumulants.simid.out:]
-\begin{lstlisting}
-  step, $<M>$, $<M>^2$, $<M>^4$, $U_4$, $\chi$, $C_v$
-\end{lstlisting}
-\end{fileinfo}
- \noindent where, brackets denote time averaged quantities and $U_4=1-\frac{1 <M>^4}{3 <M>^2}$ is the fourth order `Binder' cumulant, useful for estimating transition temperatures ~\cite{Binder2009}, $\chi$ is the magnetic susceptibility, and $C_V$ is the heat capacity.
-%%%%%%
-%\subsubsection*{mcinitial.simid.out} 
-%Is written if initial phase is set to MC mode. Prints out the final iterations of the MC initial phase, in the format
-%\begin{equation}\nonumber
-%  mcstep, m, U_4, \chi
-%\end{equation}
-%\noindent where $\chi$ is the magnetic susceptibility. This is useful for checking whether or not the initial run has thermalized before entering the measurement stage.
-%%%%%%
-%\subsubsection*{mcmeasure.simid.out} 
-%Is written if measurement phase is set to MC mode. Prints out the quantities measured in MC mode, using the same format used for \rfilename{mcinitial.simid.out}.
-%%%%%%
+**averages.simid.out** is written if measurement phase is run in SD mode. Prints out the average magnetization as a function of simulation time, in the format::
+
+  averages.simid.out:   step, $m_x$, $m_y$, $m_z$, $m$, $\sigma$(m)
+
+where $step$ is the simulation time expressed in terms of the number of time steps, $m_x$, $m_y$ and $m_z$ are the components of the intensive average magnetization (\textit{i.e.}, $m_x=\frac{1}{N}\sum_i m_{x,i}$), $m=\sqrt{m_x^2+m_y^2+m_z^2}$, and so on. $\sigma(m)$ is the standard deviation of $m$ when the number of ensembles is larger than one.
+
+.. \vindex{cumulants.simid.out} \index{Binder cumulant} \index{Susceptibility} \index{Specific heat}
+**cumulants.simid.out} prints out the running time averages of the intensive magnetization and its higher order moments, in the format::
+
+  cumulants.simid.out:   step, $<M>$, $<M>^2$, $<M>^4$, $U_4$, $\chi$, $C_v$
+
+where, brackets denote time averaged quantities and $U_4=1-\frac{1 <M>^4}{3 <M>^2}$ is the fourth order `Binder' cumulant, useful for estimating transition temperatures ~\cite{Binder2009}, $\chi$ is the magnetic susceptibility, and $C_V$ is the heat capacity.
+
+.. **mcinitial.simid.out** is written if initial phase is set to MC mode. Prints out the final iterations of the MC initial phase.
+.. , in the format
+.. %\begin{equation}\nonumber
+.. %  mcstep, m, U_4, \chi
+.. %\end{equation}
+.. %\noindent where $\chi$ is the magnetic susceptibility. This is useful for checking whether or not the initial run has thermalized before entering the measurement stage.
+
+.. %\subsubsection*{mcmeasure.simid.out}
+.. %Is written if measurement phase is set to MC mode. Prints out the quantities measured in MC mode, using the same format used for \rfilename{mcinitial.simid.out}.
+
 \subsubsection*{moments.simid.out} \vindex{moments.simid.out} \index{Trajectories}
 Is written if the \rkeyword{do_tottraj} flag is switched on. Prints the configuration of all magnetic moments at regular interval in time in the format 
 \begin{fileinfo}[moments.simid.out:]
