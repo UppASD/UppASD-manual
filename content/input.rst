@@ -1,6 +1,10 @@
 Input files
 ===========
 
+
+inpsd.dat
+---------
+
 A file with the hardcoded name ``inpsd.dat`` is the main input file necessary to run UppASD. Contained in this file are also the names of the files containing the exchange interactions, the atomic positions, and the atomic moments. Although the names of these files is arbitrary, in this manual they are referred to as the ``jfile``, ``posfile`` and ``momfile``, respectively. Other optional files containing information such as the uniaxial anisotropy and the Dzyaloshinskii-Moriya vectors may also be included, as described below.
 
 The input format is keyword based. The code is programmed to search for given keywords, and then read in the values that follow. If no keyword is given, a default value is set. As an example of a standard ``inpsd.dat`` file layout, input for a Fe in bcc lattice is shown below (as found in the examples directory). More advanced examples like supercells and random alloys follows later, but let's keep things simple for now::
@@ -64,6 +68,7 @@ The input format is keyword based. The code is programmed to search for given ke
   
 While the meaning of most of the entries in this particular example may be obvious, each input field will be described later in this manual. In short, the input will perform a Monte Carlo simulation at T=300 K allowing 10 000 steps to reach equilbrium and then 50 000 steps to measure observables. However,  it is also clear that more information than in ``inpsd.dat`` are required and must be read in from external files in order for the system to be fully defined. These are:
   
+
 posfile
 -------
 
@@ -87,7 +92,8 @@ The first entry indicates the *site number*, whereas the second one indicates th
 .. %\end{fBox}
 
 
-momfile
+
+   momfile
 -------
 
 This file lists the magnetic moments of the atoms in the unit cell. Also, if the ``initmag`` entry is set to 3, the initial direction of the moments is read from this file. For bcc Fe::
@@ -202,6 +208,8 @@ Input Entries
 -------------
 
 The following entries are currently implemented in UppASD. Where applicable, the default entry setting is underlined.
+.. this is subset of the more relevant flags available for inpsd.dat
+
 
 System parameters
 ^^^^^^^^^^^^^^^^^
@@ -230,32 +238,6 @@ System parameters
 |  set_landeg   |    Flag for assigning different values of the gyromagnetic factor for the moments. Set to 0 by default.|
 +---------------+--------------------------------------------------------------------------------------------------------+
 
-.. \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
-.. %simulation parameters
-.. %%%%%%
-.. \litem{simid} The 8 character long simulation id. All output files will include the \rkeyword{simid} as a label.
-.. %%%%%%
-.. \litem{cell} The three lattice vectors describing the cell. 
-.. %%%%%%
-.. \litem{ncell} Number of repetitions of the cell in each of the lattice vector directions. 
-.. %%%%%%
-.. \litem{bc} Boundary conditions (P=periodic, 0=free). 
-.. %%%%%%
-.. \litem{natoms} Number of atoms in one cell. (Not needed if a \rfilename{posfile} is provided)
-.. %%%%%%
-.. \litem{ntypes} Number of types atoms in one cell. (Not needed if a \rfilename{posfile} is provided)
-.. %%%%%%
-.. %\subsubsection*{External files}
-.. \litem{momfile}  External file describing the magnitudes and directions of magnetic moments.
-.. %%%%%%
-.. \litem{posfile} External file for the positions of the atoms in one cell, accompanied with the site number and type of the atom.
-.. %%%%%%
-.. \litem{posfiletype} Flag to change between \emph{C=Cartesian} or D=direct coordinates in posfile.
-.. %%%%%%
-.. \litem{set_landeg} Flag for assigning different values of the gyromagnetic factor for the moments. Set to 0 by default.
-.. %%%%%%
-.. \end{description}
-
 
 Hamiltonian parameters
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -269,21 +251,6 @@ Hamiltonian parameters
 .. math::
 
    \mathcal{H}_{\mathrm{XC}} = - \sum_{i\neq j}J_{ij}  \mathbf{e}_i \cdot \mathbf{e}_j ,\label{XC_ham}
-
-
-.. %%%%%%
-.. \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
-.. 
-.. % external files to read in
-.. %%%%%%
-.. \litem{exchange}\label{jfile}\index{jfile} External file for Heisenberg exchange couplings on the form 
-.. 
-.. \begin{declaration}[Heisenberg exchange]\index{Heisenberg exchange}
-.. \begin{equation}
-.. \mathcal{H}_{\mathrm{XC}} = - \sum_{i\neq j}J_{ij}  \mathbf{e}_i \cdot \mathbf{e}_j ,
-..    \label{XC_ham}
-.. \end{equation}
-.. \end{declaration}
 
 where :math:`J_{ij}` is the Heisenberg exchange interaction between atoms :math:`i` and :math:`j`. For an example of the file, see the description in Sec.\ref{fxc}.
 
@@ -425,6 +392,7 @@ Useful for checking if the system geometry and couplings are correctly set up.
 .. %\litem{do_dip} Flag for enabling dipole-dipole interactions (\emph{0=off}/1=on).
 
 
+
 General simulation parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -551,6 +519,7 @@ Measurement phase parameters
 |  set_bpulse   |    Add magnetic field pulse ``0=no``, :math:`1-4` for different shapes)                                |
 +---------------+--------------------------------------------------------------------------------------------------------+
 
+
 Parameters for measuring of observables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -604,9 +573,10 @@ Typically the measurement of each observable is controlled by two parameters in 
 |  alat         |    Lattice constant (in m) for calculation of exchange stiffness                                       |
 +---------------+--------------------------------------------------------------------------------------------------------+
 
-.. %spin wave sampling and correlations
+
 Parameters for measuring of correlation functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. %spin wave sampling and correlations
 
 .. tabularcolumns:: |l|l|
 
@@ -630,7 +600,6 @@ where the angular brackets signify an ensemble average and $k$ the Cartesian com
 and this function describes the energy dispersion for excited spin waves present in the simulated system.~\cite{Bergman2010}. If the flag is set to C, the static correlation function :math:`G(\mathbf{r})` and its Fourier transform :math:`S(\mathbf{q})` are measured. By locating the maximum of :math:`S(\mathbf{q})`, the ordering vector of the simulated system can be determined. In this case it is important to have a ``qfile`` that includes :math:`\mathbf{q}`-vectors in the whole Brillouin zone.
 .. %By default, both $S(\mathbf{q},\omega)$ and $S(\mathbf{q},t)$ are written to files but if only one of these correlation functions is %wanted, a selective printing can be obtained by giving the values \rkeyword{do_sc} = W or T, instead of the normal choice of %\rkeyword{do_sc} = Y. 
 In order to obtain a useful $S(\mathbf{q},\omega)$ measurement, it is important to understand the sampling of the function that is determined by ``sc_nstep``, ``sc_step``, and ``timestep``.
-
 
 .. tabularcolumns:: |l|l|
 
