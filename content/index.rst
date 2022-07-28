@@ -26,6 +26,7 @@ Intro
    input
    output
    tutorial
+   examples
 
 .. toctree::
    :maxdepth: 2
