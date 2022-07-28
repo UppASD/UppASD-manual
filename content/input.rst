@@ -497,54 +497,61 @@ Initial phase parameters
 |  ip_hfield    |    External applied field (in units of Tesla) for initial phase run, given in Cartesian coordinates,   |
 |               |    *e.g.* ``hfield   1.0   0.0   0.0``.                                                                |
 +---------------+--------------------------------------------------------------------------------------------------------+
+|  ip_mcnstep   |    Number of Monte Carlo sweeps (MCS) over the system if ip_mode=M or H.                               |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ip_damping   |    Damping parameter $\alpha$ for SD initial phase. Default value is 0.05.                             |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ip_nphase    |    Number of initial phases to be done with SD.                                                        |
++---------------+--------------------------------------------------------------------------------------------------------+
 
-\litem{ip_mcnstep} Number of Monte Carlo sweeps (MCS) over the system if ip_mode=M or H.
-%\litem{ip_damping} Damping parameter $\alpha$ for SD initial phase. Default value is 0.05.
-%%%%%%
-\litem{ip_nphase} Number of initial phases to be done with SD. This must be followed by \rkeyword{ip_nphase} lines containing number of steps, temperature, timestep and damping for each phase. An example (for an initialization with the temperature decreasing from 300 K to 10 K) can look like:
-\begin{Verbatim}
-ip_nphase 3
-20000 300.0 1.0d-16  0.1
-20000 100.0 1.0d-16  0.1
-30000 010.0 1.0d-16  0.1
-\end{Verbatim}
+This must be followed by ``ip_nphase`` lines containing number of steps, temperature, timestep and damping for each phase. An example (for an initialization with the temperature decreasing from 300 K to 10 K) can look like::
 
-%%%%%%
-\litem{ip_mcanneal} Number of initial phases to be done with MC. This must be followed by \rkeyword{ip_mcanneal} lines containing number of steps and temperature for each phase. An example (for an initialization with the temperature decreasing from 300 K to 10 K) can look like:
-\begin{verbatim}
-ip_mcanneal 3
-20000 300.0
-20000 100.0 
-30000 010.0 
-\end{verbatim}
-\end{description}
+  ip_nphase 3
+  20000 300.0 1.0d-16  0.1
+  20000 100.0 1.0d-16  0.1
+  30000 010.0 1.0d-16  0.1
+
+.. tabularcolumns:: |l|l|
+
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ip_mcanneal  |     Number of initial phases to be done with MC.                                                       |
++---------------+--------------------------------------------------------------------------------------------------------+
+
+This must be followed by ``ip_mcanneal`` lines containing number of steps and temperature for each phase. An example (for an initialization with the temperature decreasing from 300 K to 10 K) can look like::
+
+  ip_mcanneal 3
+  20000 300.0
+  20000 100.0 
+  30000 010.0 
 
 
 Measurement phase parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-%%%%%%
-\litem{mode} Mode for measurement phase run (\emph{S=SD}, M=Monte Carlo, H=Heat bath Monte Carlo).
-%%%%%%
-\litem{temp} Temperature for measurement phase.
-%%%%%%
-\litem{hfield} External applied field (in units of Tesla) for measurement phase. 
-%%%%%%
-\litem{mcnstep} Number of Monte Carlo sweeps (MCS) over the system if mode=M or H.
-%%%%%%
-\litem{damping}  Damping parameter $\alpha$ for SD measurement phase. Default value is 0.05.
-%%%%%%
-\litem{timestep} Time step between SD iterations. Unless \rkeyword{aunits}=Y, this should typically be set to a value between 10$^{-17}$ and 10$^{-15}$ seconds, depending on the system and SDE solver.
-%%%%%%
-%\litem{relaxtime} Relaxation time in LLG+I equation (if sdealgh=11).
-%%%%%%
-\litem{set_bpulse} Add magnetic field pulse (\emph{0=no}, $1-4$ for different shapes)
-%%%%%%
+.. tabularcolumns:: |l|l|
+
++---------------+--------------------------------------------------------------------------------------------------------+
+|  mode         |    Mode for measurement phase run (\emph{S=SD}, M=Monte Carlo, H=Heat bath Monte Carlo).               |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  temp         |    Temperature for measurement phase.                                                                  |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  hfield       |    External applied field (in units of Tesla) for measurement phase.                                   |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  mcnstep      |    Number of Monte Carlo sweeps (MCS) over the system if mode=M or H.                                  |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  damping      |    Damping parameter $\alpha$ for SD measurement phase. Default value is 0.05.                         |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  timestep     |    Time step between SD iterations. Unless ``aunits Y``, this should typically be set to a value       |
+|               |    between :math:`10^{-17}` and :math:`10^{-15} seconds, depending on the system and SDE solver.       |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  relaxtime    |    Relaxation time in LLG+I equation (if sdealgh=11).                                                  |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  set_bpulse   |    Add magnetic field pulse (\emph{0=no}, $1-4$ for different shapes)                                  |
++---------------+--------------------------------------------------------------------------------------------------------+
 
 
 Parameters for measuring of observables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 Typically the measurement of each observable is controlled by two parameters in a combination as follows; \texttt{do_observable} that enables the measurement and \texttt{observable_step} that determines the frequency of the measurements. Here the \texttt{observable} should be replaced by the internal name of the wanted quantity i.e. \rkeyword{do_avrg} and \rkeyword{avrg_step} for the average magnetization.
 
