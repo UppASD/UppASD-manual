@@ -331,7 +331,7 @@ The first two entries indicate the site number and the type of atom, respectivel
 
   \mathcal{H}_{\mathrm{bq}} = -\sum_{i\neq j}B_{ij} \left( \mathbf{e}_i\cdot\mathbf{e}_j \right)^2.
 
-The format is identical to that of the ``exchange`` file discussed above, with the values for the exchange couplings :math:`J_{ij}` replaced by the biquadratic exchange coupings :math:`B_{ij}`. 
+The format is identical to that of the ``exchange`` file discussed above, with the values for the exchange couplings :math:`J_{ij}` replaced by the biquadratic exchange couplings :math:`B_{ij}`.
 
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  biqdm    |    External file for effective quadratic Dzyaloshinskii-Moriya coupling                                    |
@@ -343,7 +343,7 @@ The format is identical to that of the ``exchange`` file discussed above, with t
 
   \mathcal{H}_{\mathrm{biqdm}} = -\sum_{i\neq j}F_{ij} \left( \mathbf{e}_i\times\mathbf{e}_j \right)^2.
 
-The format is identical to that of the ``exchange`` file discussed above, with the values for the exchange couplings :math:`J_{ij}` replaced by the quadratic effective Dzyaloshinskii-Morya exchange couping :math:`F_{ij}`. 
+The format is identical to that of the ``exchange`` file discussed above, with the values for the exchange couplings :math:`J_{ij}` replaced by the quadratic effective Dzyaloshinskii-Morya exchange coupling :math:`F_{ij}`.
 
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  do_tensor  |    Tensorial exchange coupling                                                                           |
@@ -363,8 +363,8 @@ Here, :math:`\mathcal{J}_{ij}=-J_{ij}\mathcal{I} + \mathcal{J}^S_{ij} +  \mathca
 .. %
 In this formalism, the anti-symmetric part of the tensor are proportional to the components of the DM vector :math:`\mathbf{D}_{ij}` in Eq.~(\ref{DM_ham}), as :math:`D_{ij}^x=\frac{1}{2}(J_{ij}^{yz}-J_{ij}^{zy})`, :math:`D_{ij}^y=\frac{1}{2}(J_{ij}^{xz}-J_{ij}^{zx})` and :math:`D_{ij}^z=\frac{1}{2}(J_{ij}^{xy}-J_{ij}^{yx})`. In order to define the first shell of exchange parameters in bcc Fe using this formalism, the exchange file would be changed to look as follows::
 
-0 0 1 2 0.00134 0.0 0.0 0.0 0.00134 0.0 0.0 0.0 0.00134
-0 0 2 1 0.00134 0.0 0.0 0.0 0.00134 0.0 0.0 0.0 0.00134
+  0 0 1 2 0.00134 0.0 0.0 0.0 0.00134 0.0 0.0 0.0 0.00134
+  0 0 2 1 0.00134 0.0 0.0 0.0 0.00134 0.0 0.0 0.0 0.00134
 
 *NB*: ``maptype`` must be set to 2 in order to use the tensorial format. In addition, since SKKR prints the exchange in Ry, UppASD reads this input in Ry and not in mRy as usual. 
 
