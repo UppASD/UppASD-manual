@@ -25,6 +25,7 @@ Intro
    introduction
    input
    output
+   tutorial
 
 .. toctree::
    :maxdepth: 2
