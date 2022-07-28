@@ -451,47 +451,53 @@ General simulation parameters
 +---------------+--------------------------------------------------------------------------------------------------------+
 
 
-\subsection{Initialization parameters}
-%%%%%%
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
-%%%%%%
-\litem{initmag} Switch for setting up the initial configuration of the magnetic moments (1=Random distrubution, 2=Cone, 3=aligned along direction defined in momfile, \emph{4=Read from restartfile}).
-%%%%%%
-\litem{restartfile} External file containing stored snapshot from previous simulation (used when initmag=4). The format coincides with the format of the output file \rfilename{restart.simid.out}.
-%%%%%%
-\litem{mseed} Random number seed for magnetic moments if initmag=1. Set to 1 by default.
-%%%%%%
-\litem{theta0} If \rkeyword{initmag}=2, the magnetic moments are randomly distributed in a cone prescribed by this angle, and \rkeyword{phi0}. Set to 0 by default.
-%%%%%%
-\litem{phi0} Cone angle for initmag=2. Set to 0 by default.
-%%%%%%
-\litem{roteul} Perform global rotation of magnetization. Set to 0 by default.
-%%%%%%
-\litem{rotang} Euler angles describing the rotation if roteul=1.
-%%%%%%
-\litem{initexc} Perform initial excitation of the spin system (\emph{N=none}, I=Vacancies, R=Two magnon Raman scattering).
-%%%%%%
-\litem{initconc} Concentration of vacancies or two magnon spin scattering.
-%%%%%%
-\litem{initneigh} Neighbour index referring to the list of neighbours for Heisenberg exchange. Determines which spins to swap in two magnon spin scattering.
-\end{description}
+Initialization parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-%initial phase parameters
-\subsection{Initial phase parameters}
-%%%%%%
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
-%%%%%%
-\litem{ip_mode} Mode for initial phase run (S=SD, M=Monte Carlo, H=Heat bath Monte Carlo, \emph{N=none}).
-%%%%%%
-\litem{ip_temp} Temperature for initial phase run if Monte Carlo (ip_mode=M or H).
-%%%%%%
-\litem{ip_hfield} External applied field (in units of Tesla) for initial phase run. This is given in Cartesian coordinates, \textit{e.g.},
+.. tabularcolumns:: |l|l|
 
-\begin{Verbatim}
-hfield   1.0   0.0   0.0
-\end{Verbatim}
++---------------+--------------------------------------------------------------------------------------------------------+
+|  initmag      |    Switch for setting up the initial configuration of the magnetic moments (1=Random distribution,     |
+|               |    2=Cone, 3=aligned along direction defined in momfile, *4=Read from restartfile*).                   |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  restartfile  |    External file containing stored snapshot from previous simulation (used when initmag=4).            |
+|               |    The format coincides with the format of the output file ``restart.simid.out``.                      |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  mseed        |    Random number seed for magnetic moments if initmag=1. Set to 1 by default.                          |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  theta0       |    If \rkeyword{initmag}=2, the magnetic moments are randomly distributed in a cone                    |
+|               |    prescribed by this angle, and \rkeyword{phi0}. Set to 0 by default.                                 |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  phi0         |    Cone angle for initmag=2. Set to 0 by default.                                                      |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  roteul       |    Perform global rotation of magnetization. Set to 0 by default.                                      |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  rotang       |    Euler angles describing the rotation if roteul=1.                                                   |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  initexc      |    Perform initial excitation of the spin system (\emph{N=none}, I=Vacancies,                          |
+|               |    R=Two magnon Raman scattering).                                                                     |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  initconc     |    Concentration of vacancies or two magnon spin scattering.                                           |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  initneigh    |    eighbour index referring to the list of neighbours for Heisenberg exchange. Determines which spins  |
+|               |    to swap in two magnon spin scattering.                                                              |
++---------------+--------------------------------------------------------------------------------------------------------+
 
-%%%%%%
+
+Initial phase parameters
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. tabularcolumns:: |l|l|
+
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ip_mode      |    Mode for initial phase run (S=SD, M=Monte Carlo, H=Heat bath Monte Carlo, \emph{N=none}).           |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ip_temp      |    Temperature for initial phase run if Monte Carlo (ip_mode=M or H).                                  |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ip_hfield    |    External applied field (in units of Tesla) for initial phase run, given in Cartesian coordinates,   |
+|               |    *e.g.* ``hfield   1.0   0.0   0.0``.                                                                |
++---------------+--------------------------------------------------------------------------------------------------------+
+
 \litem{ip_mcnstep} Number of Monte Carlo sweeps (MCS) over the system if ip_mode=M or H.
 %\litem{ip_damping} Damping parameter $\alpha$ for SD initial phase. Default value is 0.05.
 %%%%%%
@@ -514,9 +520,9 @@ ip_mcanneal 3
 \end{description}
 
 
-%measurement phase parameters
-\subsection{Measurement phase parameters}
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
+Measurement phase parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 %%%%%%
 \litem{mode} Mode for measurement phase run (\emph{S=SD}, M=Monte Carlo, H=Heat bath Monte Carlo).
 %%%%%%
@@ -534,14 +540,14 @@ ip_mcanneal 3
 %%%%%%
 \litem{set_bpulse} Add magnetic field pulse (\emph{0=no}, $1-4$ for different shapes)
 %%%%%%
-\end{description}
 
 
-%observables
-\subsection{Parameters for measuring of observables}
+Parameters for measuring of observables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 Typically the measurement of each observable is controlled by two parameters in a combination as follows; \texttt{do_observable} that enables the measurement and \texttt{observable_step} that determines the frequency of the measurements. Here the \texttt{observable} should be replaced by the internal name of the wanted quantity i.e. \rkeyword{do_avrg} and \rkeyword{avrg_step} for the average magnetization.
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
-%%%%%%
+
 \litem{plotenergy} Flag to enable the calculation of the energy of the system projected to the different components of the Hamiltonian. (\emph{0=off}/1=on).
 %%%%%%
 \litem{do_avrg} Sample and print average magnetization, and its higher order moments. (\emph{Y}/N).
@@ -582,8 +588,6 @@ Typically the measurement of each observable is controlled by two parameters in 
 %%%%%%
 \litem{alat} Lattice constant (in m) for calculation of exchange stiffness 
 
-
-\end{description}
 
 
 %spin wave sampling and correlations
