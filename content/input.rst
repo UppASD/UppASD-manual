@@ -412,7 +412,7 @@ Do not forget the identity operation when using custom symmetry operations. The 
 |  maptype  |    Flag that determines how the coordinates for the different exchange couplings are given.                                |
 +---------------+------------------------------------------------------------------------------------------------------------------------+
 
-For \emph{1=coordinates} the coordinates are given in Cartesian or direct coordinates (see ``posfiletype``). For 2 the coordinates of a coupling vector are implicitly given by specifying that the coupling links atom \textit{i} with atom \textit{j} (for an example, see ``dm``).
+For \emph{1=coordinates} the coordinates are given in Cartesian or direct coordinates (see ``posfiletype``). For 2 the coordinates of a coupling vector are implicitly given by specifying that the coupling links atom :math:`i` with atom :math:`j` (for an example, see ``dm``).
 
 +---------------+------------------------------------------------------------------------------------------------------------------------+
 |  do_prnstruct  |    Flag to print lattice structure (\emph{0=off}/1=on/2=print only coordinates).                                      |
@@ -423,27 +423,32 @@ Useful for checking if the system geometry and couplings are correctly set up.
 .. %\litem{do_dip} Flag for enabling dipole-dipole interactions (\emph{0=off}/1=on).
 
 
+General simulation parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. tabularcolumns:: |l|l|
 
-%more simulation parameters
-\subsection{General simulation parameters}
-%%%%%%
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
-%%%%%%
-\litem{do_ralloy} Flag to set if a random alloy is being simulated (\emph{0=off}/1=on). \index{Random alloy}
-%%%%%%
-\litem{aunits} Implement atomic units, \textit{i.e.} set $k_B$, $\hbar$, ... $=1$ (Y/\emph{N}). If this is switched on, the \rkeyword{timestep} in SD mode should be roughly 0.1$J_{ij}$. 
-%%%%%%
-\litem{sdealgh} Switch for choosing SDE solver (\emph{1=Midpoint}, 4=Heun , 5=Depondt-Mertens). The default option runs the semi-implicit midpoint solver developed by Mentink \textit{et al}.~\cite{Mentink2010} In this case, as when using the Depondt-Mertens solver~\cite{Depondt2009}, the \rkeyword{timestep} can be as large as  10$^{-16}$ seconds, but this should \textit{always} be checked carefully \index{Solver}
-%%%%%%
-\litem{mensemble} Number of ensembles to simulate. The default value is 1, but this may be increased to improve statistics, especially if investigating laterally confined systems, such as finite clusters or other low-dimensional systems.
-%%%%%%
-\litem{tseed} Random number seed for the stochastic field simulating the fluctuations due to temperature. Default value is 1. \index{RNG seed}
-%%%%%%
-\litem{do_sortcoup} Flag to specify if the arrays of couplings should be sorted or not (\emph{Y=yes}, N=no). Of importance for sampling of polarization. Could be very slow if long range interactions.
-%%%%%%
-\end{description}
-
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_ralloy    |    Flag to set if a random alloy is being simulated (*0=off*/1=on).                                    |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  aunits       |    Implement atomic units, *i.e.* set :math:`k_B`, :math:`\hbar`, ... :math:`=1` (Y/\emph{N}). If this |
+|               |    is switched on, the \rkeyword{timestep} in SD mode should be roughly 0.1:math:`J_{ij}`.             |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  sdealgh      |    Switch for choosing SDE solver (\emph{1=Midpoint}, 4=Heun , 5=Depondt-Mertens). The default option  |
+|               |    runs the semi-implicit midpoint solver developed by Mentink \textit{et al}.~\cite{Mentink2010}.     |
+|               |    In this case, as when using the Depondt-Mertens solver~\cite{Depondt2009}, the \rkeyword{timestep}  |
+|               |    can be as large as  10$^{-16}$ seconds, but this should \textit{always} be checked carefully        |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  mensemble    |    Number of ensembles to simulate. The default value is 1, but this may be increased to improve       |
+|               |    statistics, especially if investigating laterally confined systems, such as finite                  |
+|               |    clusters or other low-dimensional systems.                                                          |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  tseed        |    Random number seed for the stochastic field simulating the fluctuations due to temperature.         |
+|               |    Default value is 1.                                                                                 |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_sortcoup  |    Flag to specify if the arrays of couplings should be sorted or not (\emph{Y=yes}, N=no). Of         |
+|               |    importance for sampling of polarization. Could be very slow if long range interactions.             |
++---------------+--------------------------------------------------------------------------------------------------------+
 
 
 \subsection{Initialization parameters}
