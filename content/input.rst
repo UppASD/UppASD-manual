@@ -290,7 +290,7 @@ where :math:`J_{ij}` is the Heisenberg exchange interaction between atoms :math:
 .. tabularcolumns:: |l|l|
 
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  dm        |    External file for Dzyaloshinskii-Moriya (DM) exchange couplings on the form                                      |
+|  dm        |    External file for Dzyaloshinskii-Moriya (DM) exchange couplings on the form                            |
 +---------------+--------------------------------------------------------------------------------------------------------+
 
 .. math::
@@ -310,7 +310,7 @@ The first two entries specify site numbers in the chemical unit cell. The third 
 .. tabularcolumns:: |l|l|
 
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  pd        |    External file for anisotropic symmetric exchange coupling on the form                                      |
+|  pd        |    External file for anisotropic symmetric exchange coupling on the form                                  |
 +---------------+--------------------------------------------------------------------------------------------------------+
 
 .. math::
@@ -392,12 +392,14 @@ where :math:`(m_x, m_y, m_z)=\mathbf{m}`. UppASD is able to read in either Eq.~(
 The first entry lists the atom number, whereas the second entry indicates if the uniaxial (\texttt{1}), cubic (\texttt{2}) or both (\texttt{7}) anisotropies are to be mounted. The second and third entries list the strength of :math:`K_1` and :math:`K_2`, respectively. The fifth to seventh entries indicate the components of the vector :math:`\mathbf{e}_i`. Finally, in the instance of the second entry being set to 7, the final entry indicates the ratio between  :math:`K^{\mathrm{U}}_{\mathrm{ani}}` and  :math:`K^{\mathrm{C}}_{\mathrm{ani}}`.
 
 +---------------+------------------------------------------------------------------------------------------------------------------------+
-|  sym      |    Flag to determine the assumed symmetry of the system (\emph{0=none}, 1=cubic, 2=2d cubic (in :math:`xy` plane), 3=hexagonal). |
+|  sym      |    Flag to determine the assumed symmetry of the system (\emph{0=none}, 1=cubic, 2=2d cubic (in :math:`xy` plane),         |
+|           |    3=hexagonal).                                                                                                           |
 +---------------+------------------------------------------------------------------------------------------------------------------------+
 
 It is also possible to provide symmetry operations manually. This is done by setting ``sym`` to 4 and then create an additional input file
 ``sym.mat`` containing the number of symmetry operations followed by the operations in matrix form. 
 An example of {\it sym.mat} for only inversion symmetry can look like::
+
   2 
     1.0000   0.0000  0.0000
     0.0000   1.0000  0.0000
@@ -542,130 +544,155 @@ Measurement phase parameters
 |  damping      |    Damping parameter $\alpha$ for SD measurement phase. Default value is 0.05.                         |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  timestep     |    Time step between SD iterations. Unless ``aunits Y``, this should typically be set to a value       |
-|               |    between :math:`10^{-17}` and :math:`10^{-15} seconds, depending on the system and SDE solver.       |
+|               |    between :math:`10^{-17}` and :math:`10^{-15}` seconds, depending on the system and SDE solver.      |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  relaxtime    |    Relaxation time in LLG+I equation (if sdealgh=11).                                                  |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  set_bpulse   |    Add magnetic field pulse (\emph{0=no}, $1-4$ for different shapes)                                  |
+|  set_bpulse   |    Add magnetic field pulse ``0=no``, :math:`1-4` for different shapes)                                |
 +---------------+--------------------------------------------------------------------------------------------------------+
-
 
 Parameters for measuring of observables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Typically the measurement of each observable is controlled by two parameters in a combination as follows; \texttt{do_observable} that enables the measurement and \texttt{observable_step} that determines the frequency of the measurements. Here the \texttt{observable} should be replaced by the internal name of the wanted quantity i.e. \rkeyword{do_avrg} and \rkeyword{avrg_step} for the average magnetization.
+Typically the measurement of each observable is controlled by two parameters in a combination as follows; ``do_observable`` that enables the measurement and ``observable_step`` that determines the frequency of the measurements. Here the ``observable`` should be replaced by the internal name of the wanted quantity i.e. ``do_avrg`` and ``avrg_step`` for the average magnetization.
 
-\litem{plotenergy} Flag to enable the calculation of the energy of the system projected to the different components of the Hamiltonian. (\emph{0=off}/1=on).
-%%%%%%
-\litem{do_avrg} Sample and print average magnetization, and its higher order moments. (\emph{Y}/N).
-%%%%%%
-\litem{do_proj_avrg} Sample and print type (\textit{i.e.} sublattice) projected average moments. (Y/\emph{N}/A).
-%%%%%%
-\litem{do_projch_avrg} Sample and print chemical (\textit{i.e.} sublattice) projected average moments. (Y/\emph{N}/A).
-%%%%%%
-\litem{avrg_step} Number of time steps between sampling of averages. Set to 100 by default.
-%%%%%%
-%\litem{avrg_buff} Number of samplings of averages to buffer between printing to file. Set to 10 by default.
-%%%%%%
-\litem{do_cumu} Sample cumulants (Y/N). Automatically enabled for Monte Carlo simulations.
-%%%%%%
-\litem{cumu_step} Number of time steps between sampling of cumulants. Set to 25 by default.
-%%%%%%
-\litem{do_tottraj} Sample and print all trajectories (moments) in the system. (Y/\emph{N}). Generates the (rather large) \rfilename{moments.simid.out} file.
-%%%%%%
-\litem{tottraj_step} Number of time steps between samplings of moments. Set to 1000 by default.
-%%%%%%
-%\litem{tottraj_buff} Number of samplings of moments to buffer between printing to file. Set to 10 by default.
-%%%%%%
-\litem{ntraj} Number of individual trajectories to sample and print. Followed by \rkeyword{ntraj} lines describing atoms to sample, time step between samples and steps to buffer. Set to 0 by default.
-%%%%%%
-\litem{do_pol} Sample and print average ferroelectric polarization (Y/\emph{N}) according to the expression $P\propto \gamma\sum_{i,j}\hat{\mathbf{e}}_{ij}\times(\mathbf{m}_i\times\mathbf{m}_j)$. Uses the neighbour lists set up for exchange but here the sum is performed up to a threshold \rkeyword{max_pol_nn}. For this construction to work, it is important to set the flag \rkeyword{do_sortcoup}=N.
-%%%%%%
-\litem{max_pol_nn} Number of neighbours to use when evaluating the polarization.
-%%%%%%
-\litem{pol_step} Number of time steps between sampling of polarization averages. Set to 100 by default.
-%%%%%%
-%\litem{pol_buff} Number of samplings of polarization averages to buffer between printing to file. Set to 10 by default.
-%%%%%%
-\litem{do_stiffness} Calculation of spin-wave stiffness (and tensor) and micromagnetic exchange constant (Y=yes, \emph{N=no}). 
-%%%%%%
-\litem{eta_min} Lowest value of auxiliary convergence parameter in stiffness calculation (recommended around 6-8)
-%%%%%%
-\litem{eta_max} Largest value of auxiliary convergence parameter in stiffness calculation (recommended around 10-12)
-%%%%%%
-\litem{alat} Lattice constant (in m) for calculation of exchange stiffness 
+.. tabularcolumns:: |l|l|
 
++---------------+--------------------------------------------------------------------------------------------------------+
+|  plotenergy   |    Flag to enable the calculation of the energy of the system projected to the different components of |
+|               |    the Hamiltonian. ``{0=off}/1=on``)                                                            .     |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_avrg      |    Sample and print average magnetization, and its higher order moments. ``Y/N``                       |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_proj_avrg |    Sample and print type (*i.e*. sublattice) projected average moments. (``Y/N/A``).                   |
++---------------+--------------------------------------------------------------------------------------------------------+
+| do_projch_avrg|    Sample and print chemical (*i.e.*} sublattice) projected average moments (``Y/N/A``).               |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  avrg_step    |    Add magnetic field pulse (\emph{0=no}, $1-4$ for different shapes)                                  |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  avrg_buff    |    Number of samplings of averages to buffer between printing to file. Set to 10 by default.           |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_cumu      |    Sample cumulants (Y/N). Automatically enabled for Monte Carlo simulations.                          |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  cumu_step    |    Number of time steps between sampling of cumulants. Set to 25 by default.                           |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_tottraj   |    Sample and print all trajectories (moments) in the system. (Y/N). Generates the (rather large)      |
+|               |    ``moments.simid.out`` file.                                                                         |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  tottraj_step |    Number of time steps between samplings of moments. Set to 1000 by default.                          |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  ntraj        |    Number of individual trajectories to sample and print. Followed by ``ntraj`` lines describing atoms |
+|               |    to sample, time step between samples and steps to buffer. Set to 0 by default.                      |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_pol       |    Sample and print average ferroelectric polarization (Y/N) according to the expression               |
+|               |    :math:`P\propto \gamma\sum_{i,j}\hat{\mathbf{e}}_{ij}\times(\mathbf{m}_i\times\mathbf{m}_j)`.       |
+|               |    Uses the neighbour lists set up for exchange but here the sum is performed up to a threshold        |
+|               |    ``max_pol_nn``. For this construction to work, it is important to set the flag ``do_sortcoup N`.    |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  max_pol_nn   |    Number of neighbours to use when evaluating the polarization.                                       |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  pol_step     |    Number of time steps between sampling of polarization averages. Set to 100 by default.              |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  pol_buff     |  Number of samplings of polarization averages to buffer between printing to file. Set to 10 by default.|
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_stiffness |    Calculation of spin-wave stiffness (and tensor) and micromagnetic exchange constant (Y/N).          |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  eta_min      |    Lowest value of auxiliary convergence parameter in stiffness calculation (recommended around 6-8)   |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  eta_max      |    Largest value of auxiliary convergence parameter in stiffness calculation (recommended around 10-12)|
++---------------+--------------------------------------------------------------------------------------------------------+
+|  alat         |    Lattice constant (in m) for calculation of exchange stiffness                                       |
++---------------+--------------------------------------------------------------------------------------------------------+
 
+.. %spin wave sampling and correlations
+Parameters for measuring of correlation functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-%spin wave sampling and correlations
-\subsubsection{Parameters for measuring of correlation functions \label{sqw}}
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries fifteenchars}]
-%%%%%%
-\litem{do_sc} Flag to determine if spin correlations should be analysed (Q=S($\mathbf{q}$,$\omega$), \emph{N=no}, C=G(r)). Setting this flag to Q or C measures space- and time-displaced correlation functions. The spatial time dependent correlation function $C(\mathbf{r},t)$ is defined as
-\begin{declaration}[The spatial time dependent correlation function $C(\mathbf{r},t)$]
-\begin{equation}
+.. tabularcolumns:: |l|l|
+
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_sc        |   Flag to determine if spin correlations should be analysed (Q=S($\mathbf{q}$,$\omega$), \emph{N=no},  |
+|               |   C=G(r)). Setting this flag to Q or C measures space- and time-displaced correlation functions.       |
+|               |   The spatial time dependent correlation function $C(\mathbf{r},t)$ is defined as                      |
++---------------+--------------------------------------------------------------------------------------------------------+
+
+.. math::
+
   C^k (\mathbf{r}-\mathbf{r'},t) = \langle m^k_{\mathbf{r}}(t) m^k_{\mathbf{r'}}(0) \rangle - \langle m^k_{\mathbf{r}}(t) \rangle \langle m^k_{\mathbf{r'}}(0) \rangle,
   \label{eqn:cf}
-\end{equation}
-\end{declaration}
-\noindent where the angular brackets signify an ensemble average and $k$ the Cartesian component. The dynamical structure factor is then obtained by Fourier transforming $C(\mathbf{r},t)$ as
-\begin{declaration}[The dynamical structure factor $S(\mathbf{q},\omega)$]
-\begin{equation}
+
+where the angular brackets signify an ensemble average and $k$ the Cartesian component. The dynamical structure factor is then obtained by Fourier transforming $C(\mathbf{r},t)$ as
+  
+.. math::
+
   S^k(\mathbf{q},\omega) = \frac{1}{\sqrt{2\pi}N} \sum_{\mathbf{r},\mathbf{r'}} e^{i\mathbf{q}\cdot(\mathbf{r}-\mathbf{r'})} \int_{-\infty}^{\infty} e^{i\omega t} C^k (\mathbf{r}-\mathbf{r'},t) dt,
-  \label{eqn:sf}
-\end{equation}
-\end{declaration}
-and this function describes the energy dispersion for excited spin waves present in the simulated system.~\cite{Bergman2010} . If the flag is set to C, the static correlation function G(r) and its Fourier transform S(q) are measured. By locating the maximum of S(q), the ordering vector of the simulated system can be determined. In this case it is important to have a \rkeyword{qfile} that includes $\mathbf{q}$-vectors in the whole Brillouin zone. \\
-%By default, both $S(\mathbf{q},\omega)$ and $S(\mathbf{q},t)$ are written to files but if only one of these correlation functions is %wanted, a selective printing can be obtained by giving the values \rkeyword{do_sc} = W or T, instead of the normal choice of %\rkeyword{do_sc} = Y. 
-In order to obtain a useful $S(\mathbf{q},\omega)$ measurement, it is important to understand the sampling of the function that is determined by \rkeyword{sc_nstep}, \rkeyword{sc_step}, and \rkeyword{timestep}.
-%%%%%%
-\litem{do_sc_proj} Flag to determine if type projected spin correlation should be analyzed (Q=yes, C=G(r),\emph{N=no}). 
-%%%%%%
-\litem{do_sc_projch} Flag to determine if chemical type projected spin correlation should be analyzed of random alloys (Q=yes, C=G(r),\emph{N=no}). 
-%%%%%%
-\litem{do_qt_traj} Flag to determine if the time evolution of the equal time spin correlation $S(\mathbf{q})$ should be written to file (Y=yes,\emph{N=no}). This works only if \rkeyword{do_sc}=C. The function $S(\mathbf{q})$ is sampled every \rkeyword{sc_sep} time step and can give insight in the phase transitions in systems with more than one magnetic order parameter. Suggested use is to first determine the magnetic phase diagram and the associated ordering vectors by sampling $S(\mathbf{q})$ (as described above). The 
- order parameters can then be specified in a \texttt{qpoints} file and followed in simulations where the systems is driven out of equilibrium by an external perturbation in form of an applied magnetic field, a heat pulse or a two-magnon Raman scattering excitation.
-%%%%%%
-%\litem{sc_mode} Flag to determine when to transform the spin correlations (0=in memory, 1=in scratch file, \emph{2=on the fly}). Options 0 and 1 generate enormous files.
-%%%%%%
-\litem{sc_nstep} Number of steps to sample. This number sets the resolution of time/frequency based correlation functions by deciding the number of measured times/frequencies to include in the calculation.
-%%%%%%
-\litem{sc_step} Number of time steps between each sampling. This number determines the time/frequency range over which correlation functions are measured. The mininum sample time is given by \rkeyword{timestep}*\rkeyword{sc_step} and the maximal sampling time is then determinded by \rkeyword{sc_nstep}*\rkeyword{timestep}*\rkeyword{sc_step}. The minimal/maximal frequencies are then determined by the inverse of the maximal/minimal sampling time. 
-%%%%%%
-%\litem{sc_navrg} Number of spin correlation measurements to average over.
-%%%%%%
-\litem{sc_sep} Number of time steps between the start of subsequent spin correlation measurements.
-%%%%%%
-%\litem{sc_volume} Sub-volume of system to sample the correlation functions over.
-%%%%%%
-\litem{qpoints} Flag for for generation of q-point mesh necessary for $S(q,\omega)$ calculations. (\emph{F=external file with carteisan coordinates}, A=automatic, C=full cell, P=extended plane spanned by the first and third reciprocal lattice vector, D=external file with direct coordinates).
-%%%%%%
-\litem{qfile} External file containing the q point mesh for $S(q,\omega)$ calculations. 
-%%%%%%
-\litem{sc_window_fun} Choice of windowing function for the Fourier transforms used in $S(q,\omega)$  calculations (\emph{1=box}, 2=Hann, 3=Hamming, 4=Blackman-Harris).
-%%%%%%
-\litem{do_sc_local_axis} Modify the sampling for $S(q,\omega)$ so that $S^\bot$ and $S^\parallel$ are sampled instead of $S^x$, $S^y$, $S^z$. This normally improves the simulated spectra for ferromagnets but should be used with care since it can, if misused, suppress low-level excitations. (\emph{Y},N)
-%%%%%%
-\litem{sc_local_axis_mix} Determines the rate of updating the local quantization axis used when \rkeyword{do_sc_local_axis}=Y. Values larger than zero can be useful if there are unwanted fluctuations such as global rotations of the whole systems, which can happen for in particular for finite systems such as clusters.
-%%%%%%
 
-\litem{do_ams} Spin wave dispersion from the Fourier transform av the exchange interactions, so-called Adiabatic Magnon Spectra (AMS) (Y=yes, \emph{N=no}). This version only handles AMS in collinear magnetic structures but it is very fast and can therefore be a good option for comparison with the full dynamical spectra. If \rkeyword{do_ams}=Y then one must provide a qfile just as in the case of $S(q,\omega)$.
-%%%%%%
-\litem{do_magdos} Magnon density of states (MDOS) from AMS (Y=yes, \emph{N=no}, A=read from file).  
-%%%%%%
-\litem{magdos_freq} Number of frequencies in MDOS calculation from AMS. Around 200 is recommended.
-%%%%%%
-\litem{magdos_sigma} Gaussian broadening (in meV) in MDOS calculation from AMS (around 30 is recommended).
+and this function describes the energy dispersion for excited spin waves present in the simulated system.~\cite{Bergman2010}. If the flag is set to C, the static correlation function :math:`G(\mathbf{r})` and its Fourier transform :math:`S(\mathbf{q})` are measured. By locating the maximum of :math:`S(\mathbf{q})`, the ordering vector of the simulated system can be determined. In this case it is important to have a ``qfile`` that includes :math:`\mathbf{q}`-vectors in the whole Brillouin zone.
+.. %By default, both $S(\mathbf{q},\omega)$ and $S(\mathbf{q},t)$ are written to files but if only one of these correlation functions is %wanted, a selective printing can be obtained by giving the values \rkeyword{do_sc} = W or T, instead of the normal choice of %\rkeyword{do_sc} = Y. 
+In order to obtain a useful $S(\mathbf{q},\omega)$ measurement, it is important to understand the sampling of the function that is determined by ``sc_nstep``, ``sc_step``, and ``timestep``.
 
 
+.. tabularcolumns:: |l|l|
 
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_sc_proj   |    Flag to determine if type projected spin correlation should be analyzed (Q=yes, C=G(r),\emph{N=no}).|
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_sc_projc  |    Flag to determine if chemical type projected spin correlation should be analyzed of random alloys   |
+|               |    (Q=yes, C=G(r),\emph{N=no}).                                                                        |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_qt_traj   |    Flag to determine if the time evolution of the equal time spin correlation $S(\mathbf{q})$ should be|
+|               |    written to file (Y=yes,\emph{N=no}).                                                                |
++---------------+--------------------------------------------------------------------------------------------------------+
 
-%%%%%%
-\litem{do_autocorr} Flag to enable autocorrelation sampling (Y=yes, \emph{N=no}).
-%%%%%%
-\litem{acfile} External file containing waiting times for the autocorrelation measurements.
-\end{description}
+This works only if ``do_sc C``. The function :math:`S(\mathbf{q})` is sampled every ``sc_sep`` time step and can give insight in the phase transitions in systems with more than one magnetic order parameter. Suggested use is to first determine the magnetic phase diagram and the associated ordering vectors by sampling :math:`S(\mathbf{q})` (as described above). The 
+ order parameters can then be specified in a ``qpoints`` file and followed in simulations where the systems is driven out of equilibrium by an external perturbation in form of an applied magnetic field, a heat pulse or a two-magnon Raman scattering excitation.
+ 
+.. tabularcolumns:: |l|l|
 
++---------------+--------------------------------------------------------------------------------------------------------+
+|  sc_mode      |    Flag to determine when to transform the spin correlations (0=in memory, 1=in scratch file,          |
+|               |    \emph{2=on the fly}). Options 0 and 1 generate enormous files.                                      |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  sc_nstep     |    Number of steps to sample. This number sets the resolution of time/frequency based correlation      |
+|               |    functions by deciding the number of measured times/frequencies to include in the calculation.       |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  sc_step      |    Number of time steps between each sampling. This number determines the time/frequency range over    |
+|               |    which correlation functions are measured. The mininum sample time is given by                       |
+|               |    ``timestep`` * ``sc_step`` and the maximal sampling time is then determinded by                     |
+|               |    ``sc_nstep`` * ``timestep`` * ``sc_step``. The minimal/maximal frequencies are then determined by   |
+|               |    the inverse of the maximal/minimal sampling time.                                                   |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  sc_sep       |    Number of time steps between the start of subsequent spin correlation measurements.                 |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  qpoints      |    Flag for for generation of q-point mesh necessary for :math:`S(\mathbf{q},\omega)` calculations.    |
+|               |    (F=external file with Cartesian coordinates}, A=automatic, C=full cell, P=extended plane spanned by |
+|               |    the first and third reciprocal lattice vector, D=external file with direct coordinates).            |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  sc_window_fun|    Choice of windowing function for the Fourier transforms used in :math:`S(\mathbf{q},\omega)`        |
+|               |    calculations (\emph{1=box}, 2=Hann, 3=Hamming, 4=Blackman-Harris).                                  |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_ams       |    Spin wave dispersion from the Fourier transform av the exchange interactions, so-called Adiabatic   |
+|               |    Magnon Spectra (AMS) (Y=yes, \emph{N=no}). This version only handles AMS in collinear magnetic      |
+|               |    structures but it is very fast and can therefore be a good option for comparison with the full      |
+|               |    dynamical spectra. If ``do_ams Y`` then one must provide a qfile just as in the case of             |
+|               |    :math:`S(\mathbf{q},\omega)`.                                                                       |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_magdos    |    Magnon density of states (MDOS) from AMS (Y=yes, \emph{N=no}, A=read from file).                    |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  magdos_freq  |    Number of frequencies in MDOS calculation from AMS. Around 200 is recommended.                      |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  magdos_sigma |    Gaussian broadening (in meV) in MDOS calculation from AMS (around 30 is recommended).               |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  do_autocorr  |    Flag to enable autocorrelation sampling (Y=yes, \emph{N=no}).                                       |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  acfile       |    External file containing waiting times for the autocorrelation measurements.                        |
++---------------+--------------------------------------------------------------------------------------------------------+
+
+.. %\litem{sc_navrg} Number of spin correlation measurements to average over.
+
+.. \litem{do_sc_local_axis} Modify the sampling for $S(q,\omega)$ so that $S^\bot$ and $S^\parallel$ are sampled instead of $S^x$, $S^y$, $S^z$. This normally improves the simulated spectra for ferromagnets but should be used with care since it can, if misused, suppress low-level excitations. (\emph{Y},N)
+
+.. \litem{sc_local_axis_mix} Determines the rate of updating the local quantization axis used when \rkeyword{do_sc_local_axis}=Y. Values larger than zero can be useful if there are unwanted fluctuations such as global rotations of the whole systems, which can happen for in particular for finite systems such as clusters.
 
 
 
