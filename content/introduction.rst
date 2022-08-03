@@ -11,29 +11,31 @@ The program evolves the equations of motion for atomic magnetic moments in a sol
 
 .. math::
    
-   \frac{d\mathbf{m}_i}{dt}=-\frac{\gamma}{1+\alpha^2} \mathbf{m}_i \times [\mathbf{B}_{i}+\mathbf{b}_{i}(t)]-\frac{\gamma}{m_i} \frac{\alpha}{1+\alpha^2} \mathbf{m}_i \times (\mathbf{m}_i \times [\mathbf{B}_{i}+\mathbf{b}_{i}(t)])
+   \frac{d\mathbf{m}_i}{dt}=-\frac{\gamma}{1+\alpha^2} \mathbf{m}_i \times [\mathbf{B}_{i}+\mathbf{b}_{i}(t)]-\frac{\gamma}{m_i} \frac{\alpha}{1+\alpha^2} \mathbf{m}_i \times (\mathbf{m}_i \times [\mathbf{B}_{i}+\mathbf{b}_{i}(t)]).
 
 In this expression, :math:`\gamma` is the gyromagnetic ratio and :math:`\mathbf{b}_{i}(t)` is a stochastic magnetic field with a Gaussian distribution, the magnitude of which is related to the damping parameter :math:`\alpha`, which eventually brings the system into thermal equilibrium. The typical time step for solving the differential equations is :math:`\Delta t=0.1` femtoseconds, *i.e.* :math:`10^{-16}` seconds.
 
-The effective field, :math:`\mathbf{B}_i`, experienced by each atom :math:`\textit{i}` is given by the partial derivative of the Hamiltonian :math:`\mathcal{H}` with respect to the local magnetic moment :math:`\mathbf{m}_i`.
+The effective field, :math:`\mathbf{B}_i`, experienced by each atom :math:`\textit{i}` is given by the partial derivative of the Hamiltonian :math:`\mathcal{H}` with respect to the local magnetic moment :math:`\mathbf{m}_i`
 
 .. math::
-  \mathbf{B}_i=-\frac{ \partial \mathcal{H} }{ \partial \mathbf{m}_i } 
+  \mathbf{B}_i=-\frac{ \partial \mathcal{H} }{ \partial \mathbf{m}_i },
 
-where :math:`\mathcal{H}` is the spin Hamiltonian that takes all relevant interactions into account. Note that in the input files to UppASD, the convention is that it is the unit vectors :math:`\mathbf{e}_i=\frac{\mathbf{m}_i}{m_i}` that enter the Hamiltonian. This is consistent with most electronic structure codes that outputs :math:`J_{ij}` and other exchange interactions but care should be taken since in many other models found in the litterature, the Hamiltonian depends explicitly of :math:`\mathbf{m}_i` instead.
+where :math:`\mathcal{H}` is the spin Hamiltonian that takes all relevant interactions into account. Note that in the input files to UppASD, the convention is that it is the unit vectors :math:`\mathbf{e}_i=\frac{\mathbf{m}_i}{m_i}` that enter the Hamiltonian.
 
 .. math::   
    \mathcal{H}=-\sum_{i,j} J_{ij}\mathbf{e}_i \cdot \mathbf{e}_j - \sum_{i,j} \mathbf{D}_{ij}\mathbf{e}_i \times \mathbf{e}_j-\sum_i K_i (\hat{\mathbf{e}}_i \cdot \mathbf{e}_i^K)^2-\sum_i \mathbf{B}^{ext}\cdot\mathbf{e}_i  + \ldots 
 
-The most important contribution to the Hamiltonian is typically given by the Heisenberg exchange Hamiltonian, given by the first term in Eqn.~\ref{eq:exchange}. There, :math:`i` and :math:`j` are atomic indices, and :math:`J_{ij}` is the strength of the exchange interaction. These exchange interactions can be obtained from first-principles calculations, or alternatively even inferred from experiments. It is also possible (and in many cases even essential) to include other terms to the Hamiltonian, including Dzyaloshinskii-Moriya exchange, magnetic anisotropies and external magnetic fields, as are also exemplified in Eqn.~\ref{eq:exchange}. There are currently several other interactions available in the UppASD code and additional interactions can be implemented quite straightforwardly. Please note that the format of the Hamiltonian can be defined differently regarding prefactors, inclusion of moment magnitudes, summation convention and more. The input format in UppASD is conformal with most commonly used electronic structure codes that have the capability of calculating :math:`J_{ij}` (and sometimes :math:`\mathbf{D}_{ij}`, i.e. following the same convention of the Heisenberg Hamiltonian as Liechtenstein {\it et al.} \cite{Lichtenstein1987}.
+This is consistent with most electronic structure codes that outputs :math:`J_{ij}` and other exchange interactions but care should be taken since in many other models found in the litterature, the Hamiltonian depends explicitly of :math:`\mathbf{m}_i` instead. The most important contribution to the Hamiltonian is typically given by the Heisenberg exchange Hamiltonian, given by the first term in Eqn.~\ref{eq:exchange}. There, :math:`i` and :math:`j` are atomic indices, and :math:`J_{ij}` is the strength of the exchange interaction. These exchange interactions can be obtained from first-principles calculations, or alternatively be inferred from experiments. It is also possible (and in many cases even essential) to include other terms to the Hamiltonian, including Dzyaloshinskii-Moriya exchange, magnetic anisotropies and external magnetic fields, as are also exemplified in Eqn.~\ref{eq:exchange}. There are currently several other interactions available in the UppASD code and additional interactions can be implemented quite straightforwardly. Please note that the format of the Hamiltonian can be defined differently regarding prefactors, inclusion of moment magnitudes, summation convention and more. The input format in UppASD is conformal with most commonly used electronic structure codes that have the capability of calculating :math:`J_{ij}` (and sometimes :math:`\mathbf{D}_{ij}`, *i.e.* following the same convention of the Heisenberg Hamiltonian as Liechtenstein *et al.* \cite{Lichtenstein1987}.
 
 
 License
 -------
 
-The UppASD code is developed by the Division of Materials Theory, in the Department of Physics and Astronomy at the University of Uppsala, Sweden. The copyright of the code is help by the developers but the program is open for use and distribution according to the { \b fXXX} license.
+The UppASD code is developed by the Division of Materials Theory, in the Department of Physics and Astronomy at the University of Uppsala, Sweden. The copyright of the code is held by the developers but the program is open for use and distribution according to the GPLv3 license.
 
-Further information concerning the license and contact information of the developers may be found on the UppASD webpage: \url{http://www.physics.uu.se/UppASD}. The current version of the code (5.0) is still under active development.
+Further information concerning the license and contact information of the developers may be found on the UppASD webpage https://www.physics.uu.se/UppASD}.
+
+.. The current version of the code (5.0) is still under active development.
 
 
 Installation
@@ -72,7 +74,9 @@ The source code is distributed along with documentation and a growing set of exa
 
       make asd-tests
 
-In addition to the source files, the UppASD distribution also contains several examples (in the directory ``examples/``), documentation, including this file (in  ``docs/``) and routines and reference data (``tests/``) for validating the installation of the UppASD program.
+In addition to the source files, the UppASD distribution also contains several examples (in the directory ``examples/``), documentation,
+.. including this file (in  ``docs/``)
+and routines and reference data (``tests/``) for validating the installation of the UppASD program.
 
 
 Principles of the Code
@@ -84,7 +88,7 @@ When run, UppASD essentially goes through three stages:
 - Initial phase: an optional stage in which the system is brought into thermal equilibrium, with limited data sampling.
 - Measurement phase: the system is evolved in time, with complete data sampling being made.
 
-During the initialization phase, all the parameters necessary to describe the system of interest, such as its geometry, dimensions, exchange couplings and boundary conditions, are set up. In addition, the initial phase also sets the simulation parameters, such as the number of simulation steps to record data over, which SDE solver to use, and the temperature at which the simulation should be run.
+During the initialization phase, all the parameters necessary to describe the system of interest, such as its geometry, dimensions, exchange couplings and boundary conditions, are set up. In addition, the initial phase also sets the simulation parameters, such as the number of simulation steps to record data over, which stochastic differential equation (SDE) integrator to use, and the temperature at which the simulation should be run.
 
 The initial phase, which is optional, is typically performed in order to bring the system into thermal equilibrium, so that the data recorded in the measurement phase is for a thermalized system. Obviously, if one is interested in out-of-equilibrium dynamics, then there is no need to perform this phase. The initial phase can either be performed using Spin Dynamics (SD), or the Metropolis or Heatbath Monte Carlo (MC) algorithms ~\cite{Binder2009}. The latter is convenient for ground state searches, provided the system is not too complex (\textit{i.e.} a spin glass).
 
