@@ -5,7 +5,7 @@ Input files
 inpsd.dat
 ---------
 
-A file with the hardcoded name ``inpsd.dat`` is the main input file necessary to run UppASD. Contained in this file are also the names of the files containing the exchange interactions, the atomic positions, and the atomic moments. Although the names of these files is arbitrary, in this manual they are referred to as the ``jfile``, ``posfile`` and ``momfile``, respectively. Other optional files containing information such as the uniaxial anisotropy and the Dzyaloshinskii-Moriya vectors may also be included, as described below.
+A file with the hardcoded name ``inpsd.dat`` is the main input file necessary to run UppASD. Contained in this file are also the names of the files containing the exchange interactions, the atomic positions, and the atomic moments. Although the names of these files are arbitrary, in this manual they are referred to as the ``jfile``, ``posfile`` and ``momfile``, respectively. Other optional files containing information such as the uniaxial anisotropy and the Dzyaloshinskii-Moriya vectors may also be included, as described below.
 
 The input format is keyword based. The code is programmed to search for given keywords, and then read in the values that follow. If no keyword is given, a default value is set. As an example of a standard ``inpsd.dat`` file layout, input for a Fe in bcc lattice is shown below (as found in the examples directory). More advanced examples like supercells and random alloys follows later, but let's keep things simple for now::
 
@@ -73,7 +73,9 @@ posfile
 -------
 
 The positions of the atoms in the unit cell are given in basis vector coordinates.
+
 .. or in Cartesian coordinates.
+
 While these can be listed directly in the ``inpsd.dat`` file, it is typically more convenient to give them in an external file, ``posfile``. For the example above the positions are given as::
 
   1 1   0.000000  0.000000  0.000000
@@ -93,14 +95,14 @@ The first entry indicates the *site number*, whereas the second one indicates th
 
 
 
-   momfile
+momfile
 -------
 
 This file lists the magnetic moments of the atoms in the unit cell. Also, if the ``initmag`` entry is set to 3, the initial direction of the moments is read from this file. For bcc Fe::
 
   1 1 2.2459 0.0 0.0 1.0 
 
-The first entry indicates the site number (same as first column in posfile), the second entry the chemical type (always 1 for non-random systems), and the third entry indicates the magnitude of the magnetic moment in :math:`\mu_{\mathrm{B}}`, as calculated or estimated from an electronic structure calculation or similar. The last three entries indicate the initial $x$, $y$, and $z$ components of the moment (assuming  \rkeyword{initmag} is set to 3).
+The first entry indicates the site number (same as first column in posfile), the second entry the chemical type (always 1 for non-random systems), and the third entry indicates the magnitude of the magnetic moment in :math:`\mu_{\mathrm{B}}`, as calculated or estimated from an electronic structure calculation or similar. The last three entries indicate the initial :math:`x`, :math:`y`, and :math:`z` components of the moment (assuming ``initmag`` is set to 3).
 
 .. %For random alloy, magnetic moment of each type is needed. For binary a AB alloy (like Fe-Ni) in the B2 structure, the corresponding %\rfilename{momfile} :
 ..
@@ -113,6 +115,9 @@ The first entry indicates the site number (same as first column in posfile), the
 .. %\end{Verbatim}  
 .. %\end{fBox}
 
+
+.. _exchange:
+
 exchange
 --------
 
@@ -120,7 +125,7 @@ This file lists the exchange couplings within the system. The content and length
 
   1 1 -0.500 -0.500 -0.500 1.359407144 0.866
 
-The first two entries indicate the sites, which corresponds to the types that one whishes to map, $i$ and $j$. In this case as both atoms have the same type, one can indicate the interactions between atoms in site 1 and 2, as 1-1, an example on how to deal with more atom types in the unit cell will be presented afterwards. 
+The first two entries indicate the sites, which corresponds to the types that one whishes to map, :math:`i` and :math:`j`. In this case as both atoms have the same type, one can indicate the interactions between atoms in site 1 and 2, as 1-1, an example on how to deal with more atom types in the unit cell will be presented afterwards.
 
 The third, fourth and fifth entries specify the interaction  vector between the atoms and depending on choice of the maptype, it has different meaning.  Using maptype 1, the vector is specified in carteisan coodinates.  If the SPR-KKR software is used, that is directly columns eight, nine and ten in the exchange parameter outfile. 
 If instead maptype 2 is used, the coordination vector is put in basis coordinates and the first line in jfile modifies to::
@@ -168,7 +173,7 @@ First line, denotes the Fe atom that is site number 1 and atom type 1 (first and
   1 1 2.7207 0.0 0.0 1.0 
   2 1 1.7202 0.0 0.0 1.0
 
-Once again, the first line specifies the Fe (with site number 1 and chemical type 1) with moment 2.7207 Bohr (from a DFT calculation) and initial moment direction along the z-direction (initmag 3). The second line specifies the same information but for site number 2, i.e. Co that has moment 1.7202 Bohr from calculation. Now both the cell and magnetic moments on each site are specified, what is left to do is the specification of exchange interactions between the moments. From experience, this is the most crucial part in the setup and most easily to get it wrong. The full jfile in the example is longer than specified here (due to the lack of symmetry), here we only show one of the nearest neighbour interactions. We have Fe and Co moments in the cell, a Fe moment could interact with other Fe (Fe-Fe) or with Co (Fe-Co). Vice versa, a Co moment could interact with Fe (Co-Fe) or with other Co (Co-Co). To be complete, we need to specify all the interactions, i.e. Fe-Fe, Fe-Co, Co-Fe and Co-Co interactions. The jfile (using maptype 2) then contains the following blocks::
+Once again, the first line specifies the Fe (with site number 1 and chemical type 1) with moment 2.7207 :math:`\mu_{\mathrm{B}}` (from a DFT calculation) and initial moment direction along the z-direction (``initmag`` 3). The second line specifies the same information but for site number 2, i.e. Co that has moment 1.7202 :math:`\mu_{\mathrm{B}}` from calculation. Now both the cell and magnetic moments on each site are specified, what is left to do is the specification of exchange interactions between the moments. From experience, this is the most crucial part in the setup and most easily to get it wrong. The full jfile in the example is longer than specified here (due to the lack of symmetry), here we only show one of the nearest neighbour interactions. We have Fe and Co moments in the cell, a Fe moment could interact with other Fe (Fe-Fe) or with Co (Fe-Co). Vice versa, a Co moment could interact with Fe (Co-Fe) or with other Co (Co-Co). To be complete, we need to specify all the interactions, i.e. Fe-Fe, Fe-Co, Co-Fe and Co-Co interactions. The jfile (using ``maptype`` 2) then contains the following blocks::
 
   1 1  0  0 -1   0.031818272 1.000
   1 2  0  0  0   1.839624404 0.866
@@ -194,14 +199,14 @@ Compare to non-random systems, the posfile now has two additional columns. The t
   1 1 2.4850 0.0 0.0 1.0
   1 2 1.7041 0.0 0.0 1.0
 
-The first column always specifies the site number (same as column 1 in the posfile) and column 2 specifies the chemical type (same as column 3 in the posfile). In the example, the first line corresponds to Fe moment and second line the Co moment. The only remaining part is the specification of exchange interactions. Somewhat similar to the FeCo B2 example, we have four distinct set of exchange interactions (Fe-Fe,Fe-Co,Co-Fe and Co-Co), however in this case all interactions are taking place within the same sublattice. A subset of the jfile (first shell) has the following shape (maptype 2)::
+The first column always specifies the site number (same as column 1 in the posfile) and column 2 specifies the chemical type (same as column 3 in the posfile). In the example, the first line corresponds to Fe moment and second line the Co moment. The only remaining part is the specification of exchange interactions. Somewhat similar to the FeCo B2 example, we have four distinct set of exchange interactions (Fe-Fe,Fe-Co,Co-Fe and Co-Co), however in this case all interactions are taking place within the same sublattice. A subset of the jfile (first shell) has the following shape (``maptype`` 2)::
 
   1 1 1 1 -1 -1 -1 1.970049732 0.866
   1 1 1 2 -1 -1 -1 1.947329604 0.866
   1 1 2 1 -1 -1 -1 1.947329604 0.866
   1 1 2 2 -1 -1 -1 1.238957583 0.866
 
-The first and second columns are the same as the jfile for non random systems and specifies the \textbf{sites} $i$ and $j$ and thus their corresponding atomic (sublattice) \textbf{types}. In this case, we only have one sublattice so it is 1 for all interactions. The third and fourth columns specifies the chemical types of the atoms on that particular sublattice and from top to bottom in this example that means Fe-Fe, Fe-Co,Co-Fe and Co-Co interactions.  
+The first and second columns are the same as the jfile for non random systems and specifies the *sites* :math:`i` and :math:`j` and thus their corresponding atomic (sublattice) *types*. In this case, we only have one sublattice so it is 1 for all interactions. The third and fourth columns specifies the chemical types of the atoms on that particular sublattice and from top to bottom in this example that means Fe-Fe, Fe-Co,Co-Fe and Co-Co interactions.
 
 
 Input Entries
@@ -233,7 +238,7 @@ System parameters
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  momfile      |    External file describing the magnitudes and directions of magnetic moments.                         |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  posfiletype  |    Flag to change between \emph{C=Cartesian} or D=direct coordinates in posfile.                       |
+|  posfiletype  |    Flag to change between *C=Cartesian* or *D=direct* coordinates in posfile.                          |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  set_landeg   |    Flag for assigning different values of the gyromagnetic factor for the moments. Set to 0 by default.|
 +---------------+--------------------------------------------------------------------------------------------------------+
@@ -252,7 +257,7 @@ Hamiltonian parameters
 
    \mathcal{H}_{\mathrm{XC}} = - \sum_{i\neq j}J_{ij}  \mathbf{e}_i \cdot \mathbf{e}_j ,\label{XC_ham}
 
-where :math:`J_{ij}` is the Heisenberg exchange interaction between atoms :math:`i` and :math:`j`. For an example of the file, see the description in Sec.\ref{fxc}.
+where :math:`J_{ij}` is the Heisenberg exchange interaction between atoms :math:`i` and :math:`j`. For an example of the file, see :ref:`exchange`.
 
 .. tabularcolumns:: |l|l|
 
@@ -262,7 +267,7 @@ where :math:`J_{ij}` is the Heisenberg exchange interaction between atoms :math:
 
 .. math::
 
-  \mathcal{H}_{\mathrm{DM}} = - \sum_{i\neq j}\mathbf{D}_{ij}  \cdot \left(\mathbf{e}_i \times \mathbf{e}_j\right),
+  \mathcal{H}_{\mathrm{DM}} = - \sum_{i\neq j}\mathbf{D}_{ij} \cdot \left(\mathbf{e}_i \times \mathbf{e}_j\right),
 
 where :math:`\mathbf{D}_{ij}` is the DM vector. The format is similar to that of the exchange file, *i.e.* in a 2d square lattice it may look something like::
 
@@ -359,7 +364,7 @@ where :math:`(m_x, m_y, m_z)=\mathbf{m}`. UppASD is able to read in either Eq.~(
 The first entry lists the atom number, whereas the second entry indicates if the uniaxial (\texttt{1}), cubic (\texttt{2}) or both (\texttt{7}) anisotropies are to be mounted. The second and third entries list the strength of :math:`K_1` and :math:`K_2`, respectively. The fifth to seventh entries indicate the components of the vector :math:`\mathbf{e}_i`. Finally, in the instance of the second entry being set to 7, the final entry indicates the ratio between  :math:`K^{\mathrm{U}}_{\mathrm{ani}}` and  :math:`K^{\mathrm{C}}_{\mathrm{ani}}`.
 
 +---------------+------------------------------------------------------------------------------------------------------------------------+
-|  sym      |    Flag to determine the assumed symmetry of the system (\emph{0=none}, 1=cubic, 2=2d cubic (in :math:`xy` plane),         |
+|  sym      |    Flag to determine the assumed symmetry of the system (*0=none*, 1=cubic, 2=2d cubic (in :math:`xy` plane),              |
 |           |    3=hexagonal).                                                                                                           |
 +---------------+------------------------------------------------------------------------------------------------------------------------+
 
@@ -381,10 +386,10 @@ Do not forget the identity operation when using custom symmetry operations. The 
 |  maptype  |    Flag that determines how the coordinates for the different exchange couplings are given.                                |
 +---------------+------------------------------------------------------------------------------------------------------------------------+
 
-For \emph{1=coordinates} the coordinates are given in Cartesian or direct coordinates (see ``posfiletype``). For 2 the coordinates of a coupling vector are implicitly given by specifying that the coupling links atom :math:`i` with atom :math:`j` (for an example, see ``dm``).
+For *1=coordinates* the coordinates are given in Cartesian or direct coordinates (see ``posfiletype``). For 2 the coordinates of a coupling vector are implicitly given by specifying that the coupling links atom :math:`i` with atom :math:`j` (for an example, see ``dm``).
 
 +---------------+------------------------------------------------------------------------------------------------------------------------+
-|  do_prnstruct  |    Flag to print lattice structure (\emph{0=off}/1=on/2=print only coordinates).                                      |
+|  do_prnstruct  |    Flag to print lattice structure (*0=off*/1=on/2=print only coordinates).                                           |
 +---------------+------------------------------------------------------------------------------------------------------------------------+
 
 Useful for checking if the system geometry and couplings are correctly set up.
@@ -556,7 +561,7 @@ Typically the measurement of each observable is controlled by two parameters in 
 |  do_pol       |    Sample and print average ferroelectric polarization (Y/N) according to the expression               |
 |               |    :math:`P\propto \gamma\sum_{i,j}\hat{\mathbf{e}}_{ij}\times(\mathbf{m}_i\times\mathbf{m}_j)`.       |
 |               |    Uses the neighbour lists set up for exchange but here the sum is performed up to a threshold        |
-|               |    ``max_pol_nn``. For this construction to work, it is important to set the flag ``do_sortcoup N`.    |
+|               |    ``max_pol_nn``. For this construction to work, it is important to set the flag ``do_sortcoup N``.   |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  max_pol_nn   |    Number of neighbours to use when evaluating the polarization.                                       |
 +---------------+--------------------------------------------------------------------------------------------------------+
@@ -597,30 +602,32 @@ where the angular brackets signify an ensemble average and $k$ the Cartesian com
 
   S^k(\mathbf{q},\omega) = \frac{1}{\sqrt{2\pi}N} \sum_{\mathbf{r},\mathbf{r'}} e^{i\mathbf{q}\cdot(\mathbf{r}-\mathbf{r'})} \int_{-\infty}^{\infty} e^{i\omega t} C^k (\mathbf{r}-\mathbf{r'},t) dt,
 
-and this function describes the energy dispersion for excited spin waves present in the simulated system.~\cite{Bergman2010}. If the flag is set to C, the static correlation function :math:`G(\mathbf{r})` and its Fourier transform :math:`S(\mathbf{q})` are measured. By locating the maximum of :math:`S(\mathbf{q})`, the ordering vector of the simulated system can be determined. In this case it is important to have a ``qfile`` that includes :math:`\mathbf{q}`-vectors in the whole Brillouin zone.
+and this function describes the energy dispersion for excited spin waves present in the simulated system.~\cite{Bergman2010}. If the flag is set to C, the static correlation function :math:`G(\mathbf{r})` and its Fourier transform :math:`S(\mathbf{q})` are measured. By locating the maximum of :math:`S(\mathbf{q})`, the ordering vector of the simulated system can be determined. In this case it is important to have a ``qfile`` that includes :math:`\mathbf{q}` -vectors in the whole Brillouin zone.
+
 .. %By default, both $S(\mathbf{q},\omega)$ and $S(\mathbf{q},t)$ are written to files but if only one of these correlation functions is %wanted, a selective printing can be obtained by giving the values \rkeyword{do_sc} = W or T, instead of the normal choice of %\rkeyword{do_sc} = Y. 
-In order to obtain a useful $S(\mathbf{q},\omega)$ measurement, it is important to understand the sampling of the function that is determined by ``sc_nstep``, ``sc_step``, and ``timestep``.
+
+In order to obtain a useful :math:`S(\mathbf{q},\omega)` measurement, it is important to understand the sampling of the function that is determined by ``sc_nstep``, ``sc_step``, and ``timestep``.
 
 .. tabularcolumns:: |l|l|
 
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  do_sc_proj   |    Flag to determine if type projected spin correlation should be analyzed (Q=yes, C=G(r),\emph{N=no}).|
+|  do_sc_proj   |    Flag to determine if type projected spin correlation should be analyzed (Q=yes, C=G(r),*N=no*}).    |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  do_sc_projc  |    Flag to determine if chemical type projected spin correlation should be analyzed of random alloys   |
-|               |    (Q=yes, C=G(r),\emph{N=no}).                                                                        |
+|               |    (Q=yes, C=G(r), *N=no*).                                                                            |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  do_qt_traj   |    Flag to determine if the time evolution of the equal time spin correlation $S(\mathbf{q})$ should be|
-|               |    written to file (Y=yes,\emph{N=no}).                                                                |
+|  do_qt_traj   |    Flag to determine if the time evolution of the equal time spin correlation :math:`S(\mathbf{q})`    |
+|               |    should be written to file (Y=yes, *N=no*).                                                          |
 +---------------+--------------------------------------------------------------------------------------------------------+
 
-This works only if ``do_sc C``. The function :math:`S(\mathbf{q})` is sampled every ``sc_sep`` time step and can give insight in the phase transitions in systems with more than one magnetic order parameter. Suggested use is to first determine the magnetic phase diagram and the associated ordering vectors by sampling :math:`S(\mathbf{q})` (as described above). The 
- order parameters can then be specified in a ``qpoints`` file and followed in simulations where the systems is driven out of equilibrium by an external perturbation in form of an applied magnetic field, a heat pulse or a two-magnon Raman scattering excitation.
- 
+This works only if ``do_sc C``. The function :math:`S(\mathbf{q})` is sampled every ``sc_sep`` time step and can give insight in the phase transitions in systems with more than one magnetic order parameter. Suggested use is to first determine the magnetic phase diagram and the associated ordering vectors by sampling :math:`S(\mathbf{q})` (as described above).
+The order parameters can then be specified in a ``qpoints`` file and followed in simulations where the systems is driven out of equilibrium by an external perturbation in form of an applied magnetic field, a heat pulse or a two-magnon Raman scattering excitation.
+
 .. tabularcolumns:: |l|l|
 
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  sc_mode      |    Flag to determine when to transform the spin correlations (0=in memory, 1=in scratch file,          |
-|               |    \emph{2=on the fly}). Options 0 and 1 generate enormous files.                                      |
+|               |    *2=on the fly*). Options 0 and 1 generate enormous files.                                           |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  sc_nstep     |    Number of steps to sample. This number sets the resolution of time/frequency based correlation      |
 |               |    functions by deciding the number of measured times/frequencies to include in the calculation.       |
@@ -638,21 +645,21 @@ This works only if ``do_sc C``. The function :math:`S(\mathbf{q})` is sampled ev
 |               |    the first and third reciprocal lattice vector, D=external file with direct coordinates).            |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  sc_window_fun|    Choice of windowing function for the Fourier transforms used in :math:`S(\mathbf{q},\omega)`        |
-|               |    calculations (\emph{1=box}, 2=Hann, 3=Hamming, 4=Blackman-Harris).                                  |
+|               |    calculations (*1=box*, 2=Hann, 3=Hamming, 4=Blackman-Harris).                                       |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  do_ams       |    Spin wave dispersion from the Fourier transform av the exchange interactions, so-called Adiabatic   |
-|               |    Magnon Spectra (AMS) (Y=yes, \emph{N=no}). This version only handles AMS in collinear magnetic      |
+|               |    Magnon Spectra (AMS) (Y=yes, *N=no*). This version only handles AMS in collinear magnetic           |
 |               |    structures but it is very fast and can therefore be a good option for comparison with the full      |
 |               |    dynamical spectra. If ``do_ams Y`` then one must provide a qfile just as in the case of             |
 |               |    :math:`S(\mathbf{q},\omega)`.                                                                       |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  do_magdos    |    Magnon density of states (MDOS) from AMS (Y=yes, \emph{N=no}, A=read from file).                    |
+|  do_magdos    |    Magnon density of states (MDOS) from AMS (Y=yes, *N=no*, A=read from file).                         |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  magdos_freq  |    Number of frequencies in MDOS calculation from AMS. Around 200 is recommended.                      |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  magdos_sigma |    Gaussian broadening (in meV) in MDOS calculation from AMS (around 30 is recommended).               |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  do_autocorr  |    Flag to enable autocorrelation sampling (Y=yes, \emph{N=no}).                                       |
+|  do_autocorr  |    Flag to enable autocorrelation sampling (Y=yes, *N=no*).                                            |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  acfile       |    External file containing waiting times for the autocorrelation measurements.                        |
 +---------------+--------------------------------------------------------------------------------------------------------+
@@ -662,8 +669,3 @@ This works only if ``do_sc C``. The function :math:`S(\mathbf{q})` is sampled ev
 .. \litem{do_sc_local_axis} Modify the sampling for $S(q,\omega)$ so that $S^\bot$ and $S^\parallel$ are sampled instead of $S^x$, $S^y$, $S^z$. This normally improves the simulated spectra for ferromagnets but should be used with care since it can, if misused, suppress low-level excitations. (\emph{Y},N)
 
 .. \litem{sc_local_axis_mix} Determines the rate of updating the local quantization axis used when \rkeyword{do_sc_local_axis}=Y. Values larger than zero can be useful if there are unwanted fluctuations such as global rotations of the whole systems, which can happen for in particular for finite systems such as clusters.
-
-
-
-
-
