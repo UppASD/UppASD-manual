@@ -144,28 +144,28 @@ Depending on computer system, it may take some time to run through all temperatu
 
   ./printM.sh
 
-Let's investigate the generated thermal.dat file::
+Let's investigate the generated thermal.dat::
 
-# Temp.   Mavg     UBinder    Susc.      Cv
-    10  2.237941  0.666667  0.000007  1.021710
-   100  2.164441  0.666664  0.000071  0.976500
-   200  2.078111  0.666654  0.000166  1.024818
-   300  1.986299  0.666631  0.000275  1.048131
-   400  1.886474  0.666586  0.000422  1.079090
-   500  1.777491  0.666515  0.000563  1.172849
-   600  1.650539  0.666357  0.000827  1.277333
-   700  1.504614  0.666068  0.001138  1.492052
-   800  1.308315  0.665102  0.001981  1.770288
-   900  1.007354  0.658843  0.005374  2.151073
-   950  0.749161  0.635858  0.012374  2.260679
-  1000  0.415532  0.542287  0.015266  1.487550
-  1050  0.267658  0.473693  0.008910  1.004156
-  1100  0.204595  0.442776  0.005369  0.784146
-  1150  0.171373  0.429213  0.003673  0.670025
-  1200  0.151207  0.444319  0.002641  0.556371
-  1250  0.137225  0.455091  0.002093  0.471770
-  1300  0.128381  0.431053  0.001813  0.418473
-  1500  0.102811  0.464573  0.000898  0.283877
+  # Temp.   Mavg     UBinder    Susc.      Cv
+      10  2.237941  0.666667  0.000007  1.021710
+     100  2.164441  0.666664  0.000071  0.976500
+     200  2.078111  0.666654  0.000166  1.024818
+     300  1.986299  0.666631  0.000275  1.048131
+     400  1.886474  0.666586  0.000422  1.079090
+     500  1.777491  0.666515  0.000563  1.172849
+     600  1.650539  0.666357  0.000827  1.277333
+     700  1.504614  0.666068  0.001138  1.492052
+     800  1.308315  0.665102  0.001981  1.770288
+     900  1.007354  0.658843  0.005374  2.151073
+     950  0.749161  0.635858  0.012374  2.260679
+    1000  0.415532  0.542287  0.015266  1.487550
+    1050  0.267658  0.473693  0.008910  1.004156
+    1100  0.204595  0.442776  0.005369  0.784146
+    1150  0.171373  0.429213  0.003673  0.670025
+    1200  0.151207  0.444319  0.002641  0.556371
+    1250  0.137225  0.455091  0.002093  0.471770
+    1300  0.128381  0.431053  0.001813  0.418473
+    1500  0.102811  0.464573  0.000898  0.283877
 
 The contents of the file are as follows: first column list the temperature, magnetization (in Bohr) in the second column, the Binder cumulant (see below) in the third column, the susceptibility are found in the fourth columns and the fifth column contains the specific heat (in units of :math:`k_B`). If the magnetization (col 1) is plotted against the temperature (col 1) we immediately see that :math:`T_c` is around 1000 K. That is also reflected in the peak of the susceptibility (col 4) and the specific heat (col 5) around that temperature. However, in order to obtain a more precise value of :math:`T_c`, the cumulant crossing method that originally was suggested by Binder is very powerful and useful technique. The (4'th order) cumulant :math:`U_L` , defined as
 
