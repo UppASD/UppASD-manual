@@ -15,6 +15,8 @@ UppASD manual
    :maxdepth: 2
    :caption: References
 
+   references
+
 ..   quick-reference
 ..   guide
 
