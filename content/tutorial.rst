@@ -8,7 +8,7 @@ Dynamics of a single spin
 
 When treating magnetization dynamics the first example that comes to mind is an isolated spin interacting with a constant effective magnetic field. If the magnetic moment is not parallel to the field this will exert a torque and cause it to move. Due to the fact that in reality there are several channels of dissipation, the spin does not precess forever along the direction of the field, if not it is damped, and after some time it reaches the equilibrium position, *i.e*. aligned parallel to the effective field.
 
-Situations such as this are at the core of spin dynamics simulations, that is one has a spin (or a series of them) and through some external perturbation, the system is driven out of equilibrium, causing it to evolve as given by the LLG equation~\ref{eq:sllg}, reaching the equilibrium position (at $T=0\, \text{K}$) after a certain time which is determined by the Gilbert damping parameter, $\alpha$.
+Situations such as this are at the core of spin dynamics simulations, that is one has a spin (or a series of them) and through some external perturbation, the system is driven out of equilibrium, causing it to evolve as given by the LLG equation~\ref{eq:sllg}, reaching the equilibrium position (at :math:`T=0\, \text{K}`) after a certain time which is determined by the Gilbert damping parameter, :math:`\alpha`.
 
 In general when one is interested in seeing the relaxation dynamics of a given process the procedure is the following:
 
@@ -39,7 +39,7 @@ To perform the actual calculations, one needs to go back to the parent directory
   cd ../
   ./SWEEP_DAMP.sh
 
-This script will run the ASD simulation for several values of the damping, which will be printed in the screen and will store all the files in folders named ``DAMP*value of damping*, while setting the temperature to :math:`T=0\,\text{K}`.
+This script will run the ASD simulation for several values of the damping, which will be printed in the screen and will store all the files in folders named ``DAMP``*value of damping*, while setting the temperature to :math:`T=0\,\text{K}`.
 
 After having run the ``SWEEP_DAMP.sh`` file one can plot the relevant information using the ``plot.gnu`` script which will create a plot using ``gnuplot`` (these plots can be produced with other plotting programs making use of the \verb;averages.*.out; files). To run the plotting one just needs to do::
 
@@ -53,7 +53,7 @@ The script will produce a file named ``GilbertTotal.png``, opening this file one
 \caption{Time evolution of the different components of a magnetic moment interacting with the field created by an uniaxial anisotropy when different damping values are considered.\label{fig:Gilbert}}
 \end{figure}
 
-As can be seen in this plot one has the time evolution of the different components of the magnetic moments. In general in the limit of low dampign $\alpha<1$ one can see that as the damping increases the system reaches the equiblibrium faster. It is of special interest to also look at the limit $\alpha=0$, where one can see that without damping the spin will prescess around the effective field without ever aligning itself with it, this is evident by looking at the time evolution of $M_z$. However, in the high damping limit $\alpha>1$ as the damping increases the magnetic moment actually slows down, this is of great importance and it is the reason why Gilbert introduced the damping in a different way than Laundau and Lifshitz originally did, as the damping acts as a viscous force, and in the infite damping limit the spin whould not be able to move.
+As can be seen in this plot one has the time evolution of the different components of the magnetic moments. In general in the limit of low dampign :math:`\alpha<1` one can see that as the damping increases the system reaches the equiblibrium faster. It is of special interest to also look at the limit :math:`\alpha=0`, where one can see that without damping the spin will prescess around the effective field without ever aligning itself with it, this is evident by looking at the time evolution of :math:`M_z`. However, in the high damping limit :math:`\alpha>1` as the damping increases the magnetic moment actually slows down, this is of great importance and it is the reason why Gilbert introduced the damping in a different way than Laundau and Lifshitz originally did, as the damping acts as a viscous force, and in the infite damping limit the spin whould not be able to move.
 
 
 Switching under external magnetic field
@@ -73,12 +73,12 @@ To study the effect that the external magnetic field has over the dynamics of th
 
   gnuplot plotB.gnu
 
-This produces a plot named ``Switching.png` in it one can see the time evolution of the :math:`M_z` component for different magnitudes of the external magnetic field. In it one can see that after a certain critical value of the external magnetic field, the magnetic moment switches, going from tending to align itself to the possitive z-direction to the negative z-direction, i.e. using an external magnetic field one can switch the direction of the magnetic moment.
+This produces a plot named ``Switching.png`` in it one can see the time evolution of the :math:`M_z` component for different magnitudes of the external magnetic field. In it one can see that after a certain critical value of the external magnetic field, the magnetic moment switches, going from tending to align itself to the possitive z-direction to the negative z-direction, i.e. using an external magnetic field one can switch the direction of the magnetic moment.
 
 \begin{figure}[ht]
 \center
 \includegraphics[width=0.75\textwidth]{./Switching.png}
-\caption{Time evolution of the $M_z$ component of the magnetic moment under the influence of an external magnetic field of different magnitudes.\label{fig:switching}}
+\caption{Time evolution of the :math:`M_z` component of the magnetic moment under the influence of an external magnetic field of different magnitudes.\label{fig:switching}}
 \end{figure}
 
 
@@ -93,12 +93,12 @@ The simulations that will be perfomed by this script are very similar to the pre
 
   gnuplot plotTemp.gnu
 
-First lets study the one called ``singleTemp.png``, an example of this can be seen in Fig.~\ref{fig:telegraph}, in which one can see how the spin tends to fluctuate between two orientations ($+z$ and $-z$), this is due to the uniaxial anisotropy present in the system in conjuction with the thermal fluctuations, which allow the spin to overcome the energy barrier given by the anisotropy.
+First lets study the one called ``singleTemp.png``, an example of this can be seen in Fig.~\ref{fig:telegraph}, in which one can see how the spin tends to fluctuate between two orientations (:math:`+z` and :math:`-z`), this is due to the uniaxial anisotropy present in the system in conjuction with the thermal fluctuations, which allow the spin to overcome the energy barrier given by the anisotropy.
 
 \begin{figure}[h!]
 \center
 \includegraphics[width=0.75\textwidth]{./singleTemp.png}
-\caption{Time evolution of the $M_z$ component of a magnetic moment at $T=4\,\textrm{K}$. \label{fig:telegraph}}
+\caption{Time evolution of the :math:`M_z` component of a magnetic moment at :math:`T=4\,\textrm{K}`. \label{fig:telegraph}}
 \end{figure}
 
 The next plot named ``relaxation.png`` is an average over 200 replicas (``Mensembe 200``) of the simulation which are then averaged over. In here one can see instead the average relaxation time of the spin, showing how it can vary with temperature, thus show casing the importance of
@@ -106,12 +106,12 @@ The next plot named ``relaxation.png`` is an average over 200 replicas (``Mensem
 \begin{figure}[h!]
 \center
 \includegraphics[width=0.75\textwidth]{./relaxation.png}
-\caption{Average time evolution of the $M_z$ component of a magnetic moment for several temperatures. \label{fig:relaxation}}
+\caption{Average time evolution of the :math:`M_z` component of a magnetic moment for several temperatures. \label{fig:relaxation}}
 \end{figure}
 
 
-Determination of T$_c$ of a ferromagnetic material
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Determination of :math:`T_c` of a ferromagnetic material
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When one talks about a ferromagnetic material, one refers to a class of substances that have as a ground state (:math:`T=0\,\textrm{K}`) all its spins aligned in the same direction. As temperature increases disorder enters to the system until at a certain critical (Curie) temperature :math:`T_c`  the system has no net magnetization. The Curie temperature could be seen as the highest possible working temperature for the material and is of great importance for applications.
 
@@ -167,17 +167,17 @@ Let's investigate the generated thermal.dat file::
   1300  0.128381  0.431053  0.001813  0.418473
   1500  0.102811  0.464573  0.000898  0.283877
 
-The contents of the file are as follows: first column list the temperature, magnetization (in Bohr) in the second column, the Binder cumulant (see below) in the third column, the susceptibility are found in the fourth columns and the fifth column contains the specific heat (in units of k$_B$). If the magnetization (col 1) is plotted against the temperature (col 1) we immediately see that T$_c$ is around 1000 K. That is also reflected in the peak of the susceptibility (col 4) and the specific heat (col 5) around that temperature. However, in order to obtain a more precise value of T$_c$, the cumulant crossing method that originally was suggested by Binder is very powerful and useful technique. The (4'th order) cumulant U$_L$ , defined as
+The contents of the file are as follows: first column list the temperature, magnetization (in Bohr) in the second column, the Binder cumulant (see below) in the third column, the susceptibility are found in the fourth columns and the fifth column contains the specific heat (in units of :math:`k_B`). If the magnetization (col 1) is plotted against the temperature (col 1) we immediately see that :math:`T_c` is around 1000 K. That is also reflected in the peak of the susceptibility (col 4) and the specific heat (col 5) around that temperature. However, in order to obtain a more precise value of :math:`T_c`, the cumulant crossing method that originally was suggested by Binder is very powerful and useful technique. The (4'th order) cumulant :math:`U_L` , defined as
 
 .. math::
 
   U_L = 1 -\frac{\langle M^4 \rangle}{3 \langle M^2 \rangle ^2 }
 
-has unique properties that makes it easy to locate T$_c$ without resorting to advanced finite size scaling analysis or calculation of critical exponents of the transition. As the system approaching infinite size, $U_4 \to 4/9$ for $T> T_c$ and $U_4 \to 2/3$ for $T< T_c$. However, the crucial part is for large enough systems, the curves of $U_4$ for different lattice sizes cross in a fixed point $U^*$ and the location of the fixed point is T$_c$. Practically, that means that all simulations are repeated using some other lattice size of the simulation box. As an example, change the ncell keyword in the inpsd.dat file (line 2) in the Base directory from using a cube of size 12 to 20 (i.e 20 20 20) and repeat the calculations once again using the runme.sh script. Since the simulation box is now larger, it will take longer time to finish (with all other parameters fixed, the simulation time scales linearly with number of atoms in the cell, i.e. $(20/12)^3 \approx 4.6$ longer execution time than previous). Once finished, gather and collect the output using the printM.sh script. Now plot the cumulant as function of temperature and one get a figure similar to as shown in Fig.~\ref{fig:MTFe}. There are some statistical noise at high temperatures which can be reduced by running the simulations with more steps and more ensembles. Nevertheless, there is a distinct crossing around 955 K which is the calculated T$_c$ for the specific system.
+has unique properties that makes it easy to locate :math:`T_c` without resorting to advanced finite size scaling analysis or calculation of critical exponents of the transition. As the system approaching infinite size, :math:`U_4 \to 4/9` for :math:`T> T_c` and :math:`U_4 \to 2/3` for :math:`T< T_c`. However, the crucial part is for large enough systems, the curves of :math:`U_4` for different lattice sizes cross in a fixed point :math:`U^*` and the location of the fixed point is :math:`T_c`. Practically, that means that all simulations are repeated using some other lattice size of the simulation box. As an example, change the ncell keyword in the inpsd.dat file (line 2) in the Base directory from using a cube of size 12 to 20 (i.e 20 20 20) and repeat the calculations once again using the runme.sh script. Since the simulation box is now larger, it will take longer time to finish (with all other parameters fixed, the simulation time scales linearly with number of atoms in the cell, i.e. :math:`(20/12)^3 \approx 4.6` longer execution time than previous). Once finished, gather and collect the output using the printM.sh script. Now plot the cumulant as function of temperature and one get a figure similar to as shown in Fig.~\ref{fig:MTFe}. There are some statistical noise at high temperatures which can be reduced by running the simulations with more steps and more ensembles. Nevertheless, there is a distinct crossing around 955 K which is the calculated :math:`T_c` for the specific system.
 
 \begin{figure}[h!]
 \subfloat{\includegraphics[clip,width=0.49\columnwidth]{./MTFe.png} }\subfloat{\includegraphics[clip,width=0.49\columnwidth]{MTFe2.png} }
-\caption{(left) Cumulant of Fe as function of temperature using cubic simulation box of size L=12 and L=20.  (right) Zoom in of the crossing point and the location of T$_c$.}
+\caption{(left) Cumulant of Fe as function of temperature using cubic simulation box of size L=12 and L=20.  (right) Zoom in of the crossing point and the location of T:math:`_c`.}
 \label{fig:MTFe}
 \end{figure}
 
@@ -191,7 +191,7 @@ A very useful functionality of UppASD is the possibility to simulate the dispers
 Ferromagnetic magnons
 ^^^^^^^^^^^^^^^^^^^^^
 
-In this tutorial we will show how to obtain the magnon spectra from ASD simulations of $S(\mathbf{q},\omega)$ as well as from linear spin wave theory, which gives the zero-temperature adiabatic magnon spectra of the same Hamiltonian used for the ASD simulations. The tutorial uses the simple example of a 1d-Heisenberg spin chain found among the examples provided with the UppASD distribution::
+In this tutorial we will show how to obtain the magnon spectra from ASD simulations of :math:`S(\mathbf{q},\omega)` as well as from linear spin wave theory, which gives the zero-temperature adiabatic magnon spectra of the same Hamiltonian used for the ASD simulations. The tutorial uses the simple example of a 1d-Heisenberg spin chain found among the examples provided with the UppASD distribution::
 
   cd examples/HeisChain
 
@@ -217,31 +217,29 @@ Checking the given parameters with their description in Seq.~\ref{sqw}, we see t
 \label{fig:sqw_heischainfm}
 \end{figure}
 
-In order to get a feeling of which parameters that determine the range and quality of the simulated spectra, it is recommended to change the values of ``sc_step``, ``sc_nstep``, ``sc_window_fun``, and ``do_sc_local_axis``. Other general simulation parameters that also affects the $S(\mathbf{q},\omega)$ are also ``timestep`` and ``damping``. Since the simulation window (in the frequency domain) is determined by ``timestep``, ``sc_step``, and ``sc_nstep``, these parameters can be varied to get as efficient sampling as possible. As an example, a weakly coupled system have low-lying excitations and sampling these takes longer time than high-energy magnons. This can then be achieved by increasing ``sc_step`` but in these cases it is often possible to increase ``timestep`` as well, as the effective magnetic field, and the resulting torques results in slower precessions of the system and thus a coarser timestep can work. This always has to be tested carefully. The damping strongly affects the magnon spectrum and if a very clean signal is wanted, for careful identification of the magnon energies, then ``damping`` can be put to a value much lower than what is realistic (i.e. $10^-5$).
+In order to get a feeling of which parameters that determine the range and quality of the simulated spectra, it is recommended to change the values of ``sc_step``, ``sc_nstep``, ``sc_window_fun``, and ``do_sc_local_axis``. Other general simulation parameters that also affects the :math:`S(\mathbf{q},\omega)` are also ``timestep`` and ``damping``. Since the simulation window (in the frequency domain) is determined by ``timestep``, ``sc_step``, and ``sc_nstep``, these parameters can be varied to get as efficient sampling as possible. As an example, a weakly coupled system have low-lying excitations and sampling these takes longer time than high-energy magnons. This can then be achieved by increasing ``sc_step`` but in these cases it is often possible to increase ``timestep`` as well, as the effective magnetic field, and the resulting torques results in slower precessions of the system and thus a coarser timestep can work. This always has to be tested carefully. The damping strongly affects the magnon spectrum and if a very clean signal is wanted, for careful identification of the magnon energies, then ``damping`` can be put to a value much lower than what is realistic (i.e. :math:`10^-5`).
 
-An adiabatic magnon spectrum (AMS) can also be obtained by UppASD, in that case put the parameter ``do_ams``=y and provide a ``qfile`` as for the $S(\mathbf{q},\omega)$ simulations. The AMS can conveniently be ran at the same run as $S(\mathbf{q},\omega)$ so that the two different approaches can be compared to each other. By definition, the agreement should be good, and if the two approaches give varying result for a system with low damping and close to zero temperature, then that is a strong indication that either the system is not ferromagnetic or that it might not have been correctly set up. An example of the AMS for the Heisenberg chain is shown in the right panel of Fig.\ref{fig:sqw_heischainfm}. Thanks to the simplicity of this 1d nearest-neighbour model, the AMS can be derived by hand and compared with the simulated results, which is left as an exercise for the reader.
+An adiabatic magnon spectrum (AMS) can also be obtained by UppASD, in that case put the parameter ``do_ams``=y and provide a ``qfile`` as for the :math:`S(\mathbf{q},\omega)` simulations. The AMS can conveniently be ran at the same run as :math:`S(\mathbf{q},\omega)` so that the two different approaches can be compared to each other. By definition, the agreement should be good, and if the two approaches give varying result for a system with low damping and close to zero temperature, then that is a strong indication that either the system is not ferromagnetic or that it might not have been correctly set up. An example of the AMS for the Heisenberg chain is shown in the right panel of Fig.\ref{fig:sqw_heischainfm}. Thanks to the simplicity of this 1d nearest-neighbour model, the AMS can be derived by hand and compared with the simulated results, which is left as an exercise for the reader.
 
 
 Magnons in antiferromagnets and spin spirals
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Since the simulated $S(\mathbf{q},\omega)$ only depend on the configurations and trajectories of the simulated magnetic moments, it is not restricted to ferromagnetic systems. Although non-ferromagnetic systems typically needs to be treated a bit more carefully than ferromagnets, it is still possible to obtain magnon spectra for such systems as well. This can be illustrated by running the provided examples \texttt{HeisChainAF} which has anti-feromagnetic exchange interactions, and \texttt{HeisChainDM} which has ferromagnetic interactions but also competing Dzyaloshinskii-Moriya interactions, and compare the output with the previously simulated ferromagnetic Heisenberg chain. Starting with the anti-ferromagnetic system \texttt{HeisChainAF}, running it the same way as the \texttt{HeisChain} example should give the following outputs.
+Since the simulated :math:`S(\mathbf{q},\omega)` only depend on the configurations and trajectories of the simulated magnetic moments, it is not restricted to ferromagnetic systems. Although non-ferromagnetic systems typically needs to be treated a bit more carefully than ferromagnets, it is still possible to obtain magnon spectra for such systems as well. This can be illustrated by running the provided examples \texttt{HeisChainAF} which has anti-feromagnetic exchange interactions, and \texttt{HeisChainDM} which has ferromagnetic interactions but also competing Dzyaloshinskii-Moriya interactions, and compare the output with the previously simulated ferromagnetic Heisenberg chain. Starting with the anti-ferromagnetic system \texttt{HeisChainAF}, running it the same way as the \texttt{HeisChain} example should give the following outputs.
 \begin{figure}[h!]
 \subfloat{\includegraphics[clip,width=0.49\columnwidth]{sqwheischainafm.png} }\subfloat{\includegraphics[clip,width=0.49\columnwidth]{amsheischainafm.png} }
 \caption{(Left) Simulated magnon spectrum for an anti-ferromagnetic Heisenberg spin chain.
 (Right) Adiabatic magnon spectum for the same system.}
 \label{fig:sqw_heischainafm}
 \end{figure}
-Here one can notice the linear dispersion of magnon energies close to the $\Gamma$-point which is always obtained for anti-ferromagnets.
+Here one can notice the linear dispersion of magnon energies close to the :math:`\Gamma`-point which is always obtained for anti-ferromagnets.
 \par
-In the \texttt{HeisChainDM} example, the competition between Heisenberg and Dzyaloshinskii-Moriya exchange results in a helical spin spiral with a pitch-vector along $\hat{z}$ and the moments rotate in the $\hat{x}\hat{y}$-plane. The corresponding magnon spectrum is shown in Fig.~\ref{fig:sqw_heischaindm} where it can be noticed that the minimum energy is not found for the $\Gamma$-point but for the q-point $q_0$ corresponding to the wave-vector of the resulting spin spiral. It can also be seen that the agreement between the AMS and $S(\mathbf{q},\omega)$ is good but not perfect here. This highlights the important fact that the AMS currently does not have a general support for treating DMI interactions and while it can be expected to perform well for co-planar spin spirals, as found in this case, it should be handled with care. It can also be noted that the AMS only picks up one of the two non-degenerate magnon branches while both $q^+_0$ and $q^-_0$ are sampled by the $S(\mathbf{q},\omega)$.
+In the \texttt{HeisChainDM} example, the competition between Heisenberg and Dzyaloshinskii-Moriya exchange results in a helical spin spiral with a pitch-vector along :math:`\hat{z}` and the moments rotate in the :math:`\hat{x}\hat{y}`-plane. The corresponding magnon spectrum is shown in Fig.~\ref{fig:sqw_heischaindm} where it can be noticed that the minimum energy is not found for the :math:`\Gamma`-point but for the q-point :math:`q_0` corresponding to the wave-vector of the resulting spin spiral. It can also be seen that the agreement between the AMS and :math:`S(\mathbf{q},\omega)` is good but not perfect here. This highlights the important fact that the AMS currently does not have a general support for treating DMI interactions and while it can be expected to perform well for co-planar spin spirals, as found in this case, it should be handled with care. It can also be noted that the AMS only picks up one of the two non-degenerate magnon branches while both :math:`q^+_0` and :math:`q^-_0` are sampled by the :math:`S(\mathbf{q},\omega)`.
 
 For spin spiral systems, the magnon dispersions do not behave as they in collinear systems. Instead there is a much stronger variation of the dispersion relations depending on which axis the excitations are sampled along. This can be observed by changing the ``do_sc_local_axis`` parameter and compare the simulated spectra. Also, running the \texttt{sqw_map.sh} post-processing script creates a combined figure of the magnon spectra along all cartesian/local axes in the file \texttt{sqw_parts.png} which is plotted for this system in the right panel of Fig.~\ref{fig:sqw_heischaindm}
 \begin{figure}[h!]
 \subfloat{\includegraphics[clip,width=0.49\columnwidth]{sqwamsheischaindm.png} }\subfloat{\includegraphics[clip,width=0.49\columnwidth]{sqwcompheischaindm.png} }
 \caption{(Left) Simulated magnon spectrum for a Heisenberg spin chain with DM interactions along with the corresponding AMS.
-(Right) Projections of $S(\mathbf{q},\omega)$ to the cartesian components $S^\alpha$ and the total magnitude $|S|$ for the same system.}
+(Right) Projections of :math:`S(\mathbf{q},\omega)` to the cartesian components :math:`S^\alpha` and the total magnitude :math:`|S|` for the same system.}
 \label{fig:sqw_heischaindm}
 \end{figure}
-
-
