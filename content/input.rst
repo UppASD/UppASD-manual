@@ -321,13 +321,13 @@ The format is identical to that of the ``exchange`` file discussed above, with t
 |  do_tensor  |    Tensorial exchange coupling                                                                           |
 +---------------+--------------------------------------------------------------------------------------------------------+
 
-This switch allows the exchange data to be read in according to the tensorial representation of the Heisenberg Hamiltonian, as implemented in the Vienna-Budapest SKKR code.~\cite{Udvardi2003} In this case, the exchange Hamiltonian is defined as
+This switch allows the exchange data to be read in according to the tensorial representation of the Heisenberg Hamiltonian, as implemented in the Vienna-Budapest SKKR code [Udvardi2003]_ . In this case, the exchange Hamiltonian is defined as
 
 .. math::
 
   \mathcal{H}_{\mathrm{Tens}} = \sum_{i,j} \mathbf{e}_i \mathcal{J}_{ij} \mathbf{e}_j.
 
-Here, :math:`\mathcal{J}_{ij}=-J_{ij}\mathcal{I} + \mathcal{J}^S_{ij} +  \mathcal{J}^A_{ij}` is a :math:`3 \times 3` tensor (in which :math:`\mathcal{I}` is the unit matrix), the trace of which is equal to the exchange constant as defined in Eq.~(\ref{exchange}) by~\cite{Udvardi2003}. 
+Here, :math:`\mathcal{J}_{ij}=-J_{ij}\mathcal{I} + \mathcal{J}^S_{ij} +  \mathcal{J}^A_{ij}` is a :math:`3 \times 3` tensor (in which :math:`\mathcal{I}` is the unit matrix), the trace of which is equal to the exchange constant as defined in [Udvardi2003]_. 
 .. %
 .. %\begin{equation}
 .. % J_{ij} = \frac{1}{3} \mathrm{Tr}(\mathcal{J}_{ij}).
@@ -410,9 +410,9 @@ General simulation parameters
 |               |    is switched on, the \rkeyword{timestep} in SD mode should be roughly 0.1:math:`J_{ij}`.             |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  sdealgh      |    Switch for choosing SDE solver (\emph{1=Midpoint}, 4=Heun , 5=Depondt-Mertens). The default option  |
-|               |    runs the semi-implicit midpoint solver developed by Mentink \textit{et al}.~\cite{Mentink2010}.     |
-|               |    In this case, as when using the Depondt-Mertens solver~\cite{Depondt2009}, the \rkeyword{timestep}  |
-|               |    can be as large as  10$^{-16}$ seconds, but this should \textit{always} be checked carefully        |
+|               |    runs the semi-implicit midpoint solver developed by Mentink *et al.* [Mentink2010]_.                |
+|               |    In this case, as when using the Depondt-Mertens solver [Depondt2009]_, the ``timestep``             |
+|               |    can be as large as  10$^{-16}$ seconds, but this should *always* be checked carefully               |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  mensemble    |    Number of ensembles to simulate. The default value is 1, but this may be increased to improve       |
 |               |    statistics, especially if investigating laterally confined systems, such as finite                  |
@@ -421,7 +421,7 @@ General simulation parameters
 |  tseed        |    Random number seed for the stochastic field simulating the fluctuations due to temperature.         |
 |               |    Default value is 1.                                                                                 |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  do_sortcoup  |    Flag to specify if the arrays of couplings should be sorted or not (\emph{Y=yes}, N=no). Of         |
+|  do_sortcoup  |    Flag to specify if the arrays of couplings should be sorted or not (*Y=yes*, N=no). Of              |
 |               |    importance for sampling of polarization. Could be very slow if long range interactions.             |
 +---------------+--------------------------------------------------------------------------------------------------------+
 
@@ -440,16 +440,16 @@ Initialization parameters
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  mseed        |    Random number seed for magnetic moments if initmag=1. Set to 1 by default.                          |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  theta0       |    If \rkeyword{initmag}=2, the magnetic moments are randomly distributed in a cone                    |
-|               |    prescribed by this angle, and \rkeyword{phi0}. Set to 0 by default.                                 |
+|  theta0       |    If ``initmag`` 2, the magnetic moments are randomly distributed in a cone                           |
+|               |    prescribed by this angle, and ``phi0``. Set to 0 by default.                                        |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  phi0         |    Cone angle for initmag=2. Set to 0 by default.                                                      |
+|  phi0         |    Cone angle for ``initmag`` 2. Set to 0 by default.                                                  |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  roteul       |    Perform global rotation of magnetization. Set to 0 by default.                                      |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  rotang       |    Euler angles describing the rotation if roteul=1.                                                   |
+|  rotang       |    Euler angles describing the rotation if ``roteul`` 1.                                               |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  initexc      |    Perform initial excitation of the spin system (\emph{N=none}, I=Vacancies,                          |
+|  initexc      |    Perform initial excitation of the spin system (*N=none*}, I=Vacancies,                              |
 |               |    R=Two magnon Raman scattering).                                                                     |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  initconc     |    Concentration of vacancies or two magnon spin scattering.                                           |
@@ -465,16 +465,16 @@ Initial phase parameters
 .. tabularcolumns:: |l|l|
 
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  ip_mode      |    Mode for initial phase run (S=SD, M=Monte Carlo, H=Heat bath Monte Carlo, \emph{N=none}).           |
+|  ip_mode      |    Mode for initial phase run (S=SD, M=Monte Carlo, H=Heat bath Monte Carlo, *N=none*).                |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  ip_temp      |    Temperature for initial phase run if Monte Carlo (ip_mode=M or H).                                  |
+|  ip_temp      |    Temperature for initial phase run if Monte Carlo (``ip_mode`` M or H).                              |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  ip_hfield    |    External applied field (in units of Tesla) for initial phase run, given in Cartesian coordinates,   |
 |               |    *e.g.* ``hfield   1.0   0.0   0.0``.                                                                |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  ip_mcnstep   |    Number of Monte Carlo sweeps (MCS) over the system if ip_mode=M or H.                               |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  ip_damping   |    Damping parameter $\alpha$ for SD initial phase. Default value is 0.05.                             |
+|  ip_damping   |    Damping parameter :math:`\alpha` for SD initial phase. Default value is 0.05.                       |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  ip_nphase    |    Number of initial phases to be done with SD.                                                        |
 +---------------+--------------------------------------------------------------------------------------------------------+
@@ -602,7 +602,7 @@ where the angular brackets signify an ensemble average and $k$ the Cartesian com
 
   S^k(\mathbf{q},\omega) = \frac{1}{\sqrt{2\pi}N} \sum_{\mathbf{r},\mathbf{r'}} e^{i\mathbf{q}\cdot(\mathbf{r}-\mathbf{r'})} \int_{-\infty}^{\infty} e^{i\omega t} C^k (\mathbf{r}-\mathbf{r'},t) dt,
 
-and this function describes the energy dispersion for excited spin waves present in the simulated system.~\cite{Bergman2010}. If the flag is set to C, the static correlation function :math:`G(\mathbf{r})` and its Fourier transform :math:`S(\mathbf{q})` are measured. By locating the maximum of :math:`S(\mathbf{q})`, the ordering vector of the simulated system can be determined. In this case it is important to have a ``qfile`` that includes :math:`\mathbf{q}` -vectors in the whole Brillouin zone.
+and this function describes the energy dispersion for excited spin waves present in the simulated system [Bergman2010]_. If the flag is set to C, the static correlation function :math:`G(\mathbf{r})` and its Fourier transform :math:`S(\mathbf{q})` are measured. By locating the maximum of :math:`S(\mathbf{q})`, the ordering vector of the simulated system can be determined. In this case it is important to have a ``qfile`` that includes :math:`\mathbf{q}` -vectors in the whole Brillouin zone.
 
 .. %By default, both $S(\mathbf{q},\omega)$ and $S(\mathbf{q},t)$ are written to files but if only one of these correlation functions is %wanted, a selective printing can be obtained by giving the values \rkeyword{do_sc} = W or T, instead of the normal choice of %\rkeyword{do_sc} = Y. 
 
