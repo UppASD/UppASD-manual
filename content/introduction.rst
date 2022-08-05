@@ -17,21 +17,26 @@ In this expression, :math:`\gamma` is the gyromagnetic ratio and :math:`\mathbf{
 
 The effective field, :math:`\mathbf{B}_i`, experienced by each atom :math:`\textit{i}` is given by the partial derivative of the Hamiltonian :math:`\mathcal{H}` with respect to the local magnetic moment :math:`\mathbf{m}_i`
 
+.. .. _effectivefield:
+
 .. math::
   \mathbf{B}_i=-\frac{ \partial \mathcal{H} }{ \partial \mathbf{m}_i },
 
-where :math:`\mathcal{H}` is the spin Hamiltonian that takes all relevant interactions into account. Note that in the input files to UppASD, the convention is that it is the unit vectors :math:`\mathbf{e}_i=\frac{\mathbf{m}_i}{m_i}` that enter the Hamiltonian.
+where :math:`\mathcal{H}` is the spin Hamiltonian that takes all relevant interactions into account. Note that in the input files to UppASD, the convention is that it is the unit vectors :math:`\mathbf{e}_i=\frac{\mathbf{m}_i}{m_i}` that enter the spin Hamiltonian
+
+.. .. _spinHamiltonian:
+.. Eqn. :ref:`test <effectivefield>`: .
 
 .. math::   
    \mathcal{H}=-\sum_{i,j} J_{ij}\mathbf{e}_i \cdot \mathbf{e}_j - \sum_{i,j} \mathbf{D}_{ij}\mathbf{e}_i \times \mathbf{e}_j-\sum_i K_i (\hat{\mathbf{e}}_i \cdot \mathbf{e}_i^K)^2-\sum_i \mathbf{B}^{ext}\cdot\mathbf{e}_i  + \ldots 
 
-This is consistent with most electronic structure codes that outputs :math:`J_{ij}` and other exchange interactions but care should be taken since in many other models found in the litterature, the Hamiltonian depends explicitly of :math:`\mathbf{m}_i` instead. The most important contribution to the Hamiltonian is typically given by the Heisenberg exchange Hamiltonian, given by the first term in Eqn.~\ref{eq:exchange}. There, :math:`i` and :math:`j` are atomic indices, and :math:`J_{ij}` is the strength of the exchange interaction. These exchange interactions can be obtained from first-principles calculations, or alternatively be inferred from experiments. It is also possible (and in many cases even essential) to include other terms to the Hamiltonian, including Dzyaloshinskii-Moriya exchange, magnetic anisotropies and external magnetic fields, as are also exemplified in Eqn.~\ref{eq:exchange}. There are currently several other interactions available in the UppASD code and additional interactions can be implemented quite straightforwardly. Please note that the format of the Hamiltonian can be defined differently regarding prefactors, inclusion of moment magnitudes, summation convention and more. The input format in UppASD is conformal with most commonly used electronic structure codes that have the capability of calculating :math:`J_{ij}` (and sometimes :math:`\mathbf{D}_{ij}`, *i.e.* following the same convention of the Heisenberg Hamiltonian as Liechtenstein *et al.* [Lichtenstein1987]_.
+This is consistent with most electronic structure codes that output :math:`J_{ij}` and other exchange interactions but care should be taken since in many other models found in the litterature, the Hamiltonian depends explicitly of :math:`\mathbf{m}_i` instead. The most important contribution to the Hamiltonian is typically given by the Heisenberg exchange Hamiltonian, given by the first term in the spin Hamiltonian. There, :math:`i` and :math:`j` are atomic indices, and :math:`J_{ij}` is the strength of the exchange interaction. These exchange interactions can be obtained from first-principles calculations, or alternatively be inferred from experiments. It is also possible (and in many cases even essential) to include other terms to the Hamiltonian, including Dzyaloshinskii-Moriya exchange, magnetic anisotropies and external magnetic fields, as are also exemplified in the spin Hamiltonian. There are currently several other interactions available in the UppASD code and additional interactions can be implemented quite straightforwardly. Please note that the format of the Hamiltonian can be defined differently regarding prefactors, inclusion of moment magnitudes, summation convention and more. The input format in UppASD is conformal with most commonly used electronic structure codes that have the capability of calculating :math:`J_{ij}` (and sometimes :math:`\mathbf{D}_{ij}`), *i.e.* following the same convention of the Heisenberg Hamiltonian as Liechtenstein *et al.* [Lichtenstein1987]_.
 
 
 License
 -------
 
-The UppASD code is developed by the Division of Materials Theory, in the Department of Physics and Astronomy at the University of Uppsala, Sweden. The copyright of the code is held by the developers but the program is open for use and distribution according to the GPLv3 license.
+The UppASD code is developed by the Division of Materials Theory, in the Department of Physics and Astronomy at Uppsala University, Sweden. The copyright of the code is held by the developers but the program is open for use and distribution according to the GPLv3 license.
 
 Further information concerning the license and contact information of the developers may be found on the UppASD webpage https://www.physics.uu.se/UppASD}.
 
@@ -41,19 +46,18 @@ Further information concerning the license and contact information of the develo
 Installation
 ------------
 
-The source code is distributed along with documentation and a growing set of examples. To install, perform the following actions
+The source code is distributed on https://github.com/UppASD/UppASD along with documentation and a growing set of examples. To install, perform the following actions
 
-  - Obtain the code, by extracting the downloaded archive (or by pulling from the git repository)::
-      
+  - Obtain the code, by downloading and unpacking a release::
+
+      wget https://github.com/UppASD/UppASD/archive/refs/tags/v5.1.1.tar.gz
       tar xvzf UppASD_dist.tar.gz
+      cd UppASD
 
-    or in the case of git::
-      
-      git clone github:uppasd
+    or by cloning the git repository::
 
-    or alternatively using git::
-
-      git clone github:uppasd
+      git clone https://github.com/UppASD/UppASD.git
+      cd UppASD
 
   - Generate the dependencies needed for compiling the code::
 
@@ -68,14 +72,16 @@ The source code is distributed along with documentation and a growing set of exa
       make <profile>
 
     where ``<profile>`` is the name of the profile, i.e. ``ifort``, ``ifort-cuda``, ``gfortran``,
-    ``gfortran-osx``, and so on,  e.g. ``make ifort``.
+    ``gfortran-osx``, and so on, e.g. ``make ifort``.
     
   - Test the compiled program against a selection of realistic runs::
 
       make asd-tests
 
 In addition to the source files, the UppASD distribution also contains several examples (in the directory ``examples/``), documentation,
+
 .. including this file (in  ``docs/``)
+
 and routines and reference data (``tests/``) for validating the installation of the UppASD program.
 
 
