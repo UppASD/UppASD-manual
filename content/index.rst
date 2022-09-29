@@ -16,24 +16,3 @@ UppASD manual
    :caption: References
 
    references
-
-..   quick-reference
-..   guide
-
-.. _learner-personas:
-
-
-Who is the program for?
------------------------
-
-
-About the course
-----------------
-
-
-See also
---------
-
-
-Credits
--------
