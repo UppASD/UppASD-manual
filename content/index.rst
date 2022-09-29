@@ -3,7 +3,7 @@ UppASD manual
 
 .. toctree::
    :maxdepth: 2
-   :caption: UppASD manual
+   :caption: Sections
 
    introduction
    input
