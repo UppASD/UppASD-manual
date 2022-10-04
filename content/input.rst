@@ -66,7 +66,7 @@ The input format is keyword based. The code is programmed to search for given ke
   alat           2.83e-10
   
   
-While the meaning of most of the entries in this particular example may be obvious, each input field will be described later in this manual. In short, the input will perform a Monte Carlo simulation at T=300 K allowing 10 000 steps to reach equilbrium and then 50 000 steps to measure observables. However,  it is also clear that more information than in ``inpsd.dat`` are required and must be read in from external files in order for the system to be fully defined. These are:
+While the meaning of most of the entries in this particular example may be obvious, each input field will be described later in this manual. In short, the input will perform a Monte Carlo simulation at T=300 K allowing 10 000 steps to reach equilbrium and then 50 000 steps to measure observables. However, it is also clear that more information than in ``inpsd.dat`` are required and must be read in from external files in order for the system to be fully defined. These are:
   
 
 posfile
@@ -80,7 +80,7 @@ While these can be listed directly in the ``inpsd.dat`` file, it is typically mo
 
   1 1   0.000000  0.000000  0.000000
 
-The first entry indicates the *site number*, whereas the second one indicates the *atom type*. The concept of atom type is central when setting up UppASD simulations because every ``type`` is associated with a particular set defined exchange couplings. In this specific case there is only one atom type (and one site), namely Fe with atomic position at the origin. 
+The first entry indicates the *site number*, whereas the second one indicates the *atom type*. The concept of atom type is central when setting up UppASD simulations because every ``type`` is associated with a particular set of exchange couplings. In this specific case there is only one atom type (and one site), namely Fe with atomic position at the origin.
 
 .. %In the case of random alloy, two extra columns are required for atom component (third column) and its concentration (fourth %column). In the case of a binary 30-70 AB alloy in the B2 structure, the corresponding \rfilename{posfile} looks like:
 
@@ -92,7 +92,6 @@ The first entry indicates the *site number*, whereas the second one indicates th
 .. %2 1 2  0.70     0.500000  0.500000  0.500000
 .. %\end{Verbatim} 
 .. %\end{fBox}
-
 
 
 momfile
@@ -121,19 +120,19 @@ The first entry indicates the site number (same as first column in posfile), the
 exchange
 --------
 
-This file lists the exchange couplings within the system. The content and length of this file depends on the symmetry of the system, and the number of atom types present. If no symmetry is used, *i.e.* sym 0 (as in example), all exchange interactions within each interaction shell must be specified. For the bcc lattice, that means that first shell contain 8 interactions and so forth. If symmetry is used, then only one interaction in each shell is specified and the program will automatically found the others within the shell depending on the crystal symmetry. For the present Fe example using maptype 1, the first line reads::
+This file lists the exchange couplings within the system. The content and length of this file depends on the symmetry of the system, and the number of atom types present. If no symmetry is used, *i.e.* ``sym 0`` (as in example), all exchange interactions within each interaction shell must be specified. The first shell of the bcc lattice contains 8 interactions, so for ``sym 0`` 8 eight couplings need to be specified in the exchange file. If symmetry is used, then only one interaction in each shell is specified and the program will automatically find the other couplings within the shell depending on the crystal symmetry. For the present Fe example using maptype 1, the first line reads::
 
   1 1 -0.500 -0.500 -0.500 1.359407144 0.866
 
-The first two entries indicate the sites, which corresponds to the types that one whishes to map, :math:`i` and :math:`j`. In this case as both atoms have the same type, one can indicate the interactions between atoms in site 1 and 2, as 1-1, an example on how to deal with more atom types in the unit cell will be presented afterwards.
+The first two entries indicate the sites, which corresponds to the types that one whishes to map, :math:`i` and :math:`j`. In this case as both atoms have the same type, one can indicate the interactions between atoms in site 1 and 2, as 1-1. An example on how to deal with more atom types in the unit cell will be presented afterwards.
 
-The third, fourth and fifth entries specify the interaction  vector between the atoms and depending on choice of the maptype, it has different meaning.  Using maptype 1, the vector is specified in carteisan coodinates.  If the SPR-KKR software is used, that is directly columns eight, nine and ten in the exchange parameter outfile. 
-If instead maptype 2 is used, the coordination vector is put in basis coordinates and the first line in jfile modifies to::
+The third, fourth and fifth entries specify the interaction vector between the atoms and depending on choice of the maptype, it has different meaning. Using maptype 1, the vector is specified in Cartesian coordinates. If the SPR-KKR software is used, this corresponds to columns eight, nine and ten in the exchange parameter outfile.
+If instead maptype 2 is used, the coordination vector is specified in lattice coordinates and the first line in jfile modifies to::
 
   1 1 -1 -1 -1 1.359407144 0.866
 
 Once again taking SPR-KKR as an example, that corresponds to columns five, six and seven in the exchange parameters outfile.
-The sixth entry in jfile is the exchange energy in mRy and last entry (not read and optional) is the distance between atoms.
+The sixth entry in jfile is the exchange energy in mRy and the last entry (not read and optional) is the distance between atoms.
 
 These files together with the inpsd.dat forms the minimal set that is required to run a full ASD or MC simulation. Optionally, there are plenty other external files that may be used for more specific applications and features.  
 
@@ -168,12 +167,14 @@ The next step is to specify the basis, i.e. the positions of the Fe and Co atoms
   1 1   0.000000  0.000000  0.000000
   2 2   0.500000  0.500000  0.500000
 
-First line, denotes the Fe atom that is site number 1 and atom type 1 (first and second column) with position 0 0 0 (corner). Second line is the corresponding information for the Co atom that has position 0.5 0.5 0.5 (center in cell).  Once the atom type numbers are set in this file, it will carry over the information in the other files which then needs to be consistent. Now when the simulation cell is set up, we need to specify the magnetic moments and then the (exchange) interactions between them. Starting with magnetic moments, the corresponding momfile::
+First line, denotes the Fe atom that is site number 1 and atom type 1 (first and second column) with position 0 0 0 (corner). Second line is the corresponding information for the Co atom that has position 0.5 0.5 0.5 (center in cell). Once the atom type numbers are set in this file, it will carry over the information in the other files which then needs to be consistent. Now when the simulation cell is set up, we need to specify the magnetic moments and then the (exchange) interactions between them. Starting with magnetic moments, the corresponding momfile::
 
   1 1 2.7207 0.0 0.0 1.0 
   2 1 1.7202 0.0 0.0 1.0
 
-Once again, the first line specifies the Fe (with site number 1 and chemical type 1) with moment 2.7207 :math:`\mu_{\mathrm{B}}` (from a DFT calculation) and initial moment direction along the z-direction (``initmag`` 3). The second line specifies the same information but for site number 2, i.e. Co that has moment 1.7202 :math:`\mu_{\mathrm{B}}` from calculation. Now both the cell and magnetic moments on each site are specified, what is left to do is the specification of exchange interactions between the moments. From experience, this is the most crucial part in the setup and most easily to get it wrong. The full jfile in the example is longer than specified here (due to the lack of symmetry), here we only show one of the nearest neighbour interactions. We have Fe and Co moments in the cell, a Fe moment could interact with other Fe (Fe-Fe) or with Co (Fe-Co). Vice versa, a Co moment could interact with Fe (Co-Fe) or with other Co (Co-Co). To be complete, we need to specify all the interactions, i.e. Fe-Fe, Fe-Co, Co-Fe and Co-Co interactions. The jfile (using ``maptype`` 2) then contains the following blocks::
+Once again, the first line specifies the Fe (with site number 1 and chemical type 1) with moment 2.7207 :math:`\mu_{\mathrm{B}}` (from a DFT calculation) and initial moment direction along the z-direction (``initmag`` 3). The second line specifies the same information but for site number 2, i.e. Co that has moment 1.7202 :math:`\mu_{\mathrm{B}}` from calculation.
+
+Now that both the cell and magnetic moments on each site are specified, what is left to do is the specification of exchange interactions between the moments. From experience, this is the most crucial part in the setup, and most easily to get it wrong. The full jfile in the example is longer than specified here (due to the lack of symmetry), here we only show one of the nearest neighbour interactions. We have Fe and Co moments in the cell, a Fe moment could interact with other Fe (Fe-Fe) or with Co (Fe-Co). Vice versa, a Co moment could interact with Fe (Co-Fe) or with other Co (Co-Co). To be complete, we need to specify all the interactions, i.e. Fe-Fe, Fe-Co, Co-Fe and Co-Co interactions. The jfile (using ``maptype`` 2) then contains the following blocks::
 
   1 1  0  0 -1   0.031818272 1.000
   1 2  0  0  0   1.839624404 0.866
@@ -213,6 +214,7 @@ Input Entries
 -------------
 
 The following entries are currently implemented in UppASD. Where applicable, the default entry setting is underlined.
+
 .. this is subset of the more relevant flags available for inpsd.dat
 
 
@@ -277,6 +279,7 @@ where :math:`\mathbf{D}_{ij}` is the DM vector. The format is similar to that of
   1 1  0.0000 -1.0000 0.0000 -0.00000 -0.30000 -0.00000
 
 The first two entries specify site numbers in the chemical unit cell. The third to fifth entries specify the vector :math:`\mathbf{r}_{ij}` in terms of the lattice vectors, and the final three entries specify the DM vector :math:`\mathbf{D}_{ij}`.
+
 .. %Note that in this case the \rkeyword{maptype} flag has been set to 2 in the input file.
 
 .. tabularcolumns:: |l|l|
@@ -328,11 +331,13 @@ This switch allows the exchange data to be read in according to the tensorial re
   \mathcal{H}_{\mathrm{Tens}} = \sum_{i,j} \mathbf{e}_i \mathcal{J}_{ij} \mathbf{e}_j.
 
 Here, :math:`\mathcal{J}_{ij}=-J_{ij}\mathcal{I} + \mathcal{J}^S_{ij} +  \mathcal{J}^A_{ij}` is a :math:`3 \times 3` tensor (in which :math:`\mathcal{I}` is the unit matrix), the trace of which is equal to the exchange constant as defined in [Udvardi2003]_. 
+
 .. %
 .. %\begin{equation}
 .. % J_{ij} = \frac{1}{3} \mathrm{Tr}(\mathcal{J}_{ij}).
 .. %\end{equation}
 .. %
+
 In this formalism, the anti-symmetric part of the tensor are proportional to the components of the DM vector :math:`\mathbf{D}_{ij}` in Eq.~(\ref{DM_ham}), as :math:`D_{ij}^x=\frac{1}{2}(J_{ij}^{yz}-J_{ij}^{zy})`, :math:`D_{ij}^y=\frac{1}{2}(J_{ij}^{xz}-J_{ij}^{zx})` and :math:`D_{ij}^z=\frac{1}{2}(J_{ij}^{xy}-J_{ij}^{yx})`. In order to define the first shell of exchange parameters in bcc Fe using this formalism, the exchange file would be changed to look as follows::
 
   0 0 1 2 0.00134 0.0 0.0 0.0 0.00134 0.0 0.0 0.0 0.00134
@@ -356,7 +361,9 @@ where :math:`K_1` and :math:`K_2` are the strength of the linear and four-fold t
 
   \mathcal{H}^{\mathrm{C}}_{\mathrm{ani}} = \sum_i K_1^{\mathrm{C}} (m_{i,x}^2m_{i,y}^2 + m_{i,y}^2m_{i,z}^2 + m_{i,z}^2m_{i,x}^2 ) + K_2^{\mathrm{C}} m_{i,x}^2 m_{i,y}^2 m_{i,z}^2,
 
-where :math:`(m_x, m_y, m_z)=\mathbf{m}`. UppASD is able to read in either Eq.~(\ref{uniaxial}) or Eq.~(\ref{cubic}), or even both. For bcc Fe, a plausible ``kfile`` might be::
+.. Eq.~(\ref{uniaxial}) or Eq.~(\ref{cubic}), or even both.
+
+where :math:`(m_x, m_y, m_z)=\mathbf{m}`. UppASD is able to read in either uniaxial or cubic anisotropy, or both of them. For bcc Fe, a plausible ``kfile`` might be::
 
   1   2   -0.020    0.000    0.0    1.0    0.0    0.1
   2   2   -0.020    0.000    0.0    1.0    0.0    0.1   
@@ -370,7 +377,7 @@ The first entry lists the atom number, whereas the second entry indicates if the
 
 It is also possible to provide symmetry operations manually. This is done by setting ``sym`` to 4 and then create an additional input file
 ``sym.mat`` containing the number of symmetry operations followed by the operations in matrix form. 
-An example of {\it sym.mat} for only inversion symmetry can look like::
+An example of ``sym.mat`` for only inversion symmetry can look like::
 
   2 
     1.0000   0.0000  0.0000
@@ -380,7 +387,7 @@ An example of {\it sym.mat} for only inversion symmetry can look like::
     0.0000  -1.0000  0.0000
     0.0000   0.0000 -1.0000
 
-Do not forget the identity operation when using custom symmetry operations. The symmetry operations act on ``exchange``, ``bq``, ``pd`` couplings, but not on ``dm`` or ``biqdm`` couplings. Note that the ``sym`` flag only concerns how the program will treat the exchange couplings, it does thus not have to reflect the proper symmetry of the simulated system. *I.e*, if the exchange interactions given in ``posfile`` are not symmetry reduced, then ``sym`` should be set to :math:`0` even if the system has more symmetry than the identity symmetry.
+Do not forget the identity operation when using custom symmetry operations. The symmetry operations act on ``exchange``, ``bq``, ``pd`` couplings, but not on ``dm`` or ``biqdm`` couplings. Note that the ``sym`` flag only concerns how the program will treat the exchange couplings, it does thus not have to reflect the proper symmetry of the simulated system. Thus, if the exchange interactions given in ``posfile`` are not symmetry reduced, then ``sym`` should be set to :math:`0` even if the system has more symmetry than the identity symmetry.
 
 +---------------+------------------------------------------------------------------------------------------------------------------------+
 |  maptype  |    Flag that determines how the coordinates for the different exchange couplings are given.                                |
@@ -406,13 +413,13 @@ General simulation parameters
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  do_ralloy    |    Flag to set if a random alloy is being simulated (*0=off*/1=on).                                    |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  aunits       |    Implement atomic units, *i.e.* set :math:`k_B`, :math:`\hbar`, ... :math:`=1` (Y/\emph{N}). If this |
-|               |    is switched on, the \rkeyword{timestep} in SD mode should be roughly 0.1:math:`J_{ij}`.             |
+|  aunits       |    Implement atomic units, *i.e.* set :math:`k_B`, :math:`\hbar`, ... :math:`=1` (Y/*N*). If this      |
+|               |    is switched on, the ``timestep`` in SD mode should be roughly :math:`0.1J_{ij}`.                    |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  sdealgh      |    Switch for choosing SDE solver (\emph{1=Midpoint}, 4=Heun , 5=Depondt-Mertens). The default option  |
+|  sdealgh      |    Switch for choosing SDE solver (*1=Midpoint*, 4=Heun, 5=Depondt-Mertens). The default option        |
 |               |    runs the semi-implicit midpoint solver developed by Mentink *et al.* [Mentink2010]_.                |
 |               |    In this case, as when using the Depondt-Mertens solver [Depondt2009]_, the ``timestep``             |
-|               |    can be as large as  10$^{-16}$ seconds, but this should *always* be checked carefully               |
+|               |    can be as large as :math:`10^{-16}` seconds, but this should *always* be checked carefully          |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  mensemble    |    Number of ensembles to simulate. The default value is 1, but this may be increased to improve       |
 |               |    statistics, especially if investigating laterally confined systems, such as finite                  |
@@ -506,7 +513,7 @@ Measurement phase parameters
 .. tabularcolumns:: |l|l|
 
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  mode         |    Mode for measurement phase run (\emph{S=SD}, M=Monte Carlo, H=Heat bath Monte Carlo).               |
+|  mode         |    Mode for measurement phase run (*S=SD*, M=Monte Carlo, H=Heat bath Monte Carlo).                    |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  temp         |    Temperature for measurement phase.                                                                  |
 +---------------+--------------------------------------------------------------------------------------------------------+
@@ -538,13 +545,13 @@ Typically the measurement of each observable is controlled by two parameters in 
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  do_avrg      |    Sample and print average magnetization, and its higher order moments. ``Y/N``                       |
 +---------------+--------------------------------------------------------------------------------------------------------+
+|  avrg_step    |    Number of time steps between sampling of averages. Set to 100 by default.                           |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  avrg_buff    |    Number of samplings of averages to buffer between printing to file. Set to 10 by default.           |
++---------------+--------------------------------------------------------------------------------------------------------+
 |  do_proj_avrg |    Sample and print type (*i.e*. sublattice) projected average moments. (``Y/N/A``).                   |
 +---------------+--------------------------------------------------------------------------------------------------------+
 | do_projch_avrg|    Sample and print chemical (*i.e.*} sublattice) projected average moments (``Y/N/A``).               |
-+---------------+--------------------------------------------------------------------------------------------------------+
-|  avrg_step    |    Add magnetic field pulse (\emph{0=no}, $1-4$ for different shapes)                                  |
-+---------------+--------------------------------------------------------------------------------------------------------+
-|  avrg_buff    |    Number of samplings of averages to buffer between printing to file. Set to 10 by default.           |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  do_cumu      |    Sample cumulants (Y/N). Automatically enabled for Monte Carlo simulations.                          |
 +---------------+--------------------------------------------------------------------------------------------------------+
@@ -554,6 +561,8 @@ Typically the measurement of each observable is controlled by two parameters in 
 |               |    ``moments.simid.out`` file.                                                                         |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  tottraj_step |    Number of time steps between samplings of moments. Set to 1000 by default.                          |
++---------------+--------------------------------------------------------------------------------------------------------+
+|  tottraj_buff |    Number of samplings of moments to buffer between printing to file. Set to 10 by default.            |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  ntraj        |    Number of individual trajectories to sample and print. Followed by ``ntraj`` lines describing atoms |
 |               |    to sample, time step between samples and steps to buffer. Set to 0 by default.                      |
@@ -586,9 +595,9 @@ Parameters for measuring of correlation functions
 .. tabularcolumns:: |l|l|
 
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  do_sc        |   Flag to determine if spin correlations should be analysed (Q=S($\mathbf{q}$,$\omega$), \emph{N=no},  |
-|               |   C=G(r)). Setting this flag to Q or C measures space- and time-displaced correlation functions.       |
-|               |   The spatial time dependent correlation function $C(\mathbf{r},t)$ is defined as                      |
+|  do_sc        |   Flag to determine if spin correlations should be analysed (Q= :math:`S(\mathbf{q},\omega)`, *N=no*), |
+|               |   C= :math:`G(r)`). Setting this flag to Q or C measures space- and time-displaced correlation         |
+|               |   functions. The spatial time dependent correlation function $C(\mathbf{r},t)$ is defined as           |
 +---------------+--------------------------------------------------------------------------------------------------------+
 
 .. math::
@@ -596,7 +605,7 @@ Parameters for measuring of correlation functions
   C^k (\mathbf{r}-\mathbf{r'},t) = \langle m^k_{\mathbf{r}}(t) m^k_{\mathbf{r'}}(0) \rangle - \langle m^k_{\mathbf{r}}(t) \rangle \langle m^k_{\mathbf{r'}}(0) \rangle,
   \label{eqn:cf}
 
-where the angular brackets signify an ensemble average and $k$ the Cartesian component. The dynamical structure factor is then obtained by Fourier transforming $C(\mathbf{r},t)$ as
+where the angular brackets signify an ensemble average and $k$ the Cartesian component. The dynamical structure factor is then obtained by Fourier transforming :math:`C(\mathbf{r},t)` as
   
 .. math::
 
@@ -611,7 +620,7 @@ In order to obtain a useful :math:`S(\mathbf{q},\omega)` measurement, it is impo
 .. tabularcolumns:: |l|l|
 
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  do_sc_proj   |    Flag to determine if type projected spin correlation should be analyzed (Q=yes, C=G(r),*N=no*}).    |
+|  do_sc_proj   |    Flag to determine if type projected spin correlation should be analyzed (Q=yes, C=G(r), *N=no*)     |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  do_sc_projc  |    Flag to determine if chemical type projected spin correlation should be analyzed of random alloys   |
 |               |    (Q=yes, C=G(r), *N=no*).                                                                            |
