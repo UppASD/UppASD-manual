@@ -18,12 +18,12 @@ where the three first entries are the direction of the anisotropy axis.
 
 **bqdata.simid.out** is written if the bq interaction is defined. Prints out the bq coupling for each atom.
 
-**coord.simid.out** is written if \rkeyword{do_prnstruct} is switched on. Prints out the coordinates of each moment in the system.
+**coord.simid.out** is written if ``do_prnstruct`` is switched on. Prints out the coordinates of each moment in the system.
 
 **dmdata.simid.out** is written if the DM interaction is defined. Prints out the DM coupling for each atom.
 .. % and their strengths for each atom.
 
-**dmstruct.simid.out** is written if the DM interaction is defined and **do_prnstruct** is switched on. Prints out the coupling list for the DM vector of the system. Similar to the data presented in **struct.simid.out**.
+**dmstruct.simid.out** is written if the DM interaction is defined and ``do_prnstruct`` is switched on. Prints out the coupling list for the DM vector of the system. Similar to the data presented in **struct.simid.out**.
 
 **inp.simid.out** extensive output of the values assigned to global variables after reading ``inpsd.dat`` and accompanying files.
 
@@ -53,7 +53,7 @@ where :math:`step` is the simulation time expressed in terms of the number of ti
 
   cumulants.simid.out:   step, <M>, <M>^2, <M>^4, U_4, \chi, C_v
 
-where, brackets denote time averaged quantities and :math:`U_4=1-\frac{1 <M>^4}{3 <M>^2}` is the fourth order `Binder' cumulant, useful for estimating transition temperatures [Binder2009]_, :math:`\chi` is the magnetic susceptibility, and :math:`C_V` is the heat capacity.
+where, brackets denote time averaged quantities and :math:`U_4=1-\frac{1 <M>^4}{3 <M>^2}` is the fourth order Binder cumulant, useful for estimating transition temperatures [Binder2009]_, :math:`\chi` is the magnetic susceptibility, and :math:`C_V` is the heat capacity.
 
 .. **mcinitial.simid.out** is written if initial phase is set to MC mode. Prints out the final iterations of the MC initial phase.
 .. , in the format
@@ -83,7 +83,7 @@ where :math:`step` is the simulation time expressed in terms of the number of ti
 
 **projavs.simid.out** is written of the ``do_proj_avrg`` flag is switched on. Prints out the same thermodynamic averages printed in ``averages.simid.out``, but projected to each atom type sublattice. The format is also identical to ``averages.simid.out``, except for the addition of a column indicating the sublattice.
 
-**restart.simid.out}** the magnetic configuration of the system at a specific point in time. Can be used as input when the ``initmag`` flag is set to 4.
+**restart.simid.out** the magnetic configuration of the system at a specific point in time. Can be used as input when the ``initmag`` flag is set to 4.
 
 **trajectory.simid.out** the trajectory as a function of time step for an individual magnetic moment on format
 
@@ -105,7 +105,7 @@ if the number ``ntraj`` is also defined to be greater than 1, the code prints ou
 
   sqt0.simid.out:step,nq,q_x,q_y,q_z,S^x(\mathbf{q}),S^y(\mathbf{q}),S^z(\mathbf{q}),S(\mathbf{q})
 
-**sra.simid.out}** is written if the \rkeyword{do_sc} flag is C. Prints out the static correlation function in real space :math:`S(r)` in the format
+**sra.simid.out** is written if the \rkeyword{do_sc} flag is C. Prints out the static correlation function in real space :math:`S(r)` in the format
 
 .. math::
 
