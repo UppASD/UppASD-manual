@@ -38,7 +38,7 @@ License
 
 The UppASD code is developed by the Division of Materials Theory, in the Department of Physics and Astronomy at Uppsala University, Sweden. The copyright of the code is held by the developers but the program is open for use and distribution according to the GPLv3 license.
 
-Further information concerning the license and contact information of the developers may be found on the UppASD webpage https://www.physics.uu.se/UppASD}.
+Further information concerning the license and contact information of the developers may be found on the UppASD webpage https://www.physics.uu.se/UppASD.
 
 .. The current version of the code (5.0) is still under active development.
 
@@ -51,7 +51,7 @@ The source code is distributed on https://github.com/UppASD/UppASD along with do
   - Obtain the code, by downloading and unpacking a release::
 
       wget https://github.com/UppASD/UppASD/archive/refs/tags/v5.1.1.tar.gz
-      tar xvzf UppASD_dist.tar.gz
+      tar xvzf v5.1.1.tar.gz
       cd UppASD
 
     or by cloning the git repository::
@@ -96,6 +96,6 @@ When run, UppASD essentially goes through three stages:
 
 During the initialization phase, all the parameters necessary to describe the system of interest, such as its geometry, dimensions, exchange couplings and boundary conditions, are set up. In addition, the initial phase also sets the simulation parameters, such as the number of simulation steps to record data over, which stochastic differential equation (SDE) integrator to use, and the temperature at which the simulation should be run.
 
-The initial phase, which is optional, is typically performed in order to bring the system into thermal equilibrium, so that the data recorded in the measurement phase is for a thermalized system. Obviously, if one is interested in out-of-equilibrium dynamics, then there is no need to perform this phase. The initial phase can either be performed using Spin Dynamics (SD), or the Metropolis or Heatbath Monte Carlo (MC) algorithms [Binder2009]_. The latter is convenient for ground state searches, provided the system is not too complex *i.e.* a spin glass).
+The initial phase, which is optional, is typically performed in order to bring the system into thermal equilibrium, so that the data recorded in the measurement phase is for a thermalized system. Obviously, if one is interested in out-of-equilibrium dynamics, then there is no need to perform this phase. The initial phase can either be performed using Spin Dynamics (SD), or the Metropolis or Heatbath Monte Carlo (MC) algorithms [Binder2009]_. The latter is convenient for ground state searches, provided the system is not too complex, for instance a system with a spin glass phase.
 
 During the measurement phase, the data sampling is performed. Simulations can be run in either MC or SD mode. In MC mode only magnetization averages and static correlation functions may be measured. In SD mode, a much richer set of observables are measured, including the dynamical structure factor.
