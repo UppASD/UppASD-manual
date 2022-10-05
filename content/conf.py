@@ -20,8 +20,8 @@
 project = "UppASD Manual"
 copyright = "2017-2022, Uppsala University"
 author = "J. Hellsvik, L. Bergqvist, A. Bergman, J. Chico, et al"
-github_user = "johanhellsvik"
-github_repo_name = ""  # auto-detected from dirname if blank
+github_user = "UppASD"
+github_repo_name = "UppASD-manual"  # auto-detected from dirname if blank
 github_version = "main"
 conf_py_path = "/content/"  # with leading and trailing slash
 
