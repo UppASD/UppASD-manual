@@ -50,8 +50,8 @@ The source code is distributed on https://github.com/UppASD/UppASD along with do
 
   - Obtain the code, by downloading and unpacking a release::
 
-      wget https://github.com/UppASD/UppASD/archive/refs/tags/v5.1.1.tar.gz
-      tar xvzf v5.1.1.tar.gz
+      wget https://github.com/UppASD/UppASD/archive/refs/tags/v6.0.1.tar.gz
+      tar xvzf v6.0.1.tar.gz
       cd UppASD
 
     or by cloning the git repository::
