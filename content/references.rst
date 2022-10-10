@@ -55,3 +55,8 @@ Ph. Depondt and F.G. Mertens
 A. Bergman, A. Taroni, L. Bergqvist, J. Hellsvik, B. Hjörvarsson, and O. Eriksson
 *Magnon softening in a ferromagnetic monolayer: A first-principles spin dynamics study.*
 `Phys. Rev. B, 81, 144416 (2010). <https://doi.org/10.1103/PhysRevB.81.144416>`_
+
+.. [Hellsvik2008]
+J. Hellsvik, B. Skubic, L. Nordström, B. Sanyal, O. Eriksson, P. Nordblad, and P. Svedlindh
+*Dynamics of diluted magnetic semiconductors from atomistic spin-dynamics simulations: Mn-doped GaAs*
+`Phys. Rev. B, 78, 144419 (2008). <https://doi.org/10.1103/PhysRevB.78.144419>`_
