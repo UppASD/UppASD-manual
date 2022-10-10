@@ -20,7 +20,7 @@ For the purpouses of this walkthrough, the input files for the single spin mode 
 
 First one must go to the root directory of the example::
 
-  cd examples/SingleSpin
+  cd examples/SimpleSystems/SingleSpin
 
 In this directory one can see that there is a folder called ``BASE`` as well as several bash scripts. At first we explore the input files, for this enter the ``BASE`` folder::
 
@@ -195,7 +195,7 @@ Checking the given parameters with their description in the section on input par
 
 In order to get a feeling of which parameters that determine the range and quality of the simulated spectra, it is recommended to change the values of ``sc_step``, ``sc_nstep``, ``sc_window_fun``, and ``do_sc_local_axis``. Other general simulation parameters that also affects the :math:`S(\mathbf{q},\omega)` are also ``timestep`` and ``damping``. Since the simulation window (in the frequency domain) is determined by ``timestep``, ``sc_step``, and ``sc_nstep``, these parameters can be varied to get as efficient sampling as possible. As an example, a weakly coupled system have low-lying excitations and sampling these takes longer time than high-energy magnons. This can then be achieved by increasing ``sc_step`` but in these cases it is often possible to increase ``timestep`` as well, as the effective magnetic field, and the resulting torques results in slower precessions of the system and thus a coarser timestep can work. This always has to be tested carefully. The damping strongly affects the magnon spectrum and if a very clean signal is wanted, for careful identification of the magnon energies, then ``damping`` can be put to a value much lower than what is realistic (i.e. :math:`10^-5`).
 
-An adiabatic magnon spectrum (AMS) can also be obtained by UppASD, in that case put the parameter ``do_ams``=y and provide a ``qfile`` as for the :math:`S(\mathbf{q},\omega)` simulations. The AMS can conveniently be ran at the same run as :math:`S(\mathbf{q},\omega)` so that the two different approaches can be compared to each other. By definition, the agreement should be good, and if the two approaches give varying result for a system with low damping and close to zero temperature, then that is a strong indication that either the system is not ferromagnetic or that it might not have been correctly set up. An example of the AMS for the Heisenberg chain is shown in the right panel of the figure. Thanks to the simplicity of this 1d nearest-neighbour model, the AMS can be derived by hand and compared with the simulated results, which is left as an exercise for the reader.
+An adiabatic magnon spectrum (AMS) can also be obtained by UppASD, in that case put the parameter ``do_ams y`` and provide a ``qfile`` as for the :math:`S(\mathbf{q},\omega)` simulations. The AMS can conveniently be ran at the same run as :math:`S(\mathbf{q},\omega)` so that the two different approaches can be compared to each other. By definition, the agreement should be good, and if the two approaches give varying result for a system with low damping and close to zero temperature, then that is a strong indication that either the system is not ferromagnetic or that it might not have been correctly set up. An example of the AMS for the Heisenberg chain is shown in the right panel of the figure. Thanks to the simplicity of this 1d nearest-neighbour model, the AMS can be derived by hand and compared with the simulated results, which is left as an exercise for the reader.
 
 
 Magnons in antiferromagnets and spin spirals
