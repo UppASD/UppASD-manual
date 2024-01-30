@@ -108,7 +108,7 @@ In this walkthrough we will use Monte Carlo simulations to determine the magneti
 For this step-by-step walkthrough, we will use the input files for Fe as example that is found in the example directory.
 First of all, standing in the root directory, navigate to the input files of Fe::
 
-  cd examples/Fe
+  cd examples/SimpleSystems/bccFe
 
 The program works in such a way that we need to repeat simulations for different temperatures. For the purpose, it is recommended to use a script that does simplify a lot of things but first we need to prepare the input files for that. We will create a "Base" directory where the raw input files are stored::
 
@@ -116,7 +116,7 @@ The program works in such a way that we need to repeat simulations for different
 
 Next, we need to copy two run-scripts (``runme.sh`` and ``printM.sh``) that will run a set of simulations at different temperatures from the scripts-directory::
 
-  cp ../scripts/runme.sh . ; cp ../scripts/printM.sh .
+  cp ../../scripts/runme.sh . ; cp ../../scripts/printM.sh .
 
 Before starting the run-scripts, the inpsd.dat file needs to be prepared in such a way that the temperature in both initial and measurement phase are set to *TEMP*. Using any editor of choice, change temperature from *300* to *TEMP* of lines 25 and 28. With that, everything is prepared to run the simulations using the run-script::
 
