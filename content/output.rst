@@ -21,7 +21,6 @@ where the three first entries are the direction of the anisotropy axis.
 **coord.simid.out** is written if ``do_prnstruct`` is switched on. Prints out the coordinates of each moment in the system.
 
 **dmdata.simid.out** is written if the DM interaction is defined. Prints out the DM coupling for each atom.
-.. % and their strengths for each atom.
 
 **dmstruct.simid.out** is written if the DM interaction is defined and ``do_prnstruct`` is switched on. Prints out the coupling list for the DM vector of the system. Similar to the data presented in **struct.simid.out**.
 
@@ -51,9 +50,9 @@ where :math:`step` is the simulation time expressed in terms of the number of ti
 
 .. math::
 
-  cumulants.simid.out:   step, <M>, <M>^2, <M>^4, U_4, \chi, C_v
+  cumulants.simid.out:   step, \langle M \rangle, \langle M \rangle^2, \langle M \rangle^4, U_4, \chi, C_v
 
-where, brackets denote time averaged quantities and :math:`U_4=1-\frac{1 <M>^4}{3 <M>^2}` is the fourth order Binder cumulant, useful for estimating transition temperatures [Binder2009]_, :math:`\chi` is the magnetic susceptibility, and :math:`C_V` is the heat capacity.
+where, brackets denote time averaged quantities and :math:`U_4=1-\frac{1 \langle M \rangle^4}{3 \langle M \rangle^2}` is the fourth order Binder cumulant, useful for estimating transition temperatures [Binder2009]_, :math:`\chi` is the magnetic susceptibility, and :math:`C_V` is the heat capacity.
 
 .. **mcinitial.simid.out** is written if initial phase is set to MC mode. Prints out the final iterations of the MC initial phase.
 .. , in the format
@@ -105,13 +104,13 @@ if the number ``ntraj`` is also defined to be greater than 1, the code prints ou
 
   sqt0.simid.out:step,nq,q_x,q_y,q_z,S^x(\mathbf{q}),S^y(\mathbf{q}),S^z(\mathbf{q}),S(\mathbf{q})
 
-**sra.simid.out** is written if the \rkeyword{do_sc} flag is C. Prints out the static correlation function in real space :math:`S(r)` in the format
+**sra.simid.out** is written if the ``do_sc`` flag is C. Prints out the static correlation function in real space :math:`S(r)` in the format
 
 .. math::
 
   sra.simid.out:   |r|,S^x(r),S^y(r),S^z(r),S(r)
 
-**sqt.simid.out** is written of the \rkeyword{do_sc} flag is switched on. Prints out the time-resolved structure factor :math:`S(q,t)` in the format
+**sqt.simid.out** is written of the ``do_sc`` flag is switched on. Prints out the time-resolved structure factor :math:`S(q,t)` in the format
 
 .. math::
 
