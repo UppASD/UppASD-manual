@@ -7,7 +7,7 @@ inpsd.dat
 
 A file with the hardcoded name ``inpsd.dat`` is the main input file necessary to run UppASD. Contained in this file are also the names of the files containing the exchange interactions, the atomic positions, and the atomic moments. Although the names of these files are arbitrary, in this manual they are referred to as the ``jfile``, ``posfile`` and ``momfile``, respectively. Other optional files containing information such as the uniaxial anisotropy and the Dzyaloshinskii-Moriya vectors may also be included, as described below.
 
-The input format is keyword based. The code is programmed to search for given keywords, and then read in the values that follow. If no keyword is given, a default value is set. As an example of a standard ``inpsd.dat`` file layout, input for a Fe in bcc lattice is shown below (as found in the examples directory). More advanced examples like supercells and random alloys follows later, but let's keep things simple for now::
+The input format is keyword based. The code is programmed to search for given keywords, and then read in the values that follow. If no keyword is given, a default value is set. As an example of a standard ``inpsd.dat`` file layout, input for Fe in body centered cube (bcc) structure is shown below (as found in the examples directory). More advanced examples like supercells and random alloys follows later, but let's keep things simple for now::
 
   simid bccFe100                                    
   ncell  12              12              12  System size            
@@ -124,7 +124,7 @@ This file lists the exchange couplings within the system. The content and length
 
   1 1 -0.500 -0.500 -0.500 1.359407144 0.866
 
-The first two entries indicate the sites, which corresponds to the types that one whishes to map, :math:`i` and :math:`j`. In this case as both atoms have the same type, one can indicate the interactions between atoms in site 1 and 2, as 1-1. An example on how to deal with more atom types in the unit cell will be presented afterwards.
+The first two entries indicate the sites, which corresponds to the types that one whishes to map, :math:`i` and :math:`j`. In this case as both atoms have the same type, one can indicate the interactions between atoms in site 1 and 2, as 1-1. An example on how to deal with more atom types in the unit cell will be presented later in the manual.
 
 The third, fourth and fifth entries specify the interaction vector between the atoms and depending on choice of the maptype, it has different meaning. Using maptype 1, the vector is specified in Cartesian coordinates. If the SPR-KKR software is used, this corresponds to columns eight, nine and ten in the exchange parameter outfile.
 If instead maptype 2 is used, the coordination vector is specified in lattice coordinates and the first line in jfile modifies to::
@@ -184,7 +184,7 @@ Now that both the cell and magnetic moments on each site are specified, what is 
 Remember that the ``types`` of atoms that the exchange interactions is valid for, are given in the first two columns of the jfile which specify the ``sites`` :math:`i` and :math:`j`.  The sites correspond to the information given in the posfile. First line then specifies a Fe-Fe interaction, second line Fe-Co, third line Co-Fe and fourth line Co-Co. 
 
 **FeCo random alloy**
-UppASD has the capability to deal with chemical disorder in one or several sublattices of a system. Taking Fe-Co as example, it is natually occuring in the bcc lattice (for Co concentrations less  than :math:`\approx 70\%` with random arrangement of the Fe and Co atoms. Internally within the program, a supercell is created with the target composition set by the user. The required input files needs some modifications that are discussed here. First of all, the flag do_ralloy in the inpsd.dat file needs to set to 1. Then, as ususal, the Bravais lattice needs to be specified and in this case we are using the primitive bcc lattice with its lattice vectors::
+UppASD has the capability to deal with chemical disorder in one or several sublattices of a system. Taking Fe-Co as example, it is natually occuring in the bcc lattice (for Co concentrations less  than :math:`\approx 70\%` with random arrangement of the Fe and Co atoms. Internally within the program, a supercell is created with the target composition set by the user. The required input files needs some modifications that are discussed here. First of all, the flag do_ralloy in the inpsd.dat file needs to be set to 1. Then, as ususal, the Bravais lattice needs to be specified and in this case we are using the primitive bcc lattice with its lattice vectors::
 
   cell         -0.5000000    0.5000000    0.5000000
                 0.5000000   -0.5000000    0.5000000
@@ -195,7 +195,7 @@ So far, the setup is not any different from a non-random system. However, the po
   1 1 1  0.500   0.000000  0.000000  0.000000
   1 1 2  0.500   0.000000  0.000000  0.000000
 
-Compare to non-random systems, the posfile now has two additional columns. The third column specify the chemical type (Fe or Co), each with its concentration (fourth column). The concentrations do not need to add up to 1, if smaller then the system becomes diluted with random voids (vacancies) in it. In the present example, Fe (chemical type 1) and Co (chemical type 2) both have 50\% concentration. Next, we need to specify the magnetic moments on each sublattice and for each chemical type. The corresponding momfile::
+Compare to non-random systems, the posfile now has two additional columns. The third column specify the chemical type (Fe or Co), each with its concentration (fourth column). The concentrations do not need to add up to 100%, if smaller then the system becomes diluted with random voids (vacancies) in it. In the present example, Fe (chemical type 1) and Co (chemical type 2) both have 50\% concentration. Next, we need to specify the magnetic moments on each sublattice and for each chemical type. The corresponding momfile::
 
   1 1 2.4850 0.0 0.0 1.0
   1 2 1.7041 0.0 0.0 1.0
@@ -210,10 +210,10 @@ The first column always specifies the site number (same as column 1 in the posfi
 The first and second columns are the same as the jfile for non random systems and specifies the *sites* :math:`i` and :math:`j` and thus their corresponding atomic (sublattice) *types*. In this case, we only have one sublattice so it is 1 for all interactions. The third and fourth columns specifies the chemical types of the atoms on that particular sublattice and from top to bottom in this example that means Fe-Fe, Fe-Co,Co-Fe and Co-Co interactions.
 
 
-Input Entries
--------------
+inpsd.dat keywords
+------------------
 
-The following entries are currently implemented in UppASD. Where applicable, the default entry setting is underlined.
+UppASD features more than 300 keywords for the ``inpsd.dat`` file. In the following some of the keywords are described. Where applicable, the default value for the keyword is underlined.
 
 .. this is subset of the more relevant flags available for inpsd.dat
 
@@ -521,7 +521,7 @@ Measurement phase parameters
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  mcnstep      |    Number of Monte Carlo sweeps (MCS) over the system if mode=M or H.                                  |
 +---------------+--------------------------------------------------------------------------------------------------------+
-|  damping      |    Damping parameter $\alpha$ for SD measurement phase. Default value is 0.05.                         |
+|  damping      |    Damping parameter :math:`\alpha` for SD measurement phase. Default value is 0.05.                   |
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  timestep     |    Time step between SD iterations. Unless ``aunits Y``, this should typically be set to a value       |
 |               |    between :math:`10^{-17}` and :math:`10^{-15}` seconds, depending on the system and SDE solver.      |
@@ -605,7 +605,7 @@ Parameters for measuring of correlation functions
   C^k (\mathbf{r}-\mathbf{r'},t) = \langle m^k_{\mathbf{r}}(t) m^k_{\mathbf{r'}}(0) \rangle - \langle m^k_{\mathbf{r}}(t) \rangle \langle m^k_{\mathbf{r'}}(0) \rangle,
   \label{eqn:cf}
 
-where the angular brackets signify an ensemble average and $k$ the Cartesian component. The dynamical structure factor is then obtained by Fourier transforming :math:`C(\mathbf{r},t)` as
+where the angular brackets signify an ensemble average and :math:`k` the Cartesian component. The dynamical structure factor is then obtained by Fourier transforming :math:`C(\mathbf{r},t)` as
   
 .. math::
 
