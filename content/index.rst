@@ -7,6 +7,8 @@ UppASD manual
 
    introduction
    input
+   guide
+   quick-reference
    output
    tutorial
    examples
