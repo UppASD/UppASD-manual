@@ -28,4 +28,8 @@ This chapter collects the UppASD input file formats and keyword reference. Use t
    input-keywords-clusters
    input-keywords-fields
    input-keywords-temperature-gradients
+   input-keywords-ams
+   input-keywords-stiffness
    input-keywords-currents
+   input-keywords-solvers
+   input-keywords-kmc

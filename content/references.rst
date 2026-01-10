@@ -241,3 +241,12 @@ References
     H. Eyring,
     "The activated complex in chemical reactions," *J. Chem. Phys.* **3**, 107 (1935).
 
+
+.. [Holstein1940]
+    T. Holstein and H. Primakoff,
+    "Field dependence of the intrinsic domain magnetization of a ferromagnet," *Phys. Rev.* **58**, 1098 (1940).
+
+.. [Halilov1998]
+    S. V. Halilov, H. Eschrig, A. Y. Perlov, and P. M. Oppeneer,
+    "Adiabatic spin dynamics from spin-density-functional theory: Application to Fe, Co, and Ni," *Phys. Rev. B* **58**, 293 (1998).
+
