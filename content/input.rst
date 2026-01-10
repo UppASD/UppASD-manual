@@ -12,5 +12,20 @@ This chapter collects the UppASD input file formats and keyword reference. Use t
    input-keywords-hamiltonian
    input-keywords-simulation
    input-keywords-observables
+   input-keywords-polarization
+   input-keywords-topology
+   input-keywords-spinspiral
+   input-keywords-temperature-3tm
+   input-keywords-sld
+   input-keywords-montecarlo
+   input-keywords-averages
+   input-keywords-multiscale
+   input-keywords-wanglandau
+   input-keywords-replicaexchange
+   input-keywords-gneb
    input-keywords-correlations
+   input-keywords-autocorrelation
+   input-keywords-clusters
+   input-keywords-fields
+   input-keywords-temperature-gradients
    input-keywords-currents
