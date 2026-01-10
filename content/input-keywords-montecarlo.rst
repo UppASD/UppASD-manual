@@ -1,5 +1,5 @@
-inpsd.dat keywords: Monte Carlo simulations
-============================================
+Monte Carlo simulations
+=======================
 
 Parameters for Monte Carlo simulations and thermal equilibration
 ----------------------------------------------------------------
@@ -282,12 +282,6 @@ The energy difference only requires summing over neighbors of the flipped atom
 - **Higher order:** Biquadratic exchange, four-spin ring exchange
 - **Dipolar:** Brute-force or FFT-accelerated macrocell method
 - **Induced moments:** Self-consistent coupling to non-magnetic sites
-
-.. warning::
-
-   The energy calculation assumes the neighbor lists (``nlist``, ``nlistsize``)
-   are pre-computed and up-to-date. If system geometry changes during simulation
-   (e.g., in non-rigid structures), neighbor lists must be recalculated externally.
 
 -------------------------------------------------
 Temperature control and thermodynamic sampling

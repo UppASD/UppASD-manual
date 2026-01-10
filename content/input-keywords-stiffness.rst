@@ -1,13 +1,7 @@
-.. _input-keywords-stiffness:
+.. _label-stiffness:
 
 Spin Stiffness and Micromagnetic Parameters
 ===========================================
-
-.. contents::
-   :local:
-
-Overview
-========
 
 The stiffness calculation feature extracts micromagnetic parameters from atomistic exchange interactions, bridging the gap between **atomistic spin dynamics** and **micromagnetic continuum models**. This enables:
 
@@ -26,10 +20,10 @@ These parameters are essential for:
 
 
 Physics Background
-==================
+------------------
 
 Spin-Wave Stiffness (Pajda Formalism)
---------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The formalism follows **Pajda et al., PRB 64, 174402 (2001)**, which defines the spin-wave stiffness for ferromagnetic systems as:
 
@@ -55,9 +49,8 @@ For non-cubic systems, the full tensorial form is calculated:
 
 This captures directional variations in spin-wave propagation.
 
-
 Exchange Stiffness (Micromagnetic Constant)
---------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The micromagnetic **exchange stiffness** :math:`A` relates to the spin-wave stiffness via:
 
@@ -79,9 +72,8 @@ This parameter appears in the **micromagnetic energy density**:
 
 where :math:`\mathbf{m}` is the normalized magnetization direction.
 
-
 DMI Spiralization Tensor
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For systems with **Dzyaloshinskii-Moriya interaction** (DMI), the spiralization tendency is quantified by:
 
@@ -97,9 +89,8 @@ where :math:`\mathbf{D}_{ij}` is the DMI vector between sites :math:`i,j`. This 
 
 Units: meV·Å (energy × length).
 
-
 Convergence and Eta Parameter
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The stiffness calculation employs an exponential damping factor to ensure convergence:
 
@@ -114,12 +105,11 @@ The parameter :math:`\eta` (eta) weights near-neighbor vs. far-neighbor contribu
 
 Users specify an eta range [``eta_min``, ``eta_max``] for extrapolation. Typical values: ``eta_min=10``, ``eta_max=20``.
 
-
 Activation and Configuration
-============================
+-----------------------------
 
 Main Enable Flags
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: fortran
 
@@ -137,9 +127,8 @@ Stiffness calculations are performed **once during initialization** (not dynamic
 - ``do_dm_stiffness = 'Y'``: Enable when DMI is present (``dm_file`` specified) to study chiral systems
 - ``prn_J0_matrix = 'Y'``: For debugging or detailed analysis of exchange matrix structure
 
-
 Convergence Parameters
-======================
+~~~~~~~~~~~~~~~~~~~~~~
 
 The eta convergence range controls the extrapolation to :math:`\eta = 0`:
 
@@ -170,12 +159,11 @@ The eta convergence range controls the extrapolation to :math:`\eta = 0`:
 
 The code internally uses :math:`\eta_{\text{eff}} = 0.1 \times \text{eta}` as the damping parameter in Ångströms.
 
-
 Output Files and Results
-=========================
+------------------------
 
 Main Output File
-----------------
+~~~~~~~~~~~~~~~~
 
 When ``do_stiffness = 'Y'``, results are written to:
 
@@ -223,9 +211,8 @@ This file contains comprehensive micromagnetic information:
    
    Tc-MFA from stiffness :     1234.5 K
 
-
 DMI Spiralization Output
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 When ``do_dm_stiffness = 'Y'``, additional DMI information is appended:
 
@@ -255,9 +242,8 @@ When ``do_dm_stiffness = 'Y'``, additional DMI information is appended:
 
 The spiral wavelength :math:`\lambda = 4\pi D_{\alpha\beta} / D_0^{\alpha\beta}` predicts intrinsic helical pitch.
 
-
 Random Alloy Output
--------------------
+~~~~~~~~~~~~~~~~~~~~
 
 For random alloy simulations (``do_ralloy = 1``), site-resolved properties are calculated:
 
@@ -297,9 +283,8 @@ When ``prn_J0_matrix = 'Y'``, the full exchange matrix is printed:
 
 Format: ``sublattice_i  sublattice_j  J0_value[meV]``
 
-
 Terminal Output
----------------
+~~~~~~~~~~~~~~~
 
 During calculation, progress is reported:
 
@@ -311,8 +296,7 @@ During calculation, progress is reported:
    Tc-MFA from stiffness :     1234.5 K
 
 
-Keywords Reference Table
-========================
+**Keywords Reference Table**
 
 .. list-table:: Stiffness Calculation Keywords
    :widths: 25 12 12 50
@@ -343,12 +327,11 @@ Keywords Reference Table
      - 0
      - Maximum eta index for convergence extrapolation
 
-
 Examples
-========
+--------
 
 Example 1: BCC Iron - Basic Stiffness Calculation
---------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Calculate exchange stiffness and spin-wave stiffness for BCC Fe:
 
@@ -404,9 +387,8 @@ Calculate exchange stiffness and spin-wave stiffness for BCC Fe:
 
 **Interpretation:** Isotropic stiffness (cubic symmetry), typical Fe values.
 
-
 Example 2: FePt with DMI Spiralization
----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Calculate both exchange and DMI stiffness for a chiral ferromagnet:
 
@@ -567,12 +549,11 @@ Calculate stiffness tensor for hexagonal system:
 - Anisotropic domain wall widths depending on propagation direction
 - Domain wall width calculated from :math:`\Delta = \sqrt{A/K}` where K is anisotropy density
 
-
 Physical Interpretations and Applications
-=========================================
+------------------------------------------
 
 Domain Wall Width
------------------
+~~~~~~~~~~~~~~~~~
 
 For systems with uniaxial anisotropy, the Bloch/Néel domain wall width is:
 
@@ -585,9 +566,8 @@ where :math:`K` is the anisotropy density (MJ/m³). Typical values:
 - **Soft magnets** (low K): :math:`\Delta \sim 10\text{-}100` nm
 - **Hard magnets** (high K): :math:`\Delta \sim 1\text{-}10` nm
 
-
 Spin-Wave Dispersion
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 The spin-wave frequency in the long-wavelength limit follows:
 
@@ -601,9 +581,8 @@ Relating measured spin-wave stiffness to atomistic exchange:
 - **Atomistic validation**: Compare calculated :math:`D` with experiment
 - **Anisotropic propagation**: Tensor components give direction-dependent dispersion
 
-
 Skyrmion Size
--------------
+~~~~~~~~~~~~~~
 
 For skyrmions stabilized by DMI:
 
@@ -616,9 +595,8 @@ Typical values:
 - **Fe/Ir interfaces**: :math:`D_0 \sim 3` meV·Å, :math:`D \sim 100` meV·Å² → :math:`R \sim 10\text{-}20` nm
 - **Bulk MnSi**: :math:`D_0 \sim 1` meV·Å, :math:`D \sim 50` meV·Å² → :math:`R \sim 50\text{-}100` nm
 
-
 Mean-Field Tc Estimation
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The printed :math:`T_c^{\text{MFA}}` provides an upper bound for the critical temperature:
 
@@ -632,9 +610,8 @@ where :math:`\lambda_{\text{max}}` is the largest eigenvalue of the J0 exchange 
 - **2D systems**: Overestimates by 50-100%
 - **Random alloys**: Site-resolved :math:`T_c` shows local ordering tendencies
 
-
 Comparison with Experiment
-===========================
+---------------------------
 
 **Spin-Wave Stiffness D:**
 
@@ -654,9 +631,8 @@ Comparison with Experiment
 - **Skyrmion size**: Observed with magnetic imaging (MFM, STXM)
 - **Typical agreement**: Within factor of 2 (strong correlation effects)
 
-
 Performance Considerations
-==========================
+--------------------------
 
 **Computational Cost:**
 
@@ -670,9 +646,8 @@ Performance Considerations
 - **Fitting method**: Rational polynomial typically more stable than LSQ for oscillatory systems
 - **Random alloys**: Require smaller eta (faster decay) due to disorder
 
-
 Troubleshooting
-===============
+---------------
 
 **Issue: Large discrepancy between rational and LSQ fits**
 
@@ -701,9 +676,8 @@ Troubleshooting
 - **Cause**: Insufficient statistics in random alloy sampling
 - **Solution**: Increase supercell size (ncell); average over multiple configurations
 
-
 Combining with Other Features
-==============================
+------------------------------
 
 Stiffness calculations are typically used alongside:
 
@@ -712,9 +686,8 @@ Stiffness calculations are typically used alongside:
 - **Monte Carlo** (``do_mc='Y'``): Validate Tc-MFA against finite-temperature simulations
 - **Topology analysis** (``do_tottraj='Y'``): Relate skyrmion size to D/D0 ratio
 
-
 References
-==========
+----------
 
 The stiffness calculation implementation in UppASD is based on:
 

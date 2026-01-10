@@ -1,5 +1,5 @@
-inpsd.dat keywords: spin torques
-========================================
+Spin torques
+============
 
 Parameters for current-induced spin torques
 --------------------------------------------

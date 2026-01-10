@@ -1,5 +1,5 @@
-inpsd.dat keywords: Wang-Landau sampling
-=============================================
+Wang-Landau sampling
+=====================
 
 Parameters for Wang-Landau Monte Carlo sampling
 -------------------------------------------------

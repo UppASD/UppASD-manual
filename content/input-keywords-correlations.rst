@@ -1,5 +1,5 @@
-inpsd.dat keywords: correlation functions
-==========================================
+Correlation functions
+=====================
 
 Parameters for measuring spin correlations and dynamical structure factors
 --------------------------------------------------------------------------
@@ -42,6 +42,12 @@ and its Fourier transform :math:`S^k(\mathbf{q})` reveal:
 - **Magnetic ordering vectors** (wavevector :math:`\mathbf{q}_0` at which :math:`S(\mathbf{q})` peaks)
 - **Correlation lengths** (width of :math:`S(\mathbf{q})` near the peak)
 - **Phase transitions** (changes in ordering as a function of temperature)
+
+.. tip::
+
+   **Input keywords:** For a complete list of all correlation measurement parameters
+   (``do_sc``, ``do_sr``, ``sc_step``, ``qpoints``, etc.), see the comprehensive
+   reference in :doc:`input-keywords-observables`.
 
 --------------------------------------------------
 Sampling strategy and resolution

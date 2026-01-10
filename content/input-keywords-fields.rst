@@ -1,5 +1,5 @@
-inpsd.dat keywords: time and space-dependent fields
-=====================================================
+Time- and space-dependent fields
+================================
 
 Parameters for applying time and space-dependent magnetic fields
 -----------------------------------------------------------------

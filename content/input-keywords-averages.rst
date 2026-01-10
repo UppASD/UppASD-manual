@@ -1,8 +1,5 @@
-inpsd.dat keywords: averages and cumulants
-============================================
-
-Parameters for measuring averages and statistical observables
---------------------------------------------------------------
+Averages and cumulants
+======================
 
 The UppASD code supports comprehensive statistical measurements of magnetization
 and thermodynamic observables during spin dynamics simulations. The averaging and
@@ -19,11 +16,11 @@ All measurements support ensemble averaging for improved statistical accuracy in
 Monte Carlo and Langevin dynamics simulations. The subsystem employs a buffered
 output strategy to minimize I/O overhead during long simulations.
 
-.. important::
+.. tip::
 
-   For Monte Carlo simulations, cumulant measurements (``do_cumu``) are
-   automatically enabled regardless of the input setting, as they are essential
-   for characterizing equilibrium thermodynamic properties.
+   **Input keywords:** For a complete list of all average and cumulant input
+   parameters (``do_avrg``, ``avrg_step``, ``do_cumu``, etc.), see the
+   comprehensive reference in :doc:`input-keywords-observables`.
 
 -------------------------------------------------
 Canonical measurement definitions
@@ -309,39 +306,23 @@ The averaging subsystem is independent of but compatible with:
   (seconds) instead of simulation steps in all averaging output files. This requires
   specifying the timestep ``delta_t`` in the simulation parameters.
 
-.. warning::
-
-   When performing **initial phase** measurements during equilibration, ensure
-   that cumulant sampling (``cumu_step``) does not begin until the system has
-   thermalized. Monitor ``averages.simid.out`` to verify magnetization stability
-   before analyzing cumulants.
-
 -------------------------------------------------
 Notes and best practices
 -------------------------------------------------
 
 **For Monte Carlo simulations:**
 
-- Use ``cumu_step`` comparable to or larger than system size to ensure decorrelation
-- Perform long runs (millions of sweeps) to reduce statistical noise in :math:`\langle m^4 \rangle`
+- Perform sufficiently long runs to reduce statistical noise in :math:`\langle m^4 \rangle`
 - Check convergence by monitoring running averages in ``cumulants.simid.out``
 
 **For spin dynamics simulations:**
 
 - Set ``avrg_step`` to sample faster than the slowest relevant timescale (e.g., domain wall motion)
-- Use ``cumu_step`` :math:`\gg` ``avrg_step`` for reliable statistics
 - Equilibrate thoroughly before enabling cumulant measurements
 
 **For parallel tempering:**
 
 - Ensure ``Mensemble`` is sufficient for accurate ensemble averaging (typically ≥ 16)
-- Use projected cumulants (``do_cumu_proj Y``) to analyze sublattice ordering independently
-
-**Memory considerations:**
-
-- Buffer size ``avrg_buff`` :math:`\times` 3 :math:`\times` ``Mensemble`` determines memory per output cycle
-- For large ``Mensemble``, reduce ``avrg_buff`` to avoid memory pressure
-- Projected averages require additional memory proportional to number of types/sites
 
 -------------------------------------------------
 Example inpsd.dat snippet

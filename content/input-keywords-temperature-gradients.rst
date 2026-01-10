@@ -4,8 +4,6 @@
 Temperature Gradients
 =====================================
 
-.. contents::
-   :local:
 
 Overview
 ========

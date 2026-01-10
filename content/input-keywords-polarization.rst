@@ -44,6 +44,12 @@ break inversion symmetry.
 - Sign of :math:`\mathbf{P}` flips under time reversal or spatial inversion
 - Magnitude scales with spin canting angle and DM coupling strength
 
+.. tip::
+
+   **Input keywords:** For a complete list of all polarization and chirality
+   measurement parameters (``do_pol``, ``max_pol_nn``, ``pol_step``, ``do_chir``, etc.),
+   see the comprehensive reference in :doc:`input-keywords-observables`.
+
 Mathematical derivation
 -----------------------
 

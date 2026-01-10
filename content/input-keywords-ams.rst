@@ -12,7 +12,6 @@ UppASD implements **Linear Spin Wave Theory (LSWT)** for calculating magnon band
 * **Magnon dispersions**: Eigenfrequencies of collective spin excitations across the Brillouin zone
 * **Density of states**: Thermodynamic and spectroscopic properties from magnon spectra
 * **Topological analysis**: Chern numbers, Berry curvature, and thermal Hall conductivity
-* **Dynamical structure factor**: :math:`S(\mathbf{q},\omega)` for comparison with inelastic neutron scattering (INS)
 
 The implementation follows the **Tóth-Lake formalism** [TothLake2015]_ and extensions for non-collinear magnetism, supporting:
 

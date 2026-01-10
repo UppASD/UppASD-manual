@@ -1,5 +1,5 @@
-inpsd.dat keywords: geodesic nudged elastic band (GNEB)
-========================================================
+Geodesic nudged elastic band (GNEB)
+====================================
 
 Parameters for minimum energy path (MEP) calculations using GNEB
 ------------------------------------------------------------------

@@ -1,5 +1,5 @@
-inpsd.dat keywords: replica exchange / parallel tempering
-===========================================================
+Replica exchange (parallel tempering)
+======================================
 
 Parameters for Replica Exchange / Parallel Tempering Monte Carlo
 ------------------------------------------------------------------

@@ -1,5 +1,5 @@
-inpsd.dat keywords: autocorrelation functions
-==============================================
+Autocorrelation functions
+=========================
 
 Parameters for time-resolved autocorrelation measurements
 ---------------------------------------------------------
@@ -16,6 +16,12 @@ The autocorrelation measurement scheme allows extraction of dynamical properties
 such as relaxation times, correlation decay rates, and aging effects in
 non-equilibrium simulations. Results are written to ``autocorr.simid.out`` with
 optional spatial binning into macrocells for coarse-grained analysis.
+
+.. tip::
+
+   **Input keywords:** For a complete list of all autocorrelation measurement
+   parameters (``do_autocorr``, ``acfile``, ``ac_step``, etc.), see the
+   comprehensive reference in :doc:`input-keywords-observables`.
 
 .. _autocorr-definition:
 

@@ -7,9 +7,8 @@ UppASD manual
 
    introduction
    input
-   guide
-   quick-reference
    output
+   detailed-input-background
    tutorial
    examples
 

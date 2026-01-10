@@ -1,5 +1,5 @@
-inpsd.dat keywords: Hamiltonian parameters
-==========================================
+Hamiltonian parameters
+======================
 
 Hamiltonian parameters
 ----------------------

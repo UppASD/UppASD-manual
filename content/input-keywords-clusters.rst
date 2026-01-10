@@ -1,39 +1,5 @@
-inpsd.dat keywords: cluster analysis
-==============================================================
-
-Cluster analysis keywords for grouping spins or atoms into clusters.
---------------------------------------------------------------------------------
-
-The UppASD code can perform simple cluster analyses for post-processing and
-coarse-grained measurements. This page documents the input keywords used to
-control cluster detection and reporting.
-
-cluster_method
-   Method used to define clusters. Typical values: ``distance`` (geometric cutoff), ``bond`` (bond connectivity), ``label`` (read clusters from file). Default: ``distance``.
-
-cluster_cutoff
-   Distance cutoff (in Å) used when ``cluster_method = distance``. Two sites belong to the same cluster if their separation is less than this value. Default: **3.0**.
-
-cluster_file
-   Path to a file containing pre-defined cluster assignments (used when ``cluster_method = label``). Format: one integer cluster id per atom, matching the system indexing used in the input files.
-
-cluster_min_size
-   Minimum number of atoms/spins for a cluster to be reported. Clusters smaller than this value are ignored. Default: **2**.
-
-prn_clusters
-   Print cluster statistics to output (Y=yes, N=no). If enabled, the code writes cluster sizes, centroids, and a list of member indices. Default: **N**.
-
-save_clusters
-   Save cluster assignments to disk (Y=yes, N=no). When enabled, writes ``clusters_<simid>.dat`` with one cluster id per line. Default: **N**.
-
-See also
---------
-
-- :doc:`input-keywords-system` (system setup and atom indices)
-- :doc:`input-keywords-observables` (writing per-site outputs)
-
-inpsd.dat keywords: cluster embedding
-======================================
+Cluster embedding
+=================
 
 Parameters for embedding impurity clusters within a host system
 ---------------------------------------------------------------
@@ -85,9 +51,6 @@ and orientation of the cluster within the host supercell.
 --------------------------------------------------
 Input file parameters for cluster embedding
 --------------------------------------------------
-
-.. warning:: The original tabular grid has been replaced with a definition-style keyword list to
-   avoid fragile grid-table parsing errors. See the keywords below for parameter descriptions.
 
 do_cluster
    Enable cluster embedding functionality (Y=yes, N=no). When enabled, the code reads separate cluster data files and maps cluster atoms to the host system. Default: **N**.

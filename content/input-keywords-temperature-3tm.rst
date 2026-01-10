@@ -1,5 +1,5 @@
-inpsd.dat keywords: three-temperature models
-=============================================
+Three-temperature models
+========================
 
 This section documents the implementation of temperature–bath models used to
 describe energy flow between electrons, spins, and lattice degrees of freedom.

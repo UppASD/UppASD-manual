@@ -1,5 +1,5 @@
-inpsd.dat keywords: simulation and phases
-=========================================
+Simulation control and phases
+=============================
 
 General simulation parameters
 -----------------------------

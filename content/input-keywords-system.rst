@@ -1,5 +1,5 @@
-inpsd.dat keywords: system and geometry
-=======================================
+System and geometry
+===================
 
 UppASD features more than 300 keywords for the ``inpsd.dat`` file. In the following some of the keywords are described. Where applicable, the default value for the keyword is underlined.
 

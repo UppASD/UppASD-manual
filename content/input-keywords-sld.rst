@@ -19,6 +19,12 @@ simulation of coupled spin and lattice evolution, including:
 The SLD module couples spin-magnetic Hamiltonians with lattice-vibrational
 Hamiltonians through **spin-lattice interaction terms** (ML and MML).
 
+.. tip::
+
+   **Input keywords:** For a complete list of lattice dynamics measurement parameters
+   (``do_lavrg``, ``lavrg_step``, ``do_ltottraj``, ``do_ld``, ``do_velrsc``, etc.),
+   see the comprehensive reference in :doc:`input-keywords-observables`.
+
 Physical Hamiltonian
 --------------------
 
