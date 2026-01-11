@@ -126,3 +126,13 @@ Measurement phase parameters
 +---------------+--------------------------------------------------------------------------------------------------------+
 |  set_bpulse   |    Add magnetic field pulse ``0=no``, :math:`1-4` for different shapes)                                |
 +---------------+--------------------------------------------------------------------------------------------------------+
+
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Mentink2010]_ - Stable and fast semi-implicit integration of the stochastic LLG equation
+- [Depondt2009]_ - Spin dynamics simulations with Heisenberg and dipole-dipole interactions
+

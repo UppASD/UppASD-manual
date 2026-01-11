@@ -300,21 +300,13 @@ Related keywords and cross-references
 - ``Mensemble``: Ensemble averaging for thermal fluctuations
 
 References
-----------
+==========
 
-Key references for the three-temperature model:
+See the centralized :doc:`references` for full bibliographic entries:
 
-- Beaurepaire, E., Merle, J.-C., Daunois, A., and Bigot, J.-Y., *Ultrafast
-  spin dynamics in ferromagnetic nickel*, Phys. Rev. Lett. **76**, 4250 (1996).
-- Koopmans, B., et al., *Explaining the paradoxical diversity of ultrafast
-  laser-induced demagnetization*, Nature Mater. **9**, 259 (2010).
-- Mentink, J. H., et al., *Ultrafast spin dynamics in multisublattice magnets*,
-  Phys. Rev. Lett. **108**, 057202 (2012).
-- Rethfeld, B., Kaiser, A., Vicanek, M., and Simon, G., *Ultrafast dynamics of
-  nonequilibrium electrons in metals under femtosecond laser irradiation*,
-  Phys. Rev. B **65**, 214303 (2002).
-- Atxitia, U., et al., *Multiscale modeling of ultrafast element-specific
-  magnetization dynamics of ferromagnetic alloys*, Phys. Rev. B **81**, 174401 (2010).
-- Pankratova, M., Miranda, I. P., Thonig, D., Pereiro, M., Sjöqvist, E., Delin, A.,
-  Scheid, P., Eriksson, O., and Bergman, A., *Heat-conserving three-temperature model
-  for ultrafast demagnetization in nickel*, Phys. Rev. B **106**, 174407 (2022).
+- [Beaurepaire1996]_ - Ultrafast spin dynamics in ferromagnetic nickel
+- [Koopmans2010]_ - Diversity of ultrafast laser-induced demagnetization
+- [Mentink2012]_ - Ultrafast spin dynamics in multisublattice magnets
+- [Rethfeld2002]_ - Ultrafast dynamics of nonequilibrium electrons in metals
+- [Atxitia2010]_ - Multiscale modeling of ultrafast element-specific magnetization dynamics
+- [Pankratova2022]_ - Heat-conserving three-temperature model for ultrafast demagnetization

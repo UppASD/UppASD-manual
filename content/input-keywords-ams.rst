@@ -874,11 +874,15 @@ Planned extensions:
 * **Time-resolved spectroscopy**: Pump-probe magnon dynamics after laser excitation
 
 References
-==========
+----------
 
-.. [TothLake2015] Tóth, S., and Lake, B. "Linear spin wave theory for single-Q incommensurate magnetic structures." *J. Phys.: Condens. Matter* **27**, 166002 (2015).
-.. [Colpa1978] Colpa, J. H. P. "Diagonalization of the quadratic boson Hamiltonian." *Physica A* **93**, 327 (1978).
-.. note:: The full bibliographic entries for Holstein1940 and Halilov1998 have been moved to the centralized references page.
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [TothLake2015]_ - Linear spin wave theory for single-Q incommensurate magnetic structures
+- [Colpa1978]_ - Diagonalization of the quadratic boson Hamiltonian
+- [Holstein1940]_ - Holstein-Primakoff transformation and ferromagnetic field dependence
+- [Halilov1998]_ - Adiabatic spin dynamics from spin-density-functional theory
+
 
 See Also
 ========

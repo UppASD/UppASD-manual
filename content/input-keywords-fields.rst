@@ -7,8 +7,7 @@ Parameters for applying time and space-dependent magnetic fields
 The UppASD code supports a comprehensive suite of **time and space-dependent magnetic field
 profiles** that can be applied to the system during simulations. These include pulsed
 fields with various temporal shapes, monochromatic and broadened microwave fields with
-spatial and temporal modulation, moving field profiles, and demagnetization effects
-[Pereiro2014]_ [Chico2015]_.
+spatial and temporal modulation, moving field profiles, and demagnetization effects.
 
 --------------------------------------------------
 Field overview and use cases
@@ -512,16 +511,13 @@ Technical considerations
 - Volume: Ų for demagnetization
 
 --------------------------------------------------
-References and further reading
---------------------------------------------------
 
-For microwave field implementations and FMR:
+References
+----------
 
-.. [Pereiro2014] M. Pereiro, D. Yudin, J. Chico, C. Etz, O. Eriksson, and A. Bergman, "Topological properties of slowly relaxing excitations in thin films of magnetic topological insulators," *Nature Communications* **5**, 4144 (2014).
+See the centralized :doc:`references` for full bibliographic entries:
 
-For ultrafast magnetization dynamics:
-
-.. [Chico2015] J. Chico, L. E. F. Foa Torres, R. H. Barco, O. Eriksson, and A. Bergman, "Unraveling quantum critical behavior in a two-dimensional Heisenberg antiferromagnet," *Phys. Rev. B* **90**, 064425 (2014).
+- [Pereiro2014]_ - Topological properties in magnetic topological insulators
 
 See also
 --------

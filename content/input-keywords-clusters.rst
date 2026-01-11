@@ -8,8 +8,7 @@ The UppASD code provides functionality to **embed magnetic impurity clusters**
 within a host system, allowing users to study local properties of defects, interfaces,
 and heterostructures without breaking full system symmetries. The cluster method enables
 different magnetic moments, exchange interactions, Dzyaloshinskii-Moriya (DM) interactions,
-anisotropies, and gyromagnetic ratios inside the cluster compared to the host
-[Chico2014]_.
+anisotropies, and gyromagnetic ratios inside the cluster compared to the host.
 
 --------------------------------------------------
 Cluster embedding: concept and use cases
@@ -391,7 +390,6 @@ References and further reading
 
 For the cluster embedding methodology and applications:
 
-.. [Chico2014] J. Chico, L. E. F. Foa Torres, R. H. Barco, O. Eriksson, and A. Bergman, "Unraveling novel quantum critical behavior in a two-dimensional Heisenberg antiferromagnet," *Phys. Rev. B* **90**, 064425 (2014).
 
 See also
 --------

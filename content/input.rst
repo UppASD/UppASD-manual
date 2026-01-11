@@ -3,14 +3,16 @@ Input files
 
 This chapter covers the essential input file formats and core keywords you need to run a simulation. For optional physics modules and protocols, see the Simulation modules chapter. For algorithmic details and advanced methods, see Theory and Methods.
 
-**File Formats and Setup**
+File Formats and Setup
+----------------------
 
 Core file formats and structure for defining your system:
 
 - :doc:`input-core-files`
 - :doc:`input-random-alloys`
 
-**Basic Simulation Parameters**
+Basic Simulation Parameters
+---------------------------
 
 Essential parameters for setting up a simulation (system, Hamiltonian, simulation control):
 
@@ -18,7 +20,8 @@ Essential parameters for setting up a simulation (system, Hamiltonian, simulatio
 - :doc:`input-keywords-hamiltonian`
 - :doc:`input-keywords-simulation`
 
-**Measurement and Observables**
+Measurement and Observables
+---------------------------
 
 Define what to measure during simulations:
 

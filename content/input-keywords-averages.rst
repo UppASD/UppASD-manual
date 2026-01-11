@@ -348,6 +348,17 @@ Example inpsd.dat snippet
    # Enable type-projected averages (ferrimagnetic system)
    do_proj_avrg  Y
 
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Binder1981]_ - Fourth order Binder cumulants for phase transition identification
+- [Landau2014]_ - Monte Carlo simulation methods and statistical mechanics
+- [Evans1985]_ - Nose-Hoover thermostat implementation
+
+
    # Enable cumulants for phase transition study
    do_cumu       Y
    cumu_step     100        # Sample every 100 steps for statistics

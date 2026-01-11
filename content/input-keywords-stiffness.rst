@@ -687,31 +687,12 @@ Stiffness calculations are typically used alongside:
 - **Topology analysis** (``do_tottraj='Y'``): Relate skyrmion size to D/D0 ratio
 
 References
-----------
+==========
 
-The stiffness calculation implementation in UppASD is based on:
+See the centralized :doc:`references` for full bibliographic entries:
 
-1. **Pajda, M., Kudrnovský, J., Turek, I., Drchal, V., & Bruno, P.**
-   "Ab initio calculations of exchange interactions, spin-wave stiffness constants, and Curie temperatures of Fe, Co, and Ni"
-   *Physical Review B* **64**, 174402 (2001)
-   - Original formalism for spin-wave stiffness from atomistic exchange
-
-2. **Udvardi, L., Szunyogh, L., Palotás, K., & Weinberger, P.**
-   "First-principles relativistic study of spin waves in thin magnetic films"
-   *Physical Review B* **68**, 104436 (2003)
-   - Extension to thin films and surfaces
-
-3. **Eriksson, O., Bergman, A., Bergqvist, L., & Hellsvik, J.**
-   "Atomistic Spin Dynamics: Foundations and Applications"
-   *Oxford University Press* (2017)
-   - Comprehensive treatment of atomistic-to-micromagnetic mapping
-
-4. **Hellsvik, J., Skubic, B., Nordström, L., Sanyal, B., Eriksson, O., Nordblad, P., & Warnicke, P.**
-   "Dynamics of diluted magnetic semiconductors from atomistic spin-dynamics simulations: Mn-doped GaAs as a case study"
-   *Physical Review B* **78**, 144419 (2008)
-   - Random alloy stiffness calculations
-
-5. **Beg, M., Pepper, R. A., & Fangohr, H.**
-   "User interfaces for computational science: A domain specific language for OOMMF embedded in Python"
-   *AIP Advances* **7**, 056025 (2017)
-   - Micromagnetic exchange constant usage and conventions
+- [Pajda2001]_ - Ab initio calculations of exchange interactions and spin-wave stiffness
+- [Udvardi2003]_ - First-principles relativistic study of spin waves in thin magnetic films
+- [Eriksson2017]_ - Atomistic spin dynamics and atomistic-to-micromagnetic mapping
+- [Hellsvik2008]_ - Random alloy stiffness calculations in diluted magnetic semiconductors
+- [Beg2017]_ - Micromagnetic exchange constant usage and conventions

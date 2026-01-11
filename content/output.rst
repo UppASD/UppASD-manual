@@ -137,3 +137,11 @@ if the number ``ntraj`` is also defined to be greater than 1, the code prints ou
 **swdos.simid.out** is written of the ``do_sc`` flag is switched on. Prints out the :math:`S(q,\omega)` 'density of states' as a function of energy.
 
 **totenergy.simid.out** is written if the ``plotenergy`` flag is switched on. Prints out the total energy of the system as a function of time step.
+
+
+**References**
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Binder2009]_ - Guide to Monte Carlo simulation in statistical physics
+

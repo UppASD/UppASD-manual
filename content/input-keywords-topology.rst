@@ -266,14 +266,10 @@ Related keywords
   matplotlib for real-space topological maps
 
 References
-----------
+==========
 
-Key references for topological charge calculations:
+See the centralized :doc:`references` for full bibliographic entries:
 
-- Berg, B. and Lüscher, M., *Definition and statistical distributions of a
-  topological number in the lattice O(3) sigma-model*, Nucl. Phys. B **190**, 412 (1981).
-- Nagaosa, N. and Tokura, Y., *Topological properties and dynamics of magnetic
-  skyrmions*, Nat. Nanotech. **8**, 899 (2013).
-- Rohart, S. and Thiaville, A., *Skyrmion confinement in ultrathin film
-  nanostructures in the presence of Dzyaloshinskii-Moriya interaction*, Phys.
-  Rev. B **88**, 184422 (2013).
+- [Berg1981]_ - Definition and statistical distributions of topological number in lattice O(3) sigma-model
+- [Nagaosa2013]_ - Topological properties and dynamics of magnetic skyrmions
+- [Rohart2013]_ - Skyrmion confinement in ultrathin films with DMI

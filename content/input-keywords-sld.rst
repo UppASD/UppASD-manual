@@ -459,15 +459,10 @@ Related keywords and cross-references
 - ``Mensemble``: Number of replicas; important for averaging out thermal noise in lattice
 
 References
-----------
+==========
 
-Key references for spin-lattice dynamics:
+See the centralized :doc:`references` for full bibliographic entries:
 
-- Hellsvik, J., et al., *Multiphysics modeling of dynamics and quasistatics of ferromagnetic
-  nanostructures*, Phys. Rev. B **87**, 174420 (2013).
-- Bergman, A., et al., *Ultrafast optical manipulation of magnetic disorder*, Nature Phys.
-  **13**, 294–298 (2017).
-- Eriksson, O., et al., *Atomistic spin dynamics of materials*, Handbook Mater. Model.
-  (Springer, 2018).
-- Ma, Q., et al., *Electron-phonon coupling-induced anomalous lattice dynamics in Weyl semimetals*,
-  Nature Mater. **18**, 476–481 (2019).
+- [Hellsvik2019]_ - General method for atomistic spin-lattice dynamics with first-principles accuracy
+- [Eriksson2017]_ - Atomistic spin dynamics foundations and applications
+- [Ma2012]_ - Spin-lattice-electron dynamics simulations of magnetic materials

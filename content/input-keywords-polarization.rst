@@ -298,14 +298,10 @@ Related keywords and cross-references
   switching
 
 References
-----------
+==========
 
-Key references for spin-driven ferroelectricity:
+See the centralized :doc:`references` for full bibliographic entries:
 
-- Katsura, H., Nagaosa, N., and Balatsky, A. V., *Spin current and
-  magnetoelectric effect in noncollinear magnets*, Phys. Rev. Lett. **95**,
-  057205 (2005).
-- Mostovoy, M., *Ferroelectricity in spiral magnets*, Phys. Rev. Lett. **96**,
-  067601 (2006).
-- Tokura, Y. and Seki, S., *Multiferroics with spiral spin orders*, Adv.
-  Mater. **22**, 1554 (2010).
+- [Katsura2005]_ - Spin current and magnetoelectric effect in noncollinear magnets
+- [Mostovoy2006]_ - Ferroelectricity in spiral magnets
+- [Tokura2010]_ - Multiferroics with spiral spin orders

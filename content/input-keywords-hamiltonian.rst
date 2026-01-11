@@ -85,7 +85,15 @@ This switch allows the exchange data to be read in according to the tensorial re
 
   \mathcal{H}_{\mathrm{Tens}} = \sum_{i,j} \mathbf{e}_i \mathcal{J}_{ij} \mathbf{e}_j.
 
-Here, :math:`\mathcal{J}_{ij}=-J_{ij}\mathcal{I} + \mathcal{J}^S_{ij} +  \mathcal{J}^A_{ij}` is a :math:`3 \times 3` tensor (in which :math:`\mathcal{I}` is the unit matrix), the trace of which is equal to the exchange constant as defined in [Udvardi2003]_. 
+Here, :math:`\mathcal{J}_{ij}=-J_{ij}\mathcal{I} + \mathcal{J}^S_{ij} +  \mathcal{J}^A_{ij}` is a :math:`3 \times 3` tensor (in which :math:`\mathcal{I}` is the unit matrix), the trace of which is equal to the exchange constant as defined in [Udvardi2003]_.
+
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Udvardi2003]_ - First-principles relativistic study of spin waves in thin magnetic films 
 
 .. %
 .. %\begin{equation}

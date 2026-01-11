@@ -398,3 +398,15 @@ See also
 - :doc:`input-keywords-system` (system setup)
 - :doc:`input-keywords-hamiltonian` (magnetic interactions)
 
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Bessarab2012]_ - Method for finding magnetic transition mechanisms and activation energies
+- [Bessarab2015]_ - Harmonic transition-state theory for thermal spin transitions
+- [Henkelman2000]_ - Climbing image nudged elastic band method
+- [Eyring1935]_ - Activated complex theory for chemical reactions
+
+

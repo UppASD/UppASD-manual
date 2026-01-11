@@ -816,26 +816,12 @@ Examples in Input Files
 
 
 References
-----------
+==========
 
-**Solver Theory:**
+See the centralized :doc:`references` for full bibliographic entries:
 
-1. J. H. Mentink et al., *J. Phys.: Condens. Matter* **22**, 176001 (2010) — Midpoint solver
-2. Ph. Depondt & F. G. Mertens, *J. Phys.: Condens. Matter* **21**, 336005 (2009) — Depondt solver
-3. R. I. McLachlan et al., *Phys. Rev. E* **89**, 061301(R) (2014) — Structure-preserving schemes
-4. J. Hellsvik, "Semi-implicit spherical midpoint solver" — Spherical constraint variant
-
-**Stochastic Integration:**
-
-5. P. E. Kloeden & E. Platen, *Numerical Solution of Stochastic Differential Equations* (Springer, 1992)
-
-**Magnetic Dynamics:**
-
-6. A. G. Gurevich & G. A. Melkov, *Magnetization Oscillations and Waves* (CRC Press, 1996)
-7. K. Fukamichi et al., "Magnetic relaxation in ferromagnetic materials" (various, see UppASD papers)
-
-**UppASD Documentation:**
-
-8. UppASD GitHub: https://github.com/UppASD/UppASD
-9. UppASD Papers: See publications list on project website
+- [Mentink2010]_ - Midpoint solver and semi-implicit integration
+- [Depondt2009]_ - Depondt-Mertens solver for spin dynamics
+- [McLachlan2014]_ - Structure-preserving Lie-Poisson integrators
+- [Kloeden1992]_ - Numerical solution of stochastic differential equations
 

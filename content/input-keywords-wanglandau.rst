@@ -317,3 +317,12 @@ See also
 
 - :doc:`input-keywords-montecarlo` (general Monte Carlo keywords)
 - :doc:`input-keywords-system` (system setup and lattice parameters)
+
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [WangLandau2001]_ - Efficient multiple-range random walk algorithm to calculate density of states
+

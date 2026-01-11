@@ -43,3 +43,13 @@ SKKR Input
 ----------
 
 The ``xctensortest`` directory contains the same data as in the bccFe directory, but set up in the tensorial format that arises from the Vienna-Budapest SKKR code [Udvardi2003]_ .
+
+
+**References**
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Bergman2010]_ - Magnon softening in ferromagnetic monolayers
+- [Hellsvik2008]_ - Dynamics of diluted magnetic semiconductors from atomistic spin-dynamics simulations
+- [Udvardi2003]_ - First-principles relativistic study of spin waves in thin magnetic films
+

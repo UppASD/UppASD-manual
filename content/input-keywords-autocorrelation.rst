@@ -62,8 +62,7 @@ Spatial binning and macrocell averaging
 -------------------------------------------------
 
 For spatially-resolved analysis, autocorrelation can be computed separately within
-each **macrocell** (computational domain subdivision). This enables characterization
-of spatial inhomogeneities in relaxation dynamics [Holian1995]_.
+each **macrocell** (computational domain subdivision). 
 
 When ``do_macro_cells Y`` is set in the input, the code:
 
@@ -331,3 +330,13 @@ Related keywords and cross-references
 - ``do_avrg``, ``avrg_step``: Companion average magnetization measurements (see :doc:`input-keywords-averages`)
 
 Output files use the simulation identifier ``simid`` (see :doc:`input-keywords-system`).
+
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Reif1965]_ - Statistical and thermal physics fundamentals
+- [Evans2000]_ - Statistical mechanics of nonequilibrium systems
+

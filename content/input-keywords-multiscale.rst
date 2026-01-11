@@ -408,13 +408,9 @@ Related keywords and cross-references
 - ``do_prnmultiscale``: Print multiscale diagnostic output files
 
 References
-----------
+==========
 
-Key references for multiscale atomistic-continuum methods:
+See the centralized :doc:`references` for full bibliographic entries:
 
-- Mendez, E., et al., *Multiscale Atomistic-Continuum Simulation of Magnetic
-  Nanostructures*, (MuASD library documentation).
-- Evans, R. F. L., et al., *Atomistic spin model simulations of magnetic
-  nanomaterials*, J. Phys.: Condens. Matter **26**, 103202 (2014).
-- Bergman, A., et al., *Ultrafast optical manipulation of magnetic disorder*,
-  Nature Phys. **13**, 294–298 (2017).
+- [Evans2014]_ - Atomistic spin model simulations of magnetic nanomaterials
+- [Mendez2020]_ - Multiscale approach for magnetization dynamics: unraveling exotic magnetic states of matter

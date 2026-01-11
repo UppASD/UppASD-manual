@@ -99,3 +99,17 @@ During the initialization phase, all the parameters necessary to describe the sy
 The initial phase, which is optional, is typically performed in order to bring the system into thermal equilibrium, so that the data recorded in the measurement phase is for a thermalized system. Obviously, if one is interested in out-of-equilibrium dynamics, then there is no need to perform this phase. The initial phase can either be performed using Spin Dynamics (SD), or the Metropolis or Heatbath Monte Carlo (MC) algorithms [Binder2009]_. The latter is convenient for ground state searches, provided the system is not too complex, for instance a system with a spin glass phase.
 
 During the measurement phase, the data sampling is performed. Simulations can be run in either MC or SD mode. In MC mode only magnetization averages and static correlation functions may be measured. In SD mode, a much richer set of observables are measured, including the dynamical structure factor.
+
+
+**References**
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Skubic2008]_ - Method for atomistic spin dynamics simulations
+- [Antropov1996]_ - Spin dynamics in magnets equation of motion and finite temperature effects
+- [Garcia-Palacios1998]_ - Anisotropy effects on nonlinear magnetic susceptibilities
+- [Watson1969]_ - Spin motions in a classical ferromagnet
+- [Eriksson2017]_ - Atomistic spin dynamics foundations and applications
+- [Lichtenstein1987]_ - Local spin density functional approach to exchange interactions
+- [Binder2009]_ - Guide to Monte Carlo simulation in statistical physics
+

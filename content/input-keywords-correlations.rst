@@ -324,3 +324,13 @@ See also
 - :doc:`input-keywords-autocorrelation` (local autocorrelation sampling)
 - :doc:`input-keywords-montecarlo` (Monte Carlo sampling methods)
 - :doc:`input-keywords-system` (system setup and q-points)
+
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Bergman2010]_ - Magnon softening in ferromagnetic monolayers
+- [Squires1978]_ - Introduction to thermal neutron scattering theory
+

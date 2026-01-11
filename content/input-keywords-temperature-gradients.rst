@@ -688,8 +688,4 @@ Troubleshooting
 References
 ==========
 
-Temperature gradient calculations in UppASD are based on finite difference and meshless methods for solving PDEs:
-
-1. Chico, J., et al. (2018) "Temperature gradients in magnetic systems"
-2. Moving Least Squares Method: Lancaster, P. & Salkauskas, K. (1981)
-3. Laplace equation solutions: Griffiths, D. J. "Introduction to Electrodynamics" (analogous problems)
+See the centralized :doc:`references` for temperature gradient implementations. The calculation is based on finite difference and meshless methods for solving PDEs.

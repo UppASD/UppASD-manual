@@ -529,3 +529,23 @@ Related keywords and cross-references
 - Hamiltonian interactions: exchange, anisotropy, dipolar (see :doc:`input-keywords-hamiltonian`)
 
 Output files use the simulation identifier ``simid`` (see :doc:`input-keywords-system`).
+
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Landau2014]_ - Guide to Monte Carlo simulation in statistical physics
+- [Binney1992]_ - Theory of critical phenomena and renormalization group
+- [Metropolis1953]_ - Equation of state calculations by fast computing machines
+- [Glauert1974]_ - Nonuniversal critical dynamics in Monte Carlo simulations
+- [Glauber1963]_ - Time-dependent statistics of the Ising model
+- [Hinzke2000]_ - Stochastic dynamics of magnetic nanoparticles
+- [Evertz1993]_ - Cluster algorithm for vertex models
+- [Ruban2004]_ - Surface segregation energies in transition-metal alloys
+- [Ebert2010]_ - Calculating condensed matter properties using KKR-Green's function method
+- [Kirkpatrick1983]_ - Optimization by simulated annealing
+- [Eriksson2017]_ - Atomistic spin dynamics foundations and applications
+- [Binder1981]_ - Finite size scaling and simulation of first order phase transitions
+

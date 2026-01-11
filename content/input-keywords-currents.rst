@@ -252,3 +252,19 @@ Notes on usage
   intended for thin-film bilayer systems.
 - For thick samples, care should be taken when using interfacial torque models.
 
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [ZhangLi2004]_ - Zhang-Li spin-transfer torque formulation
+- [Slonczewski1996]_ - Current-driven excitation of magnetic multilayers
+- [RalphStiles2008]_ - Comprehensive review of spin transfer torques
+- [Meo2023]_ - Spin-transfer and spin-orbit torques in LLG equation
+- [Manchon2019]_ - Current-induced spin-orbit torques review
+- [Haney2013]_ - Current-induced torques and interfacial spin-orbit coupling
+- [Liu2012]_ - Spin-torque switching with giant spin Hall effect
+- [GambardellaMiron2011]_ - Current-induced spin-orbit torques
+
+

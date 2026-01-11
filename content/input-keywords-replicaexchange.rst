@@ -314,3 +314,16 @@ See also
 - :doc:`input-keywords-montecarlo` (general Monte Carlo keywords)
 - :doc:`input-keywords-wanglandau` (Wang-Landau sampling)
 - :doc:`input-keywords-system` (system setup and temperature control)
+
+
+References
+----------
+
+See the centralized :doc:`references` for full bibliographic entries:
+
+- [Swendsen1986]_ - Replica Monte Carlo simulation of spin-glasses
+- [Geyer1995]_ - Markov chain Monte Carlo maximum likelihood
+- [Hukushima1996]_ - Exchange Monte Carlo method and application to spin glass simulations
+- [Earl2005]_ - Parallel tempering theory applications and perspectives
+- [Katzgraber2006]_ - Feedback-optimized parallel tempering Monte Carlo
+
