@@ -83,9 +83,23 @@ SDEalgh=11
       **Stability:** Good
       **Cost:** Medium
 
+SDEalgh=21
+      **Name:** SLD Basis Midpoint (FPI)
+      **Characteristics:** Spin-lattice dynamics, basis coordinates
+      **Accuracy:** 2nd order
+      **Stability:** Excellent
+      **Cost:** Very High
+
+SDEalgh=22
+      **Name:** SLD Spherical Midpoint (FPI)
+      **Characteristics:** Spin-lattice dynamics, spherical constraint
+      **Accuracy:** 2nd order
+      **Stability:** Excellent
+      **Cost:** Very High
+
 **Recommendation:** Start with **SDEalgh=1** (Midpoint) or **SDEalgh=5** (Depondt) for 
-typical simulations and **SDEalgh=23** if conservative simulations are crucial. Use **SDEalgh=11** (LLGI) only when inertial 
-effects are important (``relaxtime > 0``).
+typical simulations and **SDEalgh=22** for spin-lattice dynamics. Use **SDEalgh=11** (LLGI) only when inertial 
+effects are important (``relaxtime > 0``). Use **SDEalgh=21** only if SDEalgh=22 convergence is problematic.
 
 Solver Details
 --------------
@@ -261,63 +275,71 @@ where :math:`\theta = |\mathbf{\omega}| \Delta t` and :math:`\hat{\mathbf{\omega
    delta_t       5.0e-15     # Can use larger timesteps safely
 
 
-SDEalgh=6: Semi-Implicit Midpoint with Fixed-Point Iteration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SDEalgh=6: Semi-Implicit Basis Midpoint with Fixed-Point Iteration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Type:** Semi-implicit, fixed-point iteration variant
+**Reference:** J. Hellsvik, "Semi-implicit spherical midpoint solver" (UppASD progress report)
+
+**Type:** Semi-implicit, basis coordinate variant, fixed-point iteration
 
 **Algorithm:**
 
-Iteratively refines solution of implicit equation:
+Uses **fixed-point iteration** in **Cartesian basis coordinates**:
 
 .. math::
 
    \mathbf{m}^{(k+1)} = f(\mathbf{m}^{(k)})
 
-where iteration continues until convergence: :math:`|\mathbf{m}^{(k+1)} - \mathbf{m}^{(k)}| < \epsilon`
+Combines the semi-implicit midpoint scheme (Mentink) with fixed-point iteration refinement.
+Iteration continues until convergence: :math:`|\mathbf{m}^{(k+1)} - \mathbf{m}^{(k)}| < \epsilon`
 
 **Advantages:**
-- Better accuracy at large timesteps
+- Better accuracy than non-iterative Midpoint at large timesteps
 - Completely implicit (unconditionally stable)
 - Higher order accuracy in both deterministic and stochastic parts
+- Direct Cartesian formulation
 
 **Disadvantages:**
-- **Expensive:** Typically 3-5 iterations per timestep
+- **Very expensive:** Typically 3-10 iterations per timestep (basis coordinates more difficult to converge)
 - Requires convergence criterion
-- Slower than non-iterative solvers
+- Slower than SDEalgh=1 for most applications
+- No explicit moment magnitude control
 
 **Use cases:**
-- Very large timesteps required
-- Time-critical simulations where fewer steps offset higher cost
+- Very large timesteps required (rarely justified)
 - Validating energy stability
+- Comparing against other solvers
 
-**Note:** Usually slower overall than SDEalgh=1 for standard applications.
+**Note:** Rarely recommended. SDEalgh=1 is usually faster overall, and SDEalgh=7 provides better accuracy if needed.
 
 
-SDEalgh=7: Spherical Midpoint with Fixed-Point Iteration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SDEalgh=7: Semi-Implicit Spherical Midpoint with Fixed-Point Iteration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **References:**
 
 - J. Hellsvik, "Semi-implicit spherical midpoint solver" (UppASD progress report)
 - R. I. McLachlan et al., *Phys. Rev. E* **89**, 061301(R) (2014)
+- J. H. Mentink et al., J. Phys.: Condens. Matter, 22, 176001 (2010)
 
 **Type:** Semi-implicit, spherical constraint, fixed-point iteration
 
 **Algorithm:**
 
-Enforces **spherical constraint** :math:`|\mathbf{m}| = 1` exactly at each iteration step:
+Enforces **spherical constraint** :math:`|\mathbf{m}| = 1` exactly at each iteration step through normalization:
 
 .. math::
 
-   \mathbf{m}^{(k+1)} = \frac{f(\mathbf{m}^{(k)})}{|f(\mathbf{m}^{(k)})|}
+   \mathbf{m}^{(k+1)} = \frac{\mathbf{m}_{\text{unconstrained}}^{(k)}}{|\mathbf{m}_{\text{unconstrained}}^{(k)}|}
 
-Combines McLachlan's structure-preserving scheme with Mentink's midpoint variant.
+Combines McLachlan's structure-preserving scheme with Mentink's semi-implicit midpoint variant,
+integrating in spherical coordinates. Iteration continues until convergence: :math:`|\mathbf{m}^{(k+1)} - \mathbf{m}^{(k)}| < \epsilon`
 
 **Advantages:**
 - **Perfect moment normalization** (no numerical drift in :math:`|m|`)
-- Fixed-point iteration for accuracy
-- Highest theoretical accuracy
+- Fixed-point iteration provides excellent accuracy
+- Highest theoretical accuracy among available solvers
+- Spherical formulation converges faster than basis (SDEalgh=6)
 
 **Disadvantages:**
 - **Very expensive:** Requires 5-10 iterations per timestep
@@ -328,6 +350,7 @@ Combines McLachlan's structure-preserving scheme with Mentink's midpoint variant
 - Extremely long simulations (days or weeks) where :math:`|m|` drift matters
 - High-precision phase transition studies
 - When moment normalization errors accumulate significantly
+- Validating results from faster solvers
 
 **Caution:** Use only when necessary. Standard solvers (1, 5) usually provide sufficient accuracy
 without the computational penalty.
@@ -339,6 +362,110 @@ without the computational penalty.
    SDEalgh       7           # Spherical midpoint (FPI)
    delta_t       1.0e-15     # Standard timestep
    # Simulation will be ~5x slower than SDEalgh=1
+
+
+SDEalgh=21: Spin-Lattice Dynamics - Implicit Midpoint (Basis)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Type:** Semi-implicit midpoint solver for coupled spin-lattice dynamics with fixed-point iteration (basis variant)
+
+**Physics:**
+
+Couples the LLG equation for spins with **lattice dynamics** (ionic motion):
+
+.. math::
+
+   \frac{d\mathbf{m}}{dt} = -\gamma(\mathbf{m} \times \mathbf{B}_{\text{eff}}) - \lambda (\mathbf{m} \times \frac{d\mathbf{m}}{dt}) + \text{thermal}
+
+   M_{ion} \frac{d^2\mathbf{u}}{dt^2} = \mathbf{F}(\text{spins}, \text{lattice})
+
+where :math:`\mathbf{u}` is ionic displacement and :math:`\mathbf{F}` includes spin-lattice interactions.
+
+**Algorithm:**
+
+Fixed-point iteration variant of implicit midpoint solver applied to **both spin and lattice coordinates**:
+
+.. math::
+
+   \mathbf{m}^{(k+1)} = f(\mathbf{m}^{(k)}) \quad \text{(spin part)}
+   
+   \mathbf{u}^{(k+1)} = g(\mathbf{u}^{(k)}) \quad \text{(lattice part)}
+   
+   \mathbf{v}^{(k+1)} = h(\mathbf{v}^{(k)}) \quad \text{(velocity part)}
+
+Iteration continues until convergence in all three components: :math:`|\Delta\mathbf{m}| < \epsilon`, :math:`|\Delta\mathbf{u}| < \epsilon`, :math:`|\Delta\mathbf{v}| < \epsilon`
+
+**Characteristics:**
+
+- Uses **Cartesian basis** representation for spin coordinates
+- Converges more slowly than spherical variant (SDEalgh=22)
+- Completely implicit and unconditionally stable
+- Higher computational cost due to basis coordinates
+
+**Use cases:**
+
+- Spin-lattice dynamics simulations (SLD mode in UppASD)
+- Studying magnon-phonon coupling
+- Spin-phonon interactions with large lattice deformations
+
+**Note:** For SLD mode only. Controlled via ``mode = 'R'`` with ``SDEalgh = 21`` in input files.
+
+
+SDEalgh=22: Spin-Lattice Dynamics - Implicit Midpoint (Spherical)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Type:** Semi-implicit midpoint solver for coupled spin-lattice dynamics with fixed-point iteration (spherical variant)
+
+**Physics:**
+
+Same as SDEalgh=21 but enforces **exact spherical constraint** on spins:
+
+.. math::
+
+   |\mathbf{m}| = 1 \text{ at each iteration step}
+
+**Algorithm:**
+
+Fixed-point iteration with **spherical normalization** for spins:
+
+.. math::
+
+   \mathbf{m}^{(k+1)} = \frac{\mathbf{m}_{\text{unconstrained}}^{(k)}}{|\mathbf{m}_{\text{unconstrained}}^{(k)}|} \quad \text{(spin normalization)}
+   
+   \mathbf{u}^{(k+1)} = g(\mathbf{u}^{(k)}) \quad \text{(lattice part)}
+   
+   \mathbf{v}^{(k+1)} = h(\mathbf{v}^{(k)}) \quad \text{(velocity part)}
+
+**Characteristics:**
+
+- Uses **spherical coordinates** for spin equations of motion
+- **Faster convergence** than basis variant (SDEalgh=21)
+- Perfect moment magnitude conservation (no drift)
+- **Preferred variant** for SLD calculations
+- Converges in fewer iterations than SDEalgh=21
+
+**Advantages:**
+
+- Automatic moment normalization
+- Better numerical stability
+- Faster fixed-point convergence
+- More efficient than basis variant
+
+**Use cases:**
+
+- **Primary choice** for spin-lattice dynamics (SLD mode)
+- Long-duration simulations requiring moment conservation
+- Magnon-phonon coupling with perfect spin normalization
+
+**Note:** For SLD mode only. Controlled via ``mode = 'R'`` with ``SDEalgh = 22`` in input files.
+
+**Example input:**
+
+.. code-block:: none
+
+   SDEalgh       22          # Spherical SLD solver (RECOMMENDED)
+   delta_t       1.0e-15
+   # Spin-lattice coupled dynamics with spherical midpoint integration
 
 
 SDEalgh=11: LLGI Inertial Solver
@@ -437,38 +564,6 @@ Timestep Selection Guide
 .. math::
 
    \tau_{\text{prec}} = \frac{1}{\gamma B} \sim 10^{-12} \text{ s for } B \sim 1 \text{ T}
-
-**Recommended timesteps by application:**
-
-Equilibrium (RT, T < T_c)
-      **Recommended :math:`\Delta t`:** :math:`10^{-15} - 10^{-14}` s
-      **Typical Solver:** SDEalgh=1, 5
-
-High temperature
-      **Recommended :math:`\Delta t`:** :math:`10^{-16} - 10^{-15}` s
-      **Typical Solver:** SDEalgh=1 (use smaller :math:`\Delta t` if unstable)
-
-Skyrmion dynamics
-      **Recommended :math:`\Delta t`:** :math:`5 \times 10^{-16} - 5 \times 10^{-15}` s
-      **Typical Solver:** SDEalgh=5
-
-STT/SHE effects
-      **Recommended :math:`\Delta t`:** :math:`10^{-15} - 10^{-14}` s
-      **Typical Solver:** SDEalgh=1, 5
-
-Ultrafast (LLGI)
-      **Recommended :math:`\Delta t`:** :math:`10^{-16} - 10^{-17}` s (< relaxtime/10)
-      **Typical Solver:** SDEalgh=11
-
-**Stability criterion** (explicit methods like Heun):
-
-.. math::
-
-   \Delta t < \frac{1}{\gamma B_{\max}}
-
-where :math:`B_{\max}` is the maximum effective field magnitude in system.
-
-**Semi-implicit methods** (SDEalgh=1, 5, 6) are **unconditionally stable** and allow larger timesteps.
 
 
 Numerical Precision Checks
@@ -639,21 +734,29 @@ SDEalgh=5 (Depondt)
       **Comment:** Best for textures
 
 SDEalgh=6 (Midpoint FPI)
-      **Relative Cost:** 3.5x
+      **Relative Cost:** 4.0x
       **Memory:** 1.2x
-      **Comment:** Rarely worth it
+      **Comment:** Basis coordinate variant, rarely justified
 
 SDEalgh=7 (Spherical FPI)
-      **Relative Cost:** 5.0x
+      **Relative Cost:** 5.5x
       **Memory:** 2.0x
-      **Comment:** Use only for extreme precision
+      **Comment:** Spherical variant, better convergence than SDEalgh=6
 
 SDEalgh=11 (LLGI)
       **Relative Cost:** 1.4x
       **Memory:** 1.2x
       **Comment:** Only with relaxtime > 0
 
-Message: SDEalgh=1 and SDEalgh=5 offer best cost-benefit ratio for most applications.
+SDEalgh=21 (SLD Basis FPI)
+      **Relative Cost:** 8.0x
+      **Memory:** 2.5x
+      **Comment:** Spin-lattice dynamics, basis variant
+
+SDEalgh=22 (SLD Spherical FPI)
+      **Relative Cost:** 7.0x
+      **Memory:** 2.5x
+      **Comment:** Spin-lattice dynamics, spherical variant (RECOMMENDED for SLD)
 
 
 Accuracy vs. Stability Trade-off
@@ -694,6 +797,11 @@ Decision Tree for Solver Selection
 .. code-block:: text
 
    START: Choose your solver
+   │
+   ├─ Running spin-lattice dynamics (SLD mode)?
+   │  ├─ YES → Use SDEalgh=22 (Spherical, RECOMMENDED)
+   │  │  (Use SDEalgh=21 only if convergence issues)
+   │  └─ NO → Continue
    │
    ├─ Need inertial magnetic acceleration?
    │  ├─ YES → Use SDEalgh=11 (LLGI)
@@ -748,22 +856,34 @@ SDEalgh=5
       **Use It?:** YES (for skyrmions)
 
 SDEalgh=6
-      **Solver:** Midpoint FPI
-      **Best Application:** Very large timesteps
+      **Solver:** Midpoint FPI (Basis)
+      **Best Application:** Very large timesteps (rarely justified)
       **Timestep Advantage:** Very large
       **Use It?:** Rarely
 
 SDEalgh=7
-      **Solver:** Spherical FPI
-      **Best Application:** Extreme precision
+      **Solver:** Spherical Midpoint FPI
+      **Best Application:** Extreme precision, very long simulations
       **Timestep Advantage:** Very large
-      **Use It?:** No
+      **Use It?:** Only for extreme precision
 
 SDEalgh=11
       **Solver:** LLGI
       **Best Application:** Ultrafast dynamics
       **Timestep Advantage:** Very small
       **Use It?:** Only if relaxtime > 0
+
+SDEalgh=21
+      **Solver:** SLD Basis Midpoint FPI
+      **Best Application:** Spin-lattice dynamics (SLD mode)
+      **Timestep Advantage:** Very large
+      **Use It?:** Only if SDEalgh=22 fails
+
+SDEalgh=22
+      **Solver:** SLD Spherical Midpoint FPI
+      **Best Application:** Spin-lattice dynamics (SLD mode)
+      **Timestep Advantage:** Very large
+      **Use It?:** YES (for SLD mode)
 
 
 Examples in Input Files
@@ -813,6 +933,20 @@ Examples in Input Files
    delta_t       2.0e-15     # Can be larger with semi-implicit
    nstep         10000000
    Temp          300.0
+
+**Example 5: Spin-Lattice Dynamics (SLD Mode)**
+
+.. code-block:: none
+
+   # Coupled spin-lattice dynamics simulation
+   mode          R           # SLD mode (spin-lattice dynamics)
+   SDEalgh       22          # Spherical midpoint (RECOMMENDED for SLD)
+   damping       0.05
+   delta_t       1.0e-15
+   nstep         1000000
+   Temp          300.0
+   # Solves coupled spin and lattice equations of motion
+   # SDEalgh=21 is alternative if convergence issues arise
 
 
 References
