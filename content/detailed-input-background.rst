@@ -13,52 +13,53 @@ Stochastic Integration
 
 Numerical integration schemes (solvers) for solving the stochastic Landau-Lifshitz-Gilbert equation:
 
-- :doc:`input-keywords-solvers`
+- :doc:`methods/solvers`
 
 Monte Carlo simulations and minimization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Equilibrium sampling techniques for thermodynamic properties:
 
-- :doc:`input-keywords-montecarlo`
+- :doc:`methods/monte-carlo`
 
 Advanced Sampling and Equilibration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Specialized methods for exploring phase space and computing thermodynamic properties:
 
-- :doc:`input-keywords-montecarlo`
-- :doc:`input-keywords-wanglandau`
-- :doc:`input-keywords-replicaexchange`
+- :doc:`methods/monte-carlo`
+- :doc:`methods/wang-landau`
+- :doc:`methods/replica-exchange`
 
 Path-Finding and Optimization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Methods for finding transitions between magnetic configurations and optimizing spin textures:
 
-- :doc:`input-keywords-gneb`
-- :doc:`input-keywords-spinspiral`
+- :doc:`methods/gneb`
+- :doc:`methods/spin-spiral`
 
 Rare Event and Dynamics Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Techniques for studying infrequent events and non-equilibrium dynamics:
 
-- :doc:`input-keywords-kmc`
+- :doc:`methods/kmc`
 
-Spin-Lattice Coupling
-~~~~~~~~~~~~~~~~~~~~~
+Coupled Spin-Lattice Dynamics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Coupled spin and lattice evolution including magnetoelastic effects:
 
-- :doc:`input-keywords-sld`
+- :doc:`methods/spin-lattice`
 
-Multiscale Coupling
-~~~~~~~~~~~~~~~~~~~
+Multiscale Simulations
+~~~~~~~~~~~~~~~~~~~~~~
 
 Hybrid atomistic–continuum simulations for large-scale magnetic systems:
 
-- :doc:`input-keywords-multiscale`
+- :doc:`methods/multiscale`
+
 
 External Stimuli and Control
 ----------------------------
@@ -68,21 +69,21 @@ Apply external driving forces and thermal control modules.
 Spatially and temporally varying magnetic fields
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- :doc:`input-keywords-fields`
+- :doc:`stimuli/fields`
 
 Spin-polarized currents and torques
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- :doc:`input-keywords-currents`
+- :doc:`stimuli/currents`
 
 Temperature control and three-temperature model (3TM)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- :doc:`input-keywords-temperature-3tm`
+- :doc:`stimuli/temperature-3tm`
 
 Temperature gradients:
 ~~~~~~~~~~~~~~~~~~~~~~
 
-- :doc:`input-keywords-temperature-gradients`
+- :doc:`stimuli/temperature-gradients`
 
 Observable Measurements and Analysis
 ------------------------------------
@@ -94,49 +95,49 @@ Magnetization Observables
 
 Measurements of magnetization and thermodynamic moments:
 
-- :doc:`input-keywords-averages`
+- :doc:`observables/averages`
 
 Spin-wave Spectra (AMS/LSWT)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Adiabatic magnon spectra and linear spin-wave theory:
 
-- :doc:`input-keywords-ams`
+- :doc:`observables/ams`
 
 Correlations and Structure Factors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Space and time-displaced correlation functions:
 
-- :doc:`input-keywords-correlations`
-- :doc:`input-keywords-autocorrelation`
+- :doc:`observables/correlations`
+- :doc:`observables/autocorrelation`
 
 Polarization and Chirality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Ferroelectric polarization and local chirality:
 
-- :doc:`input-keywords-polarization`
+- :doc:`observables/polarization`
 
 Configuration Analysis and Topology
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Characterization and topological analysis of magnetic configurations:
 
-- :doc:`input-keywords-clusters`
-- :doc:`input-keywords-topology`
+- :doc:`methods/clusters`
+- :doc:`observables/topology`
 
 Micromagnetic Stiffness and Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Extraction of continuum parameters from atomistic simulations:
 
-- :doc:`input-keywords-stiffness`
+- :doc:`observables/stiffness`
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
-   dib-simulation-methods
-   dib-external-stimuli
-   dib-observables-analysis
+   methods/index
+   stimuli/index
+   observables/index

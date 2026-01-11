@@ -38,8 +38,6 @@ License
 
 The UppASD code is developed by the Division of Materials Theory, in the Department of Physics and Astronomy at Uppsala University, Sweden. The copyright of the code is held by the developers but the program is open for use and distribution according to the GPLv3 license.
 
-Further information concerning the license and contact information of the developers may be found on the UppASD webpage https://www.physics.uu.se/UppASD.
-
 .. The current version of the code (5.0) is still under active development.
 
 

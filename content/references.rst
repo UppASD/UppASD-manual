@@ -1,6 +1,11 @@
 References
 ==========
 
+.. [Eriksson2017]
+    O. Eriksson, A. Bergman, L. Bergqvist, and J. Hellsvik,
+    *Atomistic Spin Dynamics: Foundations and Applications.*
+    Oxford University Press, Oxford (2017).
+
 .. [Skubic2008]
     B. Skubic, J. Hellsvik, L. Nordström, and O. Eriksson,
     *A method for atomistic spin dynamics simulations: implementation and examples.*
@@ -24,11 +29,6 @@ References
     *Spin motions in a classical ferromagnet.*
     Phys. Rev. **181**, 811–822 (1969).
     DOI: `10.1103/PhysRev.181.811 <https://doi.org/10.1103/PhysRev.181.811>`_
-
-.. [Eriksson2017]
-    O. Eriksson, A. Bergman, L. Bergqvist, and J. Hellsvik,
-    *Atomistic Spin Dynamics: Foundations and Applications.*
-    Oxford University Press, Oxford (2017).
 
 .. [Lichtenstein1987]
     A. I. Liechtenstein, M. I. Katsnelson, V. P. Antropov, and V. A. Gubanov,
