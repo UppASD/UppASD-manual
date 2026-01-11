@@ -44,37 +44,40 @@ The UppASD code is developed by the Division of Materials Theory, in the Departm
 Installation
 ------------
 
-The source code is distributed on https://github.com/UppASD/UppASD along with documentation and a growing set of examples. To install, perform the following actions
+UppASD can be obtained and installed in three different ways, all available from https://github.com/UppASD/UppASD/releases:
 
-  - Obtain the code, by downloading and unpacking a release::
+**Option 1: Pre-compiled binaries**
 
-      wget https://github.com/UppASD/UppASD/archive/refs/tags/v6.0.2.tar.gz
-      tar xvzf v6.0.2.tar.gz
-      cd UppASD-6.0.2
+Download pre-compiled executables directly from the releases page:
 
-    or by cloning the git repository::
+  - Navigate to https://github.com/UppASD/UppASD/releases
+  - Download the pre-compiled binary for your platform
+  - Extract and run the executable
 
-      git clone https://github.com/UppASD/UppASD.git
-      cd UppASD
+**Option 2: Compile from source tarball**
 
-  - Generate the dependencies needed for compiling the code::
+Download and compile from a release tarball::
 
-      make deps
+    wget https://github.com/UppASD/UppASD/archive/refs/tags/v6.0.2.tar.gz
+    tar xvzf v6.0.2.tar.gz
+    cd UppASD-6.0.2
+    mkdir build && cd build
+    cmake ..
+    make
+    ctest
 
-    (Optional) Perform a system check for available compiler profiles::
+**Option 3: Clone from GitHub repository**
 
-      make probe
+Clone the repository and compile from source::
 
-    Compile the code with the selected compiler profile::
+    git clone https://github.com/UppASD/UppASD.git
+    cd UppASD
+    mkdir build && cd build
+    cmake ..
+    make
+    ctest
 
-      make <profile>
-
-    where ``<profile>`` is the name of the profile, i.e. ``ifort``, ``ifort-cuda``, ``gfortran``,
-    ``gfortran-osx``, and so on, e.g. ``make ifort``.
-    
-  - Test the compiled program against a selection of realistic runs::
-
-      make asd-tests
+The compilation uses the standard CMake toolchain, which automatically detects available compilers and libraries. Testing is performed using ``ctest``, which runs a comprehensive suite of validation tests.
 
 In addition to the source files, the UppASD distribution also contains several examples (in the directory ``examples/``), documentation,
 
@@ -103,11 +106,11 @@ During the measurement phase, the data sampling is performed. Simulations can be
 
 See the centralized :doc:`references` for full bibliographic entries:
 
+- [Eriksson2017]_ - Atomistic spin dynamics foundations and applications
 - [Skubic2008]_ - Method for atomistic spin dynamics simulations
 - [Antropov1996]_ - Spin dynamics in magnets equation of motion and finite temperature effects
 - [Garcia-Palacios1998]_ - Anisotropy effects on nonlinear magnetic susceptibilities
 - [Watson1969]_ - Spin motions in a classical ferromagnet
-- [Eriksson2017]_ - Atomistic spin dynamics foundations and applications
 - [Lichtenstein1987]_ - Local spin density functional approach to exchange interactions
 - [Binder2009]_ - Guide to Monte Carlo simulation in statistical physics
 

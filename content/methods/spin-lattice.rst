@@ -41,7 +41,7 @@ where:
 
    .. math::
 
-      \mathcal{H}_{\text{mag}} = -\frac{1}{2}\sum_{ij} J_{ij}\mathbf{m}_i\cdot\mathbf{m}_j
+      \mathcal{H}_{\text{mag}} = -\sum_{ij} J_{ij}\mathbf{m}_i\cdot\mathbf{m}_j
       - \sum_i K_i (m_i^z)^2 - \sum_i \mathbf{H}_{\text{ext}}\cdot\mathbf{m}_i.
 
 **Lattice (ionic) Hamiltonian** (:math:`\mathcal{H}_{\text{lat}}`)
