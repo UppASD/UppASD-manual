@@ -6,7 +6,7 @@ Depending on the settings chosen in the input file, UppASD prints out a varying 
 Simulation and Hamiltonian output
 ---------------------------------
 
-**coord.simid.out** is written if ``do_prnstruct`` is switched on. Prints out the coordinates of each moment in the system in the format
+**coord.simid.out** is written if ``do_prnstruct`` equals `1` or `2`. Prints out the coordinates of each moment in the system in the format
 
 .. list-table::
    :widths: auto
@@ -18,7 +18,7 @@ Simulation and Hamiltonian output
      - :math:`y`
      - :math:`z`
 
-**struct.simid.out** is written if ``do_prnstruct`` is switched on. Prints out the neighbour coupling list for the exchange couplings of the system, including Cartesian coordinates of exchange couplings grouped into coordination shells. Handy for checking if the system is set up correctly. *Warning:* this file might be very large for a realistic system, be mindful of that.
+**struct.simid.out** is written if ``do_prnstruct 1`` is switched on. Prints out the neighbour coupling list for the exchange couplings of the system, including Cartesian coordinates of exchange couplings grouped into coordination shells. Handy for checking if the system is set up correctly. *Warning:* this file might be very large for a realistic system, be mindful of that.
 
 For scalar exchange interactions (default), the format is:
 
@@ -100,11 +100,9 @@ where the first three entries are the direction of the anisotropy axis.
 
 **bqdata.simid.out** is written if the bq interaction is defined. Prints out the bq coupling for each atom.
 
-**dmstruct.simid.out** is written if the DM interaction is defined and ``do_prnstruct`` is switched on. Prints out the coupling list for the DM vector of the system. Similar to the data presented in **struct.simid.out**.
+**pddata.simid.out** is written if anisotropic exchange interaction pd interaction is defined. Prints out the effective pd couplings for each atom.
 
 **inp.simid.out** extensive output of the values assigned to global variables after reading ``inpsd.dat`` and accompanying files.
-
-**pddata.simid.out** is written if anisotropic exchange interaction pd interaction is defined. Prints out the effective pd couplings for each atom.
 
 
 Measured observables
@@ -467,32 +465,32 @@ where the columns represent total energy, exchange, anisotropy, DM interaction, 
 .. only: false
 
   **magnon_curr.simid.out** is written if the ``do_currents`` flag is switched on. Prints out the magnon current density at each site, in the format
-  
+
   .. list-table::
      :widths: auto
      :header-rows: 0
      :class: borderless centered
-  
+
      * - :math:`\text{step}`
        - :math:`\text{site}`
        - :math:`j_{m,x}`
        - :math:`j_{m,y}`
        - :math:`j_{m,z}`
        - :math:`|\mathbf{j}_m|^2`
-  
+
   where :math:`\mathbf{j}_m` is the magnon current density vector.
-  
+
   **heat_curr.simid.out** is written if the ``do_currents`` flag is switched on. Prints out the heat current density at each site, using the same format as ``magnon_curr.simid.out``.
-  
+
   **heat_curr2.simid.out** is written if the ``do_currents`` flag is switched on. Prints out an alternative formulation of the heat current density at each site, using the same format as ``magnon_curr.simid.out``.
-  
+
   **psi_data.simid.out** is written if the ``do_currents`` flag is switched on. Prints out the complex order parameter :math:`\psi` at each site for each ensemble, in the format
-  
+
   .. list-table::
      :widths: auto
      :header-rows: 0
      :class: borderless centered
-  
+
      * - :math:`\text{step}`
        - :math:`\text{site}`
        - :math:`\text{ensemble}`
