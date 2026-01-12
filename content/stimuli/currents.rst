@@ -55,7 +55,7 @@ In this case:
 
 .. math::
 
-   \mathbf{j} = \text{stt_dens_conv} \times \mathbf{j}_{\text{vec}}
+   \mathbf{j} = \text{stt\_dens\_conv} \times \mathbf{j}_{\text{vec}}
 
 A note is printed at startup indicating that legacy input has been used and
 showing the resulting current density in physical units.

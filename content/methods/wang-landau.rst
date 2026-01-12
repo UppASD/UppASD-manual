@@ -91,7 +91,7 @@ the total energy window:
 
 .. math::
 
-   \sigma_E = \text{wl_sigma} \times N_{\text{hist}} \times \Delta E
+   \sigma_E = \text{wl\_sigma} \times N_{\text{hist}} \times \Delta E
 
 This broadening helps smooth the DOS and ensures that nearby energy bins are
 updated simultaneously, reducing statistical noise.
@@ -112,8 +112,8 @@ The final energy window is then adjusted by cutoff factors ``wl_lcut`` and ``wl_
 
 .. math::
 
-   E_{\text{min}}^{\text{final}} &= \text{wl_lcut} \times E_{\text{min}} \\
-   E_{\text{max}}^{\text{final}} &= \text{wl_hcut} \times E_{\text{max}}
+   E_{\text{min}}^{\text{final}} &= \text{wl\_lcut} \times E_{\text{min}} \\
+   E_{\text{max}}^{\text{final}} &= \text{wl\_hcut} \times E_{\text{max}}
 
 If ``wl_emin`` and ``wl_emax`` are explicitly provided in the input file, the
 automatic energy window determination is skipped.
@@ -165,7 +165,7 @@ wl_hcut
    Higher cutoff factor for the automatic energy window. The automatically determined :math:`E_{\\text{max}}` is multiplied by this factor to set the final upper bound. Values less than 1.0 reduce the energy window. Default: **0.950**.
 
 wl_sigma
-   Broadening width (in units of the energy window) for the Gaussian kernel applied during DOS updates. The broadening in energy units is :math:`\\sigma_E = \\text{wl_sigma} \\times N_{\\text{hist}} \\times \\Delta E`. Larger values smooth the DOS more aggressively but may reduce fine structure. Default: **0.005**.
+   Broadening width (in units of the energy window) for the Gaussian kernel applied during DOS updates. The broadening in energy units is :math:`\\sigma_E = \\text{wl\\_sigma} \\times N_{\\text{hist}} \\times \\Delta E`. Larger values smooth the DOS more aggressively but may reduce fine structure. Default: **0.005**.
 
 wl_gfac
    Global prefactor applied to the final density of states. Used for rescaling or normalization. Default: **1.0**.

@@ -84,6 +84,9 @@ html_context = {
     "conf_py_path": conf_py_path,
 }
 
+# Use XeLaTeX for better Unicode support when building PDF
+latex_engine = 'xelatex'
+
 # Intersphinx mapping.  For example, with this you can use
 # :py:mod:`multiprocessing` to link straight to the Python docs of that module.
 # List all available references:

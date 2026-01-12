@@ -59,23 +59,23 @@ Proper sampling of :math:`S(\mathbf{q},\omega)` requires careful choice of:
 
    .. math::
 
-      \omega_{\max} = \frac{\pi}{\text{timestep} \times \text{sc_step}}
+      \omega_{\max} = \frac{\pi}{\text{timestep} \times \text{sc\_step}}
 
 2. **Number of temporal samples** ``sc_nstep``: Controls frequency resolution
 
    .. math::
 
-      \Delta \omega = \frac{2\omega_{\max}}{N_{\text{step}}} = \frac{2\pi}{N_{\text{step}} \times \text{timestep} \times \text{sc_step}}
+      \Delta \omega = \frac{2\omega_{\max}}{N_{\text{step}}} = \frac{2\pi}{N_{\text{step}} \times \text{timestep} \times \text{sc\_step}}
 
 3. **Total sampling time**: Determines lowest frequency accessed
 
    .. math::
 
-      t_{\max} = \text{sc_nstep} \times \text{timestep} \times \text{sc_step}
+      t_{\max} = \text{sc\_nstep} \times \text{timestep} \times \text{sc\_step}
 
    .. math::
 
-      \omega_{\min} = \frac{2\pi}{t_{\max}} = \frac{2\pi}{N_{\text{step}} \times \text{timestep} \times \text{sc_step}}
+      \omega_{\min} = \frac{2\pi}{t_{\max}} = \frac{2\pi}{N_{\text{step}} \times \text{timestep} \times \text{sc\_step}}
 
 4. **q-point mesh**: Determines spatial resolution and Brillouin zone coverage
 
@@ -89,10 +89,10 @@ do_sr
    Sample static correlation :math:`G(\mathbf{r})` in real space directly (Y=yes, N=no). When enabled, :math:`C(\mathbf{r},0)` is computed without requiring a q-point mesh.
 
 sc_step
-   Number of MD/MC steps between temporal correlation samples; controls maximum frequency :math:`\omega_{\max} = \pi / (\text{timestep} \times \text{sc_step})`. Default: **10**.
+   Number of MD/MC steps between temporal correlation samples; controls maximum frequency :math:`\omega_{\max} = \pi / (\text{timestep} \times \text{sc\_step})`. Default: **10**.
 
 sc_nstep
-   Number of temporal samples collected for each correlation measurement. Controls frequency resolution :math:`\Delta \omega = 2\pi / (N_{\text{step}} \times \text{timestep} \times \text{sc_step})`. Default: **100**.
+   Number of temporal samples collected for each correlation measurement. Controls frequency resolution :math:`\Delta \omega = 2\pi / (N_{\text{step}} \times \text{timestep} \times \text{sc\_step})`. Default: **100**.
 
 sc_sep
    Number of steps between independent correlation measurements (used when ``do_sc = C``). Default: **1**.
