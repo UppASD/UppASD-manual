@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observables and measurements &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Output files" href="../../output/" />
+    <link rel="prev" title="Simulation control and phases" href="../simulation/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Input files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#file-formats-and-setup">File Formats and Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#basic-simulation-parameters">Basic Simulation Parameters</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../#measurement-and-observables">Measurement and Observables</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../core-files/">Core input files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random-alloys/">Random alloys and multi-atom cells</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../system/">System and geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hamiltonian/">Hamiltonian parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simulation/">Simulation control and phases</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Observables and measurements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#energy-and-thermodynamics">Energy and thermodynamics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#average-magnetization">Average magnetization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cumulants-and-thermodynamic-fluctuations">Cumulants and thermodynamic fluctuations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trajectories-full-moment-configurations">Trajectories: full moment configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spin-correlations-and-structure-factors">Spin correlations and structure factors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autocorrelation-functions">Autocorrelation functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polarization-and-chirality">Polarization and chirality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stiffness-and-micromagnetic-parameters">Stiffness and micromagnetic parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lattice-dynamics-observables-sld">Lattice dynamics observables (SLD)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Input files</a></li>
+      <li class="breadcrumb-item active">Observables and measurements</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/input/observables.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="observables-and-measurements">
+<h1>Observables and measurements<a class="headerlink" href="#observables-and-measurements" title="Permalink to this heading"></a></h1>
+<p>This page is a comprehensive reference for all observable and measurement-related input keywords in UppASD. Keywords are organized by category. For detailed physics background and formulas, see the dedicated chapters: <a class="reference internal" href="../../observables/averages/"><span class="doc">Averages and cumulants</span></a>, <a class="reference internal" href="../../observables/correlations/"><span class="doc">Correlation functions</span></a>, <a class="reference internal" href="../../observables/autocorrelation/"><span class="doc">Autocorrelation functions</span></a>, and <a class="reference internal" href="../../observables/polarization/"><span class="doc">Polarization and chirality measurements</span></a>.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>Most observables are controlled by a pair of keywords:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">do_&lt;observable&gt;</span></code> – Enables measurement (Y/N, or specialized mode)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;observable&gt;_step</span></code> – Sampling interval in simulation steps</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;observable&gt;_buff</span></code> – Optional buffer size before file write</p></li>
+</ul>
+<p>This design minimizes I/O overhead while maintaining fine temporal resolution.</p>
+</section>
+<section id="energy-and-thermodynamics">
+<h2>Energy and thermodynamics<a class="headerlink" href="#energy-and-thermodynamics" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">plotenergy</span></code></dt><dd><p>Enable energy breakdown (Y=yes, <em>N=no</em>). When enabled, writes total energy and
+contributions from each term in the Hamiltonian (exchange, anisotropy, DMI, etc.)
+to <code class="docutils literal notranslate"><span class="pre">energy.simid.out</span></code>. Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="average-magnetization">
+<h2>Average magnetization<a class="headerlink" href="#average-magnetization" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_avrg</span></code></dt><dd><p>Enable sampling of system-wide average magnetization and higher-order moments
+(Y=yes, <em>N=no</em>). Output: <code class="docutils literal notranslate"><span class="pre">averages.simid.out</span></code>. See <a class="reference internal" href="../../observables/averages/"><span class="doc">Averages and cumulants</span></a> for details.
+Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">avrg_step</span></code></dt><dd><p>Sampling interval in simulation steps (integer). Default: <strong>100</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">avrg_buff</span></code></dt><dd><p>Buffer size before writing (integer). Default: <strong>10</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_proj_avrg</span></code></dt><dd><p>Type-projected (sublattice) or site-projected average magnetization
+(Y=by type, A=by site, <em>N=no</em>). Output: <code class="docutils literal notranslate"><span class="pre">projavgs.simid.out</span></code>.
+Automatically enables <code class="docutils literal notranslate"><span class="pre">do_avrg</span></code>. Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_projch_avrg</span></code></dt><dd><p>Chemical-species-projected averages for random alloys (Y=yes, <em>N=no</em>).
+Requires <code class="docutils literal notranslate"><span class="pre">do_ralloy</span> <span class="pre">1</span></code>. Output: <code class="docutils literal notranslate"><span class="pre">projchavgs.simid.out</span></code>. Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="cumulants-and-thermodynamic-fluctuations">
+<h2>Cumulants and thermodynamic fluctuations<a class="headerlink" href="#cumulants-and-thermodynamic-fluctuations" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_cumu</span></code></dt><dd><p>Enable cumulant sampling for phase transition analysis and thermodynamic moments
+(Y=standard, A=antiferromagnetic, <em>N=no</em>). Calculates Binder cumulant, magnetic
+susceptibility, specific heat. <strong>Automatically enabled for Monte Carlo simulations.</strong>
+Output: <code class="docutils literal notranslate"><span class="pre">cumulants.simid.out</span></code>, <code class="docutils literal notranslate"><span class="pre">cumulants.simid.json</span></code>. Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">cumu_step</span></code></dt><dd><p>Sampling interval for cumulants (integer steps). Default: <strong>50</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">cumu_buff</span></code></dt><dd><p>Buffer size (integer). Default: <strong>10</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_cumu_proj</span></code></dt><dd><p>Type-projected cumulants (Y=yes, <em>N=no</em>). Computes phase transition parameters
+per atom type. Output: <code class="docutils literal notranslate"><span class="pre">cumulants_proj.simid.out</span></code>. Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="trajectories-full-moment-configurations">
+<h2>Trajectories: full moment configurations<a class="headerlink" href="#trajectories-full-moment-configurations" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_tottraj</span></code></dt><dd><p>Sample and print all magnetic moment configurations (Y=yes, <em>N=no</em>).
+Generates large <code class="docutils literal notranslate"><span class="pre">moments.simid.out</span></code> file. Use with caution for big systems.
+Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tottraj_step</span></code></dt><dd><p>Sampling interval (integer steps). Default: <strong>1000</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tottraj_buff</span></code></dt><dd><p>Buffer size (integer). Default: <strong>10</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ntraj</span></code></dt><dd><p>Number of individual atom trajectories to sample separately (integer ≥ 0).
+Followed by <code class="docutils literal notranslate"><span class="pre">ntraj</span></code> input lines, each with format:
+<code class="docutils literal notranslate"><span class="pre">atom_index</span> <span class="pre">traj_step</span> <span class="pre">traj_buff</span></code>.
+Default: <strong>0</strong> (no individual trajectories).</p>
+</dd>
+</dl>
+</section>
+<section id="spin-correlations-and-structure-factors">
+<h2>Spin correlations and structure factors<a class="headerlink" href="#spin-correlations-and-structure-factors" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_sc</span></code></dt><dd><p>Spin correlation sampling mode (Y=full, Q=frequency only, T=time-dependent only,
+C=static only, <em>N=disabled</em>). Computes dynamical structure factor <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span>
+and/or static <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span>. See <a class="reference internal" href="../../observables/correlations/"><span class="doc">Correlation functions</span></a>.
+Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_sr</span></code></dt><dd><p>Real-space correlation <span class="math notranslate nohighlight">\(G(\mathbf{r})\)</span> (Y=yes, <em>N=no</em>). Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sc_step</span></code></dt><dd><p>Temporal sampling interval (integer steps). Controls max frequency.
+Default: <strong>10</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sc_nstep</span></code></dt><dd><p>Number of temporal samples per correlation measurement (integer).
+Default: <strong>100</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sc_sep</span></code></dt><dd><p>Steps between independent measurements for <code class="docutils literal notranslate"><span class="pre">do_sc</span> <span class="pre">=</span> <span class="pre">C</span></code> (integer).
+Default: <strong>1</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">qpoints</span></code></dt><dd><p>Q-point mesh specification mode: F=Cartesian from file, G=from qpoints.dat,
+C=full reciprocal cell, D=fractional coords, B=with weights.
+Default: <strong>F</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">qfile</span></code></dt><dd><p>Filename containing q-point vectors. Default: <strong>qpoints</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_sc_proj</span></code></dt><dd><p>Type-projected spin correlations (Y=yes, C=static only, <em>N=no</em>).
+Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_sc_projch</span></code></dt><dd><p>Chemical-species-projected correlations (Y=yes, C=static only, <em>N=no</em>).
+Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_qt_traj</span></code></dt><dd><p>Write time-dependent equal-time correlation <span class="math notranslate nohighlight">\(S(\mathbf{q},t)\)</span> (Y=yes, <em>N=no</em>).
+Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_sc_local_axis</span></code></dt><dd><p>Use local quantization axis (Y=yes, <em>N=no</em>). Computes parallel/perpendicular
+components. Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sc_local_axis_mix</span></code></dt><dd><p>Mixing parameter for local axis update (0.0–1.0). Default: <strong>0.05</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sc_window_fun</span></code></dt><dd><p>Windowing function (1=rectangular, 2=Hann, 3=Hamming, 4=Blackman-Harris).
+Default: <strong>1</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_sc_dosonly</span></code></dt><dd><p>Magnon density-of-states only (Y=yes, <em>N=no</em>). Skips full <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span>.
+Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_connected</span></code></dt><dd><p>Include only connected part (Y=yes, <em>N=no</em>). Default: <strong>Y</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_uc</span></code></dt><dd><p>Lattice displacement correlations (Y=yes, <em>N=no</em>). For SLD systems. Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="autocorrelation-functions">
+<h2>Autocorrelation functions<a class="headerlink" href="#autocorrelation-functions" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_autocorr</span></code></dt><dd><p>Enable spin autocorrelation sampling (Y=yes, <em>N=no</em>). Measures relaxation dynamics.
+Output: <code class="docutils literal notranslate"><span class="pre">autocorr.simid.out</span></code>. Requires external file <code class="docutils literal notranslate"><span class="pre">acfile</span></code> listing waiting times.
+See <a class="reference internal" href="../../observables/autocorrelation/"><span class="doc">Autocorrelation functions</span></a>. Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">acfile</span></code></dt><dd><p>File containing waiting times (one per line, in simulation steps). Mandatory if <code class="docutils literal notranslate"><span class="pre">do_autocorr</span> <span class="pre">Y</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ac_step</span></code></dt><dd><p>Sampling interval (integer steps). Default: <strong>100</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ac_buff</span></code></dt><dd><p>Buffer size (integer). Default: <strong>10</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_macro_cells</span></code></dt><dd><p>Spatial binning for autocorrelation (Y=yes, <em>N=no</em>). Outputs per-macrocell files.
+Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="polarization-and-chirality">
+<h2>Polarization and chirality<a class="headerlink" href="#polarization-and-chirality" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_pol</span></code></dt><dd><p>Enable ferroelectric polarization measurement (Y=yes, <em>N=no</em>).
+Computes <span class="math notranslate nohighlight">\(\mathbf{P} = \gamma \sum_{i,j} \hat{\mathbf{e}}_{ij} \times (\mathbf{m}_i \times \mathbf{m}_j)\)</span>.
+Output: <code class="docutils literal notranslate"><span class="pre">polarization.simid.out</span></code>. Requires <code class="docutils literal notranslate"><span class="pre">do_sortcoup</span> <span class="pre">N</span></code>.
+See <a class="reference internal" href="../../observables/polarization/"><span class="doc">Polarization and chirality measurements</span></a>. Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_pol_nn</span></code></dt><dd><p>Number of neighbors in polarization sum (integer). Default: <strong>6</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pol_step</span></code></dt><dd><p>Sampling interval (integer steps). Default: <strong>100</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pol_buff</span></code></dt><dd><p>Buffer size (integer). Default: <strong>10</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_chir</span></code></dt><dd><p>Enable scalar chirality measurement (Y=yes, <em>N=no</em>). Measures local spin
+chirality <span class="math notranslate nohighlight">\(\boldsymbol{\chi}_{ij} = \mathbf{m}_i \times \mathbf{m}_j\)</span>.
+Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="stiffness-and-micromagnetic-parameters">
+<h2>Stiffness and micromagnetic parameters<a class="headerlink" href="#stiffness-and-micromagnetic-parameters" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_stiffness</span></code></dt><dd><p>Calculate spin-wave stiffness and exchange constant (Y=yes, <em>N=no</em>).
+Computes effective continuum parameters from atomistic simulations.
+Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">eta_min</span></code></dt><dd><p>Convergence parameter lower bound for stiffness (float). Default: <strong>6</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">eta_max</span></code></dt><dd><p>Convergence parameter upper bound for stiffness (float). Default: <strong>12</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">alat</span></code></dt><dd><p>Lattice constant (in meters) for stiffness normalization (float).
+Required if <code class="docutils literal notranslate"><span class="pre">do_stiffness</span> <span class="pre">Y</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="lattice-dynamics-observables-sld">
+<h2>Lattice dynamics observables (SLD)<a class="headerlink" href="#lattice-dynamics-observables-sld" title="Permalink to this heading"></a></h2>
+<p>For spin-lattice dynamics (<code class="docutils literal notranslate"><span class="pre">do_ld</span> <span class="pre">Y</span></code>), additional observables track lattice dynamics:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_lavrg</span></code></dt><dd><p>Lattice averages (Y=yes, <em>N=no</em>). Outputs <code class="docutils literal notranslate"><span class="pre">lattavrg.&lt;simid&gt;.out</span></code> with
+displacements, velocities, kinetic energy. Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_proj_lavrg</span></code></dt><dd><p>Type-projected lattice averages (Y=yes, <em>N=no</em>). Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_projch_lavrg</span></code></dt><dd><p>Chemical-species-projected lattice averages (Y=yes, <em>N=no</em>). Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">lavrg_step</span></code></dt><dd><p>Sampling interval (integer steps). Default: <strong>100</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">lavrg_buff</span></code></dt><dd><p>Buffer size (integer). Default: <strong>10</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do_ltottraj</span></code></dt><dd><p>Full lattice trajectories (Y=yes, <em>N=no</em>). Outputs <code class="docutils literal notranslate"><span class="pre">lattices.&lt;simid&gt;.out</span></code>.
+<strong>Generates large files.</strong> Default: <strong>N</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ltottraj_step</span></code></dt><dd><p>Sampling interval (integer steps). Default: <strong>1000</strong>.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../simulation/" class="btn btn-neutral float-left" title="Simulation control and phases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../output/" class="btn btn-neutral float-right" title="Output files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

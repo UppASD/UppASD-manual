@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stochastic Equation Solvers &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Monte Carlo simulations" href="../monte-carlo/" />
+    <link rel="prev" title="Simulation Methods and Algorithms" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Stochastic Equation Solvers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/solvers.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stochastic-equation-solvers">
+<span id="input-keywords-solvers"></span><h1>Stochastic Equation Solvers<a class="headerlink" href="#stochastic-equation-solvers" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>UppASD implements multiple <strong>numerical solvers</strong> for the stochastic Landau-Lifshitz-Gilbert (LLG)
+equation and related equations of motion. These are the numerical engines that evolve magnetic
+moments in time, accounting for thermal fluctuations, damping, and effective magnetic fields.</p>
+<p>The choice of solver affects:</p>
+<ul class="simple">
+<li><p><strong>Accuracy</strong> of the time integration</p></li>
+<li><p><strong>Stability</strong> (maximum allowable timestep)</p></li>
+<li><p><strong>Computational cost</strong> per timestep</p></li>
+<li><p><strong>Physical correctness</strong> (e.g., moment magnitude conservation)</p></li>
+<li><p><strong>Capability</strong> for different physics modules (spin-transfer torque, spin-hall effects, inertial dynamics)</p></li>
+</ul>
+<p>All solvers follow a <strong>predictor-corrector</strong> or <strong>fixed-point iteration</strong> scheme over two subroutines:
+<code class="docutils literal notranslate"><span class="pre">evolve_first</span></code> (predictor) and <code class="docutils literal notranslate"><span class="pre">evolve_second</span></code> (corrector).</p>
+</section>
+<section id="available-solvers">
+<h2>Available Solvers<a class="headerlink" href="#available-solvers" title="Permalink to this heading"></a></h2>
+<p>Implemented solvers (summary)</p>
+<dl class="simple">
+<dt>SDEalgh=1</dt><dd><p><strong>Name:</strong> Midpoint (Mentink)
+<strong>Characteristics:</strong> Semi-implicit, rotation-based
+<strong>Accuracy:</strong> 2nd order (deterministic), 1st order (stochastic)
+<strong>Stability:</strong> Excellent
+<strong>Cost:</strong> Medium</p>
+</dd>
+<dt>SDEalgh=2</dt><dd><p><strong>Name:</strong> Heun (Single step)
+<strong>Characteristics:</strong> Explicit predictor-corrector
+<strong>Accuracy:</strong> 1st order
+<strong>Stability:</strong> Good
+<strong>Cost:</strong> Low</p>
+</dd>
+<dt>SDEalgh=3</dt><dd><p><strong>Name:</strong> Heun (Lite variant)
+<strong>Characteristics:</strong> Simplified Heun
+<strong>Accuracy:</strong> 1st order
+<strong>Stability:</strong> Good
+<strong>Cost:</strong> Low</p>
+</dd>
+<dt>SDEalgh=4</dt><dd><p><strong>Name:</strong> Heun (Proper)
+<strong>Characteristics:</strong> Full predictor-corrector, explicit
+<strong>Accuracy:</strong> 2nd order (deterministic)
+<strong>Stability:</strong> Very good
+<strong>Cost:</strong> Medium-High</p>
+</dd>
+<dt>SDEalgh=5</dt><dd><p><strong>Name:</strong> Depondt
+<strong>Characteristics:</strong> Rotation-based with Rodrigues formula
+<strong>Accuracy:</strong> 2nd order
+<strong>Stability:</strong> Excellent
+<strong>Cost:</strong> Medium</p>
+</dd>
+<dt>SDEalgh=6</dt><dd><p><strong>Name:</strong> Semi-implicit Midpoint (FPI)
+<strong>Characteristics:</strong> Fixed-point iteration variant
+<strong>Accuracy:</strong> 2nd order
+<strong>Stability:</strong> Excellent
+<strong>Cost:</strong> High</p>
+</dd>
+<dt>SDEalgh=7</dt><dd><p><strong>Name:</strong> Spherical Midpoint (FPI)
+<strong>Characteristics:</strong> Spherical constraint variant
+<strong>Accuracy:</strong> 2nd order
+<strong>Stability:</strong> Excellent
+<strong>Cost:</strong> Very High</p>
+</dd>
+<dt>SDEalgh=11</dt><dd><p><strong>Name:</strong> LLGI (Inertial solver)
+<strong>Characteristics:</strong> Inertial LLG variant
+<strong>Accuracy:</strong> 2nd order
+<strong>Stability:</strong> Good
+<strong>Cost:</strong> Medium</p>
+</dd>
+<dt>SDEalgh=21</dt><dd><p><strong>Name:</strong> SLD Basis Midpoint (FPI)
+<strong>Characteristics:</strong> Spin-lattice dynamics, basis coordinates
+<strong>Accuracy:</strong> 2nd order
+<strong>Stability:</strong> Excellent
+<strong>Cost:</strong> Very High</p>
+</dd>
+<dt>SDEalgh=22</dt><dd><p><strong>Name:</strong> SLD Spherical Midpoint (FPI)
+<strong>Characteristics:</strong> Spin-lattice dynamics, spherical constraint
+<strong>Accuracy:</strong> 2nd order
+<strong>Stability:</strong> Excellent
+<strong>Cost:</strong> Very High</p>
+</dd>
+</dl>
+<p><strong>Recommendation:</strong> Start with <strong>SDEalgh=1</strong> (Midpoint) or <strong>SDEalgh=5</strong> (Depondt) for
+typical simulations and <strong>SDEalgh=22</strong> for spin-lattice dynamics. Use <strong>SDEalgh=11</strong> (LLGI) only when inertial
+effects are important (<code class="docutils literal notranslate"><span class="pre">relaxtime</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>). Use <strong>SDEalgh=21</strong> only if SDEalgh=22 convergence is problematic.</p>
+</section>
+<section id="solver-details">
+<h2>Solver Details<a class="headerlink" href="#solver-details" title="Permalink to this heading"></a></h2>
+<section id="sdealgh-1-semi-implicit-midpoint-mentink">
+<h3>SDEalgh=1: Semi-Implicit Midpoint (Mentink)<a class="headerlink" href="#sdealgh-1-semi-implicit-midpoint-mentink" title="Permalink to this heading"></a></h3>
+<p><strong>Reference:</strong> J. H. Mentink et al., <em>J. Phys.: Condens. Matter</em> <strong>22</strong>, 176001 (2010)</p>
+<p><strong>Type:</strong> Semi-implicit, rotation-based, predictor-corrector (2 steps)</p>
+<p><strong>Algorithm:</strong></p>
+<p>The solver solves the matrix equation for semi-implicitness:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A} \, \mathbf{m}(t+\Delta t) = \mathbf{A}^T \mathbf{m}(t) + \Delta t (\mathbf{a}_1 + \mathbf{s}_1)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{A} = \mathbb{I} + \Delta t (\mathbf{a}_1/2 + \mathbf{s}_1/2)_\times\)</span> (skew-symmetric matrix)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{a}_1 = -\mathbf{B}_{\text{eff}} - \lambda (\mathbf{m} \times \mathbf{B}_{\text{eff}})\)</span> (deterministic torque)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{s}_1 = \text{stochastic counterpart}\)</span> (thermal field torque)</p></li>
+</ul>
+<p>Solution: <span class="math notranslate nohighlight">\(\mathbf{m}(t+\Delta t) = \mathbf{A}^{-1} \mathbf{A}^T \mathbf{m}(t)\)</span></p>
+<p><strong>Advantages:</strong>
+- Excellent energy stability (unconditional stability)
+- 2nd order accuracy in deterministic part, 1st order in stochastic
+- Automatic moment magnitude conservation (rotation matrix property)
+- <strong>Recommended for most simulations</strong></p>
+<p><strong>Disadvantages:</strong>
+- Requires matrix inversion (3×3)
+- Slightly slower than explicit methods</p>
+<p><strong>Use cases:</strong>
+- Equilibrium spin dynamics at arbitrary temperatures
+- Skyrmion and domain wall dynamics
+- General-purpose magnetic simulations</p>
+<p><strong>Example input:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SDEalgh       1           # Midpoint solver
+damping       0.05        # Damping parameter λ
+delta_t       1.0e-15     # Timestep (seconds)
+</pre></div>
+</div>
+</section>
+<section id="sdealgh-2-heun-single-step">
+<h3>SDEalgh=2: Heun Single-Step<a class="headerlink" href="#sdealgh-2-heun-single-step" title="Permalink to this heading"></a></h3>
+<p><strong>Type:</strong> Explicit predictor-corrector, single step</p>
+<p><strong>Algorithm:</strong></p>
+<p>Simple two-step Heun integration:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{m}_p = \mathbf{m}(t) + \Delta t \frac{d\mathbf{m}}{dt}|_{t} + \mathbf{\eta}_p\\\mathbf{m}(t+\Delta t) = \mathbf{m}(t) + \frac{\Delta t}{2} \left(\frac{d\mathbf{m}}{dt}|_{t} + \frac{d\mathbf{m}}{dt}|_{t+\Delta t, \mathbf{m}_p}\right) + \mathbf{\eta}\end{aligned}\end{align} \]</div>
+<p><strong>Advantages:</strong>
+- Simple, fast implementation
+- Minimal memory overhead
+- 1st order accuracy sufficient for thermal noise</p>
+<p><strong>Disadvantages:</strong>
+- Explicit (requires small timestep for stability)
+- May require moment re-normalization
+- Less accurate than 2nd order methods</p>
+<p><strong>Use cases:</strong>
+- Rapid prototyping
+- Systems with very low damping (non-linear stability issues at large <span class="math notranslate nohighlight">\(\Delta t\)</span>)</p>
+<p><strong>Note:</strong> Should not be used for quantitative accuracy studies.</p>
+</section>
+<section id="sdealgh-3-heun-lite-variant">
+<h3>SDEalgh=3: Heun Lite Variant<a class="headerlink" href="#sdealgh-3-heun-lite-variant" title="Permalink to this heading"></a></h3>
+<p><strong>Type:</strong> Simplified explicit Heun</p>
+<p>Lightweight variant of SDEalgh=2 with reduced operations and memory.</p>
+<p><strong>Use cases:</strong>
+- Memory-constrained calculations
+- Very large systems</p>
+</section>
+<section id="sdealgh-4-heun-proper">
+<h3>SDEalgh=4: Heun Proper<a class="headerlink" href="#sdealgh-4-heun-proper" title="Permalink to this heading"></a></h3>
+<p><strong>Type:</strong> Full predictor-corrector, explicit</p>
+<p><strong>Algorithm:</strong></p>
+<p>Two-step Heun with explicit mid-point evaluation:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{m}(t+\Delta t/2) = \mathbf{m}(t) + \frac{\Delta t}{2} \frac{d\mathbf{m}}{dt}|_t\\\mathbf{m}(t+\Delta t) = \mathbf{m}(t) + \Delta t \frac{d\mathbf{m}}{dt}|_{t+\Delta t/2, \mathbf{m}_p} + \mathbf{\eta}\end{aligned}\end{align} \]</div>
+<p><strong>Advantages:</strong>
+- Higher accuracy than Heun single-step (2nd order for deterministic part)
+- Better stability than basic Heun
+- Moderate computational cost</p>
+<p><strong>Disadvantages:</strong>
+- Still explicit (requires careful timestep selection)
+- Accumulates round-off error faster than semi-implicit methods</p>
+<p><strong>Use cases:</strong>
+- High-accuracy studies with moderate damping
+- Validation against semi-implicit methods</p>
+</section>
+<section id="sdealgh-5-depondt-solver">
+<h3>SDEalgh=5: Depondt Solver<a class="headerlink" href="#sdealgh-5-depondt-solver" title="Permalink to this heading"></a></h3>
+<p><strong>Reference:</strong> Ph. Depondt and F. G. Mertens, <em>J. Phys.: Condens. Matter</em> <strong>21</strong>, 336005 (2009)</p>
+<p><strong>Type:</strong> Semi-implicit, rotation-based with Rodrigues formula</p>
+<p><strong>Algorithm:</strong></p>
+<p>Uses <strong>Rodrigues’ rotation formula</strong> for exact exponential map:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{m}_{\text{rot}} = \cos(\theta) \, \mathbf{m} + \sin(\theta) (\hat{\mathbf{\omega}} \times \mathbf{m})
++ (1 - \cos \theta) (\hat{\mathbf{\omega}} \cdot \mathbf{m}) \hat{\mathbf{\omega}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta = |\mathbf{\omega}| \Delta t\)</span> and <span class="math notranslate nohighlight">\(\hat{\mathbf{\omega}}\)</span> is the rotation axis.</p>
+<p><strong>Two-step procedure:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Predictor:</strong> Rotate moments using Rodrigues formula with effective field</p></li>
+<li><p><strong>Corrector:</strong> Apply thermal field rotation correction</p></li>
+</ol>
+<p><strong>Advantages:</strong>
+- Exact moment magnitude conservation (continuous rotation property)
+- Highly stable for strong damping and thermal effects
+- Excellent for <strong>magnetic textures</strong> (skyrmions, domain walls, vortices)
+- Robust against timestep variations</p>
+<p><strong>Disadvantages:</strong>
+- Slightly higher computational cost than midpoint (trigonometric functions)
+- More complex implementation</p>
+<p><strong>Use cases:</strong>
+- <strong>Magnetic skyrmions</strong> (requires robust moment conservation)
+- <strong>Domain wall dynamics</strong>
+- <strong>Spin textures</strong> with topological properties
+- Large damping (<span class="math notranslate nohighlight">\(\lambda &gt; 0.5\)</span>)
+- <strong>Strongly thermal systems</strong></p>
+<p><strong>Recommended:</strong> Use Depondt (SDEalgh=5) for any simulation involving spatial magnetic structures.</p>
+<p><strong>Example input:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SDEalgh       5           # Depondt solver
+damping       0.1         # Higher damping acceptable
+delta_t       5.0e-15     # Can use larger timesteps safely
+</pre></div>
+</div>
+</section>
+<section id="sdealgh-6-semi-implicit-basis-midpoint-with-fixed-point-iteration">
+<h3>SDEalgh=6: Semi-Implicit Basis Midpoint with Fixed-Point Iteration<a class="headerlink" href="#sdealgh-6-semi-implicit-basis-midpoint-with-fixed-point-iteration" title="Permalink to this heading"></a></h3>
+<p><strong>Reference:</strong> J. Hellsvik, “Semi-implicit spherical midpoint solver” (UppASD progress report)</p>
+<p><strong>Type:</strong> Semi-implicit, basis coordinate variant, fixed-point iteration</p>
+<p><strong>Algorithm:</strong></p>
+<p>Uses <strong>fixed-point iteration</strong> in <strong>Cartesian basis coordinates</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{m}^{(k+1)} = f(\mathbf{m}^{(k)})\]</div>
+<p>Combines the semi-implicit midpoint scheme (Mentink) with fixed-point iteration refinement.
+Iteration continues until convergence: <span class="math notranslate nohighlight">\(|\mathbf{m}^{(k+1)} - \mathbf{m}^{(k)}| &lt; \epsilon\)</span></p>
+<p><strong>Advantages:</strong>
+- Better accuracy than non-iterative Midpoint at large timesteps
+- Completely implicit (unconditionally stable)
+- Higher order accuracy in both deterministic and stochastic parts
+- Direct Cartesian formulation</p>
+<p><strong>Disadvantages:</strong>
+- <strong>Very expensive:</strong> Typically 3-10 iterations per timestep (basis coordinates more difficult to converge)
+- Requires convergence criterion
+- Slower than SDEalgh=1 for most applications
+- No explicit moment magnitude control</p>
+<p><strong>Use cases:</strong>
+- Very large timesteps required (rarely justified)
+- Validating energy stability
+- Comparing against other solvers</p>
+<p><strong>Note:</strong> Rarely recommended. SDEalgh=1 is usually faster overall, and SDEalgh=7 provides better accuracy if needed.</p>
+</section>
+<section id="sdealgh-7-semi-implicit-spherical-midpoint-with-fixed-point-iteration">
+<h3>SDEalgh=7: Semi-Implicit Spherical Midpoint with Fixed-Point Iteration<a class="headerlink" href="#sdealgh-7-semi-implicit-spherical-midpoint-with-fixed-point-iteration" title="Permalink to this heading"></a></h3>
+<p><strong>References:</strong></p>
+<ul class="simple">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Hellsvik, “Semi-implicit spherical midpoint solver” (UppASD progress report)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="18">
+<li><ol class="upperroman simple">
+<li><p>McLachlan et al., <em>Phys. Rev. E</em> <strong>89</strong>, 061301(R) (2014)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="10">
+<li><ol class="upperalpha simple" start="8">
+<li><p>Mentink et al., J. Phys.: Condens. Matter, 22, 176001 (2010)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>Type:</strong> Semi-implicit, spherical constraint, fixed-point iteration</p>
+<p><strong>Algorithm:</strong></p>
+<p>Enforces <strong>spherical constraint</strong> <span class="math notranslate nohighlight">\(|\mathbf{m}| = 1\)</span> exactly at each iteration step through normalization:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{m}^{(k+1)} = \frac{\mathbf{m}_{\text{unconstrained}}^{(k)}}{|\mathbf{m}_{\text{unconstrained}}^{(k)}|}\]</div>
+<p>Combines McLachlan’s structure-preserving scheme with Mentink’s semi-implicit midpoint variant,
+integrating in spherical coordinates. Iteration continues until convergence: <span class="math notranslate nohighlight">\(|\mathbf{m}^{(k+1)} - \mathbf{m}^{(k)}| &lt; \epsilon\)</span></p>
+<p><strong>Advantages:</strong>
+- <strong>Perfect moment normalization</strong> (no numerical drift in <span class="math notranslate nohighlight">\(|m|\)</span>)
+- Fixed-point iteration provides excellent accuracy
+- Highest theoretical accuracy among available solvers
+- Spherical formulation converges faster than basis (SDEalgh=6)</p>
+<p><strong>Disadvantages:</strong>
+- <strong>Very expensive:</strong> Requires 5-10 iterations per timestep
+- Highest memory usage (stores iteration vectors)
+- Slowest solver available</p>
+<p><strong>Use cases:</strong>
+- Extremely long simulations (days or weeks) where <span class="math notranslate nohighlight">\(|m|\)</span> drift matters
+- High-precision phase transition studies
+- When moment normalization errors accumulate significantly
+- Validating results from faster solvers</p>
+<p><strong>Caution:</strong> Use only when necessary. Standard solvers (1, 5) usually provide sufficient accuracy
+without the computational penalty.</p>
+<p><strong>Example input:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SDEalgh       7           # Spherical midpoint (FPI)
+delta_t       1.0e-15     # Standard timestep
+# Simulation will be ~5x slower than SDEalgh=1
+</pre></div>
+</div>
+</section>
+<section id="sdealgh-21-spin-lattice-dynamics-implicit-midpoint-basis">
+<h3>SDEalgh=21: Spin-Lattice Dynamics - Implicit Midpoint (Basis)<a class="headerlink" href="#sdealgh-21-spin-lattice-dynamics-implicit-midpoint-basis" title="Permalink to this heading"></a></h3>
+<p><strong>Type:</strong> Semi-implicit midpoint solver for coupled spin-lattice dynamics with fixed-point iteration (basis variant)</p>
+<p><strong>Physics:</strong></p>
+<p>Couples the LLG equation for spins with <strong>lattice dynamics</strong> (ionic motion):</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\frac{d\mathbf{m}}{dt} = -\gamma(\mathbf{m} \times \mathbf{B}_{\text{eff}}) - \lambda (\mathbf{m} \times \frac{d\mathbf{m}}{dt}) + \text{thermal}\\M_{ion} \frac{d^2\mathbf{u}}{dt^2} = \mathbf{F}(\text{spins}, \text{lattice})\end{aligned}\end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> is ionic displacement and <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> includes spin-lattice interactions.</p>
+<p><strong>Algorithm:</strong></p>
+<p>Fixed-point iteration variant of implicit midpoint solver applied to <strong>both spin and lattice coordinates</strong>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{m}^{(k+1)} = f(\mathbf{m}^{(k)}) \quad \text{(spin part)}\\\mathbf{u}^{(k+1)} = g(\mathbf{u}^{(k)}) \quad \text{(lattice part)}\\\mathbf{v}^{(k+1)} = h(\mathbf{v}^{(k)}) \quad \text{(velocity part)}\end{aligned}\end{align} \]</div>
+<p>Iteration continues until convergence in all three components: <span class="math notranslate nohighlight">\(|\Delta\mathbf{m}| &lt; \epsilon\)</span>, <span class="math notranslate nohighlight">\(|\Delta\mathbf{u}| &lt; \epsilon\)</span>, <span class="math notranslate nohighlight">\(|\Delta\mathbf{v}| &lt; \epsilon\)</span></p>
+<p><strong>Characteristics:</strong></p>
+<ul class="simple">
+<li><p>Uses <strong>Cartesian basis</strong> representation for spin coordinates</p></li>
+<li><p>Converges more slowly than spherical variant (SDEalgh=22)</p></li>
+<li><p>Completely implicit and unconditionally stable</p></li>
+<li><p>Higher computational cost due to basis coordinates</p></li>
+</ul>
+<p><strong>Use cases:</strong></p>
+<ul class="simple">
+<li><p>Spin-lattice dynamics simulations (SLD mode in UppASD)</p></li>
+<li><p>Studying magnon-phonon coupling</p></li>
+<li><p>Spin-phonon interactions with large lattice deformations</p></li>
+</ul>
+<p><strong>Note:</strong> For SLD mode only. Controlled via <code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">=</span> <span class="pre">'R'</span></code> with <code class="docutils literal notranslate"><span class="pre">SDEalgh</span> <span class="pre">=</span> <span class="pre">21</span></code> in input files.</p>
+</section>
+<section id="sdealgh-22-spin-lattice-dynamics-implicit-midpoint-spherical">
+<h3>SDEalgh=22: Spin-Lattice Dynamics - Implicit Midpoint (Spherical)<a class="headerlink" href="#sdealgh-22-spin-lattice-dynamics-implicit-midpoint-spherical" title="Permalink to this heading"></a></h3>
+<p><strong>Type:</strong> Semi-implicit midpoint solver for coupled spin-lattice dynamics with fixed-point iteration (spherical variant)</p>
+<p><strong>Physics:</strong></p>
+<p>Same as SDEalgh=21 but enforces <strong>exact spherical constraint</strong> on spins:</p>
+<div class="math notranslate nohighlight">
+\[|\mathbf{m}| = 1 \text{ at each iteration step}\]</div>
+<p><strong>Algorithm:</strong></p>
+<p>Fixed-point iteration with <strong>spherical normalization</strong> for spins:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{m}^{(k+1)} = \frac{\mathbf{m}_{\text{unconstrained}}^{(k)}}{|\mathbf{m}_{\text{unconstrained}}^{(k)}|} \quad \text{(spin normalization)}\\\mathbf{u}^{(k+1)} = g(\mathbf{u}^{(k)}) \quad \text{(lattice part)}\\\mathbf{v}^{(k+1)} = h(\mathbf{v}^{(k)}) \quad \text{(velocity part)}\end{aligned}\end{align} \]</div>
+<p><strong>Characteristics:</strong></p>
+<ul class="simple">
+<li><p>Uses <strong>spherical coordinates</strong> for spin equations of motion</p></li>
+<li><p><strong>Faster convergence</strong> than basis variant (SDEalgh=21)</p></li>
+<li><p>Perfect moment magnitude conservation (no drift)</p></li>
+<li><p><strong>Preferred variant</strong> for SLD calculations</p></li>
+<li><p>Converges in fewer iterations than SDEalgh=21</p></li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul class="simple">
+<li><p>Automatic moment normalization</p></li>
+<li><p>Better numerical stability</p></li>
+<li><p>Faster fixed-point convergence</p></li>
+<li><p>More efficient than basis variant</p></li>
+</ul>
+<p><strong>Use cases:</strong></p>
+<ul class="simple">
+<li><p><strong>Primary choice</strong> for spin-lattice dynamics (SLD mode)</p></li>
+<li><p>Long-duration simulations requiring moment conservation</p></li>
+<li><p>Magnon-phonon coupling with perfect spin normalization</p></li>
+</ul>
+<p><strong>Note:</strong> For SLD mode only. Controlled via <code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">=</span> <span class="pre">'R'</span></code> with <code class="docutils literal notranslate"><span class="pre">SDEalgh</span> <span class="pre">=</span> <span class="pre">22</span></code> in input files.</p>
+<p><strong>Example input:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SDEalgh       22          # Spherical SLD solver (RECOMMENDED)
+delta_t       1.0e-15
+# Spin-lattice coupled dynamics with spherical midpoint integration
+</pre></div>
+</div>
+</section>
+<section id="sdealgh-11-llgi-inertial-solver">
+<h3>SDEalgh=11: LLGI Inertial Solver<a class="headerlink" href="#sdealgh-11-llgi-inertial-solver" title="Permalink to this heading"></a></h3>
+<p><strong>Type:</strong> Heun-type predictor-corrector for LLG-I equation</p>
+<p><strong>Physics:</strong></p>
+<p>Includes <strong>inertial magnetic acceleration</strong> term:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d^2\mathbf{m}}{dt^2} = -\gamma(\mathbf{m} \times \mathbf{B}_{\text{eff}})
+- \lambda' (\mathbf{m} \times \frac{d\mathbf{m}}{dt})\]</div>
+<p>Controlled by <code class="docutils literal notranslate"><span class="pre">relaxtime</span></code> parameter (units: seconds).</p>
+<p><strong>When to use:</strong></p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">relaxtime</span></code> to non-zero value to activate inertial dynamics:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SDEalgh       11          # LLGI solver
+relaxtime     1.0e-12     # Relaxation time (~100 fs typical)
+damping       0.05
+</pre></div>
+</div>
+<p><strong>Physical regime:</strong></p>
+<ul class="simple">
+<li><p><strong>relaxtime = 0:</strong> Standard LLG (no inertia)</p></li>
+<li><p><strong>relaxtime ~ 10^{-12} s:</strong> Weak magnetic inertia (weakly ferromagnetic materials)</p></li>
+<li><p><strong>relaxtime ~ 10^{-11} s:</strong> Strong inertia (important for ultrafast dynamics, spin textures)</p></li>
+</ul>
+<p><strong>Advantages:</strong>
+- Captures ultrafast magnetic dynamics
+- Relevant for <strong>THz magnetization dynamics</strong>
+- Accurate for <strong>laser-induced spin dynamics</strong></p>
+<p><strong>Disadvantages:</strong>
+- More expensive (second-order equation)
+- Requires careful timestep selection (<span class="math notranslate nohighlight">\(\\Delta t &lt; \\text{relaxtime}\)</span>)
+- Less stable than standard LLG</p>
+<p><strong>Use cases:</strong>
+- <strong>Ultrafast spectroscopy</strong> (pump-probe experiments)
+- <strong>Spin textures under strong driving</strong> (large magnetic fields)
+- <strong>Theoretical studies</strong> of inertial effects
+- <strong>THz-frequency dynamics</strong></p>
+<p><strong>Not recommended:</strong> For equilibrium simulations, standard LLG (<code class="docutils literal notranslate"><span class="pre">relaxtime=0</span></code>) is more efficient.</p>
+<p><strong>Example input:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SDEalgh       11
+relaxtime     5.0e-12     # 5 picoseconds inertial timescale
+delta_t       5.0e-16     # Must be much smaller than relaxtime
+</pre></div>
+</div>
+</section>
+</section>
+<section id="extended-physics-options">
+<h2>Extended Physics Options<a class="headerlink" href="#extended-physics-options" title="Permalink to this heading"></a></h2>
+<p>All solvers support additional physics modules that modify the effective field:</p>
+<p><strong>Spin-Transfer Torque (STT)</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>do_stt        Y
+# Modifies effective field via electron current-spin interaction
+</pre></div>
+</div>
+<p><strong>Spin Hall Effect (SHE)</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>do_she        Y
+# Current-induced spin-orbit torque from heavy metal overlayer
+</pre></div>
+</div>
+<p><strong>Spin-Orbit Torque (SOT)</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>do_sot        Y
+# General spin-orbit coupling to magnetic moment
+</pre></div>
+</div>
+</section>
+<section id="timestep-selection-guide">
+<h2>Timestep Selection Guide<a class="headerlink" href="#timestep-selection-guide" title="Permalink to this heading"></a></h2>
+<p><strong>General rule:</strong> <span class="math notranslate nohighlight">\(\Delta t\)</span> should be small compared to the magnetic precession timescale.</p>
+<p><strong>Precession timescale:</strong></p>
+<div class="math notranslate nohighlight">
+\[\tau_{\text{prec}} = \frac{1}{\gamma B} \sim 10^{-12} \text{ s for } B \sim 1 \text{ T}\]</div>
+</section>
+<section id="numerical-precision-checks">
+<h2>Numerical Precision Checks<a class="headerlink" href="#numerical-precision-checks" title="Permalink to this heading"></a></h2>
+<p><strong>Monitor moment magnitude:</strong></p>
+<p>Code automatically re-normalizes moments after each step, but magnitude drift indicates:</p>
+<ul class="simple">
+<li><p><strong>Timestep too large</strong> → reduce <span class="math notranslate nohighlight">\(\Delta t\)</span></p></li>
+<li><p><strong>Solver mismatch</strong> → switch to SDEalgh=5 or 7</p></li>
+<li><p><strong>Moment conservation error</strong> in output files</p></li>
+</ul>
+<p><strong>Check energy conservation:</strong></p>
+<p>For conservative systems (no damping, <span class="math notranslate nohighlight">\(\lambda = 0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[E = -\mathbf{m} \cdot \mathbf{B}_{\text{eff}} + \text{const}\]</div>
+<p>Monitor total energy to detect numerical issues.</p>
+<p><strong>Convergence testing:</strong></p>
+<p>Run simulations with progressively smaller timesteps (<span class="math notranslate nohighlight">\(\Delta t, \Delta t/2, \Delta t/4\)</span>)
+and verify observables (magnetization, energies) converge.</p>
+<p><strong>Thermal noise verification:</strong></p>
+<p>For <span class="math notranslate nohighlight">\(\lambda \neq 0\)</span>, check energy equipartition:</p>
+<div class="math notranslate nohighlight">
+\[\langle E_{\text{thermal}} \rangle \approx k_B T\]</div>
+<p>Deviations suggest thermal noise generation errors.</p>
+</section>
+<section id="solver-comparison-examples">
+<h2>Solver Comparison Examples<a class="headerlink" href="#solver-comparison-examples" title="Permalink to this heading"></a></h2>
+<section id="example-1-equilibrium-ferromagnet-at-t-300k">
+<h3>Example 1: Equilibrium Ferromagnet at T=300K<a class="headerlink" href="#example-1-equilibrium-ferromagnet-at-t-300k" title="Permalink to this heading"></a></h3>
+<p><strong>Setup:</strong>
+- Simple cubic iron (A = 1 meV, K = 0)
+- 10×10×10 unit cells
+- No external field</p>
+<p><strong>Comparison:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Configuration 1: Midpoint (Fast baseline)
+SDEalgh       1
+delta_t       1.0e-15
+# Runtime: 1x (reference)
+# M_sat accuracy: ±0.5%
+
+# Configuration 2: Depondt (Robust structure conservation)
+SDEalgh       5
+delta_t       2.0e-15
+# Runtime: 1.1x
+# M_sat accuracy: ±0.1%
+# Better for domain walls
+
+# Configuration 3: Spherical midpoint (Overkill)
+SDEalgh       7
+delta_t       1.0e-15
+# Runtime: 5x
+# M_sat accuracy: ±0.01%
+# Not worth the cost
+</pre></div>
+</div>
+<p><strong>Conclusion:</strong> Use <strong>SDEalgh=1</strong> (Midpoint) for this case.</p>
+</section>
+<section id="example-2-skyrmion-room-temperature-dynamics">
+<h3>Example 2: Skyrmion Room-Temperature Dynamics<a class="headerlink" href="#example-2-skyrmion-room-temperature-dynamics" title="Permalink to this heading"></a></h3>
+<p><strong>Setup:</strong>
+- Chiral magnet with DMI
+- Skyrmion core diameter ~5 nm
+- External field B = 0.1 T</p>
+<p><strong>Comparison:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Configuration 1: Midpoint
+SDEalgh       1
+delta_t       5.0e-15
+# Skyrmion becomes distorted after 100 ps
+# Unphysical deformation of core
+
+# Configuration 2: Depondt (BEST)
+SDEalgh       5
+delta_t       5.0e-15
+# Skyrmion remains stable for hours of simulation
+# Perfect topological charge conservation
+
+# Configuration 3: Spherical midpoint
+SDEalgh       7
+delta_t       5.0e-15
+# Runtime: 4x Configuration 2
+# Skyrmion identical to Depondt
+# Not worth computational cost
+</pre></div>
+</div>
+<p><strong>Conclusion:</strong> For <strong>magnetic textures</strong>, use <strong>SDEalgh=5</strong> (Depondt). It’s worth the minor cost.</p>
+</section>
+<section id="example-3-ultrafast-laser-induced-magnetization-dynamics">
+<h3>Example 3: Ultrafast Laser-Induced Magnetization Dynamics<a class="headerlink" href="#example-3-ultrafast-laser-induced-magnetization-dynamics" title="Permalink to this heading"></a></h3>
+<p><strong>Setup:</strong>
+- Strong laser pump (B_laser ~ 10 T effective field)
+- Relaxation timescale ~ 1 ps
+- Probe time ~ 100 fs</p>
+<p><strong>Setup:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SDEalgh       11              # LLGI inertial solver
+relaxtime     1.0e-12         # 1 ps inertial timescale
+delta_t       1.0e-16         # 0.1 fs timestep (&lt;&lt; relaxtime)
+nstep         10000000        # Total 1 ps simulation
+</pre></div>
+</div>
+<p><strong>Physical results:</strong>
+- Captures ultrafast demagnetization
+- Shows inertial overshoot
+- Matches ultrafast experiments</p>
+<p><strong>Alternative (standard LLG, no inertia):</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SDEalgh       1
+relaxtime     0.0             # Standard LLG
+delta_t       5.0e-16         # Faster relaxation -&gt; non-physical
+</pre></div>
+</div>
+<p><strong>Comparison:</strong> Inertial model essential for accurate &lt;100 fs timescale dynamics.</p>
+</section>
+</section>
+<section id="performance-benchmarks">
+<h2>Performance Benchmarks<a class="headerlink" href="#performance-benchmarks" title="Permalink to this heading"></a></h2>
+<p>Relative computational cost per timestep (normalized to SDEalgh=1):</p>
+<dl class="simple">
+<dt>SDEalgh=1 (Midpoint)</dt><dd><p><strong>Relative Cost:</strong> 1.0x
+<strong>Memory:</strong> 1.0x
+<strong>Comment:</strong> Baseline — use this first</p>
+</dd>
+<dt>SDEalgh=2 (Heun single)</dt><dd><p><strong>Relative Cost:</strong> 0.8x
+<strong>Memory:</strong> 0.8x
+<strong>Comment:</strong> Faster but lower accuracy</p>
+</dd>
+<dt>SDEalgh=4 (Heun proper)</dt><dd><p><strong>Relative Cost:</strong> 1.2x
+<strong>Memory:</strong> 1.0x
+<strong>Comment:</strong> Slightly more accurate</p>
+</dd>
+<dt>SDEalgh=5 (Depondt)</dt><dd><p><strong>Relative Cost:</strong> 1.3x
+<strong>Memory:</strong> 1.0x
+<strong>Comment:</strong> Best for textures</p>
+</dd>
+<dt>SDEalgh=6 (Midpoint FPI)</dt><dd><p><strong>Relative Cost:</strong> 4.0x
+<strong>Memory:</strong> 1.2x
+<strong>Comment:</strong> Basis coordinate variant, rarely justified</p>
+</dd>
+<dt>SDEalgh=7 (Spherical FPI)</dt><dd><p><strong>Relative Cost:</strong> 5.5x
+<strong>Memory:</strong> 2.0x
+<strong>Comment:</strong> Spherical variant, better convergence than SDEalgh=6</p>
+</dd>
+<dt>SDEalgh=11 (LLGI)</dt><dd><p><strong>Relative Cost:</strong> 1.4x
+<strong>Memory:</strong> 1.2x
+<strong>Comment:</strong> Only with relaxtime &gt; 0</p>
+</dd>
+<dt>SDEalgh=21 (SLD Basis FPI)</dt><dd><p><strong>Relative Cost:</strong> 8.0x
+<strong>Memory:</strong> 2.5x
+<strong>Comment:</strong> Spin-lattice dynamics, basis variant</p>
+</dd>
+<dt>SDEalgh=22 (SLD Spherical FPI)</dt><dd><p><strong>Relative Cost:</strong> 7.0x
+<strong>Memory:</strong> 2.5x
+<strong>Comment:</strong> Spin-lattice dynamics, spherical variant (RECOMMENDED for SLD)</p>
+</dd>
+</dl>
+</section>
+<section id="accuracy-vs-stability-trade-off">
+<h2>Accuracy vs. Stability Trade-off<a class="headerlink" href="#accuracy-vs-stability-trade-off" title="Permalink to this heading"></a></h2>
+<p><strong>Explicit solvers</strong> (Heun variants):
+- ✓ Fast
+- ✗ Limited stability (must use small <span class="math notranslate nohighlight">\(\Delta t\)</span>)
+- ✗ Energy conservation (especially at high T)</p>
+<p><strong>Semi-implicit solvers</strong> (Midpoint, Depondt):
+- ✓ Excellent stability (large <span class="math notranslate nohighlight">\(\Delta t\)</span> possible)
+- ✓ Energy conserving
+- ✓ Moderate cost
+- ✓ <strong>Recommended for most simulations</strong></p>
+<p><strong>Fixed-point iteration</strong> (Midpoint/Spherical FPI):
+- ✓ Highest accuracy
+- ✓ Best energy conservation
+- ✗ Very expensive
+- ✗ Only justify for extreme precision requirements</p>
+<p><strong>Rotation-preserving</strong> (Depondt, Spherical):
+- ✓ Perfect moment conservation
+- ✓ Ideal for topological structures
+- ✓ Better for large timesteps
+- ✓ <strong>Preferred for skyrmions, domain walls</strong></p>
+<p><strong>Inertial dynamics</strong> (LLGI):
+- ✓ Captures ultrafast effects
+- ✗ Requires very small timesteps
+- ✓ Essential for laser-driven dynamics</p>
+</section>
+<section id="decision-tree-for-solver-selection">
+<h2>Decision Tree for Solver Selection<a class="headerlink" href="#decision-tree-for-solver-selection" title="Permalink to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>START: Choose your solver
+│
+├─ Running spin-lattice dynamics (SLD mode)?
+│  ├─ YES → Use SDEalgh=22 (Spherical, RECOMMENDED)
+│  │  (Use SDEalgh=21 only if convergence issues)
+│  └─ NO → Continue
+│
+├─ Need inertial magnetic acceleration?
+│  ├─ YES → Use SDEalgh=11 (LLGI)
+│  └─ NO → Continue
+│
+├─ Simulating magnetic textures (skyrmions, domains)?
+│  ├─ YES → Use SDEalgh=5 (Depondt)
+│  └─ NO → Continue
+│
+├─ Is computational cost critical?
+│  ├─ YES (clusters, millions of atoms) → Use SDEalgh=1 (Midpoint)
+│  └─ NO → Continue
+│
+├─ Do you need maximum accuracy?
+│  ├─ YES (publication, validation) → Use SDEalgh=5 or 7
+│  └─ NO → Use SDEalgh=1 (Midpoint)
+│
+└─ DEFAULT RECOMMENDATION: SDEalgh=1 (Midpoint)
+   • 2nd order accurate
+   • Unconditionally stable
+   • Good speed-accuracy balance
+   • Works for all physics modules
+</pre></div>
+</div>
+</section>
+<section id="summary-table-when-to-use-each-solver">
+<h2>Summary Table: When to Use Each Solver<a class="headerlink" href="#summary-table-when-to-use-each-solver" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Solver selection at-a-glance</p>
+</div>
+<dl class="simple">
+<dt>SDEalgh=1</dt><dd><p><strong>Solver:</strong> Midpoint
+<strong>Best Application:</strong> General-purpose simulations
+<strong>Timestep Advantage:</strong> Large allowed
+<strong>Use It?:</strong> YES (start here)</p>
+</dd>
+<dt>SDEalgh=2</dt><dd><p><strong>Solver:</strong> Heun single
+<strong>Best Application:</strong> Rapid prototyping only
+<strong>Timestep Advantage:</strong> Small required
+<strong>Use It?:</strong> Only if desperate</p>
+</dd>
+<dt>SDEalgh=4</dt><dd><p><strong>Solver:</strong> Heun proper
+<strong>Best Application:</strong> Moderate accuracy needs
+<strong>Timestep Advantage:</strong> Medium allowed
+<strong>Use It?:</strong> Maybe (try 1 first)</p>
+</dd>
+<dt>SDEalgh=5</dt><dd><p><strong>Solver:</strong> Depondt
+<strong>Best Application:</strong> Magnetic textures
+<strong>Timestep Advantage:</strong> Large allowed
+<strong>Use It?:</strong> YES (for skyrmions)</p>
+</dd>
+<dt>SDEalgh=6</dt><dd><p><strong>Solver:</strong> Midpoint FPI (Basis)
+<strong>Best Application:</strong> Very large timesteps (rarely justified)
+<strong>Timestep Advantage:</strong> Very large
+<strong>Use It?:</strong> Rarely</p>
+</dd>
+<dt>SDEalgh=7</dt><dd><p><strong>Solver:</strong> Spherical Midpoint FPI
+<strong>Best Application:</strong> Extreme precision, very long simulations
+<strong>Timestep Advantage:</strong> Very large
+<strong>Use It?:</strong> Only for extreme precision</p>
+</dd>
+<dt>SDEalgh=11</dt><dd><p><strong>Solver:</strong> LLGI
+<strong>Best Application:</strong> Ultrafast dynamics
+<strong>Timestep Advantage:</strong> Very small
+<strong>Use It?:</strong> Only if relaxtime &gt; 0</p>
+</dd>
+<dt>SDEalgh=21</dt><dd><p><strong>Solver:</strong> SLD Basis Midpoint FPI
+<strong>Best Application:</strong> Spin-lattice dynamics (SLD mode)
+<strong>Timestep Advantage:</strong> Very large
+<strong>Use It?:</strong> Only if SDEalgh=22 fails</p>
+</dd>
+<dt>SDEalgh=22</dt><dd><p><strong>Solver:</strong> SLD Spherical Midpoint FPI
+<strong>Best Application:</strong> Spin-lattice dynamics (SLD mode)
+<strong>Timestep Advantage:</strong> Very large
+<strong>Use It?:</strong> YES (for SLD mode)</p>
+</dd>
+</dl>
+</section>
+<section id="examples-in-input-files">
+<h2>Examples in Input Files<a class="headerlink" href="#examples-in-input-files" title="Permalink to this heading"></a></h2>
+<p><strong>Example 1: Fast Equilibrium Simulation</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Ferromagnetic equilibrium
+SDEalgh       1           # Midpoint solver
+damping       0.05
+delta_t       1.0e-15
+nstep         1000000
+Temp          300.0
+</pre></div>
+</div>
+<p><strong>Example 2: Skyrmion Dynamics Study</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Skyrmion stability and motion
+SDEalgh       5           # Depondt solver (CRITICAL for textures)
+damping       0.1
+delta_t       2.0e-15
+nstep         5000000
+Temp          100.0
+</pre></div>
+</div>
+<p><strong>Example 3: Ultrafast Laser Dynamics</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Laser-induced magnetization reversal
+SDEalgh       11          # LLGI inertial solver
+relaxtime     5.0e-12     # 5 ps inertial timescale
+damping       0.01
+delta_t       5.0e-16     # Must be &lt;&lt; relaxtime
+nstep         10000000
+Temp          300.0
+</pre></div>
+</div>
+<p><strong>Example 4: High-Performance Computing</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Million-atom system on supercomputer
+SDEalgh       1           # Fast Midpoint
+damping       0.05
+delta_t       2.0e-15     # Can be larger with semi-implicit
+nstep         10000000
+Temp          300.0
+</pre></div>
+</div>
+<p><strong>Example 5: Spin-Lattice Dynamics (SLD Mode)</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Coupled spin-lattice dynamics simulation
+mode          R           # SLD mode (spin-lattice dynamics)
+SDEalgh       22          # Spherical midpoint (RECOMMENDED for SLD)
+damping       0.05
+delta_t       1.0e-15
+nstep         1000000
+Temp          300.0
+# Solves coupled spin and lattice equations of motion
+# SDEalgh=21 is alternative if convergence issues arise
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h1>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#mentink2010" id="id1"><span>[Mentink2010]</span></a> - Midpoint solver and semi-implicit integration</p></li>
+<li><p><a class="reference internal" href="../../references/#depondt2009" id="id2"><span>[Depondt2009]</span></a> - Depondt-Mertens solver for spin dynamics</p></li>
+<li><p><a class="reference internal" href="../../references/#mclachlan2014" id="id3"><span>[McLachlan2014]</span></a> - Structure-preserving Lie-Poisson integrators</p></li>
+<li><p><a class="reference internal" href="../../references/#kloeden1992" id="id4"><span>[Kloeden1992]</span></a> - Numerical solution of stochastic differential equations</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Simulation Methods and Algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../monte-carlo/" class="btn btn-neutral float-right" title="Monte Carlo simulations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

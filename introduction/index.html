@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Input files" href="../input/" />
+    <link rel="prev" title="UppASD manual" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#theoretical-overview">Theoretical overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#principles-of-the-code">Principles of the Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output/">Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/introduction.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<section id="theoretical-overview">
+<h2>Theoretical overview<a class="headerlink" href="#theoretical-overview" title="Permalink to this heading"></a></h2>
+<p>This user guide describes the essential features of the Uppsala Atomistic Spin Dynamics program (UppASD). The emphasis is on the input files necessary to run calculations using UppASD and the output files it generates. Some information concerning the analysis of data generated by the code is also given. The ASD method and our implementation of it is described in the article by Skubic <em>et al</em> <a class="reference internal" href="../references/#skubic2008" id="id1"><span>[Skubic2008]</span></a>. The underlying theory is described in the articles by Antropov <em>et al.</em> <a class="reference internal" href="../references/#antropov1996" id="id2"><span>[Antropov1996]</span></a> and García-Palacios and Lázaro <a class="reference internal" href="../references/#garcia-palacios1998" id="id3"><span>[Garcia-Palacios1998]</span></a>. An old, yet remarkably lucid overview is also given by Watson <em>et al.</em> <a class="reference internal" href="../references/#watson1969" id="id4"><span>[Watson1969]</span></a>. A thorough review of the method and relevant applications is given in the book by Eriksson <em>et al.</em> <a class="reference internal" href="../references/#eriksson2017" id="id5"><span>[Eriksson2017]</span></a>.</p>
+<p>The program evolves the equations of motion for atomic magnetic moments in a solid. These take the form of the Landau-Lifshitz-Gilbert (LLG) equation</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathbf{m}_i}{dt}=-\frac{\gamma}{1+\alpha^2} \mathbf{m}_i \times [\mathbf{B}_{i}+\mathbf{b}_{i}(t)]-\frac{\gamma}{m_i} \frac{\alpha}{1+\alpha^2} \mathbf{m}_i \times (\mathbf{m}_i \times [\mathbf{B}_{i}+\mathbf{b}_{i}(t)]).\]</div>
+<p>In this expression, <span class="math notranslate nohighlight">\(\gamma\)</span> is the gyromagnetic ratio and <span class="math notranslate nohighlight">\(\mathbf{b}_{i}(t)\)</span> is a stochastic magnetic field with a Gaussian distribution, the magnitude of which is related to the damping parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, which eventually brings the system into thermal equilibrium. The typical time step for solving the differential equations is <span class="math notranslate nohighlight">\(\Delta t=0.1\)</span> femtoseconds, <em>i.e.</em> <span class="math notranslate nohighlight">\(10^{-16}\)</span> seconds.</p>
+<p>The effective field, <span class="math notranslate nohighlight">\(\mathbf{B}_i\)</span>, experienced by each atom <span class="math notranslate nohighlight">\(\textit{i}\)</span> is given by the partial derivative of the Hamiltonian <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> with respect to the local magnetic moment <span class="math notranslate nohighlight">\(\mathbf{m}_i\)</span></p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}_i=-\frac{ \partial \mathcal{H} }{ \partial \mathbf{m}_i },\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> is the spin Hamiltonian that takes all relevant interactions into account. Note that in the input files to UppASD, the convention is that it is the unit vectors <span class="math notranslate nohighlight">\(\mathbf{e}_i=\frac{\mathbf{m}_i}{m_i}\)</span> that enter the spin Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}=-\sum_{i,j} J_{ij}\mathbf{e}_i \cdot \mathbf{e}_j - \sum_{i,j} \mathbf{D}_{ij}\cdot(\mathbf{e}_i \times \mathbf{e}_j)-\sum_i K_i (\hat{\mathbf{e}}_i \cdot \mathbf{e}_i^K)^2-\sum_i \mathbf{B}^{ext}\cdot\mathbf{e}_i  + \ldots\]</div>
+<p>This is consistent with most electronic structure codes that output <span class="math notranslate nohighlight">\(J_{ij}\)</span> and other exchange interactions but care should be taken since in many other models found in the litterature, the Hamiltonian depends explicitly of <span class="math notranslate nohighlight">\(\mathbf{m}_i\)</span> instead. The most important contribution to the Hamiltonian is typically given by the Heisenberg exchange Hamiltonian, given by the first term in the spin Hamiltonian. There, <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are atomic indices, and <span class="math notranslate nohighlight">\(J_{ij}\)</span> is the strength of the exchange interaction. These exchange interactions can be obtained from first-principles calculations, or alternatively be inferred from experiments. It is also possible (and in many cases even essential) to include other terms to the Hamiltonian, including Dzyaloshinskii-Moriya exchange, magnetic anisotropies and external magnetic fields, as are also exemplified in the spin Hamiltonian. There are currently several other interactions available in the UppASD code and additional interactions can be implemented quite straightforwardly. Please note that the format of the Hamiltonian can be defined differently regarding prefactors, inclusion of moment magnitudes, summation convention and more. The input format in UppASD is conformal with most commonly used electronic structure codes that have the capability of calculating <span class="math notranslate nohighlight">\(J_{ij}\)</span> (and sometimes <span class="math notranslate nohighlight">\(\mathbf{D}_{ij}\)</span>), <em>i.e.</em> following the same convention of the Heisenberg Hamiltonian as Liechtenstein <em>et al.</em> <a class="reference internal" href="../references/#lichtenstein1987" id="id6"><span>[Lichtenstein1987]</span></a>.</p>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h2>
+<p>The UppASD code is developed by the Division of Materials Theory, in the Department of Physics and Astronomy at Uppsala University, Sweden. The copyright of the code is held by the developers but the program is open for use and distribution according to the GPLv3 license.</p>
+<p>Further information concerning the license and contact information of the developers may be found on the UppASD webpage <a class="reference external" href="https://www.physics.uu.se/UppASD">https://www.physics.uu.se/UppASD</a>.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<p>The source code is distributed on <a class="reference external" href="https://github.com/UppASD/UppASD">https://github.com/UppASD/UppASD</a> along with documentation and a growing set of examples. To install, perform the following actions</p>
+<blockquote>
+<div><ul>
+<li><p>Obtain the code, by downloading and unpacking a release:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">UppASD</span><span class="o">/</span><span class="n">UppASD</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">tags</span><span class="o">/</span><span class="n">v6</span><span class="mf">.0.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="n">xvzf</span> <span class="n">v6</span><span class="mf">.0.2</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">UppASD</span><span class="o">-</span><span class="mf">6.0.2</span>
+</pre></div>
+</div>
+<p>or by cloning the git repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">UppASD</span><span class="o">/</span><span class="n">UppASD</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">UppASD</span>
+</pre></div>
+</div>
+</li>
+<li><p>Generate the dependencies needed for compiling the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">deps</span>
+</pre></div>
+</div>
+<p>(Optional) Perform a system check for available compiler profiles:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">probe</span>
+</pre></div>
+</div>
+<p>Compile the code with the selected compiler profile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">&lt;</span><span class="n">profile</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;profile&gt;</span></code> is the name of the profile, i.e. <code class="docutils literal notranslate"><span class="pre">ifort</span></code>, <code class="docutils literal notranslate"><span class="pre">ifort-cuda</span></code>, <code class="docutils literal notranslate"><span class="pre">gfortran</span></code>,
+<code class="docutils literal notranslate"><span class="pre">gfortran-osx</span></code>, and so on, e.g. <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">ifort</span></code>.</p>
+</li>
+<li><p>Test the compiled program against a selection of realistic runs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">asd</span><span class="o">-</span><span class="n">tests</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<p>In addition to the source files, the UppASD distribution also contains several examples (in the directory <code class="docutils literal notranslate"><span class="pre">examples/</span></code>), documentation,</p>
+<p>and routines and reference data (<code class="docutils literal notranslate"><span class="pre">tests/</span></code>) for validating the installation of the UppASD program.</p>
+</section>
+<section id="principles-of-the-code">
+<h2>Principles of the Code<a class="headerlink" href="#principles-of-the-code" title="Permalink to this heading"></a></h2>
+<p>When run, UppASD essentially goes through three stages:</p>
+<ul class="simple">
+<li><p>Initialization: the system is set up.</p></li>
+<li><p>Initial phase: an optional stage in which the system is brought into thermal equilibrium, with limited data sampling.</p></li>
+<li><p>Measurement phase: the system is evolved in time, with complete data sampling being made.</p></li>
+</ul>
+<p>During the initialization phase, all the parameters necessary to describe the system of interest, such as its geometry, dimensions, exchange couplings and boundary conditions, are set up. In addition, the initial phase also sets the simulation parameters, such as the number of simulation steps to record data over, which stochastic differential equation (SDE) integrator to use, and the temperature at which the simulation should be run.</p>
+<p>The initial phase, which is optional, is typically performed in order to bring the system into thermal equilibrium, so that the data recorded in the measurement phase is for a thermalized system. Obviously, if one is interested in out-of-equilibrium dynamics, then there is no need to perform this phase. The initial phase can either be performed using Spin Dynamics (SD), or the Metropolis or Heatbath Monte Carlo (MC) algorithms <a class="reference internal" href="../references/#binder2009" id="id7"><span>[Binder2009]</span></a>. The latter is convenient for ground state searches, provided the system is not too complex, for instance a system with a spin glass phase.</p>
+<p>During the measurement phase, the data sampling is performed. Simulations can be run in either MC or SD mode. In MC mode only magnetization averages and static correlation functions may be measured. In SD mode, a much richer set of observables are measured, including the dynamical structure factor.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="UppASD manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../input/" class="btn btn-neutral float-right" title="Input files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

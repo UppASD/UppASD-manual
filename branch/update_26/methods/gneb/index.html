@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geodesic nudged elastic band (GNEB) &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Spin-spiral minimization" href="../spin-spiral/" />
+    <link rel="prev" title="Replica exchange (parallel tempering)" href="../replica-exchange/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Geodesic nudged elastic band (GNEB)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/gneb.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="geodesic-nudged-elastic-band-gneb">
+<h1>Geodesic nudged elastic band (GNEB)<a class="headerlink" href="#geodesic-nudged-elastic-band-gneb" title="Permalink to this heading"></a></h1>
+<section id="parameters-for-minimum-energy-path-mep-calculations-using-gneb">
+<h2>Parameters for minimum energy path (MEP) calculations using GNEB<a class="headerlink" href="#parameters-for-minimum-energy-path-mep-calculations-using-gneb" title="Permalink to this heading"></a></h2>
+<p>The UppASD code implements the <strong>Geodesic Nudged Elastic Band (GNEB)</strong> method
+<a class="reference internal" href="../../references/#bessarab2012" id="id1"><span>[Bessarab2012]</span></a>, <a class="reference internal" href="../../references/#bessarab2015" id="id2"><span>[Bessarab2015]</span></a> for calculating the <strong>minimum energy path (MEP)</strong>
+between two magnetic configurations. This enables computation of:</p>
+<ul class="simple">
+<li><p><strong>Energy barriers</strong> for magnetic transitions</p></li>
+<li><p><strong>Transition rates</strong> via Harmonic Transition State Theory (HTST)</p></li>
+<li><p><strong>Saddle point (transition state) configurations</strong></p></li>
+<li><p><strong>Prefactors</strong> for transition rates and lifetimes</p></li>
+</ul>
+<p>The GNEB method is particularly useful for:</p>
+<ul class="simple">
+<li><p>Finding energy barriers in systems with competing interactions (frustrated magnets)</p></li>
+<li><p>Studying skyrmion creation and annihilation pathways</p></li>
+<li><p>Analyzing magnetic domain wall motion</p></li>
+<li><p>Computing transition rates in magnetic switching processes</p></li>
+<li><p>Identifying transition states for rare events in spin systems</p></li>
+</ul>
+<p>GNEB combines the <strong>nudged elastic band (NEB)</strong> method, which connects images
+along a path between two endpoints, with the <strong>geodesic constraint</strong> to ensure
+calculations remain on the energy landscape surface. This is complemented by
+For the original NEB method, see <a class="reference internal" href="../../references/#henkelman2000" id="id3"><span>[Henkelman2000]</span></a>. This is complemented by
+the <strong>Velocity Projection Optimization (VPO)</strong> algorithm used in the initial
+phase for relaxing endpoint configurations.</p>
+<section id="overview-of-the-gneb-method">
+<h3>Overview of the GNEB method<a class="headerlink" href="#overview-of-the-gneb-method" title="Permalink to this heading"></a></h3>
+<p>The GNEB method constructs a discrete path connecting two magnetic configurations
+(initial and final states) using a series of <span class="math notranslate nohighlight">\(N_{\text{images}}\)</span> intermediate
+configurations called <strong>images</strong>. The path is evolved to the <strong>minimum energy path (MEP)</strong>
+by simultaneously:</p>
+<ol class="arabic simple">
+<li><p><strong>Relaxing energy minima</strong>: Images at local minima relax to nearby saddle points</p></li>
+<li><p><strong>Constraining the path</strong>: Spring forces keep images connected along the path</p></li>
+<li><p><strong>Geodesic projection</strong>: The constraint is applied only tangent to the energy landscape</p></li>
+</ol>
+<p>The MEP connects the initial state (image 1) to the final state (image <span class="math notranslate nohighlight">\(N_{\text{images}}\)</span>).
+Intermediate images (2 to <span class="math notranslate nohighlight">\(N_{\text{images}}-1\)</span>) are evolved toward the MEP.</p>
+</section>
+<section id="the-vpo-minimizer">
+<h3>The VPO minimizer<a class="headerlink" href="#the-vpo-minimizer" title="Permalink to this heading"></a></h3>
+<p>The <strong>Velocity Projection Optimization (VPO)</strong> algorithm <a class="reference internal" href="../../references/#bessarab2012" id="id4"><span>[Bessarab2012]</span></a> is used in
+the initial phase (<code class="docutils literal notranslate"><span class="pre">ip_mode</span> <span class="pre">G</span></code> or <code class="docutils literal notranslate"><span class="pre">ip_mode</span> <span class="pre">E</span></code>) to relax individual magnetic configurations
+to nearby energy minima. VPO is based on a velocity-Verlet integration scheme applied
+to the equation of motion on the energy landscape.</p>
+<p>The algorithm treats the magnetic moments as point masses on the energy surface and
+integrates a damped equation of motion:</p>
+<div class="math notranslate nohighlight">
+\[m \frac{d\mathbf{v}}{dt} = \mathbf{F} - \zeta \mathbf{v}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is the velocity, <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> is the effective force
+(derived from the effective magnetic field), <span class="math notranslate nohighlight">\(m\)</span> is a fictitious mass, and
+<span class="math notranslate nohighlight">\(\zeta\)</span> is a damping coefficient.</p>
+<p>The effective force on each magnetic moment <span class="math notranslate nohighlight">\(\mathbf{m}_i\)</span> is computed as the
+component of the effective field perpendicular to the moment:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F}_i = \mathbf{m}_i \times (\mathbf{m}_i \times \mathbf{B}_{\text{eff},i})\]</div>
+<p>This ensures that moments remain on the unit sphere during optimization.</p>
+<p>The VPO algorithm includes:</p>
+<ol class="arabic simple">
+<li><p><strong>Velocity updates</strong> based on the effective force</p></li>
+<li><p><strong>Moment updates</strong> via rotation around a computed axis</p></li>
+<li><p><strong>Velocity projection</strong> to maintain the geodesic constraint</p></li>
+<li><p><strong>Convergence criterion</strong>: Maximum effective field force falls below <code class="docutils literal notranslate"><span class="pre">min_ftol</span></code></p></li>
+</ol>
+<p>VPO is controlled by two key parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vpo_mass</span></code>: Fictitious mass <span class="math notranslate nohighlight">\(m\)</span> for the equation of motion. Larger values lead to slower updates but more stable convergence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vpo_dt</span></code>: Integration timestep <span class="math notranslate nohighlight">\(\Delta t\)</span>. Should be small enough for stability (typically 0.001–0.01).</p></li>
+</ul>
+</section>
+<section id="initial-phase-vpo-relaxation-of-endpoints">
+<h3>Initial phase: VPO relaxation of endpoints<a class="headerlink" href="#initial-phase-vpo-relaxation-of-endpoints" title="Permalink to this heading"></a></h3>
+<p>The initial phase (<code class="docutils literal notranslate"><span class="pre">ip_mode</span> <span class="pre">G</span></code> or <code class="docutils literal notranslate"><span class="pre">ip_mode</span> <span class="pre">E</span></code>) uses VPO to relax the initial
+and final configurations to nearby <strong>energy minima</strong>. This is important because:</p>
+<ul class="simple">
+<li><p>GNEB is most efficient when endpoints are at local minima</p></li>
+<li><p>It ensures the MEP connects true local minima</p></li>
+<li><p>It reduces the number of GNEB iterations needed</p></li>
+</ul>
+<p>The VPO initial phase:</p>
+<ol class="arabic simple">
+<li><p>Reads initial and final configurations from the configuration files</p></li>
+<li><p>Performs independent VPO minimization on each endpoint</p></li>
+<li><p>Saves the minimized configurations for use in the GNEB measurement phase</p></li>
+</ol>
+<p>If <code class="docutils literal notranslate"><span class="pre">ip_mode</span></code> is set to a Monte Carlo mode (M, H) instead, GNEB will still work
+but the endpoints are not optimized and may not be at true local minima.</p>
+</section>
+<section id="gneb-measurement-phase-finding-the-mep">
+<h3>GNEB measurement phase: Finding the MEP<a class="headerlink" href="#gneb-measurement-phase-finding-the-mep" title="Permalink to this heading"></a></h3>
+<p>In the measurement phase (<code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">G</span></code> for standard GNEB, or <code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">E</span></code> for climbing
+image GNEB), the code:</p>
+<ol class="arabic simple">
+<li><p><strong>Generates an initial path</strong> connecting the two endpoint configurations (interpolation)</p></li>
+<li><p><strong>Evolves the path</strong> toward the MEP using VPO optimization on all images</p></li>
+<li><p><strong>Applies spring forces</strong> to keep images evenly distributed</p></li>
+<li><p><strong>Computes the saddle point</strong> (highest energy along the MEP)</p></li>
+<li><p><strong>Calculates the energy barrier</strong> as the difference between saddle point and endpoints</p></li>
+<li><p><strong>Optionally computes the Hessian matrix</strong> at key points for HTST calculations</p></li>
+</ol>
+</section>
+</section>
+<section id="spring-force-and-elastic-band">
+<h2>Spring force and elastic band<a class="headerlink" href="#spring-force-and-elastic-band" title="Permalink to this heading"></a></h2>
+<p>The initial path connecting the two endpoints can be generated in two ways:</p>
+<ol class="arabic simple">
+<li><p><strong>Geodesic interpolation</strong> (<code class="docutils literal notranslate"><span class="pre">initpath</span> <span class="pre">=</span> <span class="pre">1</span></code>): A geodesic curve on the energy landscape connecting the endpoints</p></li>
+<li><p><strong>External path file</strong> (<code class="docutils literal notranslate"><span class="pre">initpath</span> <span class="pre">=</span> <span class="pre">2</span></code>): Read a path from the restart file specified in <code class="docutils literal notranslate"><span class="pre">restartfile</span></code></p></li>
+</ol>
+<p>The <strong>geodesic path</strong> is computed as the shortest path on the unit sphere connecting
+the two configurations. For each atom, the interpolation is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{m}_i(\lambda) = \frac{\sin((1-\lambda)\theta_i)}{\sin(\theta_i)} \mathbf{m}_i^{\text{init}} + \frac{\sin(\lambda \theta_i)}{\sin(\theta_i)} \mathbf{m}_i^{\text{final}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda \in [0, 1]\)</span> is the path parameter and <span class="math notranslate nohighlight">\(\theta_i\)</span> is the
+angle between the initial and final moment directions for atom <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>This ensures that the initial path is a <strong>geodesic</strong> connecting the endpoints on the
+configuration space.</p>
+</section>
+<section id="id5">
+<h2>Spring force and elastic band<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>To keep images distributed along the path, <strong>spring forces</strong> are applied between
+neighboring images. These springs have force constant <code class="docutils literal notranslate"><span class="pre">spring</span></code> (or <code class="docutils literal notranslate"><span class="pre">kappa</span></code> in code).
+The spring force between images <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(i+1\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F}_{\text{spring},i} = \text{spring} \times (r_{i+1} - r_i) \times \frac{\mathbf{r}_{i+1} - \mathbf{r}_i}{|\mathbf{r}_{i+1} - \mathbf{r}_i|}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_i\)</span> is the path position (arc length) of image <span class="math notranslate nohighlight">\(i\)</span>. Larger spring
+constants prevent images from clustering.</p>
+</section>
+<section id="climbing-image-gneb-ci-gneb">
+<h2>Climbing Image GNEB (CI-GNEB)<a class="headerlink" href="#climbing-image-gneb-ci-gneb" title="Permalink to this heading"></a></h2>
+<p>the image with the highest energy into a <strong>climbing image</strong>. This image:</p>
+<ol class="arabic simple">
+<li><p>Is pushed uphill along the band direction</p></li>
+<li><p>Converges directly to the <strong>saddle point</strong> (transition state)</p></li>
+<li><p>Provides exact location and energy of the saddle point</p></li>
+</ol>
+<p>The acceptance criterion for the climbing image is inverted: instead of being pushed
+down, it is pushed up along the MEP direction, climbing toward the saddle point energy.</p>
+<p>CI-GNEB is activated by setting <code class="docutils literal notranslate"><span class="pre">do_gneb_ci</span> <span class="pre">=</span> <span class="pre">Y</span></code> and <code class="docutils literal notranslate"><span class="pre">do_gneb</span> <span class="pre">=</span> <span class="pre">N</span></code>.</p>
+</section>
+<section id="tangent-vector-and-path-constraints">
+<h2>Tangent vector and path constraints<a class="headerlink" href="#tangent-vector-and-path-constraints" title="Permalink to this heading"></a></h2>
+</section>
+<section id="gneb-and-mep-keywords">
+<h2>GNEB and MEP keywords<a class="headerlink" href="#gneb-and-mep-keywords" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>ip_mode</dt><dd><p>Initial phase mode. Set to <strong>G</strong> for VPO-based energy minimization of endpoint configurations. Default: <strong>S</strong> (spin dynamics). See also: M=Metropolis MC, H=Heat bath MC, W=Wang-Landau, P=Parallel Tempering, E=Endpoints-only minimization.</p>
+</dd>
+<dt>mode</dt><dd><p>Measurement phase mode. Set to <strong>G</strong> for GNEB MEP calculation (standard GNEB). For climbing image variant, use <code class="docutils literal notranslate"><span class="pre">do_gneb_ci</span> <span class="pre">=</span> <span class="pre">Y</span></code> and <code class="docutils literal notranslate"><span class="pre">do_gneb</span> <span class="pre">=</span> <span class="pre">N</span></code>. Default: <strong>S</strong> (spin dynamics).</p>
+</dd>
+<dt>minalgo</dt><dd><p>Minimization algorithm. Currently, only <strong>1</strong> (VPO algorithm) is supported. Default: <strong>1</strong>.</p>
+</dd>
+<dt>min_ftol</dt><dd><p>Convergence tolerance for the force (effective field magnitude in mRy/μ_B). The minimizer stops when the maximum force drops below this value. Smaller values ensure more accurate relaxation but require more iterations. Default: <strong>1e-5</strong>.</p>
+</dd>
+<dt>vpo_mass</dt><dd><p>Fictitious mass for VPO equation of motion. Controls the “inertia” of the minimization. Larger values smooth the path but slow convergence. Typical range: 0.1–1.0. Default: <strong>1.0</strong>.</p>
+</dd>
+<dt>vpo_dt</dt><dd><p>Integration timestep for VPO. Must be small enough for stability. Typical range: 0.001–0.05. Default: <strong>0.01</strong>.</p>
+</dd>
+<dt>do_gneb</dt><dd><p>Enable standard GNEB MEP calculation (Y=yes, <strong>N=no</strong>). If <strong>Y</strong>, the code finds the MEP connecting the two endpoints. Default: <strong>Y</strong> for <code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">G</span></code>.</p>
+</dd>
+<dt>do_gneb_ci</dt><dd><p>Enable Climbing Image GNEB variant (Y=yes, <strong>N=no</strong>). If <strong>Y</strong>, one image (the highest-energy image) climbs to the saddle point. Default: <strong>N</strong>.</p>
+</dd>
+<dt>mepitrmax</dt><dd><p>Maximum number of iterations for GNEB MEP relaxation. Default: <strong>1000</strong>.</p>
+</dd>
+<dt>mepftol</dt><dd><p>Convergence tolerance for GNEB (force criterion). GNEB stops when maximum force &lt; this value. Default: <strong>1e-4</strong>.</p>
+</dd>
+<dt>spring</dt><dd><p>Spring constant (kappa) for elastic band. Controls the strength of spring forces keeping images connected. Typical range: 0.1–1.0. Default: <strong>0.5</strong>.</p>
+</dd>
+<dt>initpath</dt><dd><p>Initial path generation method: <strong>1</strong>: geodesic interpolation (recommended), <strong>2</strong>: read from external file. Default: <strong>1</strong>.</p>
+</dd>
+<dt>fixed_if</dt><dd><p>Fix the endpoint configurations (Y=yes, <strong>N=no</strong>). If <strong>Y</strong>, endpoints remain at their initial positions during GNEB. If <strong>N</strong>, endpoints can move along energy isocontours. Default: <strong>Y</strong> (endpoints fixed).</p>
+</dd>
+<dt>Mensemble</dt><dd><p>Number of images in the MEP path. This is equivalent to <code class="docutils literal notranslate"><span class="pre">Num_images</span></code> in some references. Must be &gt; 2. Typical values: 10–50 depending on path complexity. Default: <strong>11</strong>.</p>
+</dd>
+</dl>
+<p>Additional GNEB-specific keywords:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">en_zero</span></code>: Energy reference level (default: <strong>E</strong>, initial state)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meptraj_step</span></code>: Save MEP trajectory every <code class="docutils literal notranslate"><span class="pre">meptraj_step</span></code> iterations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sample_num</span></code>: Number of points for energy interpolation along the MEP</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prn_gneb_fields</span></code>: Print effective fields at each site along the path (Y/N)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_hess_ini</span></code>, <code class="docutils literal notranslate"><span class="pre">do_hess_fin</span></code>, <code class="docutils literal notranslate"><span class="pre">do_hess_sp</span></code>: Compute Hessian matrix at initial, final, and saddle point configurations (Y/N)</p></li>
+</ul>
+<p>which defines the path direction. The tangent is computed as the normalized direction
+connecting neighboring images:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\tau}_i = \frac{\mathbf{r}_{i+1} - \mathbf{r}_{i-1}}{|\mathbf{r}_{i+1} - \mathbf{r}_{i-1}|}\]</div>
+<p>for interior images, with special handling at the endpoints.</p>
+<p>All forces (effective field forces and spring forces) are projected perpendicular
+to the tangent vector:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F}_{\perp,i} = \mathbf{F}_i - (\mathbf{F}_i \cdot \hat{\tau}_i) \hat{\tau}_i\]</div>
+<p>This ensures that the path evolves along the landscape without being pushed along
+the tangent direction, which would just slide images without finding the MEP.</p>
+<section id="output-files">
+<h3>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h3>
+<p>The GNEB simulation produces several output files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mep_&lt;simid&gt;.out</span></code>: Final path configuration (all images in sequence)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">en_path.&lt;simid&gt;.out</span></code>: Energy at each image along the MEP</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enfit_path.&lt;simid&gt;.out</span></code>: Interpolated energy along the path using Hermite fitting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">en_sp.&lt;simid&gt;.out</span></code>: Energy of the identified saddle point</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sp_&lt;simid&gt;.out</span></code>: Magnetic configuration of the saddle point</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">force_min.&lt;simid&gt;.out</span></code>: Force history during minimization (initial phase)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">beff_&lt;image&gt;.&lt;simid&gt;.out</span></code>: Effective field components at each site (optional, if <code class="docutils literal notranslate"><span class="pre">prn_gneb_fields</span> <span class="pre">=</span> <span class="pre">Y</span></code>)</p></li>
+</ul>
+</section>
+<section id="harmonic-transition-state-theory-htst">
+<h3>Harmonic Transition State Theory (HTST)<a class="headerlink" href="#harmonic-transition-state-theory-htst" title="Permalink to this heading"></a></h3>
+<p>Once the saddle point and MEP are known, the <strong>Harmonic Transition State Theory (HTST)</strong>
+can be used to compute transition rates and lifetimes (see <a class="reference internal" href="../../references/#eyring1935" id="id6"><span>[Eyring1935]</span></a>). The transition rate is:</p>
+<div class="math notranslate nohighlight">
+\[k = \nu_0 \frac{\det H_{\text{init}}}{\det H_{\text{sp}}} \exp\left(-\frac{E_a}{k_B T}\right)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E_a\)</span> is the activation energy (barrier height)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nu_0 \approx k_B T / h\)</span> is the attempt frequency</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_{\text{init}}\)</span> is the Hessian matrix at the initial state</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_{\text{sp}}\)</span> is the Hessian matrix at the saddle point</p></li>
+<li><p>The ratio of determinants is the <strong>prefactor</strong></p></li>
+</ul>
+<p>To compute the Hessian, set:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>do_hess_ini  Y
+do_hess_sp   Y
+</pre></div>
+</div>
+<p>The code will automatically compute the Hessian matrices and save eigenvalues/eigenvectors
+for subsequent HTST analysis.</p>
+</section>
+<section id="example-mep-for-skyrmion-nucleation">
+<h3>Example: MEP for skyrmion nucleation<a class="headerlink" href="#example-mep-for-skyrmion-nucleation" title="Permalink to this heading"></a></h3>
+<p>Example <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> for finding the MEP for skyrmion creation in a magnetic film:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>simid    Skyrmion_MEP
+
+!! Initial phase: VPO relaxation of endpoints
+ip_mode    G
+ip_nstep   50000
+
+!! GNEB measurement phase
+mode       G
+mcnstep    500000
+
+!! GNEB parameters
+do_gneb         Y
+do_gneb_ci      N
+mepitrmax       500
+mepftol         1e-4
+spring          0.5
+
+!! Path setup
+initpath        1
+fixed_if        Y
+Mensemble       21
+
+!! Minimization parameters
+minalgo         1
+min_ftol        1e-5
+vpo_mass        1.0
+vpo_dt          0.01
+
+!! Output options
+meptraj_step    50
+sample_num      200
+do_hess_sp      Y
+</pre></div>
+</div>
+<p>In this example:</p>
+<ul class="simple">
+<li><p>21 images are used to represent the path</p></li>
+<li><p>The VPO minimizer relaxes initial and final configurations</p></li>
+<li><p>GNEB evolves the path with spring constant 0.5</p></li>
+<li><p>The saddle point is identified and the Hessian is computed for HTST</p></li>
+</ul>
+<p>The energy barriers, MEP, and Hessian eigenvalues are output to files for analysis.</p>
+</section>
+<section id="example-ci-gneb-for-transition-state-refinement">
+<h3>Example: CI-GNEB for transition state refinement<a class="headerlink" href="#example-ci-gneb-for-transition-state-refinement" title="Permalink to this heading"></a></h3>
+<p>Climbing Image GNEB directly converges to the saddle point:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>simid    Skyrmion_CIGNEB
+
+!! Initial phase: VPO relaxation
+ip_mode    G
+ip_nstep   50000
+
+!! CI-GNEB measurement phase
+mode       G
+mcnstep    300000
+
+!! CI-GNEB parameters
+do_gneb         N
+do_gneb_ci      Y
+mepitrmax       300
+mepftol_ci      1e-5
+spring          0.7
+
+!! Path setup
+initpath        1
+fixed_if        Y
+Mensemble       11
+
+!! Minimization
+minalgo         1
+min_ftol        1e-5
+vpo_mass        1.0
+vpo_dt          0.01
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">mepftol_ci</span></code> is tighter than the standard GNEB tolerance, ensuring the
+climbing image converges precisely to the saddle point.</p>
+</section>
+<section id="performance-and-convergence">
+<h3>Performance and convergence<a class="headerlink" href="#performance-and-convergence" title="Permalink to this heading"></a></h3>
+<p>GNEB convergence can be improved by:</p>
+<ol class="arabic simple">
+<li><p><strong>Starting from relaxed endpoints</strong>: Use VPO initial phase (<code class="docutils literal notranslate"><span class="pre">ip_mode</span> <span class="pre">G</span></code>) to ensure endpoints are at local minima</p></li>
+<li><p><strong>Geodesic path initialization</strong>: Start with geodesic interpolation (<code class="docutils literal notranslate"><span class="pre">initpath</span> <span class="pre">=</span> <span class="pre">1</span></code>)</p></li>
+<li><p><strong>Appropriate spring constant</strong>: Too large → image bunching; too small → divergence</p></li>
+<li><p><strong>Sufficient images</strong>: More images (larger <code class="docutils literal notranslate"><span class="pre">Mensemble</span></code>) resolve sharp barriers</p></li>
+<li><p><strong>Climbing Image variant</strong>: Use <code class="docutils literal notranslate"><span class="pre">do_gneb_ci</span> <span class="pre">=</span> <span class="pre">Y</span></code> if the saddle point is difficult to locate</p></li>
+</ol>
+<p>For very steep or rough energy landscapes, adaptive spring constants or temperature-based sampling may be needed.</p>
+<p>See <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for bibliography entries used in this page.</p>
+</section>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../monte-carlo/"><span class="doc">Monte Carlo simulations</span></a> (Monte Carlo sampling)</p></li>
+<li><p><a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a> (system setup)</p></li>
+<li><p><a class="reference internal" href="../../input/hamiltonian/"><span class="doc">Hamiltonian parameters</span></a> (magnetic interactions)</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#bessarab2012" id="id7"><span>[Bessarab2012]</span></a> - Method for finding magnetic transition mechanisms and activation energies</p></li>
+<li><p><a class="reference internal" href="../../references/#bessarab2015" id="id8"><span>[Bessarab2015]</span></a> - Harmonic transition-state theory for thermal spin transitions</p></li>
+<li><p><a class="reference internal" href="../../references/#henkelman2000" id="id9"><span>[Henkelman2000]</span></a> - Climbing image nudged elastic band method</p></li>
+<li><p><a class="reference internal" href="../../references/#eyring1935" id="id10"><span>[Eyring1935]</span></a> - Activated complex theory for chemical reactions</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../replica-exchange/" class="btn btn-neutral float-left" title="Replica exchange (parallel tempering)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../spin-spiral/" class="btn btn-neutral float-right" title="Spin-spiral minimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

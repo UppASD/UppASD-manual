@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin torques &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Three-temperature models" href="../temperature-3tm/" />
+    <link rel="prev" title="Time- and space-dependent fields" href="../fields/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">External Stimuli and Control</a></li>
+      <li class="breadcrumb-item active">Spin torques</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/stimuli/currents.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spin-torques">
+<h1>Spin torques<a class="headerlink" href="#spin-torques" title="Permalink to this heading"></a></h1>
+<section id="parameters-for-current-induced-spin-torques">
+<h2>Parameters for current-induced spin torques<a class="headerlink" href="#parameters-for-current-induced-spin-torques" title="Permalink to this heading"></a></h2>
+<p>The UppASD code supports several forms of current-induced torques acting on
+atomic magnetic moments, including <a class="reference internal" href="../../references/#ralphstiles2008" id="id1"><span>[RalphStiles2008]</span></a>, <a class="reference internal" href="../../references/#manchon2019" id="id2"><span>[Manchon2019]</span></a>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#torque-zhang-li"><span class="std std-ref">Volume spin-transfer torques (STT) of Zhang–Li type</span></a></p></li>
+<li><p><a class="reference internal" href="#torque-slonczewski"><span class="std std-ref">Slonczewski-type STT from a fixed spin polarization</span></a></p></li>
+<li><p><a class="reference internal" href="#torque-sot"><span class="std std-ref">Spin–orbit torques (SOT) in a general phenomenological form</span></a></p></li>
+<li><p><a class="reference internal" href="#torque-she"><span class="std std-ref">Spin Hall effect (SHE) induced torques in thin-film geometries</span></a></p></li>
+</ul>
+<p>All torque contributions are implemented in <strong>effective-field form</strong> and enter
+the Landau–Lifshitz–Gilbert (LLG) equation through the total effective field
+acting on each magnetic moment <a class="reference internal" href="../../references/#meo2023" id="id3"><span>[Meo2023]</span></a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Since the spin and orbital torques depend on current densities, it is important to provide the correct lattice parameter for the system.
+See the keyword <code class="docutils literal notranslate"><span class="pre">alat</span></code> in <a class="reference internal" href="../../input/system/"><span class="doc">system keywords</span></a>.</p>
+</div>
+<section id="canonical-current-density-representation">
+<h3>Canonical current density representation<a class="headerlink" href="#canonical-current-density-representation" title="Permalink to this heading"></a></h3>
+<p>Internally, all current-driven torque mechanisms are expressed in terms of a
+<strong>canonical charge-current density vector</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathbf{j} \equiv \text{jdens}\]</div>
+<p>with units of <strong>A/m²</strong>.</p>
+<p>This vector defines both:</p>
+<ul class="simple">
+<li><p>the <strong>magnitude</strong> of the applied current, <span class="math notranslate nohighlight">\(|\mathbf{j}|\)</span>, and</p></li>
+<li><p>its <strong>direction</strong>, <span class="math notranslate nohighlight">\(\hat{\mathbf{j}} = \mathbf{j}/|\mathbf{j}|\)</span>.</p></li>
+</ul>
+<p>Optionally, a site-resolved current density
+<span class="math notranslate nohighlight">\(\mathbf{j}_i\)</span> may be used for spatially inhomogeneous currents.</p>
+</section>
+<section id="legacy-current-input-jvec">
+<h3>Legacy current input (jvec)<a class="headerlink" href="#legacy-current-input-jvec" title="Permalink to this heading"></a></h3>
+<p>For backward compatibility, the legacy input keyword <code class="docutils literal notranslate"><span class="pre">jvec</span></code> may be used.
+If <code class="docutils literal notranslate"><span class="pre">jdens</span></code> is not provided but <code class="docutils literal notranslate"><span class="pre">jvec</span></code> (or <code class="docutils literal notranslate"><span class="pre">jvecfile</span></code>) is present, the code
+automatically converts <code class="docutils literal notranslate"><span class="pre">jvec</span></code> into a physical current density using the
+internal conversion factor <code class="docutils literal notranslate"><span class="pre">stt_dens_conv</span></code>.</p>
+<p>In this case:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{j} = \text{stt\_dens\_conv} \times \mathbf{j}_{\text{vec}}\]</div>
+<p>A note is printed at startup indicating that legacy input has been used and
+showing the resulting current density in physical units.</p>
+</section>
+</section>
+<section id="zhangli-spin-transfer-torque-volume-stt">
+<span id="torque-zhang-li"></span><h2>Zhang–Li spin-transfer torque (volume STT)<a class="headerlink" href="#zhangli-spin-transfer-torque-volume-stt" title="Permalink to this heading"></a></h2>
+<p>The Zhang–Li torque is enabled by setting <a class="reference internal" href="../../references/#zhangli2004" id="id4"><span>[ZhangLi2004]</span></a></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>stt</p></td>
+<td><p>Type of spin-transfer torque (A=Zhang–Li, S=Slonczewski,
+<em>N=none</em>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>For <code class="docutils literal notranslate"><span class="pre">stt</span> <span class="pre">=</span> <span class="pre">A</span></code>, the magnetization dynamics includes the terms</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \mathbf{m}}{\partial t}
+\supset
+-(\mathbf{u}\cdot\nabla)\mathbf{m}
++ \beta\,\mathbf{m}\times(\mathbf{u}\cdot\nabla)\mathbf{m},\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{u} = \frac{P\mu_B}{e M_s}\,\mathbf{j}.\]</div>
+<p>In the atomistic implementation:</p>
+<ul class="simple">
+<li><p>the <strong>strength</strong> of the torque scales linearly with the current magnitude</p></li>
+<li><dl class="simple">
+<dt>the gradient operator is evaluated along the current direction, and the overall</dt><dd><p>prefactor depends on the current magnitude and material parameters.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="slonczewski-spin-transfer-torque">
+<span id="torque-slonczewski"></span><h2>Slonczewski spin-transfer torque<a class="headerlink" href="#slonczewski-spin-transfer-torque" title="Permalink to this heading"></a></h2>
+<p>A fixed-polarization spin-transfer torque is enabled by setting <a class="reference internal" href="../../references/#slonczewski1996" id="id5"><span>[Slonczewski1996]</span></a></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>stt</p></td>
+<td><p>Type of spin-transfer torque (S=Slonczewski,
+A=Zhang–Li, <em>N=none</em>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>This torque represents spin injection from a reference magnetic layer with a
+prescribed polarization direction <span class="math notranslate nohighlight">\(\mathbf{p}\)</span>.</p>
+<p>The effective-field contribution is written in the form</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}_{\mathrm{STT}}
+\propto
+\mathbf{p}
++ \mathbf{m}\times\mathbf{p},\]</div>
+<p>which, when inserted into the LLG equation, generates the conventional
+Slonczewski field-like and damping-like spin-transfer torques</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{T}_{\mathrm{FL}} \propto \mathbf{m}\times\mathbf{p}, \qquad
+\mathbf{T}_{\mathrm{DL}} \propto \mathbf{m}\times(\mathbf{m}\times\mathbf{p}).\]</div>
+<p>The strength of the torque scales linearly with the magnitude of the applied
+charge current density <span class="math notranslate nohighlight">\(|\mathbf{j}|\)</span>.</p>
+<section id="polarization-specification">
+<h3>Polarization specification<a class="headerlink" href="#polarization-specification" title="Permalink to this heading"></a></h3>
+<p>The fixed polarization direction may be specified as</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stt_pol_vec</span></code> – Uniform polarization direction <span class="math notranslate nohighlight">\(\mathbf{p}\)</span> (Cartesian components).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stt_site_pol</span></code> – Flag to enable site-dependent polarization (Y=yes, <em>N=no</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stt_site_file</span></code> – External file containing site-resolved polarization vectors.</p></li>
+</ul>
+<p>If a site-dependent polarization is not specified, the uniform vector
+<code class="docutils literal notranslate"><span class="pre">stt_pol_vec</span></code> is applied to all magnetic atoms.</p>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Fixed STT does not depend on spatial gradients of the magnetization.</p></li>
+<li><p>It does not require spin–orbit coupling.</p></li>
+<li><p>It is distinct from both Zhang–Li STT and SHE/SOT.</p></li>
+<li><p>The same canonical current density <code class="docutils literal notranslate"><span class="pre">jdens</span></code> is used to control its magnitude.</p></li>
+</ul>
+</section>
+</section>
+<section id="general-spinorbit-torque-sot">
+<span id="torque-sot"></span><h2>General spin–orbit torque (SOT)<a class="headerlink" href="#general-spinorbit-torque-sot" title="Permalink to this heading"></a></h2>
+<p>The general SOT is enabled by <code class="docutils literal notranslate"><span class="pre">do_sot</span></code> (Y=yes, <em>N=no</em>) <a class="reference internal" href="../../references/#gambardellamiron2011" id="id6"><span>[GambardellaMiron2011]</span></a>, <a class="reference internal" href="../../references/#manchon2019" id="id7"><span>[Manchon2019]</span></a>, <a class="reference internal" href="../../references/#haney2013" id="id8"><span>[Haney2013]</span></a>.</p>
+<p>The SOT is written in effective-field form as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}_{\mathrm{SOT}}
+=
+-(\tau_{\mathrm{FL}} - \lambda\,\tau_{\mathrm{DL}})\,\mathbf{P}
+-(\tau_{\mathrm{DL}} + \lambda\,\tau_{\mathrm{FL}})
+\left(\mathbf{m}\times\mathbf{P}\right),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is the spin polarization direction,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau_{\mathrm{FL}}\)</span> and <span class="math notranslate nohighlight">\(\tau_{\mathrm{DL}}\)</span> are <strong>effective-field
+amplitudes</strong>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> is the local Gilbert damping parameter.</p></li>
+</ul>
+<p>The quantities <code class="docutils literal notranslate"><span class="pre">sot_field</span></code> and <code class="docutils literal notranslate"><span class="pre">sot_damping</span></code> correspond to
+<span class="math notranslate nohighlight">\(\tau_{\mathrm{FL}}\)</span> and <span class="math notranslate nohighlight">\(\tau_{\mathrm{DL}}\)</span>, respectively.</p>
+<p><strong>Important:</strong>
+<code class="docutils literal notranslate"><span class="pre">sot_field</span></code> and <code class="docutils literal notranslate"><span class="pre">sot_damping</span></code> are <strong>effective fields</strong>, not torques.
+They generate field-like and damping-like torques through the LLG equation.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>sot_field</p></td>
+<td><p>Field-like SOT effective field amplitude (internal field
+units).</p></td>
+</tr>
+<tr class="row-even"><td><p>sot_damping</p></td>
+<td><p>Damping-like SOT effective field amplitude (internal field
+units).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spin-hall-effect-she-torque">
+<span id="torque-she"></span><h2>Spin Hall effect (SHE) torque<a class="headerlink" href="#spin-hall-effect-she-torque" title="Permalink to this heading"></a></h2>
+<p>The SHE torque is enabled by <code class="docutils literal notranslate"><span class="pre">do_she</span></code> (Y=yes, <em>N=no</em>) <a class="reference internal" href="../../references/#liu2012" id="id9"><span>[Liu2012]</span></a>, <a class="reference internal" href="../../references/#manchon2019" id="id10"><span>[Manchon2019]</span></a>, <a class="reference internal" href="../../references/#meo2023" id="id11"><span>[Meo2023]</span></a>.</p>
+<p>The SHE torque uses the canonical current density <code class="docutils literal notranslate"><span class="pre">jdens</span></code> and generates a
+spin polarization direction <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span> according to one of
+two modes:</p>
+<ol class="arabic">
+<li><p><strong>Geometry-based mode (recommended for thin films)</strong>
+If a surface/interface normal vector <code class="docutils literal notranslate"><span class="pre">she_n_vec</span></code> is provided,</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\sigma}
+=
+\frac{\hat{\mathbf{n}}\times\hat{\mathbf{j}}}
+     {|\hat{\mathbf{n}}\times\hat{\mathbf{j}}|}.\]</div>
+</li>
+<li><p><strong>Direct polarization mode</strong>
+If <code class="docutils literal notranslate"><span class="pre">she_n_vec</span></code> is not provided, the direction of <code class="docutils literal notranslate"><span class="pre">jdens</span></code> itself is
+interpreted as the spin polarization direction:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\sigma} = \hat{\mathbf{j}}.\]</div>
+</li>
+</ol>
+<p>A message is printed at startup indicating which mode is used.</p>
+<p>The resulting effective field generates both field-like and damping-like
+spin–orbit torques through the LLG equation.</p>
+<section id="units-and-conventions">
+<h3>Units and conventions<a class="headerlink" href="#units-and-conventions" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jdens</span></code>: charge current density, <strong>A/m²</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jvec</span></code>: legacy input, converted internally to A/m²</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sot_field</span></code>, <code class="docutils literal notranslate"><span class="pre">sot_damping</span></code>: effective fields (same units as other fields
+in UppASD)</p></li>
+<li><p>Polarization vectors (<code class="docutils literal notranslate"><span class="pre">stt_pol_vec</span></code>, <code class="docutils literal notranslate"><span class="pre">sot_pol_vec</span></code>,
+<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}\)</span>): unit vectors</p></li>
+</ul>
+</section>
+<section id="notes-on-usage">
+<h3>Notes on usage<a class="headerlink" href="#notes-on-usage" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>The general SOT and SHE torques are <strong>independent mechanisms</strong>; either or both
+may be enabled.</p></li>
+<li><p>The SOT amplitudes may be specified phenomenologically without reference to
+current density.</p></li>
+<li><p>The SHE torque provides a geometry-based current-to-torque mapping and is
+intended for thin-film bilayer systems.</p></li>
+<li><p>For thick samples, care should be taken when using interfacial torque models.</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#zhangli2004" id="id12"><span>[ZhangLi2004]</span></a> - Zhang-Li spin-transfer torque formulation</p></li>
+<li><p><a class="reference internal" href="../../references/#slonczewski1996" id="id13"><span>[Slonczewski1996]</span></a> - Current-driven excitation of magnetic multilayers</p></li>
+<li><p><a class="reference internal" href="../../references/#ralphstiles2008" id="id14"><span>[RalphStiles2008]</span></a> - Comprehensive review of spin transfer torques</p></li>
+<li><p><a class="reference internal" href="../../references/#meo2023" id="id15"><span>[Meo2023]</span></a> - Spin-transfer and spin-orbit torques in LLG equation</p></li>
+<li><p><a class="reference internal" href="../../references/#manchon2019" id="id16"><span>[Manchon2019]</span></a> - Current-induced spin-orbit torques review</p></li>
+<li><p><a class="reference internal" href="../../references/#haney2013" id="id17"><span>[Haney2013]</span></a> - Current-induced torques and interfacial spin-orbit coupling</p></li>
+<li><p><a class="reference internal" href="../../references/#liu2012" id="id18"><span>[Liu2012]</span></a> - Spin-torque switching with giant spin Hall effect</p></li>
+<li><p><a class="reference internal" href="../../references/#gambardellamiron2011" id="id19"><span>[GambardellaMiron2011]</span></a> - Current-induced spin-orbit torques</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../fields/" class="btn btn-neutral float-left" title="Time- and space-dependent fields" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../temperature-3tm/" class="btn btn-neutral float-right" title="Three-temperature models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

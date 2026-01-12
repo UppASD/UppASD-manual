@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Core input files &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Random alloys and multi-atom cells" href="../random-alloys/" />
+    <link rel="prev" title="Input files" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Input files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#file-formats-and-setup">File Formats and Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#basic-simulation-parameters">Basic Simulation Parameters</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../#measurement-and-observables">Measurement and Observables</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Core input files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inpsd-dat">inpsd.dat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#posfile">posfile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#momfile">momfile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exchange">exchange</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../random-alloys/">Random alloys and multi-atom cells</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../system/">System and geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hamiltonian/">Hamiltonian parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simulation/">Simulation control and phases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../observables/">Observables and measurements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Input files</a></li>
+      <li class="breadcrumb-item active">Core input files</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/input/core-files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="core-input-files">
+<h1>Core input files<a class="headerlink" href="#core-input-files" title="Permalink to this heading"></a></h1>
+<section id="inpsd-dat">
+<h2>inpsd.dat<a class="headerlink" href="#inpsd-dat" title="Permalink to this heading"></a></h2>
+<p>A file with the hardcoded name <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> is the main input file necessary to run UppASD. Contained in this file are also the names of the files containing the exchange interactions, the atomic positions, and the atomic moments. Although the names of these files are arbitrary, in this manual they are referred to as the <code class="docutils literal notranslate"><span class="pre">jfile</span></code>, <code class="docutils literal notranslate"><span class="pre">posfile</span></code> and <code class="docutils literal notranslate"><span class="pre">momfile</span></code>, respectively. Other optional files containing information such as the uniaxial anisotropy and the Dzyaloshinskii-Moriya vectors may also be included, as described below.</p>
+<p>The input format is keyword based. The code is programmed to search for given keywords, and then read in the values that follow. If no keyword is given, a default value is set. As an example of a standard <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> file layout, input for Fe in body centered cube (bcc) structure is shown below (as found in the examples directory). More advanced examples like supercells and random alloys follows later, but let’s keep things simple for now:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span> <span class="n">bccFe100</span>
+<span class="n">ncell</span>  <span class="mi">12</span>              <span class="mi">12</span>              <span class="mi">12</span>  <span class="n">System</span> <span class="n">size</span>
+<span class="n">BC</span>     <span class="n">P</span>               <span class="n">P</span>               <span class="n">P</span>   <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>  <span class="o">-</span><span class="mf">0.5000000000</span>    <span class="mf">0.5000000000</span>    <span class="mf">0.5000000000</span>
+       <span class="mf">0.5000000000</span>   <span class="o">-</span><span class="mf">0.5000000000</span>    <span class="mf">0.5000000000</span>
+       <span class="mf">0.5000000000</span>    <span class="mf">0.5000000000</span>   <span class="o">-</span><span class="mf">0.5000000000</span>
+<span class="n">Sym</span>    <span class="mi">0</span>  <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">exchange</span> <span class="n">bonding</span> <span class="n">vectors</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+
+<span class="n">posfile</span>    <span class="o">./</span><span class="n">posfile</span>
+<span class="n">momfile</span>    <span class="o">./</span><span class="n">momfile</span>
+<span class="n">exchange</span>   <span class="o">./</span><span class="n">jASD1</span>
+<span class="n">anisotropy</span> <span class="o">./</span><span class="n">kfile</span>
+
+<span class="n">do_ralloy</span>  <span class="mi">0</span>
+<span class="n">Mensemble</span>  <span class="mi">1</span>
+<span class="n">tseed</span>      <span class="mi">4499</span>
+<span class="n">maptype</span>    <span class="mi">1</span>
+
+<span class="n">SDEalgh</span>    <span class="mi">1</span>                         <span class="n">SDE</span> <span class="n">solver</span><span class="p">:</span> <span class="mi">1</span><span class="o">=</span><span class="n">midpoint</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">heun</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">heun3</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">Heun_proper</span><span class="p">,</span> <span class="mi">5</span><span class="o">=</span><span class="n">Depondt</span>
+<span class="n">Initmag</span>    <span class="mi">3</span>                         <span class="n">Initial</span> <span class="n">config</span> <span class="n">of</span> <span class="n">moments</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">cone</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+<span class="c1">#restartfile ./restart.bccFe100.out</span>
+
+<span class="n">ip_mode</span>     <span class="n">M</span>                        <span class="n">Initial</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">ip_mcanneal</span> <span class="mi">1</span>                        <span class="o">--</span>
+<span class="mi">10000</span> <span class="mi">300</span> <span class="mf">1.00e-16</span> <span class="mf">0.3</span>               <span class="o">--</span>
+
+<span class="n">mode</span>     <span class="n">M</span>                           <span class="n">S</span><span class="o">=</span><span class="n">SD</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">MC</span>
+<span class="n">temp</span>     <span class="mi">300</span>                         <span class="n">Measurement</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">mcNstep</span>  <span class="mi">50000</span>
+<span class="n">Nstep</span>    <span class="mi">50000</span>
+<span class="n">damping</span>  <span class="mf">0.1</span>
+<span class="n">timestep</span> <span class="mf">1.0e-16</span>
+
+<span class="n">do_avrg</span>        <span class="n">Y</span>                     <span class="n">Measure</span> <span class="n">averages</span>
+
+<span class="n">do_cumu</span>        <span class="n">Y</span>
+<span class="n">cumu_step</span>      <span class="mi">50</span>
+<span class="n">cumu_buff</span>      <span class="mi">10</span>
+
+<span class="n">do_tottraj</span>     <span class="n">N</span>                     <span class="n">Measure</span> <span class="n">moments</span>
+<span class="n">tottraj_step</span>   <span class="mi">1000</span>
+
+<span class="n">plotenergy</span>     <span class="mi">1</span>
+
+<span class="n">do_sc</span>          <span class="n">C</span>
+<span class="n">do_ams</span>         <span class="n">Y</span>
+<span class="n">do_magdos</span>      <span class="n">Y</span>
+<span class="n">magdos_freq</span>    <span class="mi">200</span>
+<span class="n">magdos_sigma</span>   <span class="mi">30</span>
+<span class="n">qpoints</span>        <span class="n">C</span>
+
+<span class="n">do_stiffness</span>   <span class="n">Y</span>
+<span class="n">eta_max</span>        <span class="mi">12</span>
+<span class="n">eta_min</span>        <span class="mi">6</span>
+<span class="n">alat</span>           <span class="mf">2.83e-10</span>
+</pre></div>
+</div>
+<p>While the meaning of most of the entries in this particular example may be obvious, each input field will be described later in this manual. In short, the input will perform a Monte Carlo simulation at T=300 K allowing 10 000 steps to reach equilbrium and then 50 000 steps to measure observables. However, it is also clear that more information than in <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> are required and must be read in from external files in order for the system to be fully defined. These are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">posfile</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">momfile</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exchange</span></code></p></li>
+</ul>
+</section>
+<section id="posfile">
+<h2>posfile<a class="headerlink" href="#posfile" title="Permalink to this heading"></a></h2>
+<p>The positions of the atoms in the unit cell are given in basis vector coordinates.</p>
+<p>While these can be listed directly in the <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> file, it is typically more convenient to give them in an external file, <code class="docutils literal notranslate"><span class="pre">posfile</span></code>. For the example above the positions are given as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>   <span class="mf">0.000000</span>  <span class="mf">0.000000</span>  <span class="mf">0.000000</span>
+</pre></div>
+</div>
+<p>The first entry indicates the <em>site number</em>, whereas the second one indicates the <em>atom type</em>. The concept of atom type is central when setting up UppASD simulations because every <code class="docutils literal notranslate"><span class="pre">type</span></code> is associated with a particular set of exchange couplings. In this specific case there is only one atom type (and one site), namely Fe with atomic position at the origin.</p>
+</section>
+<section id="momfile">
+<h2>momfile<a class="headerlink" href="#momfile" title="Permalink to this heading"></a></h2>
+<p>This file lists the magnetic moments of the atoms in the unit cell. Also, if the <code class="docutils literal notranslate"><span class="pre">initmag</span></code> entry is set to 3, the initial direction of the moments is read from this file. For bcc Fe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">2.2459</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>The first entry indicates the site number (same as first column in posfile), the second entry the chemical type (always 1 for non-random systems), and the third entry indicates the magnitude of the magnetic moment in <span class="math notranslate nohighlight">\(\mu_{\mathrm{B}}\)</span>, as calculated or estimated from an electronic structure calculation or similar. The last three entries indicate the initial <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> components of the moment (assuming <code class="docutils literal notranslate"><span class="pre">initmag</span></code> is set to 3).</p>
+</section>
+<section id="exchange">
+<span id="id1"></span><h2>exchange<a class="headerlink" href="#exchange" title="Permalink to this heading"></a></h2>
+<p>This file lists the exchange couplings within the system. The content and length of this file depends on the symmetry of the system, and the number of atom types present. If no symmetry is used, <em>i.e.</em> <code class="docutils literal notranslate"><span class="pre">sym</span> <span class="pre">0</span></code> (as in example), all exchange interactions within each interaction shell must be specified. The first shell of the bcc lattice contains 8 interactions, so for <code class="docutils literal notranslate"><span class="pre">sym</span> <span class="pre">0</span></code> 8 eight couplings need to be specified in the exchange file. If symmetry is used, then only one interaction in each shell is specified and the program will automatically find the other couplings within the shell depending on the crystal symmetry. For the present Fe example using maptype 1, the first line reads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">0.500</span> <span class="o">-</span><span class="mf">0.500</span> <span class="o">-</span><span class="mf">0.500</span> <span class="mf">1.359407144</span> <span class="mf">0.866</span>
+</pre></div>
+</div>
+<p>The first two entries indicate the sites, which corresponds to the types that one whishes to map, <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. In this case as both atoms have the same type, one can indicate the interactions between atoms in site 1 and 2, as 1-1. An example on how to deal with more atom types in the unit cell will be presented later in the manual.</p>
+<p>The third, fourth and fifth entries specify the interaction vector between the atoms and depending on choice of the maptype, it has different meaning. Using maptype 1, the vector is specified in Cartesian coordinates. If the SPR-KKR software is used, this corresponds to columns eight, nine and ten in the exchange parameter outfile.
+If instead maptype 2 is used, the coordination vector is specified in lattice coordinates and the first line in jfile modifies to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mf">1.359407144</span> <span class="mf">0.866</span>
+</pre></div>
+</div>
+<p>Once again taking SPR-KKR as an example, that corresponds to columns five, six and seven in the exchange parameters outfile.
+The sixth entry in jfile is the exchange energy in mRy and the last entry (not read and optional) is the distance between atoms.</p>
+<p>These files together with the inpsd.dat forms the minimal set that is required to run a full ASD or MC simulation. Optionally, there are plenty other external files that may be used for more specific applications and features.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Input files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../random-alloys/" class="btn btn-neutral float-right" title="Random alloys and multi-atom cells" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

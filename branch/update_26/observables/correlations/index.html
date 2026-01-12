@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Correlation functions &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Autocorrelation functions" href="../autocorrelation/" />
+    <link rel="prev" title="Adiabatic Magnon Spectra (AMS), Linear Spin Wave Theory (LSWT), and Topological Magnons" href="../ams/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Observable Measurements and Analysis</a></li>
+      <li class="breadcrumb-item active">Correlation functions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/observables/correlations.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="correlation-functions">
+<h1>Correlation functions<a class="headerlink" href="#correlation-functions" title="Permalink to this heading"></a></h1>
+<section id="parameters-for-measuring-spin-correlations-and-dynamical-structure-factors">
+<h2>Parameters for measuring spin correlations and dynamical structure factors<a class="headerlink" href="#parameters-for-measuring-spin-correlations-and-dynamical-structure-factors" title="Permalink to this heading"></a></h2>
+<p>The UppASD code can calculate <strong>space- and time-displaced correlation functions</strong>
+and their Fourier transforms to obtain the <strong>dynamical structure factor</strong>
+<span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> <a class="reference internal" href="../../references/#bergman2010" id="id1"><span>[Bergman2010]</span></a>, which describes magnon dispersions
+and magnetic excitations in the simulated system. Additional correlation types
+(displacement, velocity, angular momentum) can also be sampled for multiphysics
+simulations.</p>
+<section id="spin-correlation-functions-definition-and-uses">
+<h3>Spin correlation functions: definition and uses<a class="headerlink" href="#spin-correlation-functions-definition-and-uses" title="Permalink to this heading"></a></h3>
+<p>The <strong>connected time- and space-displaced spin correlation function</strong> is:</p>
+<div class="math notranslate nohighlight">
+\[C^k(\mathbf{r}-\mathbf{r'},t) = \langle m^k_{\mathbf{r}}(t) m^k_{\mathbf{r'}}(0) \rangle - \langle m^k_{\mathbf{r}}(t) \rangle \langle m^k_{\mathbf{r'}}(0) \rangle\]</div>
+<p>where <span class="math notranslate nohighlight">\(k \in \{x,y,z\}\)</span> is a Cartesian component, and angular brackets denote
+ensemble averages. The <strong>dynamical structure factor</strong> <span class="math notranslate nohighlight">\(S^k(\mathbf{q},\omega)\)</span>
+is obtained by Fourier transforming both space and time:</p>
+<div class="math notranslate nohighlight">
+\[S^k(\mathbf{q},\omega) = \frac{1}{\sqrt{2\pi}N} \sum_{\mathbf{r},\mathbf{r'}} e^{i\mathbf{q}\cdot(\mathbf{r}-\mathbf{r'})} \int_{-\infty}^{\infty} e^{i\omega t} C^k(\mathbf{r}-\mathbf{r'},t) dt\]</div>
+<p>This function describes:</p>
+<ul class="simple">
+<li><p><strong>Magnon dispersion relations</strong> <span class="math notranslate nohighlight">\(\omega(\mathbf{q})\)</span> (peaks in <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span>)</p></li>
+<li><p><strong>Magnon linewidths</strong> (widths of peaks, related to magnon lifetimes)</p></li>
+<li><p><strong>Density of magnon states</strong> (integrated over <span class="math notranslate nohighlight">\(\mathbf{q}\)</span>)</p></li>
+<li><p><strong>Scattering intensities</strong> in neutron or x-ray experiments <a class="reference internal" href="../../references/#squires1978" id="id2"><span>[Squires1978]</span></a></p></li>
+</ul>
+<p>The <strong>static correlation function</strong> (equal-time correlation <span class="math notranslate nohighlight">\(C^k(\mathbf{r},0)\)</span>)
+and its Fourier transform <span class="math notranslate nohighlight">\(S^k(\mathbf{q})\)</span> reveal:</p>
+<ul class="simple">
+<li><p><strong>Magnetic ordering vectors</strong> (wavevector <span class="math notranslate nohighlight">\(\mathbf{q}_0\)</span> at which <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span> peaks)</p></li>
+<li><p><strong>Correlation lengths</strong> (width of <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span> near the peak)</p></li>
+<li><p><strong>Phase transitions</strong> (changes in ordering as a function of temperature)</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Input keywords:</strong> For a complete list of all correlation measurement parameters
+(<code class="docutils literal notranslate"><span class="pre">do_sc</span></code>, <code class="docutils literal notranslate"><span class="pre">do_sr</span></code>, <code class="docutils literal notranslate"><span class="pre">sc_step</span></code>, <code class="docutils literal notranslate"><span class="pre">qpoints</span></code>, etc.), see the comprehensive
+reference in <a class="reference internal" href="../../input/observables/"><span class="doc">Observables and measurements</span></a>.</p>
+</div>
+</section>
+<section id="sampling-strategy-and-resolution">
+<h3>Sampling strategy and resolution<a class="headerlink" href="#sampling-strategy-and-resolution" title="Permalink to this heading"></a></h3>
+<p>Proper sampling of <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> requires careful choice of:</p>
+<ol class="arabic">
+<li><p><strong>Temporal sampling period</strong> <code class="docutils literal notranslate"><span class="pre">sc_step</span></code>: Controls the maximum frequency accessible</p>
+<div class="math notranslate nohighlight">
+\[\omega_{\max} = \frac{\pi}{\text{timestep} \times \text{sc\_step}}\]</div>
+</li>
+<li><p><strong>Number of temporal samples</strong> <code class="docutils literal notranslate"><span class="pre">sc_nstep</span></code>: Controls frequency resolution</p>
+<div class="math notranslate nohighlight">
+\[\Delta \omega = \frac{2\omega_{\max}}{N_{\text{step}}} = \frac{2\pi}{N_{\text{step}} \times \text{timestep} \times \text{sc\_step}}\]</div>
+</li>
+<li><p><strong>Total sampling time</strong>: Determines lowest frequency accessed</p>
+<div class="math notranslate nohighlight">
+\[t_{\max} = \text{sc\_nstep} \times \text{timestep} \times \text{sc\_step}\]</div>
+<div class="math notranslate nohighlight">
+\[\omega_{\min} = \frac{2\pi}{t_{\max}} = \frac{2\pi}{N_{\text{step}} \times \text{timestep} \times \text{sc\_step}}\]</div>
+</li>
+<li><p><strong>q-point mesh</strong>: Determines spatial resolution and Brillouin zone coverage</p></li>
+</ol>
+</section>
+</section>
+<section id="spin-correlation-keywords">
+<h2>Spin correlation keywords<a class="headerlink" href="#spin-correlation-keywords" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>do_sc</dt><dd><p>Spin correlation sampling mode. Choose <strong>Y</strong> for full <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> and <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span> sampling, <strong>Q</strong> for frequency-dependent <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> only, <strong>T</strong> for time-dependent <span class="math notranslate nohighlight">\(S(\mathbf{q},t)\)</span> only, <strong>C</strong> for static <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span> only, and <strong>N</strong> to disable (default).</p>
+</dd>
+<dt>do_sr</dt><dd><p>Sample static correlation <span class="math notranslate nohighlight">\(G(\mathbf{r})\)</span> in real space directly (Y=yes, N=no). When enabled, <span class="math notranslate nohighlight">\(C(\mathbf{r},0)\)</span> is computed without requiring a q-point mesh.</p>
+</dd>
+<dt>sc_step</dt><dd><p>Number of MD/MC steps between temporal correlation samples; controls maximum frequency <span class="math notranslate nohighlight">\(\omega_{\max} = \pi / (\text{timestep} \times \text{sc\_step})\)</span>. Default: <strong>10</strong>.</p>
+</dd>
+<dt>sc_nstep</dt><dd><p>Number of temporal samples collected for each correlation measurement. Controls frequency resolution <span class="math notranslate nohighlight">\(\Delta \omega = 2\pi / (N_{\text{step}} \times \text{timestep} \times \text{sc\_step})\)</span>. Default: <strong>100</strong>.</p>
+</dd>
+<dt>sc_sep</dt><dd><p>Number of steps between independent correlation measurements (used when <code class="docutils literal notranslate"><span class="pre">do_sc</span> <span class="pre">=</span> <span class="pre">C</span></code>). Default: <strong>1</strong>.</p>
+</dd>
+<dt>qpoints</dt><dd><p>Q-point mesh generation method: <strong>F</strong>: read Cartesian coordinates from file, <strong>G</strong>: read from <code class="docutils literal notranslate"><span class="pre">qpoints.dat</span></code>, <strong>A</strong>: automatic generation (not implemented), <strong>C</strong>: full reciprocal cell, <strong>D</strong>: read fractional coordinates, <strong>B</strong>: read with weights. Default: <strong>F</strong>.</p>
+</dd>
+<dt>qfile</dt><dd><p>Name of file containing q-point vectors. Default: <strong>qpoints</strong>.</p>
+</dd>
+<dt>do_sc_proj</dt><dd><p>Sublattice-projected spin correlation (Y=yes, C=static only, N=no). Computes <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> per atomic type. Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_sc_projch</dt><dd><p>Chemical-species-projected spin correlation (Y=yes, C=static only, N=no). Similar to <code class="docutils literal notranslate"><span class="pre">do_sc_proj</span></code> but groups by chemical species. Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_qt_traj</dt><dd><p>Print time-dependent equal-time correlation <span class="math notranslate nohighlight">\(S(\mathbf{q},t)\)</span> to file (Y=yes, N=no). Only for <code class="docutils literal notranslate"><span class="pre">do_sc</span> <span class="pre">=</span> <span class="pre">C</span></code>. Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_sc_local_axis</dt><dd><p>Project correlations onto local quantization axis (Y=yes, N=no). Measures longitudinal/transverse components (<span class="math notranslate nohighlight">\(S_\parallel\)</span>, <span class="math notranslate nohighlight">\(S_\perp\)</span>) instead of Cartesian components. Default: <strong>N</strong>.</p>
+</dd>
+<dt>sc_local_axis_mix</dt><dd><p>Mixing parameter for updating the local quantization axis (relevant when <code class="docutils literal notranslate"><span class="pre">do_sc_local_axis</span> <span class="pre">=</span> <span class="pre">Y</span></code>). Range 0.0–1.0; default <strong>0.05</strong>.</p>
+</dd>
+<dt>sc_window_fun</dt><dd><p>Windowing function for time-domain signal before Fourier transform: <strong>1</strong>: rectangular, <strong>2</strong>: Hann, <strong>3</strong>: Hamming, <strong>4</strong>: Blackman-Harris. Default: <strong>1</strong>.</p>
+</dd>
+<dt>do_sc_dosonly</dt><dd><p>Compute magnon density of states (DOS) only, skip full <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> output (Y=yes, N=no). Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_connected</dt><dd><p>Include only the connected part of the correlation (Y=yes, N=no). Default: <strong>Y</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="alternative-correlation-types">
+<h2>Alternative correlation types<a class="headerlink" href="#alternative-correlation-types" title="Permalink to this heading"></a></h2>
+<p>In addition to spin correlations, UppASD can measure correlations of other observables:</p>
+<dl class="simple">
+<dt>do_uc</dt><dd><p>Lattice displacement correlation (Y=yes, N=no). For spin-lattice coupled systems, measures ionic displacement–displacement correlations. Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_ur</dt><dd><p>Sample displacement correlation in real space directly (Y=yes, N=no). Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_vc</dt><dd><p>Velocity correlation of ions (Y=yes, N=no). Useful for phonon spectroscopy studies. Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_vr</dt><dd><p>Sample velocity correlation in real space directly (Y=yes, N=no). Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_lc</dt><dd><p>Angular momentum correlation (Y=yes, N=no). Measures orbital angular momentum fluctuations in materials with strong spin-orbit coupling. Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_lr</dt><dd><p>Sample angular momentum correlation in real space directly (Y=yes, N=no). Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="energy-resolved-sampling">
+<h2>Energy-resolved sampling<a class="headerlink" href="#energy-resolved-sampling" title="Permalink to this heading"></a></h2>
+<p>As an alternative to explicit temporal sampling, the energy resolution can be specified directly:</p>
+<dl class="simple">
+<dt>sc_emax</dt><dd><p>Maximum energy for <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> sampling (in mRy). If specified, this value replaces the frequency range computed from <code class="docutils literal notranslate"><span class="pre">sc_step</span></code> and <code class="docutils literal notranslate"><span class="pre">timestep</span></code>. Default: <strong>0</strong> (use <code class="docutils literal notranslate"><span class="pre">sc_step</span></code> instead).</p>
+</dd>
+<dt>sc_eres</dt><dd><p>Energy resolution for <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> (in mRy). If specified, <code class="docutils literal notranslate"><span class="pre">sc_nstep</span></code> is computed as <span class="math notranslate nohighlight">\(N_{\text{step}} = \lfloor E_{\max} / E_{\text{res}} \rfloor\)</span>. Default: <strong>0</strong> (use <code class="docutils literal notranslate"><span class="pre">sc_nstep</span></code> instead).</p>
+</dd>
+</dl>
+<p>When both <code class="docutils literal notranslate"><span class="pre">sc_emax</span></code> and <code class="docutils literal notranslate"><span class="pre">sc_eres</span></code> are provided, <code class="docutils literal notranslate"><span class="pre">sc_step</span></code> and <code class="docutils literal notranslate"><span class="pre">sc_nstep</span></code> are automatically calculated from the Nyquist-Shannon theorem.</p>
+</section>
+<section id="adiabatic-magnon-spectra-ams">
+<h2>Adiabatic Magnon Spectra (AMS)<a class="headerlink" href="#adiabatic-magnon-spectra-ams" title="Permalink to this heading"></a></h2>
+<p>The <strong>Adiabatic Magnon Spectra</strong> provide a fast estimate of magnon dispersions from linear spin wave theory, computed directly from the Hamiltonian exchange interactions without requiring long-time simulations.</p>
+<dl class="simple">
+<dt>do_ams</dt><dd><p>Enable Adiabatic Magnon Spectra calculation (Y=yes, N=no). Computes magnon dispersions from the Hamiltonian for collinear magnetic structures. Default: <strong>N</strong>.</p>
+</dd>
+<dt>do_magdos</dt><dd><p>Compute magnon density of states from AMS (Y=yes, N=no, A=read from file). If <strong>Y</strong>, the DOS is integrated over the Brillouin zone after computing <span class="math notranslate nohighlight">\(\omega(\mathbf{q})\)</span>. Default: <strong>N</strong>.</p>
+</dd>
+<dt>magdos_freq</dt><dd><p>Number of frequency points for MDOS calculation. Typical: <strong>200</strong>. Default: <strong>200</strong>.</p>
+</dd>
+<dt>magdos_sigma</dt><dd><p>Gaussian broadening (in meV) applied to MDOS peaks. Typical: 10–50 meV. Default: <strong>30.0</strong> meV.</p>
+</dd>
+</dl>
+</section>
+<section id="autocorrelation-sampling">
+<h2>Autocorrelation sampling<a class="headerlink" href="#autocorrelation-sampling" title="Permalink to this heading"></a></h2>
+<p>For certain applications (e.g., studying specific defect sites or impurities), <strong>local autocorrelations</strong> can be measured on individual atoms:</p>
+<dl class="simple">
+<dt>do_autocorr</dt><dd><p>Enable autocorrelation sampling at selected sites (Y=yes, N=no). Requires a file specifying atom indices. Default: <strong>N</strong>.</p>
+</dd>
+<dt>acfile</dt><dd><p>File specifying atom indices for autocorrelation measurements (one index per line). Used only if <code class="docutils literal notranslate"><span class="pre">do_autocorr</span> <span class="pre">=</span> <span class="pre">Y</span></code>. Default: <strong>autocorr.dat</strong>.</p>
+</dd>
+</dl>
+<section id="q-point-file-formats">
+<h3>Q-point file formats<a class="headerlink" href="#q-point-file-formats" title="Permalink to this heading"></a></h3>
+<p><strong>Format for Cartesian coordinates</strong> (<code class="docutils literal notranslate"><span class="pre">qpoints</span> <span class="pre">=</span> <span class="pre">F</span></code> or <code class="docutils literal notranslate"><span class="pre">qpoints</span> <span class="pre">=</span> <span class="pre">G</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;number of q-points&gt;
+&lt;q_x_1&gt;  &lt;q_y_1&gt;  &lt;q_z_1&gt;
+&lt;q_x_2&gt;  &lt;q_y_2&gt;  &lt;q_z_2&gt;
+...
+</pre></div>
+</div>
+<p><strong>Format for fractional coordinates</strong> (<code class="docutils literal notranslate"><span class="pre">qpoints</span> <span class="pre">=</span> <span class="pre">D</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;number of q-points&gt;
+&lt;q1&gt;  &lt;q2&gt;  &lt;q3&gt;
+...
+</pre></div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{q} = q_1 \mathbf{b}_1 + q_2 \mathbf{b}_2 + q_3 \mathbf{b}_3\)</span> with
+<span class="math notranslate nohighlight">\(\mathbf{b}_i\)</span> the reciprocal lattice vectors.</p>
+<p><strong>Format with weights</strong> (<code class="docutils literal notranslate"><span class="pre">qpoints</span> <span class="pre">=</span> <span class="pre">B</span></code> or <code class="docutils literal notranslate"><span class="pre">qpoints</span> <span class="pre">=</span> <span class="pre">I</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;number of q-points&gt;
+&lt;q_x_1&gt;  &lt;q_y_1&gt;  &lt;q_z_1&gt;  &lt;weight_1&gt;
+&lt;q_x_2&gt;  &lt;q_y_2&gt;  &lt;q_z_2&gt;  &lt;weight_2&gt;
+...
+</pre></div>
+</div>
+<p>Weights are used in DOS calculations to account for symmetry-reduced Brillouin zone sampling.</p>
+</section>
+<section id="output-files">
+<h3>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h3>
+<p>When correlation sampling is enabled, the code produces:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sqw.&lt;simid&gt;.out</span></code>: Dynamic structure factor <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> (full 3D array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqt.&lt;simid&gt;.out</span></code>: Time-dependent structure factor <span class="math notranslate nohighlight">\(S(\mathbf{q},t)\)</span> (for <code class="docutils literal notranslate"><span class="pre">do_sc</span> <span class="pre">=</span> <span class="pre">T</span></code> or <code class="docutils literal notranslate"><span class="pre">Y</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sq.&lt;simid&gt;.out</span></code>: Static structure factor <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span> (for <code class="docutils literal notranslate"><span class="pre">do_sc</span> <span class="pre">=</span> <span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">Y</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dos.&lt;simid&gt;.out</span></code>: Magnon density of states (if enabled)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ams.&lt;simid&gt;.out</span></code>: Adiabatic Magnon Spectra from AMS calculation</p></li>
+<li><p>Real-space files (if <code class="docutils literal notranslate"><span class="pre">do_sr</span> <span class="pre">=</span> <span class="pre">Y</span></code>): Spatial correlations <span class="math notranslate nohighlight">\(G(\mathbf{r})\)</span></p></li>
+</ul>
+</section>
+<section id="example-computing-magnon-dispersion">
+<h3>Example: Computing magnon dispersion<a class="headerlink" href="#example-computing-magnon-dispersion" title="Permalink to this heading"></a></h3>
+<p>Typical <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> settings for computing the magnon dispersion relation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>!! Enable full S(q,omega) sampling
+do_sc        Y
+
+!! Frequency sampling: 100 points, spacing 10 MD steps
+sc_nstep     100
+sc_step      10
+
+!! Q-point mesh from file
+qpoints      F
+qfile        qpoints.txt
+
+!! Optional: subtypes resolved
+do_sc_proj   Y
+
+!! Windowing to reduce spectral leakage
+sc_window_fun 2
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">timestep</span> <span class="pre">=</span> <span class="pre">1e-15</span></code> s, this gives:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\omega_{\max} = \pi / (10^{-15} \times 10) = 3.14 \times 10^{14}\)</span> rad/s ≈ 50 meV</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta \omega = 2 \times 50 / 100 = 1.0\)</span> meV (frequency resolution)</p></li>
+</ul>
+</section>
+<section id="example-static-correlation-and-phase-diagram">
+<h3>Example: Static correlation and phase diagram<a class="headerlink" href="#example-static-correlation-and-phase-diagram" title="Permalink to this heading"></a></h3>
+<p>To track magnetic ordering across a phase transition:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>!! Sample only static S(q)
+do_sc        C
+do_sr        Y
+
+!! Frequent measurements to track transition
+sc_sep       1
+do_qt_traj   Y
+
+!! q-point mesh covering full BZ
+qpoints      C
+qfile        qpoints.txt
+
+!! Optional: monitor local quantization axis
+do_sc_local_axis  Y
+sc_local_axis_mix 0.1
+</pre></div>
+</div>
+</section>
+<section id="example-fast-magnon-spectra-from-ams">
+<h3>Example: Fast magnon spectra from AMS<a class="headerlink" href="#example-fast-magnon-spectra-from-ams" title="Permalink to this heading"></a></h3>
+<p>For quick estimates without long-time simulations:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>!! Enable fast AMS calculation
+do_ams       Y
+do_magdos    Y
+
+!! High frequency resolution for DOS
+magdos_freq  400
+magdos_sigma 20.0
+
+!! Q-point mesh for dispersion
+qpoints      C
+qfile        qpoints.txt
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references-and-further-reading">
+<h2>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this heading"></a></h2>
+<p>See <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for bibliography entries used in this page.</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../autocorrelation/"><span class="doc">Autocorrelation functions</span></a> (local autocorrelation sampling)</p></li>
+<li><p><a class="reference internal" href="../../methods/monte-carlo/"><span class="doc">Monte Carlo simulations</span></a> (Monte Carlo sampling methods)</p></li>
+<li><p><a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a> (system setup and q-points)</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#bergman2010" id="id3"><span>[Bergman2010]</span></a> - Magnon softening in ferromagnetic monolayers</p></li>
+<li><p><a class="reference internal" href="../../references/#squires1978" id="id4"><span>[Squires1978]</span></a> - Introduction to thermal neutron scattering theory</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../ams/" class="btn btn-neutral float-left" title="Adiabatic Magnon Spectra (AMS), Linear Spin Wave Theory (LSWT), and Topological Magnons" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../autocorrelation/" class="btn btn-neutral float-right" title="Autocorrelation functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

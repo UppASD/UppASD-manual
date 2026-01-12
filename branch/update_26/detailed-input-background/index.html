@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detailed background and inputs &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Simulation Methods and Algorithms" href="../methods/" />
+    <link rel="prev" title="Output files" href="../output/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Detailed background and inputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stochastic-integration">Stochastic Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monte-carlo-simulations-and-minimization">Monte Carlo simulations and minimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-sampling-and-equilibration">Advanced Sampling and Equilibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#path-finding-and-optimization">Path-Finding and Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rare-event-and-dynamics-methods">Rare Event and Dynamics Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coupled-spin-lattice-dynamics">Coupled Spin-Lattice Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiscale-simulations">Multiscale Simulations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#external-stimuli-and-control">External Stimuli and Control</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spatially-and-temporally-varying-magnetic-fields">Spatially and temporally varying magnetic fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spin-polarized-currents-and-torques">Spin-polarized currents and torques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-control-and-three-temperature-model-3tm">Temperature control and three-temperature model (3TM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-gradients">Temperature gradients:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Detailed background and inputs</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/detailed-input-background.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="detailed-background-and-inputs">
+<h1>Detailed background and inputs<a class="headerlink" href="#detailed-background-and-inputs" title="Permalink to this heading"></a></h1>
+<p>This chapter consolidates simulation methods, external control modules, and observable analysis into one place. Use it as the deep-dive reference when selecting algorithms, driving simulations with stimuli, and interpreting outputs.</p>
+<section id="simulation-methods-and-algorithms">
+<h2>Simulation Methods and Algorithms<a class="headerlink" href="#simulation-methods-and-algorithms" title="Permalink to this heading"></a></h2>
+<p>Fundamental and specialized approaches for running magnetic dynamics simulations.</p>
+<section id="stochastic-integration">
+<h3>Stochastic Integration<a class="headerlink" href="#stochastic-integration" title="Permalink to this heading"></a></h3>
+<p>Numerical integration schemes (solvers) for solving the stochastic Landau-Lifshitz-Gilbert equation:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../methods/solvers/"><span class="doc">Stochastic Equation Solvers</span></a></p></li>
+</ul>
+</section>
+<section id="monte-carlo-simulations-and-minimization">
+<h3>Monte Carlo simulations and minimization<a class="headerlink" href="#monte-carlo-simulations-and-minimization" title="Permalink to this heading"></a></h3>
+<p>Equilibrium sampling techniques for thermodynamic properties:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../methods/monte-carlo/"><span class="doc">Monte Carlo simulations</span></a></p></li>
+</ul>
+</section>
+<section id="advanced-sampling-and-equilibration">
+<h3>Advanced Sampling and Equilibration<a class="headerlink" href="#advanced-sampling-and-equilibration" title="Permalink to this heading"></a></h3>
+<p>Specialized methods for exploring phase space and computing thermodynamic properties:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../methods/monte-carlo/"><span class="doc">Monte Carlo simulations</span></a></p></li>
+<li><p><a class="reference internal" href="../methods/wang-landau/"><span class="doc">Wang-Landau sampling</span></a></p></li>
+<li><p><a class="reference internal" href="../methods/replica-exchange/"><span class="doc">Replica exchange (parallel tempering)</span></a></p></li>
+</ul>
+</section>
+<section id="path-finding-and-optimization">
+<h3>Path-Finding and Optimization<a class="headerlink" href="#path-finding-and-optimization" title="Permalink to this heading"></a></h3>
+<p>Methods for finding transitions between magnetic configurations and optimizing spin textures:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../methods/gneb/"><span class="doc">Geodesic nudged elastic band (GNEB)</span></a></p></li>
+<li><p><a class="reference internal" href="../methods/spin-spiral/"><span class="doc">Spin-spiral minimization</span></a></p></li>
+</ul>
+</section>
+<section id="rare-event-and-dynamics-methods">
+<h3>Rare Event and Dynamics Methods<a class="headerlink" href="#rare-event-and-dynamics-methods" title="Permalink to this heading"></a></h3>
+<p>Techniques for studying infrequent events and non-equilibrium dynamics:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../methods/kmc/"><span class="doc">Kinetic Monte Carlo (KMC)</span></a></p></li>
+</ul>
+</section>
+<section id="coupled-spin-lattice-dynamics">
+<h3>Coupled Spin-Lattice Dynamics<a class="headerlink" href="#coupled-spin-lattice-dynamics" title="Permalink to this heading"></a></h3>
+<p>Coupled spin and lattice evolution including magnetoelastic effects:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../methods/spin-lattice/"><span class="doc">Spin-lattice dynamics (SLD) simulations</span></a></p></li>
+</ul>
+</section>
+<section id="multiscale-simulations">
+<h3>Multiscale Simulations<a class="headerlink" href="#multiscale-simulations" title="Permalink to this heading"></a></h3>
+<p>Hybrid atomistic–continuum simulations for large-scale magnetic systems:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../methods/multiscale/"><span class="doc">Multiscale atomistic-continuum simulations</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="external-stimuli-and-control">
+<h2>External Stimuli and Control<a class="headerlink" href="#external-stimuli-and-control" title="Permalink to this heading"></a></h2>
+<p>Apply external driving forces and thermal control modules.</p>
+<section id="spatially-and-temporally-varying-magnetic-fields">
+<h3>Spatially and temporally varying magnetic fields<a class="headerlink" href="#spatially-and-temporally-varying-magnetic-fields" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../stimuli/fields/"><span class="doc">Time- and space-dependent fields</span></a></p></li>
+</ul>
+</section>
+<section id="spin-polarized-currents-and-torques">
+<h3>Spin-polarized currents and torques<a class="headerlink" href="#spin-polarized-currents-and-torques" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../stimuli/currents/"><span class="doc">Spin torques</span></a></p></li>
+</ul>
+</section>
+<section id="temperature-control-and-three-temperature-model-3tm">
+<h3>Temperature control and three-temperature model (3TM)<a class="headerlink" href="#temperature-control-and-three-temperature-model-3tm" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../stimuli/temperature-3tm/"><span class="doc">Three-temperature models</span></a></p></li>
+</ul>
+</section>
+<section id="temperature-gradients">
+<h3>Temperature gradients:<a class="headerlink" href="#temperature-gradients" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../stimuli/temperature-gradients/"><span class="doc">Temperature Gradients</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="observable-measurements-and-analysis">
+<h2>Observable Measurements and Analysis<a class="headerlink" href="#observable-measurements-and-analysis" title="Permalink to this heading"></a></h2>
+<p>Theoretical foundations for measuring and analyzing magnetic observables and configurations.</p>
+<section id="magnetization-observables">
+<h3>Magnetization Observables<a class="headerlink" href="#magnetization-observables" title="Permalink to this heading"></a></h3>
+<p>Measurements of magnetization and thermodynamic moments:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../observables/averages/"><span class="doc">Averages and cumulants</span></a></p></li>
+</ul>
+</section>
+<section id="spin-wave-spectra-ams-lswt">
+<h3>Spin-wave Spectra (AMS/LSWT)<a class="headerlink" href="#spin-wave-spectra-ams-lswt" title="Permalink to this heading"></a></h3>
+<p>Adiabatic magnon spectra and linear spin-wave theory:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../observables/ams/"><span class="doc">Adiabatic Magnon Spectra (AMS), Linear Spin Wave Theory (LSWT), and Topological Magnons</span></a></p></li>
+</ul>
+</section>
+<section id="correlations-and-structure-factors">
+<h3>Correlations and Structure Factors<a class="headerlink" href="#correlations-and-structure-factors" title="Permalink to this heading"></a></h3>
+<p>Space and time-displaced correlation functions:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../observables/correlations/"><span class="doc">Correlation functions</span></a></p></li>
+<li><p><a class="reference internal" href="../observables/autocorrelation/"><span class="doc">Autocorrelation functions</span></a></p></li>
+</ul>
+</section>
+<section id="polarization-and-chirality">
+<h3>Polarization and Chirality<a class="headerlink" href="#polarization-and-chirality" title="Permalink to this heading"></a></h3>
+<p>Ferroelectric polarization and local chirality:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../observables/polarization/"><span class="doc">Polarization and chirality measurements</span></a></p></li>
+</ul>
+</section>
+<section id="configuration-analysis-and-topology">
+<h3>Configuration Analysis and Topology<a class="headerlink" href="#configuration-analysis-and-topology" title="Permalink to this heading"></a></h3>
+<p>Characterization and topological analysis of magnetic configurations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../methods/clusters/"><span class="doc">Cluster embedding</span></a></p></li>
+<li><p><a class="reference internal" href="../observables/topology/"><span class="doc">Topological measurements and observables</span></a></p></li>
+</ul>
+</section>
+<section id="micromagnetic-stiffness-and-parameters">
+<h3>Micromagnetic Stiffness and Parameters<a class="headerlink" href="#micromagnetic-stiffness-and-parameters" title="Permalink to this heading"></a></h3>
+<p>Extraction of continuum parameters from atomistic simulations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../observables/stiffness/"><span class="doc">Spin Stiffness and Micromagnetic Parameters</span></a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../output/" class="btn btn-neutral float-left" title="Output files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../methods/" class="btn btn-neutral float-right" title="Simulation Methods and Algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

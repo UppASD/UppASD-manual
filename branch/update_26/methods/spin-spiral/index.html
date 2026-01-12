@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin-spiral minimization &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Kinetic Monte Carlo (KMC)" href="../kmc/" />
+    <link rel="prev" title="Geodesic nudged elastic band (GNEB)" href="../gneb/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Spin-spiral minimization</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/spin-spiral.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spin-spiral-minimization">
+<h1>Spin-spiral minimization<a class="headerlink" href="#spin-spiral-minimization" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<span id="input-spinspiral"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>Spin-spiral minimization uses the <code class="docutils literal notranslate"><span class="pre">qminimizer</span></code> routines (<code class="docutils literal notranslate"><span class="pre">qminimizer.f90</span></code>) and,
+for parallel tempering seeding, <code class="docutils literal notranslate"><span class="pre">sx_driver.f90</span></code>. The goal is to find the lowest
+energy spiral over a user-supplied <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> mesh and spiral basis
+vectors. Good results require a physically motivated <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> mesh and
+orthonormal spiral directions.</p>
+</section>
+<section id="spin-spiral-definition">
+<h2>Spin-spiral definition<a class="headerlink" href="#spin-spiral-definition" title="Permalink to this heading"></a></h2>
+<p>A single-<span class="math notranslate nohighlight">\(\mathbf{q}\)</span> spiral is parameterized by an in-plane unit vector
+<span class="math notranslate nohighlight">\(\mathbf{s}\)</span> and a normal (rotation axis) unit vector <span class="math notranslate nohighlight">\(\mathbf{n}\)</span>
+with <span class="math notranslate nohighlight">\(\mathbf{s}\cdot\mathbf{n}=0\)</span> and <span class="math notranslate nohighlight">\(\lVert\mathbf{s}\rVert=
+\lVert\mathbf{n}\rVert=1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{m}(\mathbf{r}) = \mathbf{n} \cos\bigl(2\pi\,\mathbf{q}\cdot\mathbf{r} + \phi\bigr)
++ \mathbf{s} \sin\bigl(2\pi\,\mathbf{q}\cdot\mathbf{r} + \phi\bigr)\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> is the propagation vector (in reciprocal lattice units)
+and <span class="math notranslate nohighlight">\(\phi\)</span> is a phase offset (often zero). For cycloidal spirals
+(<span class="math notranslate nohighlight">\(\mathbf{n}\parallel\mathbf{q}\)</span>) set <code class="docutils literal notranslate"><span class="pre">qm_type</span> <span class="pre">C</span></code>; for helical spirals
+(<span class="math notranslate nohighlight">\(\mathbf{n}\perp\mathbf{q}\)</span>) set <code class="docutils literal notranslate"><span class="pre">qm_type</span> <span class="pre">H</span></code>. If you supply explicit
+<code class="docutils literal notranslate"><span class="pre">qm_svec</span></code> and <code class="docutils literal notranslate"><span class="pre">qm_nvec</span></code>, the code normalizes them and uses them directly.</p>
+</section>
+<section id="modes-and-drivers">
+<h2>Modes and drivers<a class="headerlink" href="#modes-and-drivers" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>mode / ip_mode Q</dt><dd><p>Line-search minimization over the provided <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> list (<code class="docutils literal notranslate"><span class="pre">qpoints</span></code>
+grid or explicit <code class="docutils literal notranslate"><span class="pre">qm_qvec</span></code>). Uses <code class="docutils literal notranslate"><span class="pre">sweep_q2</span></code> and writes
+<code class="docutils literal notranslate"><span class="pre">qm_sweep.&lt;simid&gt;.out</span></code> and <code class="docutils literal notranslate"><span class="pre">qm_minima.&lt;simid&gt;.out</span></code>.</p>
+</dd>
+<dt>ip_mode Y</dt><dd><p>Alternative line search (<code class="docutils literal notranslate"><span class="pre">sweep_q3</span></code>) for multi-<span class="math notranslate nohighlight">\(\mathbf{q}\)</span> scans or
+when seeding a 3Q texture via <code class="docutils literal notranslate"><span class="pre">plot_q3</span></code>.</p>
+</dd>
+<dt>ip_mode Z</dt><dd><p>Cube search (<code class="docutils literal notranslate"><span class="pre">sweep_cube</span></code>) that samples a Cartesian <span class="math notranslate nohighlight">\(q_x,q_y,q_z\)</span> mesh
+when the propagation direction is unknown.</p>
+</dd>
+<dt>ip_mode SX</dt><dd><p>Parallel tempering setup: builds 1Q and 3Q minima via <code class="docutils literal notranslate"><span class="pre">qminimizer</span></code>, plus
+random and ferromagnetic replicas, before entering <code class="docutils literal notranslate"><span class="pre">sx_iphase</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="keyword-reference">
+<h2>Keyword reference<a class="headerlink" href="#keyword-reference" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>qm_qvec</dt><dd><p>Explicit <span class="math notranslate nohighlight">\(\mathbf{q}\)</span>-vectors (three components per line) that override
+the default <code class="docutils literal notranslate"><span class="pre">qpoints</span></code> mesh. Provide one line per <span class="math notranslate nohighlight">\(\mathbf{q}\)</span>; the
+minimizer scans them in order.</p>
+</dd>
+<dt>qm_svec</dt><dd><p>Spiral in-plane unit vector(s). Defines the spiral plane together with
+<code class="docutils literal notranslate"><span class="pre">qm_nvec</span></code>. If omitted, vectors are constructed from <code class="docutils literal notranslate"><span class="pre">qm_type</span></code>.</p>
+</dd>
+<dt>qm_nvec</dt><dd><p>Spiral normal (rotation axis). Must be orthogonal to <code class="docutils literal notranslate"><span class="pre">qm_svec</span></code> for a pure
+helix or cycloid; normalized on read.</p>
+</dd>
+<dt>qm_type</dt><dd><p>Orientation helper: <code class="docutils literal notranslate"><span class="pre">C</span></code> = cycloidal (<span class="math notranslate nohighlight">\(\mathbf{n}\parallel\mathbf{q}\)</span>),
+<code class="docutils literal notranslate"><span class="pre">H</span></code> = helical (<span class="math notranslate nohighlight">\(\mathbf{n}\perp\mathbf{q}\)</span>). Default <code class="docutils literal notranslate"><span class="pre">N</span></code> uses your
+provided <code class="docutils literal notranslate"><span class="pre">qm_svec</span></code>/<code class="docutils literal notranslate"><span class="pre">qm_nvec</span></code> unchanged.</p>
+</dd>
+<dt>qm_rot</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">Y</span></code>, rotate the existing texture atom-by-atom instead of constructing a
+perfect spiral. Each atom <span class="math notranslate nohighlight">\(i\)</span> at position <span class="math notranslate nohighlight">\(\mathbf{r}_i\)</span> is rotated
+by an angle <span class="math notranslate nohighlight">\(2\pi\,\mathbf{q}\cdot\mathbf{r}_i\)</span> around the axis
+<span class="math notranslate nohighlight">\(\mathbf{n}\)</span> from its initial moment. Useful to embed a spiral modulation
+in a disordered or non-collinear background.</p>
+</dd>
+<dt>qm_cellrot</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">Y</span></code>, rotate the texture cell-by-cell rather than atom-by-atom. For each
+atom <span class="math notranslate nohighlight">\(i\)</span> belonging to unit cell <span class="math notranslate nohighlight">\(I\)</span>, the rotation angle is
+<span class="math notranslate nohighlight">\(2\pi\,\mathbf{q}\cdot\mathbf{R}_I\)</span> where <span class="math notranslate nohighlight">\(\mathbf{R}_I\)</span> is the
+position of the first atom in cell <span class="math notranslate nohighlight">\(I\)</span>. All atoms in the same unit cell
+rotate by the same angle. This preserves the internal structure of complex
+basis sets while applying a long-wavelength spiral modulation.</p>
+</dd>
+<dt>qm_oaxis</dt><dd><p>Enforce a rotation axis perpendicular to the average magnetization; helpful
+when starting from a finite-moment state.</p>
+</dd>
+<dt>qm_relax, qm_relax_mode, qm_relax_steps, qm_relax_temp</dt><dd><p>Optional local MC relaxation after each trial spiral. Mode <code class="docutils literal notranslate"><span class="pre">M</span></code> = Metropolis,
+<code class="docutils literal notranslate"><span class="pre">H</span></code> = heat bath. Use small <code class="docutils literal notranslate"><span class="pre">qm_relax_temp</span></code> for near-zero-temperature
+minimization.</p>
+</dd>
+</dl>
+</section>
+<section id="selective-minimization-with-qm-exclude">
+<h2>Selective minimization with qm_exclude<a class="headerlink" href="#selective-minimization-with-qm-exclude" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>qm_exclude</dt><dd><p>Number of atom types to exclude from spiral rotations, followed by that many
+type indices on separate lines. Excluded atoms keep their original moments
+during <code class="docutils literal notranslate"><span class="pre">sweep_q2</span></code> / <code class="docutils literal notranslate"><span class="pre">sweep_q3</span></code> / <code class="docutils literal notranslate"><span class="pre">sweep_cube</span></code>; only non-excluded atoms
+are rotated when constructing the trial spiral and during optional relaxation.</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Use this to pin sublattices, non-magnetic species, or boundary atoms while
+minimizing over the remaining sites.</p></li>
+<li><p>The exclusion mask is built from atom types read in the structure; double-check
+type numbering in your geometry file.</p></li>
+<li><p>Exclusions apply to both pure spiral construction and rotation-based modes
+(<code class="docutils literal notranslate"><span class="pre">qm_rot</span></code> / <code class="docutils literal notranslate"><span class="pre">qm_cellrot</span></code>).</p></li>
+</ul>
+</section>
+<section id="guidance-on-q-mesh-and-directions">
+<h2>Guidance on q-mesh and directions<a class="headerlink" href="#guidance-on-q-mesh-and-directions" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Provide a dense, physically motivated <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> mesh (via <code class="docutils literal notranslate"><span class="pre">qpoints</span></code>
+presets or explicit <code class="docutils literal notranslate"><span class="pre">qm_qvec</span></code>) around expected ordering vectors.</p></li>
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">qm_svec</span></code> and <code class="docutils literal notranslate"><span class="pre">qm_nvec</span></code> are orthonormal; non-orthogonal inputs yield
+distorted spirals and spurious minima.</p></li>
+<li><p>For unknown directions, start with <code class="docutils literal notranslate"><span class="pre">ip_mode</span> <span class="pre">Z</span></code> (cube search), then refine with
+a focused <code class="docutils literal notranslate"><span class="pre">qm_qvec</span></code> list.</p></li>
+</ul>
+</section>
+<section id="rotation-modes-atomwise-vs-cellwise">
+<h2>Rotation modes: atomwise vs cellwise<a class="headerlink" href="#rotation-modes-atomwise-vs-cellwise" title="Permalink to this heading"></a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">qm_rot</span></code> or <code class="docutils literal notranslate"><span class="pre">qm_cellrot</span></code> is <code class="docutils literal notranslate"><span class="pre">Y</span></code>, the code rotates an existing magnetic
+configuration instead of building a pure spiral from the formula
+<span class="math notranslate nohighlight">\(\mathbf{m}(\mathbf{r}) = \mathbf{n}\cos(2\pi\mathbf{q}\cdot\mathbf{r}+\phi)
++ \mathbf{s}\sin(2\pi\mathbf{q}\cdot\mathbf{r}+\phi)\)</span>. This is useful to apply
+spiral modulations to disordered, non-collinear, or multi-sublattice backgrounds.</p>
+<ul>
+<li><p><strong>qm_rot = Y (atomwise):</strong> Each atom <span class="math notranslate nohighlight">\(i\)</span> at position <span class="math notranslate nohighlight">\(\mathbf{r}_i\)</span>
+is rotated from its starting moment <span class="math notranslate nohighlight">\(\mathbf{m}_i^{(0)}\)</span> by angle
+<span class="math notranslate nohighlight">\(\theta_i=2\pi\,\mathbf{q}\cdot\mathbf{r}_i\)</span> around axis <span class="math notranslate nohighlight">\(\mathbf{n}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{m}_i = \mathbf{R}(\mathbf{n},\theta_i)\,\mathbf{m}_i^{(0)},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{R}(\mathbf{n},\theta)\)</span> is the Rodrigues rotation matrix.
+Each site rotates independently, so intra-cell non-collinearity is preserved but
+modulated by the spiral wavevector.</p>
+</li>
+<li><p><strong>qm_cellrot = Y (cellwise):</strong> For atom <span class="math notranslate nohighlight">\(i\)</span> in unit cell <span class="math notranslate nohighlight">\(I\)</span>, the
+rotation angle is determined by the position <span class="math notranslate nohighlight">\(\mathbf{R}_I\)</span> of the first
+atom in that cell (index <span class="math notranslate nohighlight">\(((i-1)/N_{\text{basis}}) \times N_{\text{basis}}
++ 1\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{m}_i = \mathbf{R}(\mathbf{n},\,2\pi\,\mathbf{q}\cdot\mathbf{R}_I)\,
+\mathbf{m}_i^{(0)}.\]</div>
+<p>All atoms in the same unit cell rotate rigidly by the same angle. This preserves
+complex spin textures within the basis while imposing a long-wavelength envelope.
+It is especially useful for multi-atom unit cells (e.g., skyrmion or hedgehog
+lattices) where the internal texture must remain intact.</p>
+</li>
+</ul>
+<p><strong>Use cases:</strong></p>
+<ul class="simple">
+<li><p><strong>qm_rot:</strong> Spin-glass-like backgrounds, random initial states, embedding spirals
+in disordered alloys.</p></li>
+<li><p><strong>qm_cellrot:</strong> Non-collinear ordered states, skyrmion crystals, complex
+antiferromagnets, multi-sublattice helimagnets.</p></li>
+</ul>
+</section>
+<section id="minimal-setup-example">
+<h2>Minimal setup example<a class="headerlink" href="#minimal-setup-example" title="Permalink to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ip_mode       Q                 ! Spin-spiral minimization in initial phase
+mode          Q                 ! Evaluate best-q spiral in measurement phase
+qpoints       F                 ! Read explicit q-points
+qm_qvec       0.00  0.00  0.25
+              0.00  0.00  0.30
+              0.00  0.00  0.35
+qm_svec       1.0  0.0  0.0     ! Spiral in-plane direction
+qm_nvec       0.0  0.0  1.0     ! Spiral normal
+qm_type       H                 ! Helical (n perpendicular to q)
+qm_relax      Y
+qm_relax_mode H
+qm_relax_steps 200
+qm_relax_temp 1e-3
+qm_exclude    1                 ! Keep atom type 2 fixed
+              2
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../gneb/" class="btn btn-neutral float-left" title="Geodesic nudged elastic band (GNEB)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../kmc/" class="btn btn-neutral float-right" title="Kinetic Monte Carlo (KMC)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

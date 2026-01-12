@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input files &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Output files" href="../output/" />
+    <link rel="prev" title="Introduction" href="../introduction/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Input files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#inpsd-dat">inpsd.dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posfile">posfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#momfile">momfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exchange">exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-alloys-and-more-than-one-atom-in-the-cell">Random alloys and more than one atom in the cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inpsd-dat-keywords">inpsd.dat keywords</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-parameters">System parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hamiltonian-parameters">Hamiltonian parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-simulation-parameters">General simulation parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initialization-parameters">Initialization parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-phase-parameters">Initial phase parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#measurement-phase-parameters">Measurement phase parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters-for-measuring-of-observables">Parameters for measuring of observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters-for-measuring-of-correlation-functions">Parameters for measuring of correlation functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../output/">Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Input files</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/input.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="input-files">
+<h1>Input files<a class="headerlink" href="#input-files" title="Permalink to this heading"></a></h1>
+<section id="inpsd-dat">
+<h2>inpsd.dat<a class="headerlink" href="#inpsd-dat" title="Permalink to this heading"></a></h2>
+<p>A file with the hardcoded name <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> is the main input file necessary to run UppASD. Contained in this file are also the names of the files containing the exchange interactions, the atomic positions, and the atomic moments. Although the names of these files are arbitrary, in this manual they are referred to as the <code class="docutils literal notranslate"><span class="pre">jfile</span></code>, <code class="docutils literal notranslate"><span class="pre">posfile</span></code> and <code class="docutils literal notranslate"><span class="pre">momfile</span></code>, respectively. Other optional files containing information such as the uniaxial anisotropy and the Dzyaloshinskii-Moriya vectors may also be included, as described below.</p>
+<p>The input format is keyword based. The code is programmed to search for given keywords, and then read in the values that follow. If no keyword is given, a default value is set. As an example of a standard <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> file layout, input for Fe in body centered cube (bcc) structure is shown below (as found in the examples directory). More advanced examples like supercells and random alloys follows later, but let’s keep things simple for now:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span> <span class="n">bccFe100</span>
+<span class="n">ncell</span>  <span class="mi">12</span>              <span class="mi">12</span>              <span class="mi">12</span>  <span class="n">System</span> <span class="n">size</span>
+<span class="n">BC</span>     <span class="n">P</span>               <span class="n">P</span>               <span class="n">P</span>   <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>  <span class="o">-</span><span class="mf">0.5000000000</span>    <span class="mf">0.5000000000</span>    <span class="mf">0.5000000000</span>
+       <span class="mf">0.5000000000</span>   <span class="o">-</span><span class="mf">0.5000000000</span>    <span class="mf">0.5000000000</span>
+       <span class="mf">0.5000000000</span>    <span class="mf">0.5000000000</span>   <span class="o">-</span><span class="mf">0.5000000000</span>
+<span class="n">Sym</span>    <span class="mi">0</span>  <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">exchange</span> <span class="n">bonding</span> <span class="n">vectors</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+
+<span class="n">posfile</span>    <span class="o">./</span><span class="n">posfile</span>
+<span class="n">momfile</span>    <span class="o">./</span><span class="n">momfile</span>
+<span class="n">exchange</span>   <span class="o">./</span><span class="n">jASD1</span>
+<span class="n">anisotropy</span> <span class="o">./</span><span class="n">kfile</span>
+
+<span class="n">do_ralloy</span>  <span class="mi">0</span>
+<span class="n">Mensemble</span>  <span class="mi">1</span>
+<span class="n">tseed</span>      <span class="mi">4499</span>
+<span class="n">maptype</span>    <span class="mi">1</span>
+
+<span class="n">SDEalgh</span>    <span class="mi">1</span>                         <span class="n">SDE</span> <span class="n">solver</span><span class="p">:</span> <span class="mi">1</span><span class="o">=</span><span class="n">midpoint</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">heun</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">heun3</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">Heun_proper</span><span class="p">,</span> <span class="mi">5</span><span class="o">=</span><span class="n">Depondt</span>
+<span class="n">Initmag</span>    <span class="mi">3</span>                         <span class="n">Initial</span> <span class="n">config</span> <span class="n">of</span> <span class="n">moments</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">cone</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+<span class="c1">#restartfile ./restart.bccFe100.out</span>
+
+<span class="n">ip_mode</span>     <span class="n">M</span>                        <span class="n">Initial</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">ip_mcanneal</span> <span class="mi">1</span>                        <span class="o">--</span>
+<span class="mi">10000</span> <span class="mi">300</span> <span class="mf">1.00e-16</span> <span class="mf">0.3</span>               <span class="o">--</span>
+
+<span class="n">mode</span>     <span class="n">M</span>                           <span class="n">S</span><span class="o">=</span><span class="n">SD</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">MC</span>
+<span class="n">temp</span>     <span class="mi">300</span>                         <span class="n">Measurement</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">mcNstep</span>  <span class="mi">50000</span>
+<span class="n">Nstep</span>    <span class="mi">50000</span>
+<span class="n">damping</span>  <span class="mf">0.1</span>
+<span class="n">timestep</span> <span class="mf">1.0e-16</span>
+
+<span class="n">do_avrg</span>        <span class="n">Y</span>                     <span class="n">Measure</span> <span class="n">averages</span>
+
+<span class="n">do_cumu</span>        <span class="n">Y</span>
+<span class="n">cumu_step</span>      <span class="mi">50</span>
+<span class="n">cumu_buff</span>      <span class="mi">10</span>
+
+<span class="n">do_tottraj</span>     <span class="n">N</span>                     <span class="n">Measure</span> <span class="n">moments</span>
+<span class="n">tottraj_step</span>   <span class="mi">1000</span>
+
+<span class="n">plotenergy</span>     <span class="mi">1</span>
+
+<span class="n">do_sc</span>          <span class="n">C</span>
+<span class="n">do_ams</span>         <span class="n">Y</span>
+<span class="n">do_magdos</span>      <span class="n">Y</span>
+<span class="n">magdos_freq</span>    <span class="mi">200</span>
+<span class="n">magdos_sigma</span>   <span class="mi">30</span>
+<span class="n">qpoints</span>        <span class="n">C</span>
+
+<span class="n">do_stiffness</span>   <span class="n">Y</span>
+<span class="n">eta_max</span>        <span class="mi">12</span>
+<span class="n">eta_min</span>        <span class="mi">6</span>
+<span class="n">alat</span>           <span class="mf">2.83e-10</span>
+</pre></div>
+</div>
+<p>While the meaning of most of the entries in this particular example may be obvious, each input field will be described later in this manual. In short, the input will perform a Monte Carlo simulation at T=300 K allowing 10 000 steps to reach equilbrium and then 50 000 steps to measure observables. However, it is also clear that more information than in <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> are required and must be read in from external files in order for the system to be fully defined. These are:</p>
+</section>
+<section id="posfile">
+<h2>posfile<a class="headerlink" href="#posfile" title="Permalink to this heading"></a></h2>
+<p>The positions of the atoms in the unit cell are given in basis vector coordinates.</p>
+<p>While these can be listed directly in the <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> file, it is typically more convenient to give them in an external file, <code class="docutils literal notranslate"><span class="pre">posfile</span></code>. For the example above the positions are given as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>   <span class="mf">0.000000</span>  <span class="mf">0.000000</span>  <span class="mf">0.000000</span>
+</pre></div>
+</div>
+<p>The first entry indicates the <em>site number</em>, whereas the second one indicates the <em>atom type</em>. The concept of atom type is central when setting up UppASD simulations because every <code class="docutils literal notranslate"><span class="pre">type</span></code> is associated with a particular set of exchange couplings. In this specific case there is only one atom type (and one site), namely Fe with atomic position at the origin.</p>
+</section>
+<section id="momfile">
+<h2>momfile<a class="headerlink" href="#momfile" title="Permalink to this heading"></a></h2>
+<p>This file lists the magnetic moments of the atoms in the unit cell. Also, if the <code class="docutils literal notranslate"><span class="pre">initmag</span></code> entry is set to 3, the initial direction of the moments is read from this file. For bcc Fe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">2.2459</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>The first entry indicates the site number (same as first column in posfile), the second entry the chemical type (always 1 for non-random systems), and the third entry indicates the magnitude of the magnetic moment in <span class="math notranslate nohighlight">\(\mu_{\mathrm{B}}\)</span>, as calculated or estimated from an electronic structure calculation or similar. The last three entries indicate the initial <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> components of the moment (assuming <code class="docutils literal notranslate"><span class="pre">initmag</span></code> is set to 3).</p>
+</section>
+<section id="exchange">
+<span id="id1"></span><h2>exchange<a class="headerlink" href="#exchange" title="Permalink to this heading"></a></h2>
+<p>This file lists the exchange couplings within the system. The content and length of this file depends on the symmetry of the system, and the number of atom types present. If no symmetry is used, <em>i.e.</em> <code class="docutils literal notranslate"><span class="pre">sym</span> <span class="pre">0</span></code> (as in example), all exchange interactions within each interaction shell must be specified. The first shell of the bcc lattice contains 8 interactions, so for <code class="docutils literal notranslate"><span class="pre">sym</span> <span class="pre">0</span></code> 8 eight couplings need to be specified in the exchange file. If symmetry is used, then only one interaction in each shell is specified and the program will automatically find the other couplings within the shell depending on the crystal symmetry. For the present Fe example using maptype 1, the first line reads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">0.500</span> <span class="o">-</span><span class="mf">0.500</span> <span class="o">-</span><span class="mf">0.500</span> <span class="mf">1.359407144</span> <span class="mf">0.866</span>
+</pre></div>
+</div>
+<p>The first two entries indicate the sites, which corresponds to the types that one whishes to map, <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. In this case as both atoms have the same type, one can indicate the interactions between atoms in site 1 and 2, as 1-1. An example on how to deal with more atom types in the unit cell will be presented later in the manual.</p>
+<p>The third, fourth and fifth entries specify the interaction vector between the atoms and depending on choice of the maptype, it has different meaning. Using maptype 1, the vector is specified in Cartesian coordinates. If the SPR-KKR software is used, this corresponds to columns eight, nine and ten in the exchange parameter outfile.
+If instead maptype 2 is used, the coordination vector is specified in lattice coordinates and the first line in jfile modifies to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mf">1.359407144</span> <span class="mf">0.866</span>
+</pre></div>
+</div>
+<p>Once again taking SPR-KKR as an example, that corresponds to columns five, six and seven in the exchange parameters outfile.
+The sixth entry in jfile is the exchange energy in mRy and the last entry (not read and optional) is the distance between atoms.</p>
+<p>These files together with the inpsd.dat forms the minimal set that is required to run a full ASD or MC simulation. Optionally, there are plenty other external files that may be used for more specific applications and features.</p>
+</section>
+<section id="random-alloys-and-more-than-one-atom-in-the-cell">
+<h2>Random alloys and more than one atom in the cell<a class="headerlink" href="#random-alloys-and-more-than-one-atom-in-the-cell" title="Permalink to this heading"></a></h2>
+<p>When the system of interest contains more than one atom in the cell and/or have some chemical disorder, then the setup naturally becomes slightly more complicated. The necessary modifications in the input files are here demonstrated using the system FeCo (found in the examples directory) with the composition 50-50 an example. We are using two different setups for the system, either using an ordered “supercell” or as a random binary alloy.</p>
+<p><strong>FeCo supercell (B2)</strong>
+An ordered structure of FeCo with 50-50 composition can be represented in the B2 (CsCl) crystal structure which is a simple cubic lattice with two basis atoms. The Fe atoms occupy the corners and Co atoms the center. In the inpsd.dat input file, the Bravais lattice vectors needs to be specified for the simple cubic lattice:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>
+       <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+       <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">1.00000</span>
+</pre></div>
+</div>
+<p>The next step is to specify the basis, i.e. the positions of the Fe and Co atoms. We recommend as in the previous example of Fe, always use a separate file (posfile). Fe and Co occupy two different sites in the cell and are of different atom types, the posfile then takes the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>   <span class="mf">0.000000</span>  <span class="mf">0.000000</span>  <span class="mf">0.000000</span>
+<span class="mi">2</span> <span class="mi">2</span>   <span class="mf">0.500000</span>  <span class="mf">0.500000</span>  <span class="mf">0.500000</span>
+</pre></div>
+</div>
+<p>First line, denotes the Fe atom that is site number 1 and atom type 1 (first and second column) with position 0 0 0 (corner). Second line is the corresponding information for the Co atom that has position 0.5 0.5 0.5 (center in cell). Once the atom type numbers are set in this file, it will carry over the information in the other files which then needs to be consistent. Now when the simulation cell is set up, we need to specify the magnetic moments and then the (exchange) interactions between them. Starting with magnetic moments, the corresponding momfile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">2.7207</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>
+<span class="mi">2</span> <span class="mi">1</span> <span class="mf">1.7202</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>Once again, the first line specifies the Fe (with site number 1 and chemical type 1) with moment 2.7207 <span class="math notranslate nohighlight">\(\mu_{\mathrm{B}}\)</span> (from a DFT calculation) and initial moment direction along the z-direction (<code class="docutils literal notranslate"><span class="pre">initmag</span></code> 3). The second line specifies the same information but for site number 2, i.e. Co that has moment 1.7202 <span class="math notranslate nohighlight">\(\mu_{\mathrm{B}}\)</span> from calculation.</p>
+<p>Now that both the cell and magnetic moments on each site are specified, what is left to do is the specification of exchange interactions between the moments. From experience, this is the most crucial part in the setup, and most easily to get it wrong. The full jfile in the example is longer than specified here (due to the lack of symmetry), here we only show one of the nearest neighbour interactions. We have Fe and Co moments in the cell, a Fe moment could interact with other Fe (Fe-Fe) or with Co (Fe-Co). Vice versa, a Co moment could interact with Fe (Co-Fe) or with other Co (Co-Co). To be complete, we need to specify all the interactions, i.e. Fe-Fe, Fe-Co, Co-Fe and Co-Co interactions. The jfile (using <code class="docutils literal notranslate"><span class="pre">maptype</span></code> 2) then contains the following blocks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span>   <span class="mf">0.031818272</span> <span class="mf">1.000</span>
+<span class="mi">1</span> <span class="mi">2</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>   <span class="mf">1.839624404</span> <span class="mf">0.866</span>
+<span class="mi">2</span> <span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>   <span class="mf">1.839624404</span> <span class="mf">0.866</span>
+<span class="mi">2</span> <span class="mi">2</span>  <span class="mi">0</span>  <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span>   <span class="mf">0.059966387</span> <span class="mf">1.000</span>
+</pre></div>
+</div>
+<p>Remember that the <code class="docutils literal notranslate"><span class="pre">types</span></code> of atoms that the exchange interactions is valid for, are given in the first two columns of the jfile which specify the <code class="docutils literal notranslate"><span class="pre">sites</span></code> <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.  The sites correspond to the information given in the posfile. First line then specifies a Fe-Fe interaction, second line Fe-Co, third line Co-Fe and fourth line Co-Co.</p>
+<p><strong>FeCo random alloy</strong>
+UppASD has the capability to deal with chemical disorder in one or several sublattices of a system. Taking Fe-Co as example, it is natually occuring in the bcc lattice (for Co concentrations less  than <span class="math notranslate nohighlight">\(\approx 70\%\)</span> with random arrangement of the Fe and Co atoms. Internally within the program, a supercell is created with the target composition set by the user. The required input files needs some modifications that are discussed here. First of all, the flag do_ralloy in the inpsd.dat file needs to be set to 1. Then, as ususal, the Bravais lattice needs to be specified and in this case we are using the primitive bcc lattice with its lattice vectors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span>         <span class="o">-</span><span class="mf">0.5000000</span>    <span class="mf">0.5000000</span>    <span class="mf">0.5000000</span>
+              <span class="mf">0.5000000</span>   <span class="o">-</span><span class="mf">0.5000000</span>    <span class="mf">0.5000000</span>
+              <span class="mf">0.5000000</span>    <span class="mf">0.5000000</span>   <span class="o">-</span><span class="mf">0.5000000</span>
+</pre></div>
+</div>
+<p>So far, the setup is not any different from a non-random system. However, the position file looks a bit different. Now we have two chemical types (Fe and Co), each with a certain concentration, that are both situated on the same sublattice:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.500</span>   <span class="mf">0.000000</span>  <span class="mf">0.000000</span>  <span class="mf">0.000000</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span>  <span class="mf">0.500</span>   <span class="mf">0.000000</span>  <span class="mf">0.000000</span>  <span class="mf">0.000000</span>
+</pre></div>
+</div>
+<p>Compare to non-random systems, the posfile now has two additional columns. The third column specify the chemical type (Fe or Co), each with its concentration (fourth column). The concentrations do not need to add up to 100%, if smaller then the system becomes diluted with random voids (vacancies) in it. In the present example, Fe (chemical type 1) and Co (chemical type 2) both have 50% concentration. Next, we need to specify the magnetic moments on each sublattice and for each chemical type. The corresponding momfile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">2.4850</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mf">1.7041</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>The first column always specifies the site number (same as column 1 in the posfile) and column 2 specifies the chemical type (same as column 3 in the posfile). In the example, the first line corresponds to Fe moment and second line the Co moment. The only remaining part is the specification of exchange interactions. Somewhat similar to the FeCo B2 example, we have four distinct set of exchange interactions (Fe-Fe,Fe-Co,Co-Fe and Co-Co), however in this case all interactions are taking place within the same sublattice. A subset of the jfile (first shell) has the following shape (<code class="docutils literal notranslate"><span class="pre">maptype</span></code> 2):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mf">1.970049732</span> <span class="mf">0.866</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mf">1.947329604</span> <span class="mf">0.866</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mf">1.947329604</span> <span class="mf">0.866</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mf">1.238957583</span> <span class="mf">0.866</span>
+</pre></div>
+</div>
+<p>The first and second columns are the same as the jfile for non random systems and specifies the <em>sites</em> <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> and thus their corresponding atomic (sublattice) <em>types</em>. In this case, we only have one sublattice so it is 1 for all interactions. The third and fourth columns specifies the chemical types of the atoms on that particular sublattice and from top to bottom in this example that means Fe-Fe, Fe-Co,Co-Fe and Co-Co interactions.</p>
+</section>
+<section id="inpsd-dat-keywords">
+<h2>inpsd.dat keywords<a class="headerlink" href="#inpsd-dat-keywords" title="Permalink to this heading"></a></h2>
+<p>UppASD features more than 300 keywords for the <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> file. In the following some of the keywords are described. Where applicable, the default value for the keyword is underlined.</p>
+<section id="system-parameters">
+<h3>System parameters<a class="headerlink" href="#system-parameters" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>simid</p></td>
+<td><p>The 8 character long simulation id. All output files will include the <code class="docutils literal notranslate"><span class="pre">simid</span></code> as a label.</p></td>
+</tr>
+<tr class="row-even"><td><p>cell</p></td>
+<td><p>The three lattice vectors describing the cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ncell</p></td>
+<td><p>Number of repetitions of the cell in each of the lattice vector directions.</p></td>
+</tr>
+<tr class="row-even"><td><p>bc</p></td>
+<td><p>Boundary conditions (P=periodic, 0=free).</p></td>
+</tr>
+<tr class="row-odd"><td><p>natoms</p></td>
+<td><p>Number of atoms in one cell. (Not needed if a <code class="docutils literal notranslate"><span class="pre">posfile</span></code> is provided)</p></td>
+</tr>
+<tr class="row-even"><td><p>ntypes</p></td>
+<td><p>Number of types atoms in one cell. (Not needed if a <code class="docutils literal notranslate"><span class="pre">posfile</span></code> is provided)</p></td>
+</tr>
+<tr class="row-odd"><td><p>posfile</p></td>
+<td><p>External file for the positions of the atoms in one cell, with the site number and type of the atom.</p></td>
+</tr>
+<tr class="row-even"><td><p>momfile</p></td>
+<td><p>External file describing the magnitudes and directions of magnetic moments.</p></td>
+</tr>
+<tr class="row-odd"><td><p>posfiletype</p></td>
+<td><p>Flag to change between <em>C=Cartesian</em> or <em>D=direct</em> coordinates in posfile.</p></td>
+</tr>
+<tr class="row-even"><td><p>set_landeg</p></td>
+<td><p>Flag for assigning different values of the gyromagnetic factor for the moments. Set to 0 by default.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hamiltonian-parameters">
+<h3>Hamiltonian parameters<a class="headerlink" href="#hamiltonian-parameters" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>exchange        |    External file for Heisenberg exchange couplings on the form</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\mathrm{XC}} = - \sum_{i\neq j}J_{ij}  \mathbf{e}_i \cdot \mathbf{e}_j ,\label{XC_ham}\]</div>
+<p>where <span class="math notranslate nohighlight">\(J_{ij}\)</span> is the Heisenberg exchange interaction between atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. For an example of the file, see <a class="reference internal" href="#exchange"><span class="std std-ref">exchange</span></a>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>dm        |    External file for Dzyaloshinskii-Moriya (DM) exchange couplings on the form</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\mathrm{DM}} = - \sum_{i\neq j}\mathbf{D}_{ij} \cdot \left(\mathbf{e}_i \times \mathbf{e}_j\right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{D}_{ij}\)</span> is the DM vector. The format is similar to that of the exchange file, <em>i.e.</em> in a 2d square lattice it may look something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>  <span class="mf">1.0000</span>  <span class="mf">0.0000</span> <span class="mf">0.0000</span>  <span class="mf">0.30000</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">1.0000</span>  <span class="mf">0.0000</span> <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">0.30000</span> <span class="o">-</span><span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.00000</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0000</span>  <span class="mf">1.0000</span> <span class="mf">0.0000</span>  <span class="mf">0.00000</span>  <span class="mf">0.30000</span>  <span class="mf">0.00000</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">1.0000</span> <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.30000</span> <span class="o">-</span><span class="mf">0.00000</span>
+</pre></div>
+</div>
+<p>The first two entries specify site numbers in the chemical unit cell. The third to fifth entries specify the vector <span class="math notranslate nohighlight">\(\mathbf{r}_{ij}\)</span> in terms of the lattice vectors, and the final three entries specify the DM vector <span class="math notranslate nohighlight">\(\mathbf{D}_{ij}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>pd        |    External file for anisotropic symmetric exchange coupling on the form</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\mathrm{ani}} = -\sum_{i\neq j} \sum_{\alpha,\beta}\mathbf{J}_{ij}^{\alpha \beta} \ m_i^{\alpha} m_j^{\beta},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{J}_{ij}^{\alpha \beta}\)</span> are the pd couplings and indices <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> refer to the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span>-components of the spins. The format is similar to that of the exchange file. An example file for anisotropic symmetric exchange (here for <code class="docutils literal notranslate"><span class="pre">maptype=1</span></code> and <code class="docutils literal notranslate"><span class="pre">posfiletype=D</span></code>) is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>   <span class="mf">0.25</span>  <span class="mf">0.00</span> <span class="o">-</span><span class="mf">0.25</span>  <span class="mf">0.00</span> <span class="o">-</span><span class="mf">0.01</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+</pre></div>
+</div>
+<p>The first two entries indicate the site number and the type of atom, respectively. The third, fourth and fifth entries specify the coordination shell in direct coordinates. The sixth to eleventh entry specify the coupling strength in order <span class="math notranslate nohighlight">\(J^{xx}\)</span>, <span class="math notranslate nohighlight">\(J^{yy}\)</span>, <span class="math notranslate nohighlight">\(J^{zz}\)</span>, <span class="math notranslate nohighlight">\(J^{xy}\)</span> <span class="math notranslate nohighlight">\((=J^{yx})\)</span>, <span class="math notranslate nohighlight">\(J^{xz}\)</span> <span class="math notranslate nohighlight">\((=J^{zx})\)</span>, <span class="math notranslate nohighlight">\(J^{yz}\)</span> <span class="math notranslate nohighlight">\((=J^{zy})\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>bq       |    External file for biquadratic exchange coupling on the form</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\mathrm{bq}} = -\sum_{i\neq j}B_{ij} \left( \mathbf{e}_i\cdot\mathbf{e}_j \right)^2.\]</div>
+<p>The format is identical to that of the <code class="docutils literal notranslate"><span class="pre">exchange</span></code> file discussed above, with the values for the exchange couplings <span class="math notranslate nohighlight">\(J_{ij}\)</span> replaced by the biquadratic exchange couplings <span class="math notranslate nohighlight">\(B_{ij}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>biqdm    |    External file for effective quadratic Dzyaloshinskii-Moriya coupling</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\mathrm{biqdm}} = -\sum_{i\neq j}F_{ij} \left( \mathbf{e}_i\times\mathbf{e}_j \right)^2.\]</div>
+<p>The format is identical to that of the <code class="docutils literal notranslate"><span class="pre">exchange</span></code> file discussed above, with the values for the exchange couplings <span class="math notranslate nohighlight">\(J_{ij}\)</span> replaced by the quadratic effective Dzyaloshinskii-Morya exchange coupling <span class="math notranslate nohighlight">\(F_{ij}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>do_tensor  |    Tensorial exchange coupling</p></td>
+</tr>
+</tbody>
+</table>
+<p>This switch allows the exchange data to be read in according to the tensorial representation of the Heisenberg Hamiltonian, as implemented in the Vienna-Budapest SKKR code <a class="reference internal" href="../references/#udvardi2003" id="id2"><span>[Udvardi2003]</span></a> . In this case, the exchange Hamiltonian is defined as</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\mathrm{Tens}} = \sum_{i,j} \mathbf{e}_i \mathcal{J}_{ij} \mathbf{e}_j.\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\mathcal{J}_{ij}=-J_{ij}\mathcal{I} + \mathcal{J}^S_{ij} +  \mathcal{J}^A_{ij}\)</span> is a <span class="math notranslate nohighlight">\(3 \times 3\)</span> tensor (in which <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> is the unit matrix), the trace of which is equal to the exchange constant as defined in <a class="reference internal" href="../references/#udvardi2003" id="id3"><span>[Udvardi2003]</span></a>.</p>
+<p>In this formalism, the anti-symmetric part of the tensor are proportional to the components of the DM vector <span class="math notranslate nohighlight">\(\mathbf{D}_{ij}\)</span> in Eq.~(ref{DM_ham}), as <span class="math notranslate nohighlight">\(D_{ij}^x=\frac{1}{2}(J_{ij}^{yz}-J_{ij}^{zy})\)</span>, <span class="math notranslate nohighlight">\(D_{ij}^y=\frac{1}{2}(J_{ij}^{xz}-J_{ij}^{zx})\)</span> and <span class="math notranslate nohighlight">\(D_{ij}^z=\frac{1}{2}(J_{ij}^{xy}-J_{ij}^{yx})\)</span>. In order to define the first shell of exchange parameters in bcc Fe using this formalism, the exchange file would be changed to look as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mf">0.00134</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.00134</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.00134</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mf">0.00134</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.00134</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.00134</span>
+</pre></div>
+</div>
+<p><em>NB</em>: <code class="docutils literal notranslate"><span class="pre">maptype</span></code> must be set to 2 in order to use the tensorial format. In addition, since SKKR prints the exchange in Ry, UppASD reads this input in Ry and not in mRy as usual.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>anisotropy    |     External file for anisotropy strengths and directions.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The single-ion, or uniaxial, anisotropy is defined as</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}^{\mathrm{U}}_{\mathrm{ani}} = \sum_i K_1^{\mathrm{U}} (\mathbf{e}_i\cdot\mathbf{e}_i)^2 + K_2^{\mathrm{U}} (\mathbf{e}_i\cdot\mathbf{e}_i)^4,\]</div>
+<p>where <span class="math notranslate nohighlight">\(K_1\)</span> and <span class="math notranslate nohighlight">\(K_2\)</span> are the strength of the linear and four-fold term along an axis with direction <span class="math notranslate nohighlight">\(\mathbf{e}_i\)</span>. In a cubic system, one must also define the so-called cubic anisotropy, given by</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}^{\mathrm{C}}_{\mathrm{ani}} = \sum_i K_1^{\mathrm{C}} (m_{i,x}^2m_{i,y}^2 + m_{i,y}^2m_{i,z}^2 + m_{i,z}^2m_{i,x}^2 ) + K_2^{\mathrm{C}} m_{i,x}^2 m_{i,y}^2 m_{i,z}^2,\]</div>
+<p>where <span class="math notranslate nohighlight">\((m_x, m_y, m_z)=\mathbf{m}\)</span>. UppASD is able to read in either uniaxial or cubic anisotropy, or both of them. For bcc Fe, a plausible <code class="docutils literal notranslate"><span class="pre">kfile</span></code> might be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="mi">2</span>   <span class="o">-</span><span class="mf">0.020</span>    <span class="mf">0.000</span>    <span class="mf">0.0</span>    <span class="mf">1.0</span>    <span class="mf">0.0</span>    <span class="mf">0.1</span>
+<span class="mi">2</span>   <span class="mi">2</span>   <span class="o">-</span><span class="mf">0.020</span>    <span class="mf">0.000</span>    <span class="mf">0.0</span>    <span class="mf">1.0</span>    <span class="mf">0.0</span>    <span class="mf">0.1</span>
+</pre></div>
+</div>
+<p>The first entry lists the atom number, whereas the second entry indicates if the uniaxial (texttt{1}), cubic (texttt{2}) or both (texttt{7}) anisotropies are to be mounted. The second and third entries list the strength of <span class="math notranslate nohighlight">\(K_1\)</span> and <span class="math notranslate nohighlight">\(K_2\)</span>, respectively. The fifth to seventh entries indicate the components of the vector <span class="math notranslate nohighlight">\(\mathbf{e}_i\)</span>. Finally, in the instance of the second entry being set to 7, the final entry indicates the ratio between  <span class="math notranslate nohighlight">\(K^{\mathrm{U}}_{\mathrm{ani}}\)</span> and  <span class="math notranslate nohighlight">\(K^{\mathrm{C}}_{\mathrm{ani}}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><dl>
+<dt>sym      |    Flag to determine the assumed symmetry of the system (<em>0=none</em>, 1=cubic, 2=2d cubic (in <span class="math notranslate nohighlight">\(xy\)</span> plane),</dt><dd><div class="line-block">
+<div class="line">3=hexagonal).</div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>It is also possible to provide symmetry operations manually. This is done by setting <code class="docutils literal notranslate"><span class="pre">sym</span></code> to 4 and then create an additional input file
+<code class="docutils literal notranslate"><span class="pre">sym.mat</span></code> containing the number of symmetry operations followed by the operations in matrix form.
+An example of <code class="docutils literal notranslate"><span class="pre">sym.mat</span></code> for only inversion symmetry can look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
+  <span class="mf">1.0000</span>   <span class="mf">0.0000</span>  <span class="mf">0.0000</span>
+  <span class="mf">0.0000</span>   <span class="mf">1.0000</span>  <span class="mf">0.0000</span>
+  <span class="mf">1.0000</span>   <span class="mf">0.0000</span>  <span class="mf">1.0000</span>
+ <span class="o">-</span><span class="mf">1.0000</span>   <span class="mf">0.0000</span>  <span class="mf">0.0000</span>
+  <span class="mf">0.0000</span>  <span class="o">-</span><span class="mf">1.0000</span>  <span class="mf">0.0000</span>
+  <span class="mf">0.0000</span>   <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">1.0000</span>
+</pre></div>
+</div>
+<p>Do not forget the identity operation when using custom symmetry operations. The symmetry operations act on <code class="docutils literal notranslate"><span class="pre">exchange</span></code>, <code class="docutils literal notranslate"><span class="pre">bq</span></code>, <code class="docutils literal notranslate"><span class="pre">pd</span></code> couplings, but not on <code class="docutils literal notranslate"><span class="pre">dm</span></code> or <code class="docutils literal notranslate"><span class="pre">biqdm</span></code> couplings. Note that the <code class="docutils literal notranslate"><span class="pre">sym</span></code> flag only concerns how the program will treat the exchange couplings, it does thus not have to reflect the proper symmetry of the simulated system. Thus, if the exchange interactions given in <code class="docutils literal notranslate"><span class="pre">posfile</span></code> are not symmetry reduced, then <code class="docutils literal notranslate"><span class="pre">sym</span></code> should be set to <span class="math notranslate nohighlight">\(0\)</span> even if the system has more symmetry than the identity symmetry.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>maptype  |    Flag that determines how the coordinates for the different exchange couplings are given.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For <em>1=coordinates</em> the coordinates are given in Cartesian or direct coordinates (see <code class="docutils literal notranslate"><span class="pre">posfiletype</span></code>). For 2 the coordinates of a coupling vector are implicitly given by specifying that the coupling links atom <span class="math notranslate nohighlight">\(i\)</span> with atom <span class="math notranslate nohighlight">\(j\)</span> (for an example, see <code class="docutils literal notranslate"><span class="pre">dm</span></code>).</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>do_prnstruct  |    Flag to print lattice structure (<em>0=off</em>/1=on/2=print only coordinates).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Useful for checking if the system geometry and couplings are correctly set up.</p>
+</section>
+<section id="general-simulation-parameters">
+<h3>General simulation parameters<a class="headerlink" href="#general-simulation-parameters" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>do_ralloy</p></td>
+<td><p>Flag to set if a random alloy is being simulated (<em>0=off</em>/1=on).</p></td>
+</tr>
+<tr class="row-even"><td><p>aunits</p></td>
+<td><p>Implement atomic units, <em>i.e.</em> set <span class="math notranslate nohighlight">\(k_B\)</span>, <span class="math notranslate nohighlight">\(\hbar\)</span>, … <span class="math notranslate nohighlight">\(=1\)</span> (Y/<em>N</em>). If this
+is switched on, the <code class="docutils literal notranslate"><span class="pre">timestep</span></code> in SD mode should be roughly <span class="math notranslate nohighlight">\(0.1J_{ij}\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sdealgh</p></td>
+<td><p>Switch for choosing SDE solver (<em>1=Midpoint</em>, 4=Heun, 5=Depondt-Mertens). The default option
+runs the semi-implicit midpoint solver developed by Mentink <em>et al.</em> <a class="reference internal" href="../references/#mentink2010" id="id4"><span>[Mentink2010]</span></a>.
+In this case, as when using the Depondt-Mertens solver <a class="reference internal" href="../references/#depondt2009" id="id5"><span>[Depondt2009]</span></a>, the <code class="docutils literal notranslate"><span class="pre">timestep</span></code>
+can be as large as <span class="math notranslate nohighlight">\(10^{-16}\)</span> seconds, but this should <em>always</em> be checked carefully</p></td>
+</tr>
+<tr class="row-even"><td><p>mensemble</p></td>
+<td><p>Number of ensembles to simulate. The default value is 1, but this may be increased to improve
+statistics, especially if investigating laterally confined systems, such as finite
+clusters or other low-dimensional systems.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tseed</p></td>
+<td><p>Random number seed for the stochastic field simulating the fluctuations due to temperature.
+Default value is 1.</p></td>
+</tr>
+<tr class="row-even"><td><p>do_sortcoup</p></td>
+<td><p>Flag to specify if the arrays of couplings should be sorted or not (<em>Y=yes</em>, N=no). Of
+importance for sampling of polarization. Could be very slow if long range interactions.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="initialization-parameters">
+<h3>Initialization parameters<a class="headerlink" href="#initialization-parameters" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>initmag</p></td>
+<td><p>Switch for setting up the initial configuration of the magnetic moments (1=Random distribution,
+2=Cone, 3=aligned along direction defined in momfile, <em>4=Read from restartfile</em>).</p></td>
+</tr>
+<tr class="row-even"><td><p>restartfile</p></td>
+<td><p>External file containing stored snapshot from previous simulation (used when initmag=4).
+The format coincides with the format of the output file <code class="docutils literal notranslate"><span class="pre">restart.simid.out</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>mseed</p></td>
+<td><p>Random number seed for magnetic moments if initmag=1. Set to 1 by default.</p></td>
+</tr>
+<tr class="row-even"><td><p>theta0</p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">initmag</span></code> 2, the magnetic moments are randomly distributed in a cone
+prescribed by this angle, and <code class="docutils literal notranslate"><span class="pre">phi0</span></code>. Set to 0 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>phi0</p></td>
+<td><p>Cone angle for <code class="docutils literal notranslate"><span class="pre">initmag</span></code> 2. Set to 0 by default.</p></td>
+</tr>
+<tr class="row-even"><td><p>roteul</p></td>
+<td><p>Perform global rotation of magnetization. Set to 0 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotang</p></td>
+<td><p>Euler angles describing the rotation if <code class="docutils literal notranslate"><span class="pre">roteul</span></code> 1.</p></td>
+</tr>
+<tr class="row-even"><td><p>initexc</p></td>
+<td><p>Perform initial excitation of the spin system (<em>N=none</em>}, I=Vacancies,
+R=Two magnon Raman scattering).</p></td>
+</tr>
+<tr class="row-odd"><td><p>initconc</p></td>
+<td><p>Concentration of vacancies or two magnon spin scattering.</p></td>
+</tr>
+<tr class="row-even"><td><p>initneigh</p></td>
+<td><p>eighbour index referring to the list of neighbours for Heisenberg exchange. Determines which spins
+to swap in two magnon spin scattering.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="initial-phase-parameters">
+<h3>Initial phase parameters<a class="headerlink" href="#initial-phase-parameters" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>ip_mode</p></td>
+<td><p>Mode for initial phase run (S=SD, M=Monte Carlo, H=Heat bath Monte Carlo, <em>N=none</em>).</p></td>
+</tr>
+<tr class="row-even"><td><p>ip_temp</p></td>
+<td><p>Temperature for initial phase run if Monte Carlo (<code class="docutils literal notranslate"><span class="pre">ip_mode</span></code> M or H).</p></td>
+</tr>
+<tr class="row-odd"><td><p>ip_hfield</p></td>
+<td><p>External applied field (in units of Tesla) for initial phase run, given in Cartesian coordinates,
+<em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">hfield</span>&#160;&#160; <span class="pre">1.0</span>&#160;&#160; <span class="pre">0.0</span>&#160;&#160; <span class="pre">0.0</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>ip_mcnstep</p></td>
+<td><p>Number of Monte Carlo sweeps (MCS) over the system if ip_mode=M or H.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ip_damping</p></td>
+<td><p>Damping parameter <span class="math notranslate nohighlight">\(\alpha\)</span> for SD initial phase. Default value is 0.05.</p></td>
+</tr>
+<tr class="row-even"><td><p>ip_nphase</p></td>
+<td><p>Number of initial phases to be done with SD.</p></td>
+</tr>
+</tbody>
+</table>
+<p>This must be followed by <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> lines containing number of steps, temperature, timestep and damping for each phase. An example (for an initialization with the temperature decreasing from 300 K to 10 K) can look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_nphase</span> <span class="mi">3</span>
+<span class="mi">20000</span> <span class="mf">300.0</span> <span class="mf">1.0</span><span class="n">d</span><span class="o">-</span><span class="mi">16</span>  <span class="mf">0.1</span>
+<span class="mi">20000</span> <span class="mf">100.0</span> <span class="mf">1.0</span><span class="n">d</span><span class="o">-</span><span class="mi">16</span>  <span class="mf">0.1</span>
+<span class="mi">30000</span> <span class="mf">010.0</span> <span class="mf">1.0</span><span class="n">d</span><span class="o">-</span><span class="mi">16</span>  <span class="mf">0.1</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>ip_mcanneal</p></td>
+<td><p>Number of initial phases to be done with MC.</p></td>
+</tr>
+</tbody>
+</table>
+<p>This must be followed by <code class="docutils literal notranslate"><span class="pre">ip_mcanneal</span></code> lines containing number of steps and temperature for each phase. An example (for an initialization with the temperature decreasing from 300 K to 10 K) can look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mcanneal</span> <span class="mi">3</span>
+<span class="mi">20000</span> <span class="mf">300.0</span>
+<span class="mi">20000</span> <span class="mf">100.0</span>
+<span class="mi">30000</span> <span class="mf">010.0</span>
+</pre></div>
+</div>
+</section>
+<section id="measurement-phase-parameters">
+<h3>Measurement phase parameters<a class="headerlink" href="#measurement-phase-parameters" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>mode</p></td>
+<td><p>Mode for measurement phase run (<em>S=SD</em>, M=Monte Carlo, H=Heat bath Monte Carlo).</p></td>
+</tr>
+<tr class="row-even"><td><p>temp</p></td>
+<td><p>Temperature for measurement phase.</p></td>
+</tr>
+<tr class="row-odd"><td><p>hfield</p></td>
+<td><p>External applied field (in units of Tesla) for measurement phase.</p></td>
+</tr>
+<tr class="row-even"><td><p>mcnstep</p></td>
+<td><p>Number of Monte Carlo sweeps (MCS) over the system if mode=M or H.</p></td>
+</tr>
+<tr class="row-odd"><td><p>damping</p></td>
+<td><p>Damping parameter <span class="math notranslate nohighlight">\(\alpha\)</span> for SD measurement phase. Default value is 0.05.</p></td>
+</tr>
+<tr class="row-even"><td><p>timestep</p></td>
+<td><p>Time step between SD iterations. Unless <code class="docutils literal notranslate"><span class="pre">aunits</span> <span class="pre">Y</span></code>, this should typically be set to a value
+between <span class="math notranslate nohighlight">\(10^{-17}\)</span> and <span class="math notranslate nohighlight">\(10^{-15}\)</span> seconds, depending on the system and SDE solver.</p></td>
+</tr>
+<tr class="row-odd"><td><p>relaxtime</p></td>
+<td><p>Relaxation time in LLG+I equation (if sdealgh=11).</p></td>
+</tr>
+<tr class="row-even"><td><p>set_bpulse</p></td>
+<td><p>Add magnetic field pulse <code class="docutils literal notranslate"><span class="pre">0=no</span></code>, <span class="math notranslate nohighlight">\(1-4\)</span> for different shapes)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="parameters-for-measuring-of-observables">
+<h3>Parameters for measuring of observables<a class="headerlink" href="#parameters-for-measuring-of-observables" title="Permalink to this heading"></a></h3>
+<p>Typically the measurement of each observable is controlled by two parameters in a combination as follows; <code class="docutils literal notranslate"><span class="pre">do_observable</span></code> that enables the measurement and <code class="docutils literal notranslate"><span class="pre">observable_step</span></code> that determines the frequency of the measurements. Here the <code class="docutils literal notranslate"><span class="pre">observable</span></code> should be replaced by the internal name of the wanted quantity i.e. <code class="docutils literal notranslate"><span class="pre">do_avrg</span></code> and <code class="docutils literal notranslate"><span class="pre">avrg_step</span></code> for the average magnetization.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>plotenergy</p></td>
+<td><p>Flag to enable the calculation of the energy of the system projected to the different components of
+the Hamiltonian. <code class="docutils literal notranslate"><span class="pre">{0=off}/1=on</span></code>)                                                            .</p></td>
+</tr>
+<tr class="row-even"><td><p>do_avrg</p></td>
+<td><p>Sample and print average magnetization, and its higher order moments. <code class="docutils literal notranslate"><span class="pre">Y/N</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>avrg_step</p></td>
+<td><p>Number of time steps between sampling of averages. Set to 100 by default.</p></td>
+</tr>
+<tr class="row-even"><td><p>avrg_buff</p></td>
+<td><p>Number of samplings of averages to buffer between printing to file. Set to 10 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>do_proj_avrg</p></td>
+<td><p>Sample and print type (<em>i.e</em>. sublattice) projected average moments. (<code class="docutils literal notranslate"><span class="pre">Y/N/A</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p>do_projch_avrg</p></td>
+<td><p>Sample and print chemical (<em>i.e.</em>} sublattice) projected average moments (<code class="docutils literal notranslate"><span class="pre">Y/N/A</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>do_cumu</p></td>
+<td><p>Sample cumulants (Y/N). Automatically enabled for Monte Carlo simulations.</p></td>
+</tr>
+<tr class="row-even"><td><p>cumu_step</p></td>
+<td><p>Number of time steps between sampling of cumulants. Set to 25 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>do_tottraj</p></td>
+<td><p>Sample and print all trajectories (moments) in the system. (Y/N). Generates the (rather large)
+<code class="docutils literal notranslate"><span class="pre">moments.simid.out</span></code> file.</p></td>
+</tr>
+<tr class="row-even"><td><p>tottraj_step</p></td>
+<td><p>Number of time steps between samplings of moments. Set to 1000 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tottraj_buff</p></td>
+<td><p>Number of samplings of moments to buffer between printing to file. Set to 10 by default.</p></td>
+</tr>
+<tr class="row-even"><td><p>ntraj</p></td>
+<td><p>Number of individual trajectories to sample and print. Followed by <code class="docutils literal notranslate"><span class="pre">ntraj</span></code> lines describing atoms
+to sample, time step between samples and steps to buffer. Set to 0 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>do_pol</p></td>
+<td><p>Sample and print average ferroelectric polarization (Y/N) according to the expression
+<span class="math notranslate nohighlight">\(P\propto \gamma\sum_{i,j}\hat{\mathbf{e}}_{ij}\times(\mathbf{m}_i\times\mathbf{m}_j)\)</span>.
+Uses the neighbour lists set up for exchange but here the sum is performed up to a threshold
+<code class="docutils literal notranslate"><span class="pre">max_pol_nn</span></code>. For this construction to work, it is important to set the flag <code class="docutils literal notranslate"><span class="pre">do_sortcoup</span> <span class="pre">N</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>max_pol_nn</p></td>
+<td><p>Number of neighbours to use when evaluating the polarization.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pol_step</p></td>
+<td><p>Number of time steps between sampling of polarization averages. Set to 100 by default.</p></td>
+</tr>
+<tr class="row-even"><td><p>pol_buff</p></td>
+<td><p>Number of samplings of polarization averages to buffer between printing to file. Set to 10 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>do_stiffness</p></td>
+<td><p>Calculation of spin-wave stiffness (and tensor) and micromagnetic exchange constant (Y/N).</p></td>
+</tr>
+<tr class="row-even"><td><p>eta_min</p></td>
+<td><p>Lowest value of auxiliary convergence parameter in stiffness calculation (recommended around 6-8)</p></td>
+</tr>
+<tr class="row-odd"><td><p>eta_max</p></td>
+<td><p>Largest value of auxiliary convergence parameter in stiffness calculation (recommended around 10-12)</p></td>
+</tr>
+<tr class="row-even"><td><p>alat</p></td>
+<td><p>Lattice constant (in m) for calculation of exchange stiffness</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="parameters-for-measuring-of-correlation-functions">
+<h3>Parameters for measuring of correlation functions<a class="headerlink" href="#parameters-for-measuring-of-correlation-functions" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>do_sc</p></td>
+<td><p>Flag to determine if spin correlations should be analysed (Q= <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span>, <em>N=no</em>),
+C= <span class="math notranslate nohighlight">\(G(r)\)</span>). Setting this flag to Q or C measures space- and time-displaced correlation
+functions. The spatial time dependent correlation function $C(mathbf{r},t)$ is defined as</p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[C^k (\mathbf{r}-\mathbf{r'},t) = \langle m^k_{\mathbf{r}}(t) m^k_{\mathbf{r'}}(0) \rangle - \langle m^k_{\mathbf{r}}(t) \rangle \langle m^k_{\mathbf{r'}}(0) \rangle,
+\label{eqn:cf}\]</div>
+<p>where the angular brackets signify an ensemble average and <span class="math notranslate nohighlight">\(k\)</span> the Cartesian component. The dynamical structure factor is then obtained by Fourier transforming <span class="math notranslate nohighlight">\(C(\mathbf{r},t)\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[S^k(\mathbf{q},\omega) = \frac{1}{\sqrt{2\pi}N} \sum_{\mathbf{r},\mathbf{r'}} e^{i\mathbf{q}\cdot(\mathbf{r}-\mathbf{r'})} \int_{-\infty}^{\infty} e^{i\omega t} C^k (\mathbf{r}-\mathbf{r'},t) dt,\]</div>
+<p>and this function describes the energy dispersion for excited spin waves present in the simulated system <a class="reference internal" href="../references/#bergman2010" id="id6"><span>[Bergman2010]</span></a>. If the flag is set to C, the static correlation function <span class="math notranslate nohighlight">\(G(\mathbf{r})\)</span> and its Fourier transform <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span> are measured. By locating the maximum of <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span>, the ordering vector of the simulated system can be determined. In this case it is important to have a <code class="docutils literal notranslate"><span class="pre">qfile</span></code> that includes <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> -vectors in the whole Brillouin zone.</p>
+<p>In order to obtain a useful <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> measurement, it is important to understand the sampling of the function that is determined by <code class="docutils literal notranslate"><span class="pre">sc_nstep</span></code>, <code class="docutils literal notranslate"><span class="pre">sc_step</span></code>, and <code class="docutils literal notranslate"><span class="pre">timestep</span></code>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>do_sc_proj</p></td>
+<td><p>Flag to determine if type projected spin correlation should be analyzed (Q=yes, C=G(r), <em>N=no</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>do_sc_projc</p></td>
+<td><p>Flag to determine if chemical type projected spin correlation should be analyzed of random alloys
+(Q=yes, C=G(r), <em>N=no</em>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>do_qt_traj</p></td>
+<td><p>Flag to determine if the time evolution of the equal time spin correlation <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span>
+should be written to file (Y=yes, <em>N=no</em>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>This works only if <code class="docutils literal notranslate"><span class="pre">do_sc</span> <span class="pre">C</span></code>. The function <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span> is sampled every <code class="docutils literal notranslate"><span class="pre">sc_sep</span></code> time step and can give insight in the phase transitions in systems with more than one magnetic order parameter. Suggested use is to first determine the magnetic phase diagram and the associated ordering vectors by sampling <span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span> (as described above).
+The order parameters can then be specified in a <code class="docutils literal notranslate"><span class="pre">qpoints</span></code> file and followed in simulations where the systems is driven out of equilibrium by an external perturbation in form of an applied magnetic field, a heat pulse or a two-magnon Raman scattering excitation.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>sc_mode</p></td>
+<td><p>Flag to determine when to transform the spin correlations (0=in memory, 1=in scratch file,
+<em>2=on the fly</em>). Options 0 and 1 generate enormous files.</p></td>
+</tr>
+<tr class="row-even"><td><p>sc_nstep</p></td>
+<td><p>Number of steps to sample. This number sets the resolution of time/frequency based correlation
+functions by deciding the number of measured times/frequencies to include in the calculation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sc_step</p></td>
+<td><p>Number of time steps between each sampling. This number determines the time/frequency range over
+which correlation functions are measured. The mininum sample time is given by
+<code class="docutils literal notranslate"><span class="pre">timestep</span></code> * <code class="docutils literal notranslate"><span class="pre">sc_step</span></code> and the maximal sampling time is then determinded by
+<code class="docutils literal notranslate"><span class="pre">sc_nstep</span></code> * <code class="docutils literal notranslate"><span class="pre">timestep</span></code> * <code class="docutils literal notranslate"><span class="pre">sc_step</span></code>. The minimal/maximal frequencies are then determined by
+the inverse of the maximal/minimal sampling time.</p></td>
+</tr>
+<tr class="row-even"><td><p>sc_sep</p></td>
+<td><p>Number of time steps between the start of subsequent spin correlation measurements.</p></td>
+</tr>
+<tr class="row-odd"><td><p>qpoints</p></td>
+<td><p>Flag for for generation of q-point mesh necessary for <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span> calculations.
+(F=external file with Cartesian coordinates}, A=automatic, C=full cell, P=extended plane spanned by
+the first and third reciprocal lattice vector, D=external file with direct coordinates).</p></td>
+</tr>
+<tr class="row-even"><td><p>sc_window_fun</p></td>
+<td><p>Choice of windowing function for the Fourier transforms used in <span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span>
+calculations (<em>1=box</em>, 2=Hann, 3=Hamming, 4=Blackman-Harris).</p></td>
+</tr>
+<tr class="row-odd"><td><p>do_ams</p></td>
+<td><p>Spin wave dispersion from the Fourier transform av the exchange interactions, so-called Adiabatic
+Magnon Spectra (AMS) (Y=yes, <em>N=no</em>). This version only handles AMS in collinear magnetic
+structures but it is very fast and can therefore be a good option for comparison with the full
+dynamical spectra. If <code class="docutils literal notranslate"><span class="pre">do_ams</span> <span class="pre">Y</span></code> then one must provide a qfile just as in the case of
+<span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p>do_magdos</p></td>
+<td><p>Magnon density of states (MDOS) from AMS (Y=yes, <em>N=no</em>, A=read from file).</p></td>
+</tr>
+<tr class="row-odd"><td><p>magdos_freq</p></td>
+<td><p>Number of frequencies in MDOS calculation from AMS. Around 200 is recommended.</p></td>
+</tr>
+<tr class="row-even"><td><p>magdos_sigma</p></td>
+<td><p>Gaussian broadening (in meV) in MDOS calculation from AMS (around 30 is recommended).</p></td>
+</tr>
+<tr class="row-odd"><td><p>do_autocorr</p></td>
+<td><p>Flag to enable autocorrelation sampling (Y=yes, <em>N=no</em>).</p></td>
+</tr>
+<tr class="row-even"><td><p>acfile</p></td>
+<td><p>External file containing waiting times for the autocorrelation measurements.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../introduction/" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../output/" class="btn btn-neutral float-right" title="Output files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

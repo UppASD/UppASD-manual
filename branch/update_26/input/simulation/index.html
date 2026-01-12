@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulation control and phases &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Observables and measurements" href="../observables/" />
+    <link rel="prev" title="Hamiltonian parameters" href="../hamiltonian/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Input files</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../#file-formats-and-setup">File Formats and Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#basic-simulation-parameters">Basic Simulation Parameters</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../#measurement-and-observables">Measurement and Observables</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../core-files/">Core input files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random-alloys/">Random alloys and multi-atom cells</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../system/">System and geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hamiltonian/">Hamiltonian parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Simulation control and phases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-simulation-parameters">General simulation parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialization-parameters">Initialization parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initial-phase-parameters">Initial phase parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#measurement-phase-parameters">Measurement phase parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../observables/">Observables and measurements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../">Input files</a></li>
+      <li class="breadcrumb-item active">Simulation control and phases</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/input/simulation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simulation-control-and-phases">
+<h1>Simulation control and phases<a class="headerlink" href="#simulation-control-and-phases" title="Permalink to this heading"></a></h1>
+<section id="general-simulation-parameters">
+<h2>General simulation parameters<a class="headerlink" href="#general-simulation-parameters" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>do_ralloy</p></td>
+<td><p>Flag to set if a random alloy is being simulated (<em>0=off</em>/1=on).</p></td>
+</tr>
+<tr class="row-even"><td><p>aunits</p></td>
+<td><p>Implement atomic units, <em>i.e.</em> set <span class="math notranslate nohighlight">\(k_B\)</span>, <span class="math notranslate nohighlight">\(\hbar\)</span>, … <span class="math notranslate nohighlight">\(=1\)</span> (Y/<em>N</em>). If this
+is switched on, the <code class="docutils literal notranslate"><span class="pre">timestep</span></code> in SD mode should be roughly <span class="math notranslate nohighlight">\(0.1J_{ij}\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sdealgh</p></td>
+<td><p>Switch for choosing SDE solver (<em>1=Midpoint</em>, 4=Heun, 5=Depondt-Mertens). The default option
+runs the semi-implicit midpoint solver developed by Mentink <em>et al.</em> <a class="reference internal" href="../../references/#mentink2010" id="id1"><span>[Mentink2010]</span></a>.
+In this case, as when using the Depondt-Mertens solver <a class="reference internal" href="../../references/#depondt2009" id="id2"><span>[Depondt2009]</span></a>, the <code class="docutils literal notranslate"><span class="pre">timestep</span></code>
+can be as large as <span class="math notranslate nohighlight">\(10^{-16}\)</span> seconds, but this should <em>always</em> be checked carefully</p></td>
+</tr>
+<tr class="row-even"><td><p>mensemble</p></td>
+<td><p>Number of ensembles to simulate. The default value is 1, but this may be increased to improve
+statistics, especially if investigating laterally confined systems, such as finite
+clusters or other low-dimensional systems.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tseed</p></td>
+<td><p>Random number seed for the stochastic field simulating the fluctuations due to temperature.
+Default value is 1.</p></td>
+</tr>
+<tr class="row-even"><td><p>do_sortcoup</p></td>
+<td><p>Flag to specify if the arrays of couplings should be sorted or not (<em>Y=yes</em>, N=no). Of
+importance for sampling of polarization. Could be very slow if long range interactions.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="initialization-parameters">
+<h2>Initialization parameters<a class="headerlink" href="#initialization-parameters" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>initmag</p></td>
+<td><p>Switch for setting up the initial configuration of the magnetic moments (1=Random distribution,
+2=Cone, 3=aligned along direction defined in momfile, <em>4=Read from restartfile</em>).</p></td>
+</tr>
+<tr class="row-even"><td><p>restartfile</p></td>
+<td><p>External file containing stored snapshot from previous simulation (used when initmag=4).
+The format coincides with the format of the output file <code class="docutils literal notranslate"><span class="pre">restart.simid.out</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>mseed</p></td>
+<td><p>Random number seed for magnetic moments if initmag=1. Set to 1 by default.</p></td>
+</tr>
+<tr class="row-even"><td><p>theta0</p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">initmag</span></code> 2, the magnetic moments are randomly distributed in a cone
+prescribed by this angle, and <code class="docutils literal notranslate"><span class="pre">phi0</span></code>. Set to 0 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>phi0</p></td>
+<td><p>Cone angle for <code class="docutils literal notranslate"><span class="pre">initmag</span></code> 2. Set to 0 by default.</p></td>
+</tr>
+<tr class="row-even"><td><p>roteul</p></td>
+<td><p>Perform global rotation of magnetization. Set to 0 by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotang</p></td>
+<td><p>Euler angles describing the rotation if <code class="docutils literal notranslate"><span class="pre">roteul</span></code> 1.</p></td>
+</tr>
+<tr class="row-even"><td><p>initexc</p></td>
+<td><p>Perform initial excitation of the spin system (<em>N=none</em>}, I=Vacancies,
+R=Two magnon Raman scattering).</p></td>
+</tr>
+<tr class="row-odd"><td><p>initconc</p></td>
+<td><p>Concentration of vacancies or two magnon spin scattering.</p></td>
+</tr>
+<tr class="row-even"><td><p>initneigh</p></td>
+<td><p>eighbour index referring to the list of neighbours for Heisenberg exchange. Determines which spins
+to swap in two magnon spin scattering.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="initial-phase-parameters">
+<h2>Initial phase parameters<a class="headerlink" href="#initial-phase-parameters" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>ip_mode</p></td>
+<td><p>Mode for initial phase run (S=SD, M=Monte Carlo, H=Heat bath Monte Carlo, <em>N=none</em>).</p></td>
+</tr>
+<tr class="row-even"><td><p>ip_temp</p></td>
+<td><p>Temperature for initial phase run if Monte Carlo (<code class="docutils literal notranslate"><span class="pre">ip_mode</span></code> M or H).</p></td>
+</tr>
+<tr class="row-odd"><td><p>ip_hfield</p></td>
+<td><p>External applied field (in units of Tesla) for initial phase run, given in Cartesian coordinates,
+<em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">hfield</span>&#160;&#160; <span class="pre">1.0</span>&#160;&#160; <span class="pre">0.0</span>&#160;&#160; <span class="pre">0.0</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>ip_mcnstep</p></td>
+<td><p>Number of Monte Carlo sweeps (MCS) over the system if ip_mode=M or H.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ip_damping</p></td>
+<td><p>Damping parameter <span class="math notranslate nohighlight">\(\alpha\)</span> for SD initial phase. Default value is 0.05.</p></td>
+</tr>
+<tr class="row-even"><td><p>ip_nphase</p></td>
+<td><p>Number of initial phases to be done with SD.</p></td>
+</tr>
+</tbody>
+</table>
+<p>This must be followed by <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> lines containing number of steps, temperature, timestep and damping for each phase. An example (for an initialization with the temperature decreasing from 300 K to 10 K) can look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_nphase</span> <span class="mi">3</span>
+<span class="mi">20000</span> <span class="mf">300.0</span> <span class="mf">1.0</span><span class="n">d</span><span class="o">-</span><span class="mi">16</span>  <span class="mf">0.1</span>
+<span class="mi">20000</span> <span class="mf">100.0</span> <span class="mf">1.0</span><span class="n">d</span><span class="o">-</span><span class="mi">16</span>  <span class="mf">0.1</span>
+<span class="mi">30000</span> <span class="mf">010.0</span> <span class="mf">1.0</span><span class="n">d</span><span class="o">-</span><span class="mi">16</span>  <span class="mf">0.1</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>ip_mcanneal</p></td>
+<td><p>Number of initial phases to be done with MC.</p></td>
+</tr>
+</tbody>
+</table>
+<p>This must be followed by <code class="docutils literal notranslate"><span class="pre">ip_mcanneal</span></code> lines containing number of steps and temperature for each phase. An example (for an initialization with the temperature decreasing from 300 K to 10 K) can look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mcanneal</span> <span class="mi">3</span>
+<span class="mi">20000</span> <span class="mf">300.0</span>
+<span class="mi">20000</span> <span class="mf">100.0</span>
+<span class="mi">30000</span> <span class="mf">010.0</span>
+</pre></div>
+</div>
+</section>
+<section id="measurement-phase-parameters">
+<h2>Measurement phase parameters<a class="headerlink" href="#measurement-phase-parameters" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>mode</p></td>
+<td><p>Mode for measurement phase run (<em>S=SD</em>, M=Monte Carlo, H=Heat bath Monte Carlo).</p></td>
+</tr>
+<tr class="row-even"><td><p>temp</p></td>
+<td><p>Temperature for measurement phase.</p></td>
+</tr>
+<tr class="row-odd"><td><p>hfield</p></td>
+<td><p>External applied field (in units of Tesla) for measurement phase.</p></td>
+</tr>
+<tr class="row-even"><td><p>mcnstep</p></td>
+<td><p>Number of Monte Carlo sweeps (MCS) over the system if mode=M or H.</p></td>
+</tr>
+<tr class="row-odd"><td><p>damping</p></td>
+<td><p>Damping parameter <span class="math notranslate nohighlight">\(\alpha\)</span> for SD measurement phase. Default value is 0.05.</p></td>
+</tr>
+<tr class="row-even"><td><p>timestep</p></td>
+<td><p>Time step between SD iterations. Unless <code class="docutils literal notranslate"><span class="pre">aunits</span> <span class="pre">Y</span></code>, this should typically be set to a value
+between <span class="math notranslate nohighlight">\(10^{-17}\)</span> and <span class="math notranslate nohighlight">\(10^{-15}\)</span> seconds, depending on the system and SDE solver.</p></td>
+</tr>
+<tr class="row-odd"><td><p>relaxtime</p></td>
+<td><p>Relaxation time in LLG+I equation (if sdealgh=11).</p></td>
+</tr>
+<tr class="row-even"><td><p>set_bpulse</p></td>
+<td><p>Add magnetic field pulse <code class="docutils literal notranslate"><span class="pre">0=no</span></code>, <span class="math notranslate nohighlight">\(1-4\)</span> for different shapes)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#mentink2010" id="id3"><span>[Mentink2010]</span></a> - Stable and fast semi-implicit integration of the stochastic LLG equation</p></li>
+<li><p><a class="reference internal" href="../../references/#depondt2009" id="id4"><span>[Depondt2009]</span></a> - Spin dynamics simulations with Heisenberg and dipole-dipole interactions</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../hamiltonian/" class="btn btn-neutral float-left" title="Hamiltonian parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../observables/" class="btn btn-neutral float-right" title="Observables and measurements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

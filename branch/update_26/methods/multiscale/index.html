@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiscale atomistic-continuum simulations &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Cluster embedding" href="../clusters/" />
+    <link rel="prev" title="Spin-lattice dynamics (SLD) simulations" href="../spin-lattice/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Multiscale atomistic-continuum simulations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/multiscale.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multiscale-atomistic-continuum-simulations">
+<h1>Multiscale atomistic-continuum simulations<a class="headerlink" href="#multiscale-atomistic-continuum-simulations" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<span id="input-multiscale"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p><strong>Multiscale simulation</strong> combines discrete <strong>atomistic regions</strong> with continuous
+<strong>finite-difference (FD) regions</strong>, enabling efficient simulation of systems with
+both atomic precision and macroscopic scales. This is particularly useful for:</p>
+<ul class="simple">
+<li><p><strong>Defects and textures</strong>: Skyrmions, domain walls, dislocations in large samples</p></li>
+<li><p><strong>Interface phenomena</strong>: Grain boundaries, heterostructure interfaces</p></li>
+<li><p><strong>Long-range effects</strong>: Spin torques, stray fields over large distances</p></li>
+<li><p><strong>Stress engineering</strong>: Mechanical deformation on continuum scales combined with
+atomistic detail</p></li>
+</ul>
+<p>The multiscale approach reduces computational cost by treating distant regions
+via coarse-graining and finite-difference approximations, while maintaining
+atomic resolution in regions of interest.</p>
+</section>
+<section id="physical-framework">
+<h2>Physical framework<a class="headerlink" href="#physical-framework" title="Permalink to this heading"></a></h2>
+<p><strong>Spatial decomposition:</strong></p>
+<p>The simulation domain is partitioned into regions with different treatment:</p>
+<ol class="arabic simple">
+<li><p><strong>Atomistic region</strong> (<span class="math notranslate nohighlight">\(\Omega_a\)</span>): Full atomic resolution with exchange,
+DM, and anisotropy interactions.</p></li>
+<li><p><strong>Finite-difference (continuum) region</strong> (<span class="math notranslate nohighlight">\(\Omega_c\)</span>): Continuous magnetic
+field <span class="math notranslate nohighlight">\(\mathbf{m}(\mathbf{r})\)</span> evolved via finite differences on a box mesh.
+Governed by continuous Landau-Lifshitz equation with exchange coefficients.</p></li>
+<li><p><strong>Fully coarse-grained region</strong> (<span class="math notranslate nohighlight">\(\Omega_{cg}\)</span>): Uniform magnetization (no
+dynamics). Acts as boundary condition for atomistic+FD regions.</p></li>
+<li><p><strong>Partially coarse-grained region</strong> (<span class="math notranslate nohighlight">\(\Omega_{pcg}\)</span>): Mixed atomic-continuum
+treatment for smooth gradients at interfaces.</p></li>
+<li><p><strong>Damping band</strong> (<span class="math notranslate nohighlight">\(\Omega_d\)</span>): Interface region with position-dependent
+damping for stable coupling (suppresses non-physical waves).</p></li>
+</ol>
+<p><strong>Magnetic equation of motion:</strong></p>
+<p>The atomistic region evolves as standard spin dynamics:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathbf{m}_i}{dt} = -\gamma_0 \mathbf{m}_i \times \left(\mathbf{H}_{\text{eff}} + \alpha \frac{d\mathbf{m}_i}{dt}\right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{H}_{\text{eff}}\)</span> includes exchange, DM, anisotropy, and
+<strong>interpolated moments from the continuum region</strong>.</p>
+<p>The continuum region satisfies the Landau-Lifshitz equation:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \mathbf{m}}{\partial t} = -\gamma_0 \mathbf{m} \times (\nabla^2 \mathbf{m} + \mathbf{K})\]</div>
+<p>with exchange length <span class="math notranslate nohighlight">\(\ell_{\text{ex}} = \sqrt{A/K}\)</span> and magnetic stiffness
+<span class="math notranslate nohighlight">\(A\)</span> derived from continuum exchange coefficients.</p>
+<p><strong>Coupling via interpolation:</strong></p>
+<ul class="simple">
+<li><p><strong>Atom-to-continuum</strong>: Atomic moments interpolate into FD grid via smooth weighting.</p></li>
+<li><p><strong>Continuum-to-atom</strong>: FD moments interpolate back to atomic sites via local
+interpolation operator.</p></li>
+</ul>
+<p>This two-way coupling is computed on each timestep.</p>
+</section>
+<section id="multiscale-configuration-file">
+<h2>Multiscale configuration file<a class="headerlink" href="#multiscale-configuration-file" title="Permalink to this heading"></a></h2>
+<p>Multiscale setup is controlled via a <strong>multiscale configuration file</strong> (<cite>.conf</cite>),
+specified in the main <cite>inpsd.dat</cite> via:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">multiscale_setup_file</span>    <span class="n">multiscale</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>The configuration file defines:</p>
+<ul class="simple">
+<li><p>Spatial dimensions, universe size, periodic boundaries</p></li>
+<li><p>Atomistic regions, continuum regions, damping band widths</p></li>
+<li><p>Unit cell definition and atomic sublattice</p></li>
+<li><p>Exchange and DM interaction files for atomistic and continuum</p></li>
+<li><p>Finite-difference discretization (box mesh size)</p></li>
+<li><p>Interpolation and damping band parameters</p></li>
+</ul>
+<p><strong>Example multiscale configuration file structure:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Geometry
+dimension               2                    ! 1D, 2D, or 3D
+periodic_boundary       F   T   F            ! Periodic in x, y, z
+universe_size           180.0   58.888   1.0
+finitediff_boxes        90      30       1   ! FD mesh: 90x30x1 boxes
+
+! Regions
+coarse_grained_width        0.0
+part_coarse_grained_width   2.0
+damping_band_width          5.0
+padding_width               1.1
+
+! Atomic lattice
+atom_lattice_spacing        1.0
+unitcell_atoms              1.0   1.732   0.0
+1   0.25   0.433   0.0   1.0   1.0   0.0   0.0   ! (type, x, y, z, mx, my, mz, mag)
+
+! Exchange interactions
+exchange_atoms
+1 1 /  0.5   0.866  0.0  /  0.418  ! (type1, type2 / vector / Jij)
+
+exchange_coarse
+! (coefficients for continuum region)
+
+! Dzyaloshinsky-Moriya interactions
+dm_atoms
+1 1 /  0.5   0.866  0.0  /  0.057  -0.033  0.0  ! DM vector
+
+dm_coarse
+! (continuum DM tensor)
+</pre></div>
+</div>
+</section>
+<section id="configuration-keywords">
+<h2>Configuration keywords<a class="headerlink" href="#configuration-keywords" title="Permalink to this heading"></a></h2>
+<p><strong>Geometry and simulation box</strong></p>
+<dl class="simple">
+<dt>dimension</dt><dd><p>Spatial dimension: 1, 2, or 3. Controls how many spatial coordinates are used.</p>
+</dd>
+<dt>periodic_boundary</dt><dd><p>Three logical flags (F/T) for periodic boundaries in x, y, z.</p>
+</dd>
+<dt>universe_size</dt><dd><p>Three reals (Å): Size of simulation box in x, y, z directions.</p>
+</dd>
+</dl>
+<p><strong>Finite-difference discretization</strong></p>
+<dl class="simple">
+<dt>finitediff_boxes</dt><dd><p>Three integers: Number of FD boxes in x, y, z. Determines spatial resolution
+of continuum region. Each box has size <span class="math notranslate nohighlight">\(\approx \text{universe\_size} / \text{boxes}\)</span>.</p>
+</dd>
+<dt>atom_lattice_spacing</dt><dd><p>Real (Å): Lattice constant or inter-atomic spacing. Used for scaling atomic
+interactions to continuum.</p>
+</dd>
+</dl>
+<p><strong>Regional decomposition</strong></p>
+<dl class="simple">
+<dt>coarse_grained_width</dt><dd><p>Real (Å): Width of fully coarse-grained region (uniform magnetization).
+Set to 0 to disable. Often used as artificial boundary condition.</p>
+</dd>
+<dt>part_coarse_grained_width</dt><dd><p>Real (Å): Width of partially coarse-grained transition region between atomistic
+and fully coarse-grained. Smooth gradient transition.</p>
+</dd>
+<dt>damping_band_width</dt><dd><p>Real (Å): Width of damping band interface (position-dependent damping for stability).</p>
+</dd>
+<dt>padding_width</dt><dd><p>Real (Å): Width of padding region around atomistic atoms. Ensures continuum
+mesh sufficient coverage.</p>
+</dd>
+</dl>
+<p><strong>Atomic unit cell and lattice</strong></p>
+<dl>
+<dt>unitcell_atoms</dt><dd><p>Three reals: Lattice vectors in Å defining unit cell.</p>
+<p>Then, one line per atom in unit cell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span>   <span class="n">x</span>   <span class="n">y</span>   <span class="n">z</span>   <span class="n">mx</span>   <span class="n">my</span>   <span class="n">mz</span>   <span class="n">magnitude</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Atomic species (integer)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>: Fractional coordinates in unit cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mx,</span> <span class="pre">my,</span> <span class="pre">mz</span></code>: Initial moment direction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">magnitude</span></code>: Moment magnitude in <span class="math notranslate nohighlight">\(\mu_B\)</span></p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Atomistic-region shapes (optional)</strong></p>
+<dl>
+<dt>atomistic_shape</dt><dd><p>Defines geometric shapes of atomistic regions. Can specify multiple shapes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">box</span>    <span class="n">center_x</span>   <span class="n">center_y</span>   <span class="n">center_z</span>   <span class="o">/</span>   <span class="n">size_x</span>   <span class="n">size_y</span>   <span class="n">size_z</span>
+<span class="n">cylinder</span>   <span class="n">center_x</span>   <span class="n">center_y</span>   <span class="n">center_z</span>   <span class="o">/</span>   <span class="n">radius</span>   <span class="n">height</span>   <span class="n">axis</span>
+</pre></div>
+</div>
+</dd>
+<dt>hole_shapes</dt><dd><p>Defines shapes to be <strong>excluded</strong> from atomistic region (carved out).</p>
+</dd>
+</dl>
+<p><strong>Magnetic interactions: Exchange</strong></p>
+<dl>
+<dt>exchange_atoms</dt><dd><p>Exchange interactions within atomistic region. Each line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">type1</span>   <span class="n">type2</span>   <span class="o">/</span>   <span class="n">dx</span>   <span class="n">dy</span>   <span class="n">dz</span>   <span class="o">/</span>   <span class="n">Jij</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">(dx,</span> <span class="pre">dy,</span> <span class="pre">dz)</span></code> is the displacement vector and <span class="math notranslate nohighlight">\(J_{ij}\)</span> is the
+exchange constant (meV). Multiple vectors define different neighbors.</p>
+</dd>
+<dt>exchange_coarse</dt><dd><p>Exchange coefficients for continuum region. Format varies; typically
+isotropic exchange <span class="math notranslate nohighlight">\(A\)</span> (meV·Å²) or tensor components.</p>
+</dd>
+</dl>
+<p><strong>Magnetic interactions: Dzyaloshinsky-Moriya (DM)</strong></p>
+<dl>
+<dt>dm_atoms</dt><dd><p>DM vectors in atomistic region:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">type1</span>   <span class="n">type2</span>   <span class="o">/</span>   <span class="n">dx</span>   <span class="n">dy</span>   <span class="n">dz</span>   <span class="o">/</span>   <span class="n">Dx</span>   <span class="n">Dy</span>   <span class="n">Dz</span>
+</pre></div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{D} = (D_x, D_y, D_z)\)</span> (meV).</p>
+</dd>
+<dt>dm_coarse</dt><dd><p>DM contribution to continuum Hamiltonian. Typically specified as
+<span class="math notranslate nohighlight">\(3 \times 3\)</span> tensor or vector components.</p>
+</dd>
+<dt>continuum_dm</dt><dd><p>Alternative specification for continuum DM as tensor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">continuum_dm</span>   <span class="n">D_xx</span>   <span class="n">D_xy</span>   <span class="n">D_xz</span>   <span class="o">/</span>   <span class="n">D_yx</span>   <span class="o">...</span>   <span class="o">...</span>   <span class="o">/</span>   <span class="o">...</span>   <span class="o">...</span>   <span class="n">D_zz</span>
+</pre></div>
+</div>
+</dd>
+<dt>continuum_exchange_coef</dt><dd><p>Three reals or single real: Exchange stiffness <span class="math notranslate nohighlight">\(A\)</span> (meV·Å²) or
+directional components <span class="math notranslate nohighlight">\((A_x, A_y, A_z)\)</span> for anisotropic exchange.</p>
+</dd>
+<dt>continuum_moment_magnitude</dt><dd><p>Real (<span class="math notranslate nohighlight">\(\mu_B\)</span>): Moment magnitude in continuum region.</p>
+</dd>
+</dl>
+<p><strong>Advanced options</strong></p>
+<dl class="simple">
+<dt>link_error_tolerance</dt><dd><p>Real (default 1e-5): Tolerance for interpolation weight normalization.
+Lower → more accurate interpolation, higher cost.</p>
+</dd>
+<dt>damping_band_window_size</dt><dd><p>Three integers: Window size (in FD boxes) for damping band interpolation.
+Controls smoothness of damping transition.</p>
+</dd>
+<dt>damping_band_strength</dt><dd><p>Real (default 0): Multiplicative factor for damping in band. Set to 0
+for no damping band suppression.</p>
+</dd>
+</dl>
+<p><strong>Spin-transfer torque (optional)</strong></p>
+<dl class="simple">
+<dt>stt_vector</dt><dd><p>Three reals: STT (spin-polarized current) vector direction and magnitude.</p>
+</dd>
+<dt>stt_window_size</dt><dd><p>Three reals (Å): Spatial extent of STT application region.</p>
+</dd>
+</dl>
+<p><strong>Anisotropy (optional)</strong></p>
+<dl class="simple">
+<dt>anisotropy_atoms</dt><dd><p>(Similar format to exchange) Specifies local anisotropy axis and energy.</p>
+</dd>
+<dt>anisotropy_coarse</dt><dd><p>Anisotropy in continuum region.</p>
+</dd>
+</dl>
+<p><strong>Zones and moment regions (optional)</strong></p>
+<dl class="simple">
+<dt>moment_regions</dt><dd><p>Define spatial regions with different moment magnitudes or initialization.</p>
+</dd>
+<dt>atom_zones</dt><dd><p>Define atomic regions for site-specific parameters.</p>
+</dd>
+</dl>
+</section>
+<section id="input-file-keywords-inpsd-dat">
+<h2>Input file keywords (inpsd.dat)<a class="headerlink" href="#input-file-keywords-inpsd-dat" title="Permalink to this heading"></a></h2>
+<p>The following keywords in <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> control multiscale operation:</p>
+<dl class="simple">
+<dt>ipmode</dt><dd><p>Must be <code class="docutils literal notranslate"><span class="pre">MS</span></code> or <code class="docutils literal notranslate"><span class="pre">N</span></code> (no initial phase). Multiscale is incompatible
+with other initial phase modes (<code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">Q</span></code>, <code class="docutils literal notranslate"><span class="pre">H</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>).</p>
+</dd>
+<dt>SDEalgh</dt><dd><p>Algorithm: Only <code class="docutils literal notranslate"><span class="pre">1</span></code> (Midpoint) and <code class="docutils literal notranslate"><span class="pre">5</span></code> (Depondt) supported in multiscale.
+Others will cause error.</p>
+</dd>
+<dt>multiscale_setup_file</dt><dd><p>Filename of multiscale configuration file (see above).</p>
+</dd>
+<dt>do_prnmultiscale</dt><dd><p>Print multiscale output files (Y/N): <code class="docutils literal notranslate"><span class="pre">msregions.&lt;simid&gt;.out</span></code>,
+<code class="docutils literal notranslate"><span class="pre">interface.&lt;simid&gt;.out</span></code>, <code class="docutils literal notranslate"><span class="pre">dband.&lt;simid&gt;.out</span></code>, etc.</p>
+</dd>
+</dl>
+</section>
+<section id="output-files">
+<h2>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">do_prnmultiscale</span> <span class="pre">Y</span></code>:</p>
+<dl>
+<dt>msregions.&lt;simid&gt;.out</dt><dd><p>Index ranges of atoms in each region:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># fully coarse grained atoms</span>
+<span class="mi">1</span>    <span class="mi">10</span>
+<span class="c1"># partially coarse grained atoms</span>
+<span class="mi">11</span>   <span class="mi">50</span>
+<span class="c1"># real atoms</span>
+<span class="mi">51</span>   <span class="mi">500</span>
+<span class="c1"># damped atoms</span>
+<span class="mi">501</span>  <span class="mi">520</span>
+<span class="c1"># non-damped atoms</span>
+<span class="mi">521</span>  <span class="mi">600</span>
+</pre></div>
+</div>
+</dd>
+<dt>coord.&lt;simid&gt;.out</dt><dd><p>Atomic coordinates from multiscale setup (3 columns: x, y, z).</p>
+</dd>
+<dt>interface.&lt;simid&gt;.out</dt><dd><p>Interpolation weights between atomistic and continuum regions.</p>
+</dd>
+<dt>dband.&lt;simid&gt;.out</dt><dd><p>Damping band interpolation weights.</p>
+</dd>
+<dt>exchange.&lt;simid&gt;.out</dt><dd><p>Exchange interactions extracted/generated from multiscale configuration.</p>
+</dd>
+<dt>dm.&lt;simid&gt;.out</dt><dd><p>DM interactions extracted from multiscale configuration.</p>
+</dd>
+<dt>gradlink.&lt;simid&gt;.out</dt><dd><p>Spin-transfer torque gradient links (if STT enabled).</p>
+</dd>
+</dl>
+</section>
+<section id="physical-examples">
+<h2>Physical examples<a class="headerlink" href="#physical-examples" title="Permalink to this heading"></a></h2>
+<p><strong>Skyrmion with stress field:</strong></p>
+<p>Simulate a skyrmion on atomic scale while the far-field stress is computed
+continuously via FD. Atomistic region: 60×60 Å (high resolution). Continuum:
+180×180 Å. Damping band: 10 Å transition.</p>
+<p>Configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dimension</span>            <span class="mi">2</span>
+<span class="n">universe_size</span>        <span class="mf">180.0</span>   <span class="mf">180.0</span>   <span class="mf">1.0</span>
+<span class="n">finitediff_boxes</span>     <span class="mi">90</span>      <span class="mi">90</span>       <span class="mi">1</span>
+<span class="n">atomistic_shape</span>
+<span class="n">box</span>   <span class="mi">90</span>   <span class="mi">90</span>  <span class="mf">0.5</span>  <span class="o">/</span>  <span class="mi">60</span>   <span class="mi">60</span>   <span class="mi">1</span>
+<span class="n">coarse_grained_width</span>       <span class="mi">0</span>
+<span class="n">part_coarse_grained_width</span>  <span class="mi">10</span>
+<span class="n">damping_band_width</span>         <span class="mi">10</span>
+<span class="n">continuum_exchange_coef</span>    <span class="mf">0.627</span>
+<span class="n">continuum_dm</span>               <span class="mf">0.0</span>   <span class="mf">0.099</span>   <span class="mi">0</span> <span class="o">/</span> <span class="o">-</span><span class="mf">0.099</span>   <span class="mi">0</span>   <span class="mi">0</span> <span class="o">/</span> <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>
+</pre></div>
+</div>
+<p><strong>Domain wall dynamics:</strong></p>
+<p>1D wall pinned by disorder, driven by magnetic field. Atomistic 100 nm window.
+Continuum <span class="math notranslate nohighlight">\(1\,\mu\mathrm{m}\)</span>. Record wall velocity and detailed spin texture.</p>
+<p><strong>Interface and grain boundary:</strong></p>
+<p>2D heterostructure with two ferromagnetic layers. Atomistic resolution at
+interface (interatomic interactions matter). Continuum in bulk regions.</p>
+</section>
+<section id="computational-considerations">
+<h2>Computational considerations<a class="headerlink" href="#computational-considerations" title="Permalink to this heading"></a></h2>
+<p><strong>Cost:</strong></p>
+<ul class="simple">
+<li><p>Multiscale adds ~2–5× overhead vs. pure atomistic (extra interpolation, FD solver)</p></li>
+<li><p>Cost scales as <span class="math notranslate nohighlight">\(\sim N_{\text{atoms}} + N_{\text{FD boxes}}^{d}\)</span></p></li>
+<li><p>For 2D/3D: FD cost dominates if box mesh is very fine</p></li>
+</ul>
+<p><strong>Memory:</strong></p>
+<ul class="simple">
+<li><p>Atomic arrays: standard</p></li>
+<li><p>FD arrays: <span class="math notranslate nohighlight">\(N_{\text{FD boxes}} \times 3\)</span> (one moment per box)</p></li>
+<li><p>Interpolation weights: <span class="math notranslate nohighlight">\(N_{\text{atoms}} \times N_{\text{neighbor boxes}}\)</span></p></li>
+</ul>
+<p><strong>Stability:</strong></p>
+<ul class="simple">
+<li><p>Damping band is essential for stable coupling</p></li>
+<li><p>STT window size should be smaller than atomistic region</p></li>
+<li><p>Link error tolerance: default 1e-5 usually sufficient</p></li>
+</ul>
+<p><strong>Timestep:</strong></p>
+<p>Typically 0.1–1 fs (same as pure atomistic). Stability limited by FD spatial
+discretization and time integration scheme.</p>
+</section>
+<section id="related-keywords-and-cross-references">
+<h2>Related keywords and cross-references<a class="headerlink" href="#related-keywords-and-cross-references" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ipmode</span></code>: Initial phase mode; must be <code class="docutils literal notranslate"><span class="pre">MS</span></code> or <code class="docutils literal notranslate"><span class="pre">N</span></code> with multiscale
+(see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SDEalgh</span></code>: Spin dynamics algorithm; only <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span></code> compatible
+(see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temp</span></code>: Temperature for stochastic forces (applies to atomistic atoms only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">damping</span></code>: Gilbert damping (applies to atomistic atoms; damping band modulates)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_prnmultiscale</span></code>: Print multiscale diagnostic output files</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h1>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#evans2014" id="id1"><span>[Evans2014]</span></a> - Atomistic spin model simulations of magnetic nanomaterials</p></li>
+<li><p><a class="reference internal" href="../../references/#mendez2020" id="id2"><span>[Mendez2020]</span></a> - Multiscale approach for magnetization dynamics: unraveling exotic magnetic states of matter</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../spin-lattice/" class="btn btn-neutral float-left" title="Spin-lattice dynamics (SLD) simulations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../clusters/" class="btn btn-neutral float-right" title="Cluster embedding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin Stiffness and Micromagnetic Parameters &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Tutorial" href="../../tutorial/" />
+    <link rel="prev" title="Topological measurements and observables" href="../topology/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Observable Measurements and Analysis</a></li>
+      <li class="breadcrumb-item active">Spin Stiffness and Micromagnetic Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/observables/stiffness.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spin-stiffness-and-micromagnetic-parameters">
+<span id="label-stiffness"></span><h1>Spin Stiffness and Micromagnetic Parameters<a class="headerlink" href="#spin-stiffness-and-micromagnetic-parameters" title="Permalink to this heading"></a></h1>
+<p>The stiffness calculation feature extracts micromagnetic parameters from atomistic exchange interactions, bridging the gap between <strong>atomistic spin dynamics</strong> and <strong>micromagnetic continuum models</strong>. This enables:</p>
+<ul class="simple">
+<li><p><strong>Spin-wave stiffness</strong> <span class="math notranslate nohighlight">\(D\)</span> calculation for ferromagnets</p></li>
+<li><p><strong>Exchange stiffness</strong> <span class="math notranslate nohighlight">\(A\)</span> (micromagnetic exchange constant) extraction</p></li>
+<li><p><strong>DMI spiralization</strong> tensor <span class="math notranslate nohighlight">\(D_0\)</span> for systems with Dzyaloshinskii-Moriya interaction</p></li>
+<li><p><strong>Mean-field critical temperature</strong> <span class="math notranslate nohighlight">\(T_c^{\text{MFA}}\)</span> estimation</p></li>
+<li><p><strong>Random alloy analysis</strong> with site-resolved stiffness and <span class="math notranslate nohighlight">\(T_c\)</span> values</p></li>
+</ul>
+<p>These parameters are essential for:</p>
+<ul class="simple">
+<li><p><strong>Connecting atomistic and continuum descriptions</strong>: Directly comparing atomistic Heisenberg exchange with micromagnetic models</p></li>
+<li><p><strong>Spin-wave spectroscopy interpretation</strong>: Relating measured spin-wave dispersions to atomistic parameters</p></li>
+<li><p><strong>Domain wall studies</strong>: Predicting domain wall widths from exchange and anisotropy</p></li>
+<li><p><strong>Skyrmion stability</strong>: Understanding skyrmion sizes from DMI and exchange balance</p></li>
+</ul>
+<section id="physics-background">
+<h2>Physics Background<a class="headerlink" href="#physics-background" title="Permalink to this heading"></a></h2>
+<section id="spin-wave-stiffness-pajda-formalism">
+<h3>Spin-Wave Stiffness (Pajda Formalism)<a class="headerlink" href="#spin-wave-stiffness-pajda-formalism" title="Permalink to this heading"></a></h3>
+<p>The formalism follows <strong>Pajda et al., PRB 64, 174402 (2001)</strong>, which defines the spin-wave stiffness for ferromagnetic systems as:</p>
+<div class="math notranslate nohighlight">
+\[D = \frac{2}{3} \sum_{ij} J_{ij} r_{ij}^2\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(J_{ij}\)</span> is the exchange interaction between sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r_{ij}\)</span> is the distance vector between the sites</p></li>
+<li><p>The sum runs over all exchange pairs weighted by distance squared</p></li>
+</ul>
+<p>This formulation accounts for multi-sublattice systems and random alloys by constructing a <strong>stiffness matrix</strong> <span class="math notranslate nohighlight">\(D_{ab}^{\alpha\beta}\)</span> where <span class="math notranslate nohighlight">\(a,b\)</span> label sublattices and <span class="math notranslate nohighlight">\(\alpha,\beta\)</span> denote spatial directions (x, y, z).</p>
+<p><strong>Extension to Anisotropic Systems:</strong></p>
+<p>For non-cubic systems, the full tensorial form is calculated:</p>
+<div class="math notranslate nohighlight">
+\[D_{\alpha\beta} = 2 \sum_{ij} J_{ij} r_{ij}^\alpha r_{ij}^\beta\]</div>
+<p>This captures directional variations in spin-wave propagation.</p>
+</section>
+<section id="exchange-stiffness-micromagnetic-constant">
+<h3>Exchange Stiffness (Micromagnetic Constant)<a class="headerlink" href="#exchange-stiffness-micromagnetic-constant" title="Permalink to this heading"></a></h3>
+<p>The micromagnetic <strong>exchange stiffness</strong> <span class="math notranslate nohighlight">\(A\)</span> relates to the spin-wave stiffness via:</p>
+<div class="math notranslate nohighlight">
+\[A = \frac{D \cdot M_s}{4}\]</div>
+<p>where <span class="math notranslate nohighlight">\(M_s\)</span> is the saturation magnetization. Units:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D\)</span>: meV·Å²</p></li>
+<li><p><span class="math notranslate nohighlight">\(M_s\)</span>: μ_B/m³</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span>: pJ/m (typical values: 5-20 pJ/m for transition metal ferromagnets)</p></li>
+</ul>
+<p>This parameter appears in the <strong>micromagnetic energy density</strong>:</p>
+<div class="math notranslate nohighlight">
+\[E_{\text{ex}} = A \int |\nabla \mathbf{m}|^2 \, dV\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{m}\)</span> is the normalized magnetization direction.</p>
+</section>
+<section id="dmi-spiralization-tensor">
+<h3>DMI Spiralization Tensor<a class="headerlink" href="#dmi-spiralization-tensor" title="Permalink to this heading"></a></h3>
+<p>For systems with <strong>Dzyaloshinskii-Moriya interaction</strong> (DMI), the spiralization tendency is quantified by:</p>
+<div class="math notranslate nohighlight">
+\[D_{0}^{\alpha\beta} = \sum_{ij} \mathbf{D}_{ij}^\alpha \cdot \mathbf{r}_{ij}^\beta\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{D}_{ij}\)</span> is the DMI vector between sites <span class="math notranslate nohighlight">\(i,j\)</span>. This tensor determines:</p>
+<ul class="simple">
+<li><p><strong>Spiral wavelength</strong>: <span class="math notranslate nohighlight">\(\lambda = 4\pi D / D_0\)</span></p></li>
+<li><p><strong>Skyrmion size</strong>: Proportional to <span class="math notranslate nohighlight">\(D/D_0\)</span></p></li>
+<li><p><strong>Helical pitch</strong>: Intrinsic pitch of chiral spin textures</p></li>
+</ul>
+<p>Units: meV·Å (energy × length).</p>
+</section>
+<section id="convergence-and-eta-parameter">
+<h3>Convergence and Eta Parameter<a class="headerlink" href="#convergence-and-eta-parameter" title="Permalink to this heading"></a></h3>
+<p>The stiffness calculation employs an exponential damping factor to ensure convergence:</p>
+<div class="math notranslate nohighlight">
+\[D(\eta) = \sum_{ij} J_{ij} r_{ij}^2 \exp(-\eta r_{ij})\]</div>
+<p>The parameter <span class="math notranslate nohighlight">\(\eta\)</span> (eta) weights near-neighbor vs. far-neighbor contributions. The final stiffness is extrapolated to <span class="math notranslate nohighlight">\(\eta \to 0\)</span> using:</p>
+<ol class="arabic simple">
+<li><p><strong>Rational polynomial fitting</strong> (Padé approximants): More robust for oscillatory behavior</p></li>
+<li><p><strong>Least-squares (LSQ) fitting</strong>: Standard polynomial fit to <span class="math notranslate nohighlight">\(D(\eta)\)</span> vs. <span class="math notranslate nohighlight">\(\eta\)</span></p></li>
+</ol>
+<p>Users specify an eta range [<code class="docutils literal notranslate"><span class="pre">eta_min</span></code>, <code class="docutils literal notranslate"><span class="pre">eta_max</span></code>] for extrapolation. Typical values: <code class="docutils literal notranslate"><span class="pre">eta_min=10</span></code>, <code class="docutils literal notranslate"><span class="pre">eta_max=20</span></code>.</p>
+</section>
+</section>
+<section id="activation-and-configuration">
+<h2>Activation and Configuration<a class="headerlink" href="#activation-and-configuration" title="Permalink to this heading"></a></h2>
+<section id="main-enable-flags">
+<h3>Main Enable Flags<a class="headerlink" href="#main-enable-flags" title="Permalink to this heading"></a></h3>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">do_stiffness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="w">       </span><span class="c">! Enable stiffness calculation</span>
+<span class="n">do_dm_stiffness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="w">    </span><span class="c">! Enable DMI spiralization calculation</span>
+<span class="n">prn_J0_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="w">      </span><span class="c">! Print full J0 exchange matrix</span>
+</pre></div>
+</div>
+<p><strong>Calculation Timing:</strong></p>
+<p>Stiffness calculations are performed <strong>once during initialization</strong> (not dynamically during time evolution). They extract ground-state properties from the Hamiltonian.</p>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">do_stiffness</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>: Always enable for ferromagnets when extracting micromagnetic parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_dm_stiffness</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>: Enable when DMI is present (<code class="docutils literal notranslate"><span class="pre">dm_file</span></code> specified) to study chiral systems</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prn_J0_matrix</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>: For debugging or detailed analysis of exchange matrix structure</p></li>
+</ul>
+</section>
+<section id="convergence-parameters">
+<h3>Convergence Parameters<a class="headerlink" href="#convergence-parameters" title="Permalink to this heading"></a></h3>
+<p>The eta convergence range controls the extrapolation to <span class="math notranslate nohighlight">\(\eta = 0\)</span>:</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Convergence Parameters</span><a class="headerlink" href="#id6" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 27.8%" />
+<col style="width: 16.7%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">eta_min</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Minimum eta index for extrapolation (typically 6-12)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">eta_max</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Maximum eta index for extrapolation (typically 12-24)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Physical Meaning:</strong></p>
+<ul class="simple">
+<li><p>Smaller <code class="docutils literal notranslate"><span class="pre">eta_min</span></code>, <code class="docutils literal notranslate"><span class="pre">eta_max</span></code>: Include more distant neighbors (slower decay)</p></li>
+<li><p>Larger values: Focus on nearest neighbors (faster decay)</p></li>
+</ul>
+<p><strong>Recommended Settings:</strong></p>
+<ul class="simple">
+<li><p><strong>Simple cubic/BCC/FCC</strong>: <code class="docutils literal notranslate"><span class="pre">eta_min=10</span></code>, <code class="docutils literal notranslate"><span class="pre">eta_max=20</span></code></p></li>
+<li><p><strong>Complex structures</strong>: <code class="docutils literal notranslate"><span class="pre">eta_min=6</span></code>, <code class="docutils literal notranslate"><span class="pre">eta_max=12</span></code></p></li>
+<li><p><strong>Random alloys</strong>: <code class="docutils literal notranslate"><span class="pre">eta_min=6</span></code>, <code class="docutils literal notranslate"><span class="pre">eta_max=12</span></code> (more sampling needed)</p></li>
+</ul>
+<p>The code internally uses <span class="math notranslate nohighlight">\(\eta_{\text{eff}} = 0.1 \times \text{eta}\)</span> as the damping parameter in Ångströms.</p>
+</section>
+</section>
+<section id="output-files-and-results">
+<h2>Output Files and Results<a class="headerlink" href="#output-files-and-results" title="Permalink to this heading"></a></h2>
+<section id="main-output-file">
+<h3>Main Output File<a class="headerlink" href="#main-output-file" title="Permalink to this heading"></a></h3>
+<p>When <code class="docutils literal notranslate"><span class="pre">do_stiffness</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>, results are written to:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">micro_ASD</span><span class="p">.</span><span class="o">&lt;</span><span class="n">simid</span><span class="o">&gt;</span><span class="p">.</span><span class="n">out</span>
+</pre></div>
+</div>
+<p>This file contains comprehensive micromagnetic information:</p>
+<p><strong>File Structure:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>**************** MICROMAGNETIC INFORMATION *********************
+  Unit cell volume         :  1.234E-29  m^3
+  Saturation magnetization :  1234.56  MA/m
+  Anisotropy density       :  0.245  MJ/m^3
+  Anisotropy per atom      :  0.456  meV
+  Domain wall width        :  12.34  nm
+  ETA MIN :     10
+  ETA MAX :     20
+****************************************************************
+
+Exchange stiffness at T=0 K:    15.234  pJ/m
+**************** EXCHANGE STIFFNESS MATRIX [pJ/m] **************
+      14.123        0.000        0.000
+       0.000       14.123        0.000
+       0.000        0.000       15.678
+****************************************************************
+
+Spin wave stiffness from Jijs:   123.45 ±   0.12  meVÅ^2
+**************** SPIN WAVE STIFFNESS MATRIX [meVA^2] ***********
+     122.345        0.000        0.000
+       0.000      122.345        0.000
+       0.000        0.000      125.678
+****************************************************************
+
+Exchange stiffness at T=0 K (LSQ):    15.123  pJ/m
+[LSQ matrices follow similar format]
+
+**************** J0 VECTOR [meV] *******************************
+     1      123.456
+     2      234.567
+****************************************************************
+
+Tc-MFA from stiffness :     1234.5 K
+</pre></div>
+</div>
+</section>
+<section id="dmi-spiralization-output">
+<h3>DMI Spiralization Output<a class="headerlink" href="#dmi-spiralization-output" title="Permalink to this heading"></a></h3>
+<p>When <code class="docutils literal notranslate"><span class="pre">do_dm_stiffness</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>, additional DMI information is appended:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DM matrix (q,n)   D_{ij} x r_{ij}
+**************** DMI SPIRALIZATION MATRIX [meVA] ***************
+            r_x         r_y         r_z
+ D_x      12.345      0.000      0.000
+ D_y       0.000     12.345      0.000
+ D_z       0.000      0.000     15.678
+****************************************************************
+
+******* DMI SPIRALIZATION MATRIX (LSQ fit) [meVA] **************
+[LSQ fit values]
+****************************************************************
+
+**************** DMI SPIRALIZATION MATRIX [mJ/m^2] *************
+[Converted to micromagnetic units]
+****************************************************************
+
+**************** SPIRAL WAVELENGTH MATRIX (STIFF/DMI) [A] ******
+     123.456        999.999        999.999
+     999.999        123.456        999.999
+     999.999        999.999        156.789
+****************************************************************
+</pre></div>
+</div>
+<p>The spiral wavelength <span class="math notranslate nohighlight">\(\lambda = 4\pi D_{\alpha\beta} / D_0^{\alpha\beta}\)</span> predicts intrinsic helical pitch.</p>
+</section>
+<section id="random-alloy-output">
+<h3>Random Alloy Output<a class="headerlink" href="#random-alloy-output" title="Permalink to this heading"></a></h3>
+<p>For random alloy simulations (<code class="docutils literal notranslate"><span class="pre">do_ralloy</span> <span class="pre">=</span> <span class="pre">1</span></code>), site-resolved properties are calculated:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>*** Supercell averaged properties *******************************
+*****************************************************************
+Exchange stiffness:      12.345  pJ/m
+Spin wave  stiffness:   123.456  meVÅ^2
+Tc-MFA:                 1234.56  K
+J0 VECTOR [meV]:
+     1      123.456
+     2      234.567
+
+*** Site resolved properties *************************************
+ atom       A_xc[pJ/m] D_xc[meVÅ^2] Tc-MFA[K]
+     1        12.123     121.234     1200.12
+     2        12.567     125.678     1268.45
+   ...
+</pre></div>
+</div>
+<p>This shows how local chemical environment affects stiffness and <span class="math notranslate nohighlight">\(T_c\)</span>.</p>
+</section>
+</section>
+<section id="j0-matrix-printing">
+<h2>J0 Matrix Printing<a class="headerlink" href="#j0-matrix-printing" title="Permalink to this heading"></a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">prn_J0_matrix</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>, the full exchange matrix is printed:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>**************** J0 MATRIX [meV] *******************************
+     1      1     123.456
+     1      2      12.345
+     2      1      12.345
+     2      2     234.567
+****************************************************************
+</pre></div>
+</div>
+<p>Format: <code class="docutils literal notranslate"><span class="pre">sublattice_i</span>&#160; <span class="pre">sublattice_j</span>&#160; <span class="pre">J0_value[meV]</span></code></p>
+<section id="terminal-output">
+<h3>Terminal Output<a class="headerlink" href="#terminal-output" title="Permalink to this heading"></a></h3>
+<p>During calculation, progress is reported:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Calculate the ferromagnetic stiffness done
+Calculate the DMI spiralization done
+Calculate the ferromagnetic stiffness of random alloy done
+Tc-MFA from stiffness :     1234.5 K
+</pre></div>
+</div>
+<p><strong>Keywords Reference Table</strong></p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Stiffness Calculation Keywords</span><a class="headerlink" href="#id7" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 25.3%" />
+<col style="width: 12.1%" />
+<col style="width: 12.1%" />
+<col style="width: 50.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">do_stiffness</span></code></p></td>
+<td><p>char</p></td>
+<td><p>‘N’</p></td>
+<td><p>Enable stiffness calculation: ‘N’=off, ‘Y’=on</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">do_dm_stiffness</span></code></p></td>
+<td><p>char</p></td>
+<td><p>‘N’</p></td>
+<td><p>Enable DMI spiralization: ‘N’=off, ‘Y’=on</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">prn_J0_matrix</span></code></p></td>
+<td><p>char</p></td>
+<td><p>‘N’</p></td>
+<td><p>Print full J0 exchange matrix: ‘N’=off, ‘Y’=on</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">eta_min</span></code></p></td>
+<td><p>int</p></td>
+<td><p>0</p></td>
+<td><p>Minimum eta index for convergence extrapolation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">eta_max</span></code></p></td>
+<td><p>int</p></td>
+<td><p>0</p></td>
+<td><p>Maximum eta index for convergence extrapolation</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<section id="example-1-bcc-iron-basic-stiffness-calculation">
+<h3>Example 1: BCC Iron - Basic Stiffness Calculation<a class="headerlink" href="#example-1-bcc-iron-basic-stiffness-calculation" title="Permalink to this heading"></a></h3>
+<p>Calculate exchange stiffness and spin-wave stiffness for BCC Fe:</p>
+<p><strong>Input File (inpsd.dat):</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! System specification</span>
+<span class="n">simid</span><span class="w">  </span><span class="n">bccFe</span>
+<span class="n">cell</span><span class="w">   </span><span class="mf">2.86</span><span class="w"> </span><span class="mf">2.86</span><span class="w"> </span><span class="mf">2.86</span>
+<span class="n">BC</span><span class="w">     </span><span class="n">P</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="n">P</span>
+<span class="n">ncell</span><span class="w">  </span><span class="mi">10</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">10</span>
+
+<span class="c">! Moments</span>
+<span class="n">Natom</span><span class="w">  </span><span class="mi">1</span>
+<span class="n">NA</span><span class="w">     </span><span class="mi">1</span>
+<span class="n">momfile</span><span class="w"> </span><span class="n">momfile</span><span class="p">.</span><span class="n">dat</span>
+
+<span class="c">! Exchange</span>
+<span class="n">exchange</span><span class="w"> </span><span class="n">jfile</span><span class="p">.</span><span class="n">dat</span>
+
+<span class="c">! Stiffness calculation</span>
+<span class="n">do_stiffness</span><span class="w"> </span><span class="n">Y</span>
+<span class="n">eta_min</span><span class="w"> </span><span class="mi">12</span>
+<span class="n">eta_max</span><span class="w"> </span><span class="mi">18</span>
+</pre></div>
+</div>
+<p><strong>Moment File (momfile.dat):</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">1.0</span><span class="w">  </span><span class="mf">2.2</span>
+</pre></div>
+</div>
+<p><strong>Exchange File (jfile.dat):</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="mf">1.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">   </span><span class="mi">2</span><span class="mf">1.5</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="mf">2.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">   </span><span class="o">-</span><span class="mf">2.1</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>Expected Output (micro_ASD.bccFe.out):</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Exchange stiffness at T=0 K:    16.234  pJ/m
+Spin wave stiffness from Jijs:   281.45 ±   0.34  meVÅ^2
+Tc-MFA from stiffness :      1043.2 K
+
+EXCHANGE STIFFNESS MATRIX [pJ/m]
+     16.234        0.000        0.000
+      0.000       16.234        0.000
+      0.000        0.000       16.234
+</pre></div>
+</div>
+<p><strong>Interpretation:</strong> Isotropic stiffness (cubic symmetry), typical Fe values.</p>
+</section>
+<section id="example-2-fept-with-dmi-spiralization">
+<h3>Example 2: FePt with DMI Spiralization<a class="headerlink" href="#example-2-fept-with-dmi-spiralization" title="Permalink to this heading"></a></h3>
+<p>Calculate both exchange and DMI stiffness for a chiral ferromagnet:</p>
+<p><strong>Input File:</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span><span class="w">  </span><span class="n">FePt_DMI</span>
+<span class="n">cell</span><span class="w">   </span><span class="mf">3.85</span><span class="w"> </span><span class="mf">3.85</span><span class="w"> </span><span class="mf">3.85</span>
+<span class="n">BC</span><span class="w">     </span><span class="n">P</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="n">P</span>
+<span class="n">ncell</span><span class="w">  </span><span class="mi">8</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">8</span>
+
+<span class="c">! System</span>
+<span class="n">Natom</span><span class="w">  </span><span class="mi">2</span>
+<span class="n">NA</span><span class="w">     </span><span class="mi">2</span>
+<span class="n">momfile</span><span class="w"> </span><span class="n">momfile</span><span class="p">.</span><span class="n">dat</span>
+
+<span class="c">! Exchange and DMI</span>
+<span class="n">exchange</span><span class="w"> </span><span class="n">jfile</span><span class="p">.</span><span class="n">dat</span>
+<span class="n">dm</span><span class="w">       </span><span class="n">dmfile</span><span class="p">.</span><span class="n">dat</span>
+
+<span class="c">! Stiffness with DMI</span>
+<span class="n">do_stiffness</span><span class="w"> </span><span class="n">Y</span>
+<span class="n">do_dm_stiffness</span><span class="w"> </span><span class="n">Y</span>
+<span class="n">eta_min</span><span class="w"> </span><span class="mi">10</span>
+<span class="n">eta_max</span><span class="w"> </span><span class="mi">16</span>
+</pre></div>
+</div>
+<p><strong>DM File (dmfile.dat):</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w">  </span><span class="mi">2</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">1.0</span><span class="w">   </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">2</span><span class="w">   </span><span class="mi">2</span><span class="w">   </span><span class="mf">1.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">   </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.5</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>Expected Output:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Exchange stiffness at T=0 K:    12.567  pJ/m
+
+DMI SPIRALIZATION MATRIX [meVA]
+            r_x         r_y         r_z
+ D_x       3.456      0.000      0.000
+ D_y       0.000      3.456      0.000
+ D_z       0.000      0.000      0.000
+
+SPIRAL WAVELENGTH MATRIX (STIFF/DMI) [A]
+     145.678        999.999        999.999
+     999.999        145.678        999.999
+     999.999        999.999        999.999
+</pre></div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul class="simple">
+<li><p>Skyrmion-hosting system with spiral wavelength ~14.6 nm</p></li>
+<li><p>Uniaxial DMI (D_z components active)</p></li>
+<li><p>Skyrmion diameter proportional to wavelength</p></li>
+</ul>
+</section>
+</section>
+<section id="example-3-random-alloy-feco-site-resolved-analysis">
+<h2>Example 3: Random Alloy (FeCo) - Site-Resolved Analysis<a class="headerlink" href="#example-3-random-alloy-feco-site-resolved-analysis" title="Permalink to this heading"></a></h2>
+<p>Analyze local variations in random FeCo alloy:</p>
+<p><strong>Input File:</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span><span class="w">  </span><span class="n">FeCo_random</span>
+<span class="n">cell</span><span class="w">   </span><span class="mf">2.85</span><span class="w"> </span><span class="mf">2.85</span><span class="w"> </span><span class="mf">2.85</span>
+<span class="n">BC</span><span class="w">     </span><span class="n">P</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="n">P</span>
+<span class="n">ncell</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">4</span>
+
+<span class="c">! Random alloy setup</span>
+<span class="n">Natom</span><span class="w">  </span><span class="mi">64</span>
+<span class="n">NA</span><span class="w">     </span><span class="mi">1</span>
+<span class="n">do_ralloy</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">Nchmax</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="c">! Chemical types</span>
+<span class="n">momfile</span><span class="w"> </span><span class="n">momfile</span><span class="p">.</span><span class="n">dat</span>
+<span class="n">exchange</span><span class="w"> </span><span class="n">jfile</span><span class="p">.</span><span class="n">dat</span>
+
+<span class="c">! Stiffness</span>
+<span class="n">do_stiffness</span><span class="w"> </span><span class="n">Y</span>
+<span class="n">eta_min</span><span class="w"> </span><span class="mi">6</span>
+<span class="n">eta_max</span><span class="w"> </span><span class="mi">12</span>
+</pre></div>
+</div>
+<p><strong>Expected Output:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>*** Supercell averaged properties *******************************
+Exchange stiffness:      14.567  pJ/m
+Spin wave  stiffness:   234.567  meVÅ^2
+Tc-MFA:                 1156.78  K
+
+*** Site resolved properties *************************************
+ atom       A_xc[pJ/m] D_xc[meVÅ^2] Tc-MFA[K]
+     1        14.123     230.234     1140.12
+     2        14.890     238.678     1172.45
+     3        13.987     228.123     1135.89
+   ...
+</pre></div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul class="simple">
+<li><p>~3% variation in local stiffness due to chemical disorder</p></li>
+<li><p>Fe-rich sites: slightly lower stiffness</p></li>
+<li><p>Co-rich sites: slightly higher stiffness and <span class="math notranslate nohighlight">\(T_c\)</span></p></li>
+</ul>
+</section>
+<section id="example-4-anisotropic-system-hcp-cobalt">
+<h2>Example 4: Anisotropic System (HCP Cobalt)<a class="headerlink" href="#example-4-anisotropic-system-hcp-cobalt" title="Permalink to this heading"></a></h2>
+<p>Calculate stiffness tensor for hexagonal system:</p>
+<p><strong>Input File:</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span><span class="w">  </span><span class="n">hcpCo</span>
+<span class="n">cell</span><span class="w">   </span><span class="mf">2.51</span><span class="w"> </span><span class="mf">2.51</span><span class="w"> </span><span class="mf">4.07</span><span class="w">  </span><span class="c">! a, a, c lattice parameters</span>
+<span class="n">BC</span><span class="w">     </span><span class="n">P</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="n">P</span>
+<span class="n">ncell</span><span class="w">  </span><span class="mi">8</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">6</span>
+
+<span class="n">Natom</span><span class="w">  </span><span class="mi">2</span>
+<span class="n">NA</span><span class="w">     </span><span class="mi">2</span>
+<span class="n">momfile</span><span class="w"> </span><span class="n">momfile</span><span class="p">.</span><span class="n">dat</span>
+<span class="n">exchange</span><span class="w"> </span><span class="n">jfile</span><span class="p">.</span><span class="n">dat</span>
+<span class="n">anisotropy</span><span class="w"> </span><span class="n">kfile</span><span class="p">.</span><span class="n">dat</span>
+
+<span class="c">! Stiffness</span>
+<span class="n">do_stiffness</span><span class="w"> </span><span class="n">Y</span>
+<span class="n">eta_min</span><span class="w"> </span><span class="mi">10</span>
+<span class="n">eta_max</span><span class="w"> </span><span class="mi">18</span>
+</pre></div>
+</div>
+<p><strong>Expected Output:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Anisotropy density       :  1.234  MJ/m^3
+Anisotropy per atom      :  0.145  meV
+Domain wall width        :  8.67  nm
+
+EXCHANGE STIFFNESS MATRIX [pJ/m]
+     18.234        0.000        0.000
+      0.000       18.234        0.000
+      0.000        0.000       16.123
+
+SPIN WAVE STIFFNESS MATRIX [meVA^2]
+     305.678        0.000        0.000
+       0.000      305.678        0.000
+       0.000        0.000      270.123
+</pre></div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul class="simple">
+<li><p>In-plane (x,y) stiffness ~13% higher than c-axis (z)</p></li>
+<li><p>Anisotropic domain wall widths depending on propagation direction</p></li>
+<li><p>Domain wall width calculated from <span class="math notranslate nohighlight">\(\Delta = \sqrt{A/K}\)</span> where K is anisotropy density</p></li>
+</ul>
+</section>
+<section id="physical-interpretations-and-applications">
+<h2>Physical Interpretations and Applications<a class="headerlink" href="#physical-interpretations-and-applications" title="Permalink to this heading"></a></h2>
+<section id="domain-wall-width">
+<h3>Domain Wall Width<a class="headerlink" href="#domain-wall-width" title="Permalink to this heading"></a></h3>
+<p>For systems with uniaxial anisotropy, the Bloch/Néel domain wall width is:</p>
+<div class="math notranslate nohighlight">
+\[\Delta = \sqrt{\frac{A}{K}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(K\)</span> is the anisotropy density (MJ/m³). Typical values:</p>
+<ul class="simple">
+<li><p><strong>Soft magnets</strong> (low K): <span class="math notranslate nohighlight">\(\Delta \sim 10\text{-}100\)</span> nm</p></li>
+<li><p><strong>Hard magnets</strong> (high K): <span class="math notranslate nohighlight">\(\Delta \sim 1\text{-}10\)</span> nm</p></li>
+</ul>
+</section>
+<section id="spin-wave-dispersion">
+<h3>Spin-Wave Dispersion<a class="headerlink" href="#spin-wave-dispersion" title="Permalink to this heading"></a></h3>
+<p>The spin-wave frequency in the long-wavelength limit follows:</p>
+<div class="math notranslate nohighlight">
+\[\omega(q) \approx \frac{2D}{\hbar} q^2\]</div>
+<p>Relating measured spin-wave stiffness to atomistic exchange:</p>
+<ul class="simple">
+<li><p><strong>Inelastic neutron scattering</strong>: Measures <span class="math notranslate nohighlight">\(D\)</span> experimentally</p></li>
+<li><p><strong>Atomistic validation</strong>: Compare calculated <span class="math notranslate nohighlight">\(D\)</span> with experiment</p></li>
+<li><p><strong>Anisotropic propagation</strong>: Tensor components give direction-dependent dispersion</p></li>
+</ul>
+</section>
+<section id="skyrmion-size">
+<h3>Skyrmion Size<a class="headerlink" href="#skyrmion-size" title="Permalink to this heading"></a></h3>
+<p>For skyrmions stabilized by DMI:</p>
+<div class="math notranslate nohighlight">
+\[R_{\text{sky}} \propto \frac{D}{D_0}\]</div>
+<p>Typical values:</p>
+<ul class="simple">
+<li><p><strong>Fe/Ir interfaces</strong>: <span class="math notranslate nohighlight">\(D_0 \sim 3\)</span> meV·Å, <span class="math notranslate nohighlight">\(D \sim 100\)</span> meV·Å² → <span class="math notranslate nohighlight">\(R \sim 10\text{-}20\)</span> nm</p></li>
+<li><p><strong>Bulk MnSi</strong>: <span class="math notranslate nohighlight">\(D_0 \sim 1\)</span> meV·Å, <span class="math notranslate nohighlight">\(D \sim 50\)</span> meV·Å² → <span class="math notranslate nohighlight">\(R \sim 50\text{-}100\)</span> nm</p></li>
+</ul>
+</section>
+<section id="mean-field-tc-estimation">
+<h3>Mean-Field Tc Estimation<a class="headerlink" href="#mean-field-tc-estimation" title="Permalink to this heading"></a></h3>
+<p>The printed <span class="math notranslate nohighlight">\(T_c^{\text{MFA}}\)</span> provides an upper bound for the critical temperature:</p>
+<div class="math notranslate nohighlight">
+\[T_c^{\text{MFA}} = \frac{2}{3k_B} \lambda_{\text{max}}(J_0)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda_{\text{max}}\)</span> is the largest eigenvalue of the J0 exchange matrix. Typical accuracy:</p>
+<ul class="simple">
+<li><p><strong>3D systems</strong>: Overestimates by 20-40%</p></li>
+<li><p><strong>2D systems</strong>: Overestimates by 50-100%</p></li>
+<li><p><strong>Random alloys</strong>: Site-resolved <span class="math notranslate nohighlight">\(T_c\)</span> shows local ordering tendencies</p></li>
+</ul>
+</section>
+</section>
+<section id="comparison-with-experiment">
+<h2>Comparison with Experiment<a class="headerlink" href="#comparison-with-experiment" title="Permalink to this heading"></a></h2>
+<p><strong>Spin-Wave Stiffness D:</strong></p>
+<ul class="simple">
+<li><p><strong>Neutron scattering</strong>: Directly measures D from low-q dispersion</p></li>
+<li><p><strong>Brillouin light scattering</strong>: Probes surface spin waves</p></li>
+<li><p><strong>Typical agreement</strong>: Within 10-20% for first-principles exchange parameters</p></li>
+</ul>
+<p><strong>Exchange Stiffness A:</strong></p>
+<ul class="simple">
+<li><p><strong>Domain wall imaging</strong>: Infer A from domain wall width measurements</p></li>
+<li><p><strong>Micromagnetic simulations</strong>: Use calculated A as input</p></li>
+<li><p><strong>Typical agreement</strong>: Within 20-30% (more indirect measurement)</p></li>
+</ul>
+<p><strong>DMI Spiralization D0:</strong></p>
+<ul class="simple">
+<li><p><strong>Spin spiral wavelength</strong>: Measured via neutron diffraction or LEEM</p></li>
+<li><p><strong>Skyrmion size</strong>: Observed with magnetic imaging (MFM, STXM)</p></li>
+<li><p><strong>Typical agreement</strong>: Within factor of 2 (strong correlation effects)</p></li>
+</ul>
+</section>
+<section id="performance-considerations">
+<h2>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permalink to this heading"></a></h2>
+<p><strong>Computational Cost:</strong></p>
+<ul class="simple">
+<li><p><strong>Calculation time</strong>: Negligible (~seconds) for systems up to NA=10 sublattices</p></li>
+<li><p><strong>Memory</strong>: Scales as <span class="math notranslate nohighlight">\(O(N_A^2 \times \eta_{\text{max}})\)</span> for stiffness matrices</p></li>
+<li><p><strong>Bottleneck</strong>: Eigenvalue decomposition of NA×NA matrices (repeated for each eta)</p></li>
+</ul>
+<p><strong>Convergence:</strong></p>
+<ul class="simple">
+<li><p><strong>Eta range</strong>: Wider range (larger <code class="docutils literal notranslate"><span class="pre">eta_max</span> <span class="pre">-</span> <span class="pre">eta_min</span></code>) improves extrapolation accuracy</p></li>
+<li><p><strong>Fitting method</strong>: Rational polynomial typically more stable than LSQ for oscillatory systems</p></li>
+<li><p><strong>Random alloys</strong>: Require smaller eta (faster decay) due to disorder</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
+<p><strong>Issue: Large discrepancy between rational and LSQ fits</strong></p>
+<ul class="simple">
+<li><p><strong>Cause</strong>: Oscillatory behavior in <span class="math notranslate nohighlight">\(D(\eta)\)</span> due to crystallographic frustration</p></li>
+<li><p><strong>Solution</strong>: Increase <code class="docutils literal notranslate"><span class="pre">eta_max</span></code> to capture more oscillations; use rational fit (more robust)</p></li>
+</ul>
+<p><strong>Issue: Negative stiffness values</strong></p>
+<ul class="simple">
+<li><p><strong>Cause</strong>: Dominant antiferromagnetic interactions (system not ferromagnetic)</p></li>
+<li><p><strong>Solution</strong>: Verify ground state is ferromagnetic; stiffness calculation assumes FM ordering</p></li>
+</ul>
+<p><strong>Issue: Tc-MFA far from experimental values</strong></p>
+<ul class="simple">
+<li><p><strong>Expected</strong>: MFA overestimates <span class="math notranslate nohighlight">\(T_c\)</span> by 20-50% in 3D systems</p></li>
+<li><p><strong>Not a bug</strong>: Use as qualitative trend, not quantitative prediction</p></li>
+<li><p><strong>Monte Carlo</strong>: Run <code class="docutils literal notranslate"><span class="pre">do_mc='Y'</span></code> for more accurate <span class="math notranslate nohighlight">\(T_c\)</span> estimation</p></li>
+</ul>
+<p><strong>Issue: DMI spiralization gives unrealistic wavelengths</strong></p>
+<ul class="simple">
+<li><p><strong>Cause</strong>: Small DMI values lead to large <span class="math notranslate nohighlight">\(\lambda = 4\pi D/D_0\)</span></p></li>
+<li><p><strong>Check</strong>: Verify DMI parameters in dmfile; ensure DMI is significant compared to exchange</p></li>
+<li><p><strong>Physical</strong>: Some systems have weak DMI → no stable spirals/skyrmions</p></li>
+</ul>
+<p><strong>Issue: Site-resolved Tc shows unphysical variations (&gt;50%)</strong></p>
+<ul class="simple">
+<li><p><strong>Cause</strong>: Insufficient statistics in random alloy sampling</p></li>
+<li><p><strong>Solution</strong>: Increase supercell size (ncell); average over multiple configurations</p></li>
+</ul>
+</section>
+<section id="combining-with-other-features">
+<h2>Combining with Other Features<a class="headerlink" href="#combining-with-other-features" title="Permalink to this heading"></a></h2>
+<p>Stiffness calculations are typically used alongside:</p>
+<ul class="simple">
+<li><p><strong>Spin-wave calculations</strong> (<code class="docutils literal notranslate"><span class="pre">do_ams='Y'</span></code>): Compare calculated D with spin-wave analysis</p></li>
+<li><p><strong>GNEB calculations</strong> (<code class="docutils literal notranslate"><span class="pre">do_gneb='Y'</span></code>): Use A to estimate energy barriers</p></li>
+<li><p><strong>Monte Carlo</strong> (<code class="docutils literal notranslate"><span class="pre">do_mc='Y'</span></code>): Validate Tc-MFA against finite-temperature simulations</p></li>
+<li><p><strong>Topology analysis</strong> (<code class="docutils literal notranslate"><span class="pre">do_tottraj='Y'</span></code>): Relate skyrmion size to D/D0 ratio</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h1>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#pajda2001" id="id1"><span>[Pajda2001]</span></a> - Ab initio calculations of exchange interactions and spin-wave stiffness</p></li>
+<li><p><a class="reference internal" href="../../references/#udvardi2003" id="id2"><span>[Udvardi2003]</span></a> - First-principles relativistic study of spin waves in thin magnetic films</p></li>
+<li><p><a class="reference internal" href="../../references/#eriksson2017" id="id3"><span>[Eriksson2017]</span></a> - Atomistic spin dynamics and atomistic-to-micromagnetic mapping</p></li>
+<li><p><a class="reference internal" href="../../references/#hellsvik2008" id="id4"><span>[Hellsvik2008]</span></a> - Random alloy stiffness calculations in diluted magnetic semiconductors</p></li>
+<li><p><a class="reference internal" href="../../references/#beg2017" id="id5"><span>[Beg2017]</span></a> - Micromagnetic exchange constant usage and conventions</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../topology/" class="btn btn-neutral float-left" title="Topological measurements and observables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../tutorial/" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

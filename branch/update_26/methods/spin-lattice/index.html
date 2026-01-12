@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin-lattice dynamics (SLD) simulations &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Multiscale atomistic-continuum simulations" href="../multiscale/" />
+    <link rel="prev" title="Kinetic Monte Carlo (KMC)" href="../kmc/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Spin-lattice dynamics (SLD) simulations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/spin-lattice.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spin-lattice-dynamics-sld-simulations">
+<h1>Spin-lattice dynamics (SLD) simulations<a class="headerlink" href="#spin-lattice-dynamics-sld-simulations" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<span id="input-spinlattice"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p><strong>Spin-lattice dynamics (SLD)</strong> extends pure spin dynamics (SD) by treating the
+atomic lattice (ionic coordinates) as dynamical degrees of freedom. This allows
+simulation of coupled spin and lattice evolution, including:</p>
+<ul class="simple">
+<li><p>Thermal expansion and contraction from magnetic excitations</p></li>
+<li><p>Magnetoelastic coupling: how spin textures modulate lattice deformations</p></li>
+<li><p>Magnetostriction: inverse magnetoelastic effect (magnetic field → strain)</p></li>
+<li><p>Ultrafast demagnetization with lattice heating (combined with 3TM)</p></li>
+<li><p>Phonon-magnon interactions mediating spin dynamics</p></li>
+</ul>
+<p>The SLD module couples spin-magnetic Hamiltonians with lattice-vibrational
+Hamiltonians through <strong>spin-lattice interaction terms</strong> (ML and MML).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Input keywords:</strong> For a complete list of lattice dynamics measurement parameters
+(<code class="docutils literal notranslate"><span class="pre">do_lavrg</span></code>, <code class="docutils literal notranslate"><span class="pre">lavrg_step</span></code>, <code class="docutils literal notranslate"><span class="pre">do_ltottraj</span></code>, <code class="docutils literal notranslate"><span class="pre">do_ld</span></code>, <code class="docutils literal notranslate"><span class="pre">do_velrsc</span></code>, etc.),
+see the comprehensive reference in <a class="reference internal" href="../../input/observables/"><span class="doc">Observables and measurements</span></a>.</p>
+</div>
+</section>
+<section id="physical-hamiltonian">
+<h2>Physical Hamiltonian<a class="headerlink" href="#physical-hamiltonian" title="Permalink to this heading"></a></h2>
+<p>The complete SLD Hamiltonian comprises:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\text{SLD}} = \mathcal{H}_{\text{magnetic}} + \mathcal{H}_{\text{lattice}} + \mathcal{H}_{\text{SL}},\]</div>
+<p>where:</p>
+<dl>
+<dt><strong>Magnetic Hamiltonian</strong> (<span class="math notranslate nohighlight">\(\mathcal{H}_{\text{mag}}\)</span>)</dt><dd><p>Standard spin-only terms (exchange, anisotropy, applied field):</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\text{mag}} = -\sum_{ij} J_{ij}\mathbf{m}_i\cdot\mathbf{m}_j
+- \sum_i K_i (m_i^z)^2 - \sum_i \mathbf{H}_{\text{ext}}\cdot\mathbf{m}_i.\]</div>
+</dd>
+<dt><strong>Lattice (ionic) Hamiltonian</strong> (<span class="math notranslate nohighlight">\(\mathcal{H}_{\text{lat}}\)</span>)</dt><dd><p>Purely ionic forces and elastic energy:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\text{lat}} = \sum_i \frac{1}{2} m_{\text{ion}} v_i^2 + \mathcal{V}_{\text{LL}},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{V}_{\text{LL}}\)</span> is the <strong>lattice-lattice (LL) potential</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{V}_{\text{LL}} = \frac{1}{2}\sum_{ij} \mathbf{u}_i \cdot \Phi_{ij} \cdot \mathbf{u}_j.\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\mathbf{u}_i\)</span> is the atomic displacement from equilibrium, and
+<span class="math notranslate nohighlight">\(\Phi_{ij}\)</span> is the <strong>force constant tensor</strong> (second derivative of lattice potential).</p>
+</dd>
+<dt><strong>Spin-lattice coupling</strong> (<span class="math notranslate nohighlight">\(\mathcal{H}_{\text{SL}}\)</span>)</dt><dd><p>Interaction between magnetic moments and lattice distortions:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\text{SL}} = \sum_i \mathbf{u}_i \cdot \mathbf{F}_{i}^{\text{ML}} + \sum_{ij}
+(\mathbf{m}_i \cdot \mathbf{m}_j) \mathbf{u}_{ij} \cdot \Phi_{ij}^{\text{MML}} \cdot \mathbf{u}_{ij}.\]</div>
+<p>Two types of coupling:</p>
+<ul class="simple">
+<li><p><strong>ML (Magneto-Lattice)</strong>: Linear in magnetic moment, couples magnetic field to lattice strain</p></li>
+<li><p><strong>MML (Magneto-Magnetic-Lattice)</strong>: Quadratic in moments, modulates exchange with displacement</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="equations-of-motion">
+<h2>Equations of motion<a class="headerlink" href="#equations-of-motion" title="Permalink to this heading"></a></h2>
+<p>SLD integrates coupled second-order ODEs for atomic positions:</p>
+<div class="math notranslate nohighlight">
+\[m_{\text{ion}} \ddot{\mathbf{u}}_i = -\frac{\partial \mathcal{H}}{\partial \mathbf{u}_i} - \gamma_{\text{lat}} \dot{\mathbf{u}}_i + \mathbf{F}_i^{\text{th}},\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{F}_i = -\frac{\partial \mathcal{H}}{\partial \mathbf{u}_i}\)</span> is the effective lattice force</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma_{\text{lat}}\)</span> is the lattice damping (friction coefficient)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{F}_i^{\text{th}} = \sqrt{2 m_{\text{ion}} \gamma_{\text{lat}} k_B T} \, \boldsymbol{\xi}_i(t)\)</span>
+is the thermal Langevin force (white noise)</p></li>
+</ul>
+<p>The effective force has three components:</p>
+<div class="math notranslate nohighlight">
+\[F_i^{\alpha} = \underbrace{-\frac{\partial \mathcal{V}_{\text{LL}}}{\partial u_i^\alpha}}_{\text{LL force}} -
+\underbrace{\frac{\partial \mathcal{V}_{\text{ML}}}{\partial u_i^\alpha}}_{\text{ML force}} -
+\underbrace{\frac{\partial \mathcal{V}_{\text{MML}}}{\partial u_i^\alpha}}_{\text{MML force}}.\]</div>
+<p><strong>LL force</strong> (lattice-lattice):</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[F_i^{\text{LL}} = -\sum_j \Phi_{ij} \cdot \mathbf{u}_j,\]</div>
+<p>standard harmonic force from neighboring ionic displacements.</p>
+</div></blockquote>
+<p><strong>ML force</strong> (magneto-lattice):</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[F_i^{\text{ML}} = -\sum_j M_{ij}^{\alpha\beta} m_j^\alpha,\]</div>
+<p>where <span class="math notranslate nohighlight">\(M_{ij}\)</span> is the magneto-lattice tensor coupling moment component
+<span class="math notranslate nohighlight">\(\alpha\)</span> to lattice direction <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+</div></blockquote>
+<p><strong>MML force</strong> (magneto-magnetic-lattice):</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[F_i^{\text{MML}} = -\frac{1}{2}\sum_{ij} (\mathbf{m}_i \cdot \mathbf{m}_j) \cdot \Phi_{ij}^{\text{MML}} \cdot \mathbf{u}_{ij},\]</div>
+<p>couples exchange interaction strength modulation to lattice distortion.</p>
+</div></blockquote>
+</section>
+<section id="integration-scheme-generalized-langevin-verlet-gjf">
+<h2>Integration scheme: Generalized Langevin Verlet (GJF)<a class="headerlink" href="#integration-scheme-generalized-langevin-verlet-gjf" title="Permalink to this heading"></a></h2>
+<p>UppASD uses the <strong>generalized Langevin Verlet (GJF) integrator</strong>, a robust
+second-order scheme that preserves the canonical ensemble at constant temperature:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{u}(t+\Delta t) &amp;= \mathbf{u}(t) + \Delta t \mathbf{v}(t) + \frac{(\Delta t)^2}{2m}
+\left[\mathbf{F}(t) - \gamma \mathbf{v}(t) + \mathbf{F}_{\text{th}}(t)\right],\\
+\mathbf{v}(t+\Delta t) &amp;= \frac{\mathbf{u}(t+\Delta t) - \mathbf{u}(t-\Delta t)}{2\Delta t}.\end{split}\]</div>
+<p>The scheme is implemented via:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">u_gjfverlet</span></code>: Update positions using force at time <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v_gjfverlet</span></code>: Update velocities using forces at <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+\Delta t\)</span></p></li>
+</ol>
+<p>Thermal noise is generated at each step by <code class="docutils literal notranslate"><span class="pre">lattrannum</span></code> with proper scaling by
+<span class="math notranslate nohighlight">\(\sqrt{T(t)}\)</span> for temperature-dependent simulations.</p>
+</section>
+<section id="interaction-file-formats">
+<h2>Interaction file formats<a class="headerlink" href="#interaction-file-formats" title="Permalink to this heading"></a></h2>
+<p>Three types of lattice interactions are specified via external files:</p>
+<p><strong>LL file (lattice-lattice force constants)</strong></p>
+<blockquote>
+<div><p>Format: <span class="math notranslate nohighlight">\(i, j, \Phi_{xx}, \Phi_{xy}, \Phi_{xz}, \Phi_{yy}, \Phi_{yz}, \Phi_{zz}\)</span></p>
+<p>Each line specifies a pair <span class="math notranslate nohighlight">\((i,j)\)</span> and the 6 independent components of
+the symmetric force constant tensor (J/Ų). Typically read from Phonopy or
+ab initio lattice dynamics calculations.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>    <span class="mi">1</span>    <span class="mf">100.0</span>    <span class="mf">0.0</span>      <span class="mf">0.0</span>      <span class="mf">100.0</span>   <span class="mf">0.0</span>      <span class="mf">100.0</span>
+<span class="mi">1</span>    <span class="mi">2</span>    <span class="o">-</span><span class="mf">50.0</span>    <span class="mf">0.5</span>      <span class="mf">0.0</span>      <span class="o">-</span><span class="mf">50.0</span>   <span class="mf">0.0</span>      <span class="o">-</span><span class="mf">50.0</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>ML file (magneto-lattice coupling)</strong></p>
+<blockquote>
+<div><p>Format: <span class="math notranslate nohighlight">\(i, j, M_{xx}, M_{xy}, M_{xz}, M_{yx}, M_{yy}, M_{yz}, M_{zx}, M_{zy}, M_{zz}\)</span></p>
+<p>A 3×3 tensor <span class="math notranslate nohighlight">\(M_{ij}\)</span> coupling moment of atom <span class="math notranslate nohighlight">\(j\)</span> to lattice displacement at atom <span class="math notranslate nohighlight">\(i\)</span>.
+Units: meV/Å. Can be fitted to magnetostriction data or computed from first principles.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>    <span class="mi">1</span>    <span class="mf">2.5</span>      <span class="mf">0.0</span>      <span class="mf">0.0</span>      <span class="mf">0.0</span>      <span class="mf">2.5</span>      <span class="mf">0.0</span>      <span class="mf">0.0</span>      <span class="mf">0.0</span>      <span class="mf">2.5</span>
+<span class="mi">1</span>    <span class="mi">2</span>    <span class="mf">1.2</span>      <span class="mf">0.1</span>      <span class="mf">0.0</span>      <span class="mf">0.1</span>      <span class="mf">1.2</span>      <span class="mf">0.05</span>     <span class="mf">0.0</span>      <span class="mf">0.05</span>     <span class="mf">1.2</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>MML file (magneto-magnetic-lattice coupling)</strong></p>
+<blockquote>
+<div><p>Format: <span class="math notranslate nohighlight">\(i, j, \Phi^{\text{MML}}_{xx}, \Phi^{\text{MML}}_{xy}, \ldots\)</span></p>
+<p>6×6 symmetric tensor modulating exchange (second-order magnon-phonon coupling).
+Rare in practice; typically only diagonal (isotropic exchange modulation).</p>
+</div></blockquote>
+</section>
+<section id="keyword-reference">
+<h2>Keyword reference<a class="headerlink" href="#keyword-reference" title="Permalink to this heading"></a></h2>
+<section id="activation-and-basic-settings">
+<h3>Activation and basic settings<a class="headerlink" href="#activation-and-basic-settings" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>do_ld</dt><dd><p>Enable lattice dynamics (Y/<em>N</em>, default N). Must be set to <code class="docutils literal notranslate"><span class="pre">Y</span></code> to activate LD/SLD.</p>
+</dd>
+<dt>phonfile</dt><dd><p>File containing initial lattice configuration (atomic positions). Only needed if
+<code class="docutils literal notranslate"><span class="pre">initlatt</span></code> requires external data.</p>
+</dd>
+</dl>
+</section>
+<section id="lattice-interactions">
+<h3>Lattice interactions<a class="headerlink" href="#lattice-interactions" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>ll</dt><dd><p>Enable lattice-lattice (LL) interactions. Followed by filename containing force constant tensors.
+Mandatory for LD/SLD. File format: atom indices and 6-component force constant tensor.</p>
+</dd>
+<dt>ml</dt><dd><p>Enable magneto-lattice (ML) coupling. Followed by filename containing ML tensors.
+Recommended for SLD. File format: atom indices and 3×3 ML coupling tensor.</p>
+</dd>
+<dt>mml</dt><dd><p>Enable magneto-magnetic-lattice (MML) coupling. Followed by filename. Advanced feature.
+Modulates exchange via lattice displacement.</p>
+</dd>
+<dt>lll</dt><dd><p>Enable three-body lattice interactions (anharmonic). Advanced; rarely used.</p>
+</dd>
+<dt>ll_scale</dt><dd><p>Rescaling factor for all LL force constants (float, default 1.0). Useful for
+parametric studies or matching to experiments.</p>
+</dd>
+<dt>ll_phonopy</dt><dd><p>Read LL force constants from Phonopy output (phonopy.yaml). Followed by filename.
+Automatically parses Hessian matrix from Phonopy calculations.</p>
+</dd>
+<dt>ll_phonopycoordfile</dt><dd><p>Coordinate file for Phonopy read. Format: atomic positions and types for Phonopy parsing.</p>
+</dd>
+</dl>
+</section>
+<section id="damping-and-temperature-control">
+<h3>Damping and temperature control<a class="headerlink" href="#damping-and-temperature-control" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>lattdamp</dt><dd><p>Lattice damping (friction) coefficient <span class="math notranslate nohighlight">\(\gamma_{\text{lat}}\)</span> (fs⁻¹, default 0.0).
+Controls thermal relaxation of lattice. Typical range: 0.001–0.1 fs⁻¹.</p>
+</dd>
+<dt>do_velrsc</dt><dd><p>Enable velocity rescaling thermostat (Y/<em>N</em>). Rescales velocities to maintain constant T.</p>
+</dd>
+<dt>velrsc_step</dt><dd><p>Interval for velocity rescaling (integer steps, default 100).</p>
+</dd>
+<dt>velrsc_taut</dt><dd><p>Time constant for rescaling <span class="math notranslate nohighlight">\(\tau\)</span> (fs, default 100). Higher → gentler rescaling.</p>
+</dd>
+</dl>
+</section>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>initlatt</dt><dd><p>Lattice initialization mode:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: From external phonfile</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>: From lattice restart file (lattrestartfile)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code>: Equilibrium (zero displacement and velocity)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code>: Perturbed (random displacements for phonon generation)</p></li>
+</ul>
+</dd>
+<dt>initexc</dt><dd><p>Excitation amplitude for perturbed initialization (Å, default 0.01).</p>
+</dd>
+<dt>lattrestartfile</dt><dd><p>File with previous lattice configuration (displacements and velocities).
+For restarting from checkpoint.</p>
+</dd>
+<dt>lattroteul</dt><dd><p>Euler angle for lattice rotation (radians). Rotates entire lattice before simulation.</p>
+</dd>
+<dt>lattrotang</dt><dd><p>Rotation angles as 3-vector. Alternative to lattroteul for Cartesian specification.</p>
+</dd>
+</dl>
+</section>
+<section id="center-of-mass-control">
+<h3>Center-of-mass control<a class="headerlink" href="#center-of-mass-control" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>do_set_avrgp0</dt><dd><p>Enforce zero average momentum (Y/<em>N</em>). Prevents center-of-mass drift.</p>
+</dd>
+<dt>do_set_avrgu0</dt><dd><p>Enforce zero average displacement (Y/<em>N</em>). Fixes center-of-mass position.</p>
+</dd>
+</dl>
+</section>
+<section id="measurements-and-output">
+<h3>Measurements and output<a class="headerlink" href="#measurements-and-output" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>do_lavrg</dt><dd><p>Lattice averages (Y/<em>N</em>). Outputs <code class="docutils literal notranslate"><span class="pre">lattavrg.&lt;simid&gt;.out</span></code> with time-averaged
+displacements, velocities, kinetic energy.</p>
+</dd>
+<dt>do_proj_lavrg</dt><dd><p>Type-projected (sublattice) lattice averages (Y/<em>N</em>).</p>
+</dd>
+<dt>do_projch_lavrg</dt><dd><p>Chemical-species projected averages (Y/<em>N</em>).</p>
+</dd>
+<dt>lavrg_step</dt><dd><p>Interval for sampling lattice averages (integer steps, default 100).</p>
+</dd>
+<dt>lavrg_buff</dt><dd><p>Buffer size before writing (integer, default 10).</p>
+</dd>
+<dt>do_ltottraj</dt><dd><p>Full lattice trajectories (Y/<em>N</em>). Outputs <code class="docutils literal notranslate"><span class="pre">lattices.&lt;simid&gt;.out</span></code> with atomic
+displacements <span class="math notranslate nohighlight">\(\mathbf{u}_i(t)\)</span> at every step. Large file!</p>
+</dd>
+<dt>ltottraj_step</dt><dd><p>Sampling interval for trajectories (integer steps, default 1000).</p>
+</dd>
+</dl>
+</section>
+<section id="harmonic-corrections-advanced">
+<h3>Harmonic corrections (advanced)<a class="headerlink" href="#harmonic-corrections-advanced" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>do_n3</dt><dd><p>Include third-order (cubic anharmonic) corrections (Y/<em>N</em>). Advanced;
+requires cubic force constant tensors.</p>
+</dd>
+</dl>
+</section>
+<section id="numerical-options-advanced">
+<h3>Numerical options (advanced)<a class="headerlink" href="#numerical-options-advanced" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>mml_diag</dt><dd><p>MML coupling model: 0 (off), 1 (diagonal), 2 (full tensor).</p>
+</dd>
+<dt>mml_ene_opt</dt><dd><p>Energy optimization for MML (Y/<em>N</em>). Iteratively refines MML parameters.</p>
+</dd>
+<dt>do_ethermfield</dt><dd><p>Print thermal force contributions to file (Y/<em>N</em>). Debug feature.</p>
+</dd>
+<dt>do_prn_eeff</dt><dd><p>Print total effective lattice field to file (Y/<em>N</em>). For verification.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="output-files">
+<h2>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h2>
+<dl>
+<dt>lattavrg.&lt;simid&gt;.out</dt><dd><p>Lattice averages (if <code class="docutils literal notranslate"><span class="pre">do_lavrg</span> <span class="pre">Y</span></code>). Columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span>   <span class="o">&lt;</span><span class="n">u_x</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">u_y</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">u_z</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">v_x</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">v_y</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">v_z</span><span class="o">&gt;</span>    <span class="n">E_kin</span>    <span class="n">E_pot</span>
+</pre></div>
+</div>
+<p>Useful for tracking thermal expansion, acoustic phonons, lattice heating.</p>
+</dd>
+<dt>lattices.&lt;simid&gt;.out</dt><dd><p>Full lattice trajectories (if <code class="docutils literal notranslate"><span class="pre">do_ltottraj</span> <span class="pre">Y</span></code>). Format per step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># mstep   Natom</span>
+<span class="n">iatom</span>    <span class="n">u_x</span>       <span class="n">u_y</span>       <span class="n">u_z</span>       <span class="n">v_x</span>       <span class="n">v_y</span>       <span class="n">v_z</span>
+</pre></div>
+</div>
+<p>Large file; use for detailed analysis or visualization.</p>
+</dd>
+</dl>
+</section>
+<section id="example-setup-magnetic-thermal-expansion">
+<h2>Example setup: Magnetic-thermal expansion<a class="headerlink" href="#example-setup-magnetic-thermal-expansion" title="Permalink to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Spin-lattice dynamics: magnetic system with magnetostriction
+do_ld               Y
+
+! Lattice interactions from ab initio (Phonopy)
+ll_phonopy          phonopy.yaml
+ll_phonopycoordfile phonopy_coords.dat
+
+! Magneto-lattice coupling (magnetostriction)
+ml                  ml_couplings.dat
+
+! Damping and temperature
+lattdamp            0.01          ! fs⁻¹ (moderate friction)
+do_velrsc           Y
+velrsc_step         100
+velrsc_taut         100.0         ! fs
+
+! Initialization: equilibrium lattice, then heat
+initlatt            3
+do_set_avrgu0       Y
+do_set_avrgp0       Y
+
+! Measurements
+do_lavrg            Y
+lavrg_step          50
+do_ltottraj         N             ! Turn on only for short test runs
+</pre></div>
+</div>
+</section>
+<section id="example-setup-phonon-magnon-coupling-sld-3tm">
+<h2>Example setup: Phonon-magnon coupling (SLD + 3TM)<a class="headerlink" href="#example-setup-phonon-magnon-coupling-sld-3tm" title="Permalink to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Combined ultrafast demagnetization + lattice heating
+do_ld               Y
+do_3tm              Y             ! Couple with 3TM
+
+! LL and ML interactions
+ll                  ll_ni.dat
+ml                  ml_ni.dat
+
+! Temperature and damping
+lattdamp            0.05
+temp_spin_init      300.0
+temp_latt_init      300.0
+temp_elec_init      300.0
+
+! 3TM pulse coupling lattice heating
+P_pulse             100.0
+t0_pulse            1.0e-12
+sigma_pulse         2.12e-14
+
+! Output: lattice heating timescale
+do_lavrg            Y
+lavrg_step          10
+</pre></div>
+</div>
+</section>
+<section id="physical-examples-and-applications">
+<h2>Physical examples and applications<a class="headerlink" href="#physical-examples-and-applications" title="Permalink to this heading"></a></h2>
+<p><strong>Thermal expansion:</strong></p>
+<p>Magnetic moments create local magnetostriction via ML coupling. When spins
+heat (disorder increases) as T rises, the coupling <span class="math notranslate nohighlight">\(F^{\text{ML}} = -M \mathbf{m}\)</span>
+weakens, allowing lattice to expand. Effective negative thermal expansion coefficient
+near Curie point.</p>
+<p><strong>Phonon softening near magnetic transitions:</strong></p>
+<p>Exchange modulation through MML changes effective LL force constants dynamically.
+Near the critical temperature, certain phonon branches soften, indicating proximity
+to spin-disorder transition.</p>
+<p><strong>Ultrafast demagnetization + lattice dynamics:</strong></p>
+<p>When combined with 3TM, the hot electron bath (<span class="math notranslate nohighlight">\(T_e \gg T_l\)</span>) drives fast
+spin disorder. ML coupling transfers this to the lattice, causing rapid thermal
+expansion and phonon heating on 100 fs timescale—observable in time-resolved
+X-ray or electron diffraction.</p>
+<p><strong>Magnetoelastic domains:</strong></p>
+<p>SLD can simulate equilibrium magnetic and elastic domain coexistence. Competing
+LL elastic energy and ML magnetoelastic energy create complex multidomain patterns
+at low T.</p>
+</section>
+<section id="computational-performance">
+<h2>Computational performance<a class="headerlink" href="#computational-performance" title="Permalink to this heading"></a></h2>
+<p><strong>Cost scaling:</strong></p>
+<ul class="simple">
+<li><p>SLD adds ~2–3× overhead vs. pure SD (force calculations <span class="math notranslate nohighlight">\(O(N\times N_{\text{neigh}})\)</span>)</p></li>
+<li><p>Lattice trajectory output (<code class="docutils literal notranslate"><span class="pre">do_ltottraj</span> <span class="pre">Y</span></code>) adds significant I/O; use sparingly</p></li>
+<li><p>Thermal noise generation (<code class="docutils literal notranslate"><span class="pre">lattdamp</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>) adds ~10–20% CPU overhead</p></li>
+</ul>
+<p><strong>Memory:</strong></p>
+<ul class="simple">
+<li><p>Additional arrays: displacements, velocities, accelerations <span class="math notranslate nohighlight">\(\sim 3 \times 3 \times N_{\text{atom}}\)</span></p></li>
+<li><p>Force constant tensors from LL file: <span class="math notranslate nohighlight">\(N_{\text{pairs}} \times 6\)</span> floats</p></li>
+</ul>
+<p><strong>Recommended timesteps:</strong></p>
+<ul class="simple">
+<li><p>LD only (<code class="docutils literal notranslate"><span class="pre">do_ld</span> <span class="pre">Y,</span> <span class="pre">do_sd</span> <span class="pre">N</span></code>): <span class="math notranslate nohighlight">\(\Delta t = 1\)</span>–5 fs (lattice ~0.1 THz)</p></li>
+<li><p>SLD (<code class="docutils literal notranslate"><span class="pre">do_ld</span> <span class="pre">Y,</span> <span class="pre">do_sd</span> <span class="pre">Y</span></code>): <span class="math notranslate nohighlight">\(\Delta t = 0.1\)</span>–1 fs (magnetic ~10 THz ≫ lattice)</p></li>
+<li><p>Ultra-SLD with 3TM: <span class="math notranslate nohighlight">\(\Delta t \lesssim 1\ \text{fs}\)</span> (capture electron heating ~100 fs)</p></li>
+</ul>
+</section>
+<section id="related-keywords-and-cross-references">
+<h2>Related keywords and cross-references<a class="headerlink" href="#related-keywords-and-cross-references" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">do_3tm</span></code>: Couple lattice heating to ultrafast electron dynamics (see <a class="reference internal" href="../../stimuli/temperature-3tm/"><span class="doc">Three-temperature models</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lattdamp</span></code>: Lattice friction; compare with <code class="docutils literal notranslate"><span class="pre">damping</span></code> (magnetic Gilbert damping)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temp</span></code>: Global temperature for stochastic forces</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mensemble</span></code>: Number of replicas; important for averaging out thermal noise in lattice</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h1>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#hellsvik2019" id="id1"><span>[Hellsvik2019]</span></a> - General method for atomistic spin-lattice dynamics with first-principles accuracy</p></li>
+<li><p><a class="reference internal" href="../../references/#eriksson2017" id="id2"><span>[Eriksson2017]</span></a> - Atomistic spin dynamics foundations and applications</p></li>
+<li><p><a class="reference internal" href="../../references/#ma2012" id="id3"><span>[Ma2012]</span></a> - Spin-lattice-electron dynamics simulations of magnetic materials</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../kmc/" class="btn btn-neutral float-left" title="Kinetic Monte Carlo (KMC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../multiscale/" class="btn btn-neutral float-right" title="Multiscale atomistic-continuum simulations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

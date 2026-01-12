@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monte Carlo simulations &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Wang-Landau sampling" href="../wang-landau/" />
+    <link rel="prev" title="Stochastic Equation Solvers" href="../solvers/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Monte Carlo simulations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/monte-carlo.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="monte-carlo-simulations">
+<h1>Monte Carlo simulations<a class="headerlink" href="#monte-carlo-simulations" title="Permalink to this heading"></a></h1>
+<section id="parameters-for-monte-carlo-simulations-and-thermal-equilibration">
+<h2>Parameters for Monte Carlo simulations and thermal equilibration<a class="headerlink" href="#parameters-for-monte-carlo-simulations-and-thermal-equilibration" title="Permalink to this heading"></a></h2>
+<p>The UppASD code supports multiple Monte Carlo (MC) algorithms for thermal
+equilibration and equilibrium phase studies of atomistic magnetic systems. The
+implementation includes <a class="reference internal" href="../../references/#landau2014" id="id1"><span>[Landau2014]</span></a>, <a class="reference internal" href="../../references/#binney1992" id="id2"><span>[Binney1992]</span></a>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mc-metropolis"><span class="std std-ref">Metropolis algorithm for general Heisenberg and Ising models</span></a></p></li>
+<li><p><a class="reference internal" href="#mc-heatbath"><span class="std std-ref">Heat bath (Glauert) algorithm for improved rejection-free sampling</span></a></p></li>
+<li><p><a class="reference internal" href="#mc-glauber"><span class="std std-ref">Glauber dynamics for non-equilibrium relaxation studies</span></a></p></li>
+<li><p><a class="reference internal" href="#mc-spinice"><span class="std std-ref">Spin-ice and loop algorithms for constrained systems</span></a></p></li>
+<li><p><a class="reference internal" href="#mc-lsf-induced"><span class="std std-ref">Local spin fluctuation (LSF) and induced moment coupling</span></a></p></li>
+</ul>
+<p>All algorithms operate through single-spin or multi-spin updates evaluated with
+the full interatomic Hamiltonian, including exchange, anisotropy, dipolar, and
+relativistic interactions. Monte Carlo is essential for accurate thermodynamic
+measurements and phase transition characterization <a class="reference internal" href="../../references/#binder1981" id="id3"><span>[Binder1981]</span></a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The code automatically enables cumulant measurements (<code class="docutils literal notranslate"><span class="pre">do_cumu</span> <span class="pre">Y</span></code>) for all
+Monte Carlo simulations, as equilibrium statistical mechanics requires
+comprehensive sampling of magnetization fluctuations for accurate thermodynamic
+properties and critical behavior analysis.</p>
+</div>
+<section id="canonical-monte-carlo-acceptance-criterion">
+<h3>Canonical Monte Carlo acceptance criterion<a class="headerlink" href="#canonical-monte-carlo-acceptance-criterion" title="Permalink to this heading"></a></h3>
+<p>For standard single-spin flip Monte Carlo, the <strong>Metropolis</strong> acceptance
+probability is <a class="reference internal" href="../../references/#metropolis1953" id="id4"><span>[Metropolis1953]</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[P_{\mathrm{acc}} = \min(1, \exp(-\beta \Delta E)),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta = 1/(k_B T)\)</span> is the inverse temperature</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta E = E_{\mathrm{trial}} - E_{\mathrm{current}}\)</span> is the energy difference</p></li>
+<li><p><span class="math notranslate nohighlight">\(k_B\)</span> is Boltzmann’s constant</p></li>
+</ul>
+<p>For the <strong>Heat bath</strong> (or Glauert) algorithm, the acceptance probability depends
+on the total effective field <a class="reference internal" href="../../references/#glauert1974" id="id5"><span>[Glauert1974]</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[P_{\mathrm{acc}} = \frac{1}{1 + \exp(\beta \Delta E)},\]</div>
+<p>which eliminates rejections and provides better thermal statistics, particularly
+near critical temperatures.</p>
+<p>The <strong>Glauber dynamics</strong> algorithm uses:</p>
+<div class="math notranslate nohighlight">
+\[P_{\mathrm{acc}} = \frac{1}{1 + \exp(\beta \Delta E)},\]</div>
+<p>identical to heat bath but historically derived from Brownian dynamics <a class="reference internal" href="../../references/#glauber1963" id="id6"><span>[Glauber1963]</span></a>.</p>
+</section>
+<section id="metropolis-algorithm">
+<span id="mc-metropolis"></span><h3>Metropolis algorithm<a class="headerlink" href="#metropolis-algorithm" title="Permalink to this heading"></a></h3>
+<p>The Metropolis algorithm generates trial moment configurations by random rotation
+according to the Hinzke-Nowak update scheme <a class="reference internal" href="../../references/#hinzke2000" id="id7"><span>[Hinzke2000]</span></a>:</p>
+<dl class="simple">
+<dt>Mode M</dt><dd><p>Select this mode in <code class="docutils literal notranslate"><span class="pre">mode</span></code> parameter to enable Metropolis algorithm. One random
+spin per atom is attempted each MC sweep. Trial configurations are generated as a
+mixture of uniform random rotations (probability 1/3), Gaussian rotations around
+current direction (1/3), and spin flips (1/3). After evaluation via Metropolis
+criterion, the spin is updated or rejected.</p>
+</dd>
+</dl>
+<p>The trial moment direction is chosen uniformly on the unit sphere with
+<span class="math notranslate nohighlight">\(\approx 33\%\)</span> probability, or via a Gaussian perturbation (thermal width
+<span class="math notranslate nohighlight">\(\delta \propto T^{0.2}\)</span>) with same probability, or via antipodal flip
+(remaining 33%). This mixed scheme provides efficient sampling across all
+temperature regimes without manual tuning of step sizes.</p>
+<p>A full MC <strong>sweep</strong> consists of one trial flip attempt per atom averaged over
+all atoms in the system.</p>
+</section>
+<section id="heat-bath-algorithm">
+<span id="mc-heatbath"></span><h3>Heat bath algorithm<a class="headerlink" href="#heat-bath-algorithm" title="Permalink to this heading"></a></h3>
+<p>The heat bath (also called microcanonical ensemble or “mcheatbath”) algorithm
+performs rejection-free Monte Carlo by drawing the new moment direction directly
+from the Boltzmann distribution of the effective magnetic field <a class="reference internal" href="../../references/#glauert1974" id="id8"><span>[Glauert1974]</span></a>.</p>
+<dl class="simple">
+<dt>Mode H</dt><dd><p>Select this mode to enable heat bath algorithm. Computes the total effective field
+acting on each spin and samples the new moment orientation directly from the
+canonical distribution. Provides higher acceptance rates than Metropolis, typically
+leading to faster equilibration. Particularly effective near phase transitions where
+energy barriers are significant.</p>
+</dd>
+</dl>
+<p><strong>Advantages of heat bath over Metropolis:</strong></p>
+<ul class="simple">
+<li><p>Zero rejection rate (all spins are updated)</p></li>
+<li><p>Better equilibration near critical temperatures</p></li>
+<li><p>Reduced autocorrelation times in equilibrium</p></li>
+<li><p>More accurate critical exponents in finite-size scaling</p></li>
+</ul>
+<p><strong>Computational cost:</strong> Slightly higher per-spin due to Boltzmann sampling but
+offset by lack of rejections.</p>
+</section>
+<section id="glauber-dynamics-non-equilibrium-relaxation">
+<span id="mc-glauber"></span><h3>Glauber dynamics (non-equilibrium relaxation)<a class="headerlink" href="#glauber-dynamics-non-equilibrium-relaxation" title="Permalink to this heading"></a></h3>
+<p>The Glauber algorithm (mode D) uses the Glauber acceptance criterion to study
+non-equilibrium relaxation and aging in magnetic systems <a class="reference internal" href="../../references/#glauber1963" id="id9"><span>[Glauber1963]</span></a>.</p>
+<dl class="simple">
+<dt>Mode D</dt><dd><p>Select this mode for Glauber dynamics, implementing relaxation toward equilibrium.
+Useful for non-equilibrium studies, aging, and transient dynamics. Related to
+Langevin spin dynamics in the heavily overdamped limit with time rescaled by
+microscopic rates.</p>
+</dd>
+</dl>
+<p>Glauber dynamics provides access to:</p>
+<ul class="simple">
+<li><p>Aging exponents and effective temperature in supercooled states</p></li>
+<li><p>Coarsening dynamics during phase separation</p></li>
+<li><p>Relaxation times in glassy systems</p></li>
+</ul>
+</section>
+<section id="spin-ice-and-loop-algorithms">
+<span id="mc-spinice"></span><h3>Spin-ice and loop algorithms<a class="headerlink" href="#spin-ice-and-loop-algorithms" title="Permalink to this heading"></a></h3>
+<p>For constrained model systems (spin ice with ice-rule constraints, frustrated
+dipolar lattices), the loop algorithm provides efficient global updates that
+respect conservation laws <a class="reference internal" href="../../references/#evertz1993" id="id10"><span>[Evertz1993]</span></a>.</p>
+<dl class="simple">
+<dt>Mode L</dt><dd><p>Select for loop algorithm or spin-ice updates. Generates large-scale correlated
+moves respecting the constraint structure. Essential for systems with frustration
+where single-spin flips are inefficient. Automatically invokes spin-ice
+(<code class="docutils literal notranslate"><span class="pre">mc_update_spinice</span></code>) routines.</p>
+</dd>
+</dl>
+<p>The loop algorithm is particularly effective for:</p>
+<ul class="simple">
+<li><p>Spin-ice models with ice-rule constraints</p></li>
+<li><p>Frustrated lattices (triangular, kagomé)</p></li>
+<li><p>Artificial spin ice structures</p></li>
+<li><p>Systems with topological defects (monopoles, vortices)</p></li>
+</ul>
+</section>
+<section id="ising-model-mode">
+<span id="mc-ising"></span><h3>Ising model mode<a class="headerlink" href="#ising-model-mode" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Mode I</dt><dd><p>Select for Ising model dynamics. Restricts spin orientations to discrete values
+(up/down along easy axis) and uses specialized flip routines (<code class="docutils literal notranslate"><span class="pre">Ising_random_flip</span></code>).
+More efficient than full Heisenberg sampling for systems where anisotropy freezes
+out transverse fluctuations.</p>
+</dd>
+</dl>
+</section>
+<section id="local-spin-fluctuation-lsf-and-induced-moments">
+<span id="mc-lsf-induced"></span><h3>Local spin fluctuation (LSF) and induced moments<a class="headerlink" href="#local-spin-fluctuation-lsf-and-induced-moments" title="Permalink to this heading"></a></h3>
+<p>The code supports two advanced MC modes for treating electronic and magnetic
+disorder:</p>
+<ol class="arabic simple">
+<li><p><strong>Local Spin Fluctuation (LSF)</strong> <a class="reference internal" href="../../references/#ruban2004" id="id11"><span>[Ruban2004]</span></a>: Models the electronic spin
+fluctuations by allowing the magnetic moment magnitude at each site to vary
+according to a specified distribution of configurations. Implemented in
+<code class="docutils literal notranslate"><span class="pre">mc_update_LSF</span></code>.</p></li>
+<li><p><strong>Induced Moments</strong> <a class="reference internal" href="../../references/#ebert2010" id="id12"><span>[Ebert2010]</span></a>: Treats systems with induced magnetic moments
+on non-magnetic sites, coupled self-consistently to the fixed moments.
+Implemented in <code class="docutils literal notranslate"><span class="pre">mc_update_ind_mom</span></code>.</p></li>
+</ol>
+<dl class="simple">
+<dt>do_lsf</dt><dd><p>Enable local spin fluctuation calculations (Y=yes, <em>N=no</em>). When enabled, each
+atom can sample multiple magnetic moment magnitudes from a configuration list. The
+sampling weights are determined by internal energy. Requires specification of
+<code class="docutils literal notranslate"><span class="pre">conf_num</span></code> (number of configurations per site). Output includes averaged energies
+for each configuration.</p>
+</dd>
+<dt>conf_num</dt><dd><p>Number of magnetic moment magnitude configurations per atom in LSF mode (integer,
+≥ 1). Typical values: 1–10. Each configuration represents an electronic state with
+different magnetic moment. Higher values improve description of disorder but
+increase computational cost. Default: 1 (pure Heisenberg model, no fluctuations).</p>
+</dd>
+<dt>lsf_metric</dt><dd><p>Metric for phase space integration in LSF (1=Murata-Doniach, 2=Jacobian, <em>default
+1</em>). Determines the mathematical weighting when transforming between moment
+magnitude and energy probability distributions.</p>
+</dd>
+<dt>lsf_window</dt><dd><p>Range of moment variation in LSF as fraction of average moment (0 &lt; value ≤ 1,
+default 0.2). Sets the width of allowed moment fluctuations around the nominal
+value. Larger windows allow more magnetic disorder but may reduce thermodynamic
+stability.</p>
+</dd>
+<dt>lsf_interpolate</dt><dd><p>Interpolate LSF energy between configurations (Y=yes, <em>N=no</em>, default N). When
+enabled, energies are smoothly interpolated to improve accuracy of derived
+quantities (specific heat, susceptibility).</p>
+</dd>
+<dt>lsf_field</dt><dd><p>Choose field for LSF energy calculation (L=local field on atom, T=total system
+field, default T). Local field improves accuracy for dilute alloys; total field
+for concentrated systems.</p>
+</dd>
+<dt>exc_inter</dt><dd><p>Interpolate exchange coupling between ferromagnetic (FM) and disordered local
+moment (DLM) limits (Y=yes, <em>N=no</em>, default N). Used in combination with LSF to
+smoothly transition exchange strength based on local moment orientation.</p>
+</dd>
+</dl>
+</section>
+<section id="trial-spin-selection-and-update-scheme">
+<h3>Trial spin selection and update scheme<a class="headerlink" href="#trial-spin-selection-and-update-scheme" title="Permalink to this heading"></a></h3>
+<p>Each Monte Carlo sweep consists of the following stages:</p>
+<p><strong>1. Random atom sequence:</strong> Generate a random permutation of atoms using
+<code class="docutils literal notranslate"><span class="pre">choose_random_atom_x</span></code>. This ensures each atom is attempted exactly once per
+sweep, preventing artificial correlations from sequential updating.</p>
+<p><strong>2. Trial move generation:</strong> Generate trial moment directions using
+<code class="docutils literal notranslate"><span class="pre">choose_random_flip</span></code> (Metropolis/Glauber) or geometry-dependent sampling (heat bath).</p>
+<p><strong>3. Energy calculation:</strong> Compute energy difference <span class="math notranslate nohighlight">\(\Delta E\)</span> for the
+trial configuration using <code class="docutils literal notranslate"><span class="pre">calculate_energy</span></code>. This includes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Heisenberg exchange interactions</p></li>
+<li><p>Dzyaloshinskii-Moriya interactions (DMI)</p></li>
+<li><p>Pseudo-dipolar interactions</p></li>
+<li><p>Biquadratic exchange</p></li>
+<li><p>Scalar chirality</p></li>
+<li><p>Symmetric anisotropic exchange</p></li>
+<li><p>Magnetic anisotropy (uniaxial, cubic, combined)</p></li>
+<li><p>Dipolar interactions (brute-force or macrocell-accelerated)</p></li>
+<li><p>External magnetic fields</p></li>
+</ul>
+</div></blockquote>
+<p><strong>4. Acceptance decision:</strong> Apply acceptance criterion (Metropolis, heat bath, or
+Glauber) via <code class="docutils literal notranslate"><span class="pre">flip_a</span></code>, <code class="docutils literal notranslate"><span class="pre">flip_g</span></code>, or <code class="docutils literal notranslate"><span class="pre">flip_h</span></code> routines.</p>
+<p><strong>5. Update:</strong> If accepted, update moment vectors <code class="docutils literal notranslate"><span class="pre">emom</span></code> and magnitudes <code class="docutils literal notranslate"><span class="pre">emomM</span></code>.</p>
+</section>
+<section id="energy-calculation-and-hamiltonian-interactions">
+<h3>Energy calculation and Hamiltonian interactions<a class="headerlink" href="#energy-calculation-and-hamiltonian-interactions" title="Permalink to this heading"></a></h3>
+<p>The total energy for a configuration is <a class="reference internal" href="../../references/#eriksson2017" id="id13"><span>[Eriksson2017]</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[E = -\frac{1}{2}\sum_{i,j} J_{ij} \mathbf{m}_i \cdot \mathbf{m}_j
+- \sum_i \mathbf{B}_{\mathrm{ext}} \cdot \mathbf{m}_i
++ \sum_i E_{\mathrm{ani}}(\mathbf{m}_i)
++ E_{\mathrm{DM}} + E_{\mathrm{DIP}} + \ldots\]</div>
+<p>The energy difference only requires summing over neighbors of the flipped atom
+(<code class="docutils literal notranslate"><span class="pre">nlistsize</span></code>), reducing computational cost from O(N²) to O(1) per update.</p>
+<p><strong>Supported interactions:</strong></p>
+<ul class="simple">
+<li><p><strong>Exchange:</strong> Isotropic Heisenberg or exchange tensor (SKKR style)</p></li>
+<li><p><strong>Anisotropy:</strong> Uniaxial (first and second order K₁, K₂), cubic, or combined</p></li>
+<li><p><strong>Relativistic:</strong> Dzyaloshinskii-Moriya, pseudo-dipolar, scalar chirality</p></li>
+<li><p><strong>Higher order:</strong> Biquadratic exchange, four-spin ring exchange</p></li>
+<li><p><strong>Dipolar:</strong> Brute-force or FFT-accelerated macrocell method</p></li>
+<li><p><strong>Induced moments:</strong> Self-consistent coupling to non-magnetic sites</p></li>
+</ul>
+</section>
+<section id="temperature-control-and-thermodynamic-sampling">
+<h3>Temperature control and thermodynamic sampling<a class="headerlink" href="#temperature-control-and-thermodynamic-sampling" title="Permalink to this heading"></a></h3>
+</section>
+<section id="id14">
+<h3>Temperature control and thermodynamic sampling<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Temp</dt><dd><p>Simulation temperature in Kelvin (real number). Controls the Metropolis acceptance
+probability via <span class="math notranslate nohighlight">\(\beta = 1/(k_B T)\)</span>. Lower temperatures require larger energy
+barriers to be accepted, leading to slower equilibration but more accurate ground
+state sampling. Temperature can be swept externally by running multiple simulations
+at different <code class="docutils literal notranslate"><span class="pre">Temp</span></code> values.</p>
+</dd>
+<dt>compensate_drift</dt><dd><p>Enable quantum heat bath (QHB) thermostat for improved temperature control
+(Y=yes, <em>N=no</em>). When enabled, introduces a Nosé-Hoover-type thermostat that
+rescales effective temperature to account for drift in energy-based thermostats.
+Requires specification of <code class="docutils literal notranslate"><span class="pre">temprescale</span></code> and <code class="docutils literal notranslate"><span class="pre">temprescalegrad</span></code>.</p>
+</dd>
+<dt>temprescale</dt><dd><p>Temperature rescaling factor for QHB (real, typically 0.1–1.0). Multiplicative
+factor in effective temperature <span class="math notranslate nohighlight">\(T_{\mathrm{eff}} = T_{\mathrm{rescale}}\times
+T + T_{\mathrm{rescalegrad}} \times t\)</span>. Only used if <code class="docutils literal notranslate"><span class="pre">compensate_drift</span> <span class="pre">Y</span></code>.</p>
+</dd>
+<dt>temprescalegrad</dt><dd><p>Temperature rescaling gradient for QHB thermostat (real, typically ≤ 0.01 K/step).
+Rate of change of effective temperature during simulation. Allows temperature
+scheduling without external modification of input files.</p>
+</dd>
+</dl>
+</section>
+<section id="simulated-annealing">
+<span id="mc-annealing"></span><h3>Simulated annealing<a class="headerlink" href="#simulated-annealing" title="Permalink to this heading"></a></h3>
+<p>Simulated annealing gradually reduces temperature to drive the system toward its
+ground state or metastable configurations <a class="reference internal" href="../../references/#kirkpatrick1983" id="id15"><span>[Kirkpatrick1983]</span></a>. The UppASD code
+supports multi-phase annealing schedules where temperature and iteration count
+are specified for each phase independently.</p>
+<dl class="simple">
+<dt>ip_mcanneal</dt><dd><p>Number of temperature phases for simulated annealing schedule (integer, ≥ 0).
+Set to 0 to disable annealing (default). When set to <span class="math notranslate nohighlight">\(N &gt; 0\)</span>, the code
+expects <span class="math notranslate nohighlight">\(N\)</span> pairs of input lines following this keyword, each containing
+<code class="docutils literal notranslate"><span class="pre">(mcnstep_i,</span> <span class="pre">Temp_i)</span></code>. The simulation runs for <code class="docutils literal notranslate"><span class="pre">mcnstep_i</span></code> Monte Carlo
+sweeps at temperature <code class="docutils literal notranslate"><span class="pre">Temp_i</span></code> in phase <span class="math notranslate nohighlight">\(i\)</span>.</p>
+</dd>
+</dl>
+<p><strong>Annealing schedule format:</strong></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ip_mcanneal</span></code> is set to 3, the input file should contain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ip_mcanneal         3
+5000  500.0          ! Phase 1: 5000 sweeps at 500 K
+5000  250.0          ! Phase 2: 5000 sweeps at 250 K
+10000  50.0          ! Phase 3: 10000 sweeps at 50 K
+</pre></div>
+</div>
+<p>The temperature is held constant throughout each phase, then switched discretely
+to the next phase temperature. For continuous temperature reduction, divide the
+annealing into more phases with smaller temperature steps.</p>
+<p><strong>Annealing strategy guidance:</strong></p>
+<ul class="simple">
+<li><p><strong>Initial temperature:</strong> Should be high enough to overcome energy barriers
+(typically 2–5 times estimated critical temperature)</p></li>
+<li><p><strong>Cooling rate:</strong> Slower cooling (more phases, smaller <span class="math notranslate nohighlight">\(\Delta T\)</span>) generally
+gives better results but increases wall-clock time. A logarithmic schedule
+<span class="math notranslate nohighlight">\(T_i \propto \log(i)\)</span> is often effective</p></li>
+<li><p><strong>Final temperature:</strong> Set to target temperature for ground state or equilibrium
+measurement. For zero-temperature structures, use a small finite temperature
+(e.g., 1 K) for numerical stability</p></li>
+<li><p><strong>Number of sweeps per phase:</strong> Should be sufficient for system to relax at each
+temperature; typical values are <span class="math notranslate nohighlight">\(\geq N_{\text{atom}}\)</span> sweeps per phase</p></li>
+</ul>
+<p><strong>Example 10-phase logarithmic annealing schedule (1000 K → 10 K):</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ip_mcanneal         10
+2000  1000.0
+2000  562.0
+2000  316.0
+2000  178.0
+2000  100.0
+2000  56.2
+2000  31.6
+2000  17.8
+2000  10.0
+5000  10.0          ! Extra sweeps at final temperature for convergence
+</pre></div>
+</div>
+<p><strong>Important notes on annealing:</strong></p>
+<ul class="simple">
+<li><p>Annealing schedules are typically <strong>system and Hamiltonian specific</strong>; optimal
+cooling rates should be determined empirically for your problem</p></li>
+<li><p>Cumulant measurements are automatically enabled during annealing but may not be
+meaningful during temperature ramps; analyze final phase measurements separately</p></li>
+<li><p>Multiple independent annealing runs with different random seeds should be
+performed to assess solution quality and variance</p></li>
+<li><p>For complex landscapes with many metastable states, consider escaping local
+minima using parallel tempering (<code class="docutils literal notranslate"><span class="pre">Mensemble</span></code> &gt; 1) instead of single-run annealing</p></li>
+</ul>
+</section>
+<section id="output-and-statistical-measurements">
+<h3>Output and statistical measurements<a class="headerlink" href="#output-and-statistical-measurements" title="Permalink to this heading"></a></h3>
+<p>All Monte Carlo simulations automatically enable cumulant measurements (equivalent
+to <code class="docutils literal notranslate"><span class="pre">do_cumu</span> <span class="pre">Y</span></code>) regardless of input setting. This is essential because:</p>
+<ul class="simple">
+<li><p>Equilibrium MC generates uncorrelated samples from the Boltzmann distribution</p></li>
+<li><p>Binder cumulants provide unbiased phase transition characterization</p></li>
+<li><p>Magnetic susceptibility from fluctuations is automatically available</p></li>
+<li><p>Specific heat is computed from energy fluctuations</p></li>
+</ul>
+<p>Additional output is controlled by standard measurement keywords:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">do_avrg</span> <span class="pre">Y</span></code> enables time-averaged magnetization output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">avrg_step</span></code>, <code class="docutils literal notranslate"><span class="pre">avrg_buff</span></code> control sampling frequency and buffering</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plotenergy</span> <span class="pre">1</span></code> computes and outputs energy components for specific heat</p></li>
+</ul>
+<p>See <a class="reference internal" href="../../observables/averages/"><span class="doc">Averages and cumulants</span></a> for detailed measurement configuration.</p>
+</section>
+<section id="notes-and-best-practices">
+<h3>Notes and best practices<a class="headerlink" href="#notes-and-best-practices" title="Permalink to this heading"></a></h3>
+<p><strong>Choosing an algorithm:</strong></p>
+<ul class="simple">
+<li><p><strong>Metropolis (M):</strong> Simplest, most flexible; good for prototyping and low temperatures</p></li>
+<li><p><strong>Heat bath (H):</strong> Better rejection-free sampling; recommended for critical phenomena</p></li>
+<li><p><strong>Glauber (D):</strong> For non-equilibrium studies and relaxation analysis</p></li>
+<li><p><strong>Spin-ice (L):</strong> Essential for constrained systems; uses different acceptance rules</p></li>
+<li><p><strong>Ising (I):</strong> For pure Ising models with strong uniaxial anisotropy</p></li>
+</ul>
+<p><strong>Equilibration:</strong></p>
+<ul class="simple">
+<li><p>Run for <span class="math notranslate nohighlight">\(\gtrsim N_{\text{atom}} \times 100\)</span> sweeps before measuring</p></li>
+<li><p>Monitor cumulant output for convergence of <span class="math notranslate nohighlight">\(\langle m^2 \rangle\)</span> and <span class="math notranslate nohighlight">\(\langle m^4 \rangle\)</span></p></li>
+<li><p>For systems near <span class="math notranslate nohighlight">\(T_c\)</span>, increase equilibration time proportionally to <span class="math notranslate nohighlight">\(L^z\)</span> where <span class="math notranslate nohighlight">\(L\)</span> is system size</p></li>
+</ul>
+<p><strong>Statistical accuracy:</strong></p>
+<ul class="simple">
+<li><p>Perform multiple independent runs with different random seeds</p></li>
+<li><p>Use ensemble averaging (<code class="docutils literal notranslate"><span class="pre">Mensemble</span></code> &gt; 1) for reduced variance</p></li>
+<li><p>For finite-size scaling, run multiple system sizes at same temperature</p></li>
+</ul>
+<p><strong>Computational efficiency:</strong></p>
+<ul class="simple">
+<li><p>Heat bath typically 2–3× more expensive per sweep than Metropolis</p></li>
+<li><p>Use macrocell dipolar acceleration (<code class="docutils literal notranslate"><span class="pre">do_dip</span> <span class="pre">2</span></code>) for large systems</p></li>
+<li><p>Reduce measurement frequency (larger <code class="docutils literal notranslate"><span class="pre">avrg_step</span></code>) to minimize I/O overhead</p></li>
+</ul>
+</section>
+<section id="example-inpsd-dat-snippet">
+<h3>Example inpsd.dat snippet<a class="headerlink" href="#example-inpsd-dat-snippet" title="Permalink to this heading"></a></h3>
+<p><strong>Basic Metropolis equilibration:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Monte Carlo equilibration
+mode          M                ! Metropolis algorithm
+Temp          300.0            ! Temperature 300 K
+mcnstep       10000            ! 10,000 MC sweeps
+
+! Enable measurements
+do_avrg       Y
+avrg_step     10               ! Sample every 10 sweeps
+cumu_buff     10               ! Cumulants output every 100 sweeps
+</pre></div>
+</div>
+<p><strong>Heat bath with fast equilibration:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mode          H                ! Heat bath (rejection-free)
+Temp          1.0              ! Reduced units
+mcnstep       5000             ! Fewer sweeps needed due to better sampling
+
+! Cumulant measurements (automatic)
+plotenergy    1                ! Compute energy for specific heat
+do_avrg       Y
+avrg_step     20
+</pre></div>
+</div>
+<p><strong>Temperature-dependent phase transition study:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Run at multiple temperatures for phase diagram
+mode          H
+Temp          2.5              ! Near critical temperature
+mcnstep       50000            ! Long runs for accuracy
+
+! High-resolution cumulant measurement
+do_avrg       Y
+avrg_step     100
+cumu_buff     50               ! Output every 5000 sweeps
+
+! Finite-size scaling
+plotenergy    1
+do_cumu       Y                ! Redundant but explicit
+</pre></div>
+</div>
+<p><strong>Local spin fluctuation with disordered moments:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mode          M
+Temp          200.0
+mcnstep       20000
+
+! Enable LSF disorder
+do_lsf        Y
+conf_num      4                ! 4 moment configurations per site
+lsf_window    0.25             ! ±25% moment variation
+lsf_field     L                ! Use local field
+
+plotenergy    1                ! Monitor disorder effects
+do_avrg       Y
+</pre></div>
+</div>
+<p><strong>Induced moments in partially filled systems:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mode          M
+Temp          100.0
+mcnstep       15000
+
+! Induced moments on non-magnetic sites
+ind_mom_flag  Y                ! Enable induced moment coupling
+ind_mom_type  2                ! Ebert-type treatment
+
+do_avrg       Y
+avrg_step     50
+</pre></div>
+</div>
+</section>
+<section id="related-keywords-and-cross-references">
+<h3>Related keywords and cross-references<a class="headerlink" href="#related-keywords-and-cross-references" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Temp</span></code>: Temperature in Kelvin (see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mcnstep</span></code>: Number of Monte Carlo sweeps (see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mensemble</span></code>: Number of ensemble replicas for parallel tempering (see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_avrg</span></code>, <code class="docutils literal notranslate"><span class="pre">avrg_step</span></code>: Average magnetization measurements (see <a class="reference internal" href="../../observables/averages/"><span class="doc">Averages and cumulants</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_cumu</span></code>: Cumulant measurements (automatic for MC; see <a class="reference internal" href="../../observables/averages/"><span class="doc">Averages and cumulants</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plotenergy</span></code>: Energy component output for specific heat (see <a class="reference internal" href="../../input/observables/"><span class="doc">Observables and measurements</span></a>)</p></li>
+<li><p>Hamiltonian interactions: exchange, anisotropy, dipolar (see <a class="reference internal" href="../../input/hamiltonian/"><span class="doc">Hamiltonian parameters</span></a>)</p></li>
+</ul>
+<p>Output files use the simulation identifier <code class="docutils literal notranslate"><span class="pre">simid</span></code> (see <a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a>).</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#landau2014" id="id16"><span>[Landau2014]</span></a> - Guide to Monte Carlo simulation in statistical physics</p></li>
+<li><p><a class="reference internal" href="../../references/#binney1992" id="id17"><span>[Binney1992]</span></a> - Theory of critical phenomena and renormalization group</p></li>
+<li><p><a class="reference internal" href="../../references/#metropolis1953" id="id18"><span>[Metropolis1953]</span></a> - Equation of state calculations by fast computing machines</p></li>
+<li><p><a class="reference internal" href="../../references/#glauert1974" id="id19"><span>[Glauert1974]</span></a> - Nonuniversal critical dynamics in Monte Carlo simulations</p></li>
+<li><p><a class="reference internal" href="../../references/#glauber1963" id="id20"><span>[Glauber1963]</span></a> - Time-dependent statistics of the Ising model</p></li>
+<li><p><a class="reference internal" href="../../references/#hinzke2000" id="id21"><span>[Hinzke2000]</span></a> - Stochastic dynamics of magnetic nanoparticles</p></li>
+<li><p><a class="reference internal" href="../../references/#evertz1993" id="id22"><span>[Evertz1993]</span></a> - Cluster algorithm for vertex models</p></li>
+<li><p><a class="reference internal" href="../../references/#ruban2004" id="id23"><span>[Ruban2004]</span></a> - Surface segregation energies in transition-metal alloys</p></li>
+<li><p><a class="reference internal" href="../../references/#ebert2010" id="id24"><span>[Ebert2010]</span></a> - Calculating condensed matter properties using KKR-Green’s function method</p></li>
+<li><p><a class="reference internal" href="../../references/#kirkpatrick1983" id="id25"><span>[Kirkpatrick1983]</span></a> - Optimization by simulated annealing</p></li>
+<li><p><a class="reference internal" href="../../references/#eriksson2017" id="id26"><span>[Eriksson2017]</span></a> - Atomistic spin dynamics foundations and applications</p></li>
+<li><p><a class="reference internal" href="../../references/#binder1981" id="id27"><span>[Binder1981]</span></a> - Finite size scaling and simulation of first order phase transitions</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../solvers/" class="btn btn-neutral float-left" title="Stochastic Equation Solvers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../wang-landau/" class="btn btn-neutral float-right" title="Wang-Landau sampling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

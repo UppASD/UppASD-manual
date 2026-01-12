@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Replica exchange (parallel tempering) &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Geodesic nudged elastic band (GNEB)" href="../gneb/" />
+    <link rel="prev" title="Wang-Landau sampling" href="../wang-landau/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Replica exchange (parallel tempering)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/replica-exchange.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="replica-exchange-parallel-tempering">
+<h1>Replica exchange (parallel tempering)<a class="headerlink" href="#replica-exchange-parallel-tempering" title="Permalink to this heading"></a></h1>
+<section id="parameters-for-replica-exchange-parallel-tempering-monte-carlo">
+<h2>Parameters for Replica Exchange / Parallel Tempering Monte Carlo<a class="headerlink" href="#parameters-for-replica-exchange-parallel-tempering-monte-carlo" title="Permalink to this heading"></a></h2>
+<p>The UppASD code implements the <strong>Replica Exchange</strong> (also known as <strong>Parallel Tempering</strong>)
+Monte Carlo method <a class="reference internal" href="../../references/#swendsen1986" id="id1"><span>[Swendsen1986]</span></a>, <a class="reference internal" href="../../references/#geyer1995" id="id2"><span>[Geyer1995]</span></a>, <a class="reference internal" href="../../references/#hukushima1996" id="id3"><span>[Hukushima1996]</span></a> for enhanced sampling
+of complex energy landscapes in magnetic systems. This method is particularly effective for:</p>
+<ul class="simple">
+<li><p><strong>Overcoming energy barriers</strong> that trap conventional Monte Carlo in metastable states</p></li>
+<li><p><strong>Accelerating equilibration</strong> in systems with slow relaxation dynamics</p></li>
+<li><p><strong>Sampling rare configurations</strong> in systems with rough free energy landscapes</p></li>
+<li><p><strong>Determining phase transition temperatures</strong> and critical behavior</p></li>
+<li><p><strong>Finding low-energy magnetic structures</strong> in frustrated or competing-interaction systems</p></li>
+</ul>
+<p>The replica exchange method runs multiple <strong>replicas</strong> (independent copies) of the system
+simultaneously at different temperatures. Periodically, configurations at neighboring
+temperatures are exchanged according to a Metropolis-like criterion, allowing high-temperature
+replicas to escape local minima and low-temperature replicas to sample rare states.</p>
+<p>In UppASD, replica exchange is enabled by setting the initial phase mode to <code class="docutils literal notranslate"><span class="pre">P</span></code>
+(<code class="docutils literal notranslate"><span class="pre">ip_mode</span> <span class="pre">P</span></code>), with one temperature per replica specified via the <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> keyword.</p>
+<section id="replica-exchange-algorithm">
+<h3>Replica exchange algorithm<a class="headerlink" href="#replica-exchange-algorithm" title="Permalink to this heading"></a></h3>
+<p>The replica exchange method maintains <span class="math notranslate nohighlight">\(N_{\text{rep}}\)</span> independent replicas of the
+system at temperatures <span class="math notranslate nohighlight">\(T_1 &lt; T_2 &lt; \cdots &lt; T_{N_{\text{rep}}}\)</span>. Each replica
+evolves independently according to the Metropolis or heat-bath Monte Carlo algorithm
+at its assigned temperature.</p>
+<p>At regular intervals (every <code class="docutils literal notranslate"><span class="pre">pt_step</span></code> Monte Carlo steps), neighboring replicas at
+temperatures <span class="math notranslate nohighlight">\(T_i\)</span> and <span class="math notranslate nohighlight">\(T_{i+1}\)</span> attempt to <strong>exchange configurations</strong>.
+The exchange is accepted with probability:</p>
+<div class="math notranslate nohighlight">
+\[P_{\text{exchange}}(i, i+1) = \min\left(1, \exp\left[(\beta_{i+1} - \beta_i)(E_i - E_{i+1})\right]\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta_i = 1/(k_B T_i)\)</span> is the inverse temperature and <span class="math notranslate nohighlight">\(E_i\)</span> is the
+total energy of replica <span class="math notranslate nohighlight">\(i\)</span>. This acceptance criterion ensures detailed balance
+and preserves the correct canonical distribution at each temperature.</p>
+<p>The exchange attempts are performed in two sweeps:</p>
+<ol class="arabic simple">
+<li><p><strong>Even sweep</strong>: Attempt exchanges between replicas <span class="math notranslate nohighlight">\((1,2), (3,4), \ldots\)</span></p></li>
+<li><p><strong>Odd sweep</strong>: Attempt exchanges between replicas <span class="math notranslate nohighlight">\((2,3), (4,5), \ldots\)</span></p></li>
+</ol>
+<p>This two-sweep strategy ensures that all neighboring pairs have an opportunity to
+exchange within one cycle.</p>
+</section>
+<section id="temperature-ladder-selection">
+<h3>Temperature ladder selection<a class="headerlink" href="#temperature-ladder-selection" title="Permalink to this heading"></a></h3>
+<p>The choice of temperature ladder <span class="math notranslate nohighlight">\(\{T_1, T_2, \ldots, T_{N_{\text{rep}}}\}\)</span> is
+critical for efficient sampling. The <strong>acceptance rate</strong> for exchanges between
+neighboring temperatures depends on the energy fluctuations and the temperature spacing.</p>
+<p>A commonly used heuristic is to aim for an acceptance rate of 20–40% between neighboring
+replicas. For systems with smooth energy landscapes, a <strong>geometric temperature ladder</strong>
+often works well:</p>
+<div class="math notranslate nohighlight">
+\[T_{i+1} = T_i \times r, \quad r = \left(\frac{T_{\text{max}}}{T_{\text{min}}}\right)^{1/(N_{\text{rep}}-1)}\]</div>
+<p>For systems with rough energy landscapes or first-order transitions, <strong>adaptive schemes</strong>
+or empirical tuning may be required.</p>
+<p>In UppASD, the temperature ladder is specified via the <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> keyword, with each
+phase corresponding to one replica temperature.</p>
+</section>
+<section id="equilibration-and-measurement">
+<h3>Equilibration and measurement<a class="headerlink" href="#equilibration-and-measurement" title="Permalink to this heading"></a></h3>
+<p>The replica exchange simulation in UppASD is structured as an <strong>initial phase only</strong>
+(<code class="docutils literal notranslate"><span class="pre">ip_mode</span> <span class="pre">P</span></code>). This phase serves to:</p>
+<ul class="simple">
+<li><p>Equilibrate all replicas at their respective temperatures</p></li>
+<li><p>Allow sufficient exchange attempts to decorrelate the configurations</p></li>
+<li><p>Identify the replica with the <strong>lowest energy</strong> for subsequent measurements</p></li>
+</ul>
+<p>At the end of the initial phase, the replica with the minimum energy is automatically
+selected and its configuration is copied to the main simulation arrays (<code class="docutils literal notranslate"><span class="pre">emom</span></code>, <code class="docutils literal notranslate"><span class="pre">mmom</span></code>).
+This configuration can then be used as the starting point for a subsequent measurement
+phase (e.g., spin dynamics, further Monte Carlo sampling, or correlation measurements).</p>
+<p>The exchange attempts are <strong>disabled during the final 10%</strong> of the initial phase to
+ensure that each replica reaches thermal equilibrium at its assigned temperature before
+the final selection.</p>
+</section>
+<section id="replica-exchange-keywords">
+<h3>Replica exchange keywords<a class="headerlink" href="#replica-exchange-keywords" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="id4">
+<h2>Replica exchange keywords<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>ip_mode</dt><dd><p>Initial phase mode. Set to <strong>P</strong> to enable Replica Exchange / Parallel Tempering. This runs multiple replicas at different temperatures with periodic configuration exchanges. Default: <strong>S</strong> (spin dynamics). See also: M=Metropolis MC, H=Heat bath MC, W=Wang-Landau.</p>
+</dd>
+<dt>ip_nphase</dt><dd><p>Number of replicas (temperature points) for replica exchange. Each replica corresponds to one temperature. The temperatures are specified in subsequent lines, one per phase. For PT, set this to the desired number of replicas <span class="math notranslate nohighlight">\(N_{\text{rep}}\)</span>. Default: <strong>1</strong> (single phase, no PT).</p>
+</dd>
+<dt>ip_nstep</dt><dd><p>Number of Monte Carlo steps per replica in each phase line. This is the number of MC sweeps performed before checking for replica exchanges. The format is: <code class="docutils literal notranslate"><span class="pre">ip_nstep</span>&#160; <span class="pre">temp</span>&#160; <span class="pre">timestep</span>&#160; <span class="pre">damping</span></code>, repeated for each phase. For PT, all replicas should use the same number of steps in the single phase block. Default: <strong>0</strong> (no steps).</p>
+</dd>
+<dt>pt_step</dt><dd><p>Interval (in Monte Carlo steps) between replica exchange attempts. Every <code class="docutils literal notranslate"><span class="pre">pt_step</span></code> steps, the code calculates energies for all replicas and attempts configuration exchanges between neighboring temperatures. Smaller values increase exchange frequency but add computational overhead. Typical range: 50–500 steps. Default: <strong>100</strong>.</p>
+</dd>
+</dl>
+<p><strong>Note:</strong> The temperature for each replica is specified implicitly via the phase structure.
+Each line in the <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> block corresponds to one replica and includes the temperature
+for that replica. The first column after <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> is the number of MC steps, followed
+by the temperature.</p>
+<section id="simulation-mode-and-mc-algorithm">
+<h3>Simulation mode and MC algorithm<a class="headerlink" href="#simulation-mode-and-mc-algorithm" title="Permalink to this heading"></a></h3>
+<p>Replica exchange in UppASD currently supports only the <strong>Heat Bath Monte Carlo</strong> algorithm
+(<code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">H</span></code>). The initial phase automatically uses heat-bath updates for all replicas,
+regardless of the global <code class="docutils literal notranslate"><span class="pre">mode</span></code> setting.</p>
+<p>The general structure for a replica exchange simulation is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>simid    PT_simulation
+
+!! Initial phase: Replica Exchange / Parallel Tempering
+ip_mode    P
+ip_nphase  N_rep
+nstep_1   temp_1   timestep   damping
+nstep_2   temp_2   timestep   damping
+...
+nstep_N   temp_N   timestep   damping
+
+!! Optional: subsequent measurement phase with selected replica
+mode       M     ! or S, H, etc.
+nstep      10000
+temp       temp_measurement
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> keyword specifies the number of replicas, and each subsequent line
+defines the number of MC steps, temperature, timestep, and damping for that replica.</p>
+</section>
+<section id="output-files">
+<h3>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h3>
+<p>The replica exchange simulation produces the following output files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ptinitial.&lt;simid&gt;.out</span></code>: Summary statistics for the initial phase, including average magnetization, Binder cumulant, and susceptibility for each replica (currently minimal output).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pt_restart.&lt;simid&gt;.out</span></code>: Detailed restart file containing the final magnetic configuration for all replicas, with temperatures and energies. This file can be used to inspect the state of each replica at the end of the initial phase.</p></li>
+<li><p>Standard restart file (<code class="docutils literal notranslate"><span class="pre">restart.&lt;simid&gt;.out</span></code>): Contains the magnetic configuration of the <strong>lowest-energy replica</strong> selected at the end of the initial phase. This configuration is automatically copied to the main simulation arrays for subsequent use.</p></li>
+</ul>
+<p>The code also prints progress information to stdout, including:</p>
+<ul class="simple">
+<li><p>Exchange hit rate (percentage of successful exchanges)</p></li>
+<li><p>Number of exchange attempts</p></li>
+<li><p>Final energy and magnetization for each replica</p></li>
+</ul>
+</section>
+<section id="performance-and-parallelization">
+<h3>Performance and parallelization<a class="headerlink" href="#performance-and-parallelization" title="Permalink to this heading"></a></h3>
+<p>The replica exchange implementation in UppASD is designed for <strong>multi-replica parallelism</strong>
+but currently runs replicas <strong>sequentially</strong> within a single process. Each replica performs
+its Monte Carlo evolution independently, and energies are computed for all replicas before
+exchange attempts.</p>
+<p>For large systems or many replicas, the dominant computational cost is:</p>
+<ol class="arabic simple">
+<li><p><strong>Monte Carlo sweeps</strong>: <span class="math notranslate nohighlight">\(\mathcal{O}(N_{\text{atoms}} \times N_{\text{rep}} \times N_{\text{steps}})\)</span></p></li>
+<li><p><strong>Energy evaluations</strong>: <span class="math notranslate nohighlight">\(\mathcal{O}(N_{\text{atoms}} \times N_{\text{rep}})\)</span> per exchange attempt</p></li>
+<li><p><strong>Exchange attempts</strong>: <span class="math notranslate nohighlight">\(\mathcal{O}(N_{\text{rep}})\)</span> per <code class="docutils literal notranslate"><span class="pre">pt_step</span></code> interval</p></li>
+</ol>
+<p>The exchange interval <code class="docutils literal notranslate"><span class="pre">pt_step</span></code> should be large enough to allow decorrelation between
+exchanges but small enough to ensure efficient mixing. A typical rule of thumb is to
+set <code class="docutils literal notranslate"><span class="pre">pt_step</span></code> to 50–200 MC sweeps.</p>
+</section>
+<section id="example-replica-exchange-for-spin-glass-equilibration">
+<h3>Example: Replica exchange for spin glass equilibration<a class="headerlink" href="#example-replica-exchange-for-spin-glass-equilibration" title="Permalink to this heading"></a></h3>
+<p>Minimal <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> snippet for replica exchange with 8 replicas spanning temperatures
+from 10 K to 500 K:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>simid    SpinGlass_PT
+
+!! Replica Exchange initial phase
+ip_mode    P
+ip_nphase  8
+50000   10.0    1.0e-15   0.1
+50000   20.0    1.0e-15   0.1
+50000   40.0    1.0e-15   0.1
+50000   80.0    1.0e-15   0.1
+50000   160.0   1.0e-15   0.1
+50000   250.0   1.0e-15   0.1
+50000   350.0   1.0e-15   0.1
+50000   500.0   1.0e-15   0.1
+
+!! Exchange interval
+pt_step    100
+
+!! Optional: measurement phase with selected configuration
+mode       M
+mcnstep    100000
+temp       10.0
+</pre></div>
+</div>
+<p>In this example:</p>
+<ul class="simple">
+<li><p>8 replicas run at geometrically spaced temperatures</p></li>
+<li><p>Each replica performs 50,000 MC sweeps</p></li>
+<li><p>Exchanges are attempted every 100 steps</p></li>
+<li><p>The lowest-energy replica is selected for a subsequent MC measurement phase at 10 K</p></li>
+</ul>
+<p><strong>Geometric temperature ladder</strong> with <span class="math notranslate nohighlight">\(r = (500/10)^{1/7} \approx 1.93\)</span>.</p>
+</section>
+<section id="example-replica-exchange-for-skyrmion-nucleation">
+<h3>Example: Replica exchange for skyrmion nucleation<a class="headerlink" href="#example-replica-exchange-for-skyrmion-nucleation" title="Permalink to this heading"></a></h3>
+<p>Example for finding low-energy skyrmion configurations in a frustrated magnet:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>simid    Skyrmion_PT
+
+!! Replica Exchange initial phase
+ip_mode    P
+ip_nphase  6
+100000   1.0     1.0e-16   0.05
+100000   5.0     1.0e-16   0.05
+100000   20.0    1.0e-16   0.05
+100000   50.0    1.0e-16   0.05
+100000   100.0   1.0e-16   0.05
+100000   200.0   1.0e-16   0.05
+
+pt_step    50
+
+!! Measurement: spin dynamics with selected configuration
+mode       S
+SDEalgh    1
+nstep      500000
+timestep   1.0e-16
+temp       1.0
+damping    0.05
+</pre></div>
+</div>
+<p>Here, the replica exchange runs at 6 temperatures from 1 K to 200 K. The low-temperature
+replicas explore metastable skyrmion states, while high-temperature replicas allow rapid
+exploration of configuration space. After equilibration, the lowest-energy configuration
+(likely a skyrmion) is used as the initial state for spin dynamics at 1 K.</p>
+</section>
+<section id="details-exchange-acceptance-rate">
+<h3>Details: Exchange acceptance rate<a class="headerlink" href="#details-exchange-acceptance-rate" title="Permalink to this heading"></a></h3>
+<p>The acceptance rate for replica exchanges is printed during the simulation. A typical
+target is <strong>20–40%</strong> for efficient sampling. If the acceptance rate is:</p>
+<ul class="simple">
+<li><p><strong>Too high (&gt;60%)</strong>: Temperatures are too close; reduce the number of replicas or increase the temperature spacing.</p></li>
+<li><p><strong>Too low (&lt;10%)</strong>: Temperatures are too far apart; add more intermediate replicas or adjust the temperature ladder.</p></li>
+</ul>
+<p>The code prints the hit rate every 10% of the simulation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>IP PT  10% done.  No. trials:   4500  Hitrate:  32.4 %
+IP PT  20% done.  No. trials:   9000  Hitrate:  31.8 %
+...
+</pre></div>
+</div>
+<p>Monitor these statistics to assess the efficiency of the temperature ladder.</p>
+</section>
+<section id="details-replica-selection-criterion">
+<h3>Details: Replica selection criterion<a class="headerlink" href="#details-replica-selection-criterion" title="Permalink to this heading"></a></h3>
+<p>At the end of the initial phase, UppASD selects the replica with the <strong>minimum energy</strong>:</p>
+<div class="math notranslate nohighlight">
+\[i_{\text{selected}} = \arg\min_i E_i\]</div>
+<p>The magnetic configuration (<code class="docutils literal notranslate"><span class="pre">emom</span></code>, <code class="docutils literal notranslate"><span class="pre">mmom</span></code>) of this replica is copied to the main
+simulation arrays. This ensures that subsequent measurement phases start from a
+low-energy state, which is particularly useful for:</p>
+<ul class="simple">
+<li><p>Finding ground-state configurations</p></li>
+<li><p>Equilibrating systems with slow dynamics</p></li>
+<li><p>Initializing spin dynamics simulations near energy minima</p></li>
+</ul>
+<p>If a specific temperature is desired for measurements (rather than the lowest energy),
+the restart file <code class="docutils literal notranslate"><span class="pre">pt_restart.&lt;simid&gt;.out</span></code> contains all replica configurations and
+can be manually inspected.</p>
+</section>
+<section id="references-and-further-reading">
+<h3>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this heading"></a></h3>
+<p>The replica exchange method (parallel tempering) is discussed in classic and review literature <a class="reference internal" href="../../references/#swendsen1986" id="id5"><span>[Swendsen1986]</span></a>, <a class="reference internal" href="../../references/#geyer1995" id="id6"><span>[Geyer1995]</span></a>, <a class="reference internal" href="../../references/#hukushima1996" id="id7"><span>[Hukushima1996]</span></a>. For sampling strategies and practical guidance see the overview by Earl and Deem <a class="reference internal" href="../../references/#earl2005" id="id8"><span>[Earl2005]</span></a> and the feedback-optimization study by Katzgraber <em>et al.</em> <a class="reference internal" href="../../references/#katzgraber2006" id="id9"><span>[Katzgraber2006]</span></a>.</p>
+</section>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../monte-carlo/"><span class="doc">Monte Carlo simulations</span></a> (general Monte Carlo keywords)</p></li>
+<li><p><a class="reference internal" href="../wang-landau/"><span class="doc">Wang-Landau sampling</span></a> (Wang-Landau sampling)</p></li>
+<li><p><a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a> (system setup and temperature control)</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#swendsen1986" id="id10"><span>[Swendsen1986]</span></a> - Replica Monte Carlo simulation of spin-glasses</p></li>
+<li><p><a class="reference internal" href="../../references/#geyer1995" id="id11"><span>[Geyer1995]</span></a> - Markov chain Monte Carlo maximum likelihood</p></li>
+<li><p><a class="reference internal" href="../../references/#hukushima1996" id="id12"><span>[Hukushima1996]</span></a> - Exchange Monte Carlo method and application to spin glass simulations</p></li>
+<li><p><a class="reference internal" href="../../references/#earl2005" id="id13"><span>[Earl2005]</span></a> - Parallel tempering theory applications and perspectives</p></li>
+<li><p><a class="reference internal" href="../../references/#katzgraber2006" id="id14"><span>[Katzgraber2006]</span></a> - Feedback-optimized parallel tempering Monte Carlo</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../wang-landau/" class="btn btn-neutral float-left" title="Wang-Landau sampling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../gneb/" class="btn btn-neutral float-right" title="Geodesic nudged elastic band (GNEB)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

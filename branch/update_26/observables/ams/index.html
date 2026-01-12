@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adiabatic Magnon Spectra (AMS), Linear Spin Wave Theory (LSWT), and Topological Magnons &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Correlation functions" href="../correlations/" />
+    <link rel="prev" title="Averages and cumulants" href="../averages/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Observable Measurements and Analysis</a></li>
+      <li class="breadcrumb-item active">Adiabatic Magnon Spectra (AMS), Linear Spin Wave Theory (LSWT), and Topological Magnons</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/observables/ams.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="adiabatic-magnon-spectra-ams-linear-spin-wave-theory-lswt-and-topological-magnons">
+<span id="label-ams"></span><h1>Adiabatic Magnon Spectra (AMS), Linear Spin Wave Theory (LSWT), and Topological Magnons<a class="headerlink" href="#adiabatic-magnon-spectra-ams-linear-spin-wave-theory-lswt-and-topological-magnons" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>UppASD implements <strong>Linear Spin Wave Theory (LSWT)</strong> for calculating magnon band structures in magnetic systems. This powerful capability enables:</p>
+<ul class="simple">
+<li><p><strong>Magnon dispersions</strong>: Eigenfrequencies of collective spin excitations across the Brillouin zone</p></li>
+<li><p><strong>Density of states</strong>: Thermodynamic and spectroscopic properties from magnon spectra</p></li>
+<li><p><strong>Topological analysis</strong>: Chern numbers, Berry curvature, and thermal Hall conductivity</p></li>
+</ul>
+<p>The implementation follows the <strong>Tóth-Lake formalism</strong> <a class="reference internal" href="../../references/#tothlake2015" id="id1"><span>[TothLake2015]</span></a> and extensions for non-collinear magnetism, supporting:</p>
+<ul class="simple">
+<li><p>Ferromagnetic (FM) and antiferromagnetic (AFM) systems</p></li>
+<li><p>Collinear and non-collinear magnetic configurations</p></li>
+<li><p>Heisenberg exchange, DMI, anisotropies, and external fields</p></li>
+<li><p>Spin spiral ground states with arbitrary ordering vectors</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>LSWT is valid at <strong>low temperatures</strong> (<span class="math notranslate nohighlight">\(T \ll T_c\)</span>) where the Holstein-Primakoff approximation is accurate <a class="reference internal" href="../../references/#holstein1940" id="id2"><span>[Holstein1940]</span></a>. For finite-temperature dynamics and magnon-magnon interactions, use atomistic spin dynamics instead <a class="reference internal" href="../../references/#halilov1998" id="id3"><span>[Halilov1998]</span></a>.</p>
+</div>
+</section>
+<section id="physical-background">
+<h2>Physical Background<a class="headerlink" href="#physical-background" title="Permalink to this heading"></a></h2>
+<section id="holstein-primakoff-transformation">
+<h3>Holstein-Primakoff Transformation<a class="headerlink" href="#holstein-primakoff-transformation" title="Permalink to this heading"></a></h3>
+<p>LSWT expands the spin operators around the classical ground state using bosonic creation (<span class="math notranslate nohighlight">\(a_i^\dagger\)</span>) and annihilation (<span class="math notranslate nohighlight">\(a_i\)</span>) operators:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}S_i^+ &amp;= \sqrt{2S} \sqrt{1 - \frac{a_i^\dagger a_i}{2S}} \, a_i \approx \sqrt{2S} \, a_i \\
+S_i^- &amp;= \sqrt{2S} \, a_i^\dagger \sqrt{1 - \frac{a_i^\dagger a_i}{2S}} \approx \sqrt{2S} \, a_i^\dagger \\
+S_i^z &amp;= S - a_i^\dagger a_i\end{split}\]</div>
+<p>The linearization (<span class="math notranslate nohighlight">\(a_i^\dagger a_i \ll 2S\)</span>) leads to a quadratic Hamiltonian suitable for diagonalization.</p>
+</section>
+<section id="dynamical-matrix-construction">
+<h3>Dynamical Matrix Construction<a class="headerlink" href="#dynamical-matrix-construction" title="Permalink to this heading"></a></h3>
+<p>The effective Hamiltonian in momentum space takes the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{H} = \sum_{\mathbf{q}} \begin{pmatrix} a_{\mathbf{q}}^\dagger &amp; a_{-\mathbf{q}} \end{pmatrix}
+\begin{pmatrix}
+\mathcal{A}(\mathbf{q}) - \mathcal{C} &amp; \mathcal{B}(\mathbf{q}) \\
+\mathcal{B}^\dagger(\mathbf{q}) &amp; \mathcal{A}(-\mathbf{q}) - \mathcal{C}
+\end{pmatrix}
+\begin{pmatrix} a_{\mathbf{q}} \\ a_{-\mathbf{q}}^\dagger \end{pmatrix}\end{split}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{A}(\mathbf{q})\)</span>: Fourier-transformed exchange interactions</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{B}(\mathbf{q})\)</span>: Magnon pairing terms (non-zero for AFM/non-collinear systems)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{C}\)</span>: On-site energy contributions (anisotropies, external fields)</p></li>
+</ul>
+<p>The matrix elements include:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{A}_{\mu\nu}(\mathbf{q}) &amp;= \sqrt{m_\mu m_\nu} \, \mathbf{u}_\mu^\dagger \cdot \mathbf{J}_{\mu\nu}(\mathbf{q}) \cdot \mathbf{u}_\nu^* \\
+\mathcal{B}_{\mu\nu}(\mathbf{q}) &amp;= \sqrt{m_\mu m_\nu} \, \mathbf{u}_\mu^\dagger \cdot \mathbf{J}_{\mu\nu}(\mathbf{q}) \cdot \mathbf{u}_\nu \\
+\mathcal{C}_{\mu\mu} &amp;= \sum_\lambda m_\lambda \, \mathbf{v}_\mu^\dagger \cdot \mathbf{J}_{\mu\lambda}(0) \cdot \mathbf{v}_\lambda\end{split}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\mathbf{u}_\mu, \mathbf{v}_\mu\)</span> are local coordinate vectors perpendicular and parallel to the equilibrium moment direction, and <span class="math notranslate nohighlight">\(m_\mu\)</span> is the moment magnitude.</p>
+<p>The Fourier-transformed interaction tensor is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{J}_{\mu\nu}(\mathbf{q}) = \sum_{\mathbf{R}} \mathbf{J}_{\mu\nu}(\mathbf{R}) \, e^{-i\mathbf{q}\cdot\mathbf{R}}\]</div>
+</section>
+<section id="colpa-diagonalization">
+<h3>Colpa Diagonalization<a class="headerlink" href="#colpa-diagonalization" title="Permalink to this heading"></a></h3>
+<p>For a quadratic bosonic Hamiltonian <span class="math notranslate nohighlight">\(\mathcal{H} = \Psi^\dagger h \Psi\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}h = \begin{pmatrix} A &amp; B \\ B^* &amp; A^* \end{pmatrix}, \quad
+g = \begin{pmatrix} I &amp; 0 \\ 0 &amp; -I \end{pmatrix}\end{split}\]</div>
+<p>the generalized eigenvalue problem <span class="math notranslate nohighlight">\(h \mathbf{v} = \omega \, g \mathbf{v}\)</span> yields magnon eigenfrequencies <span class="math notranslate nohighlight">\(\omega_n(\mathbf{q})\)</span>.</p>
+<p>UppASD implements the <strong>Cholesky-based Colpa method</strong> <a class="reference internal" href="../../references/#colpa1978" id="id4"><span>[Colpa1978]</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Ensure <span class="math notranslate nohighlight">\(h\)</span> is positive-definite (add small diagonal <span class="math notranslate nohighlight">\(\epsilon\)</span> if needed)</p></li>
+<li><p>Cholesky decomposition: <span class="math notranslate nohighlight">\(h = K^\dagger K\)</span></p></li>
+<li><p>Diagonalize <span class="math notranslate nohighlight">\(K g K^\dagger\)</span> with eigenvalues <span class="math notranslate nohighlight">\(\pm\omega_n\)</span></p></li>
+<li><p>Construct Bogoliubov transformation from eigenvectors</p></li>
+</ol>
+<p>For systems where Cholesky fails (e.g., near phase transitions), a fallback <strong>generalized eigenvalue solver</strong> (LAPACK <code class="docutils literal notranslate"><span class="pre">zggev</span></code>) is used.</p>
+</section>
+<section id="topological-magnons">
+<h3>Topological Magnons<a class="headerlink" href="#topological-magnons" title="Permalink to this heading"></a></h3>
+<section id="berry-curvature">
+<h4>Berry Curvature<a class="headerlink" href="#berry-curvature" title="Permalink to this heading"></a></h4>
+<p>The Berry curvature <span class="math notranslate nohighlight">\(\Omega_n(\mathbf{q})\)</span> of magnon band <span class="math notranslate nohighlight">\(n\)</span> is calculated from the <strong>link variables</strong> between neighboring q-points:</p>
+<div class="math notranslate nohighlight">
+\[U_{n}(\mathbf{q}, \mathbf{q}') = \frac{\langle u_n(\mathbf{q}) | u_n(\mathbf{q}') \rangle}{|\langle u_n(\mathbf{q}) | u_n(\mathbf{q}') \rangle|}\]</div>
+<p>where <span class="math notranslate nohighlight">\(|u_n(\mathbf{q})\rangle\)</span> are the normalized eigenvectors. For a plaquette with corners <span class="math notranslate nohighlight">\(\mathbf{q}, \mathbf{q}+\delta_x, \mathbf{q}+\delta_x+\delta_y, \mathbf{q}+\delta_y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[F_n(\mathbf{q}) = \log\left[ U_n(\mathbf{q}, \mathbf{q}+\delta_x) U_n(\mathbf{q}+\delta_x, \mathbf{q}+\delta_x+\delta_y) U_n(\mathbf{q}+\delta_x+\delta_y, \mathbf{q}+\delta_y) U_n(\mathbf{q}+\delta_y, \mathbf{q}) \right]\]</div>
+<p>The Berry curvature is <span class="math notranslate nohighlight">\(\Omega_n(\mathbf{q}) = \text{Im}[F_n(\mathbf{q})]\)</span>.</p>
+</section>
+<section id="chern-number">
+<h4>Chern Number<a class="headerlink" href="#chern-number" title="Permalink to this heading"></a></h4>
+<p>The <strong>Chern number</strong> (topological invariant) for band <span class="math notranslate nohighlight">\(n\)</span> is the integral of Berry curvature over the Brillouin zone:</p>
+<div class="math notranslate nohighlight">
+\[C_n = \frac{1}{2\pi} \int_{\text{BZ}} \Omega_n(\mathbf{q}) \, d^2\mathbf{q} \approx \frac{1}{2\pi} \sum_{\text{plaquettes}} \text{Im}[F_n]\]</div>
+<p>Integer Chern numbers (<span class="math notranslate nohighlight">\(C_n = 0, \pm 1, \pm 2, \ldots\)</span>) classify topologically distinct magnon bands. Non-zero Chern numbers indicate:</p>
+<ul class="simple">
+<li><p><strong>Topological magnon insulators</strong>: Gapped bulk with protected edge modes</p></li>
+<li><p><strong>Thermal Hall effect</strong>: Transverse heat current under temperature gradient</p></li>
+</ul>
+</section>
+<section id="thermal-magnon-conductivity">
+<h4>Thermal Magnon Conductivity<a class="headerlink" href="#thermal-magnon-conductivity" title="Permalink to this heading"></a></h4>
+<p>The thermal Hall conductivity <span class="math notranslate nohighlight">\(\kappa_{xy}\)</span> (W/K) is calculated from:</p>
+<div class="math notranslate nohighlight">
+\[\kappa_{xy} = -\frac{k_B^2 T}{\hbar (2\pi)^2} \sum_{n} \int_{\text{BZ}} c_2(n_B[\omega_n(\mathbf{q})]) \, \Omega_n(\mathbf{q})^2 \, d^2\mathbf{q}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n_B(\omega) = 1/(e^{\omega/k_B T} - 1)\)</span> is the Bose-Einstein distribution and <span class="math notranslate nohighlight">\(c_2(x)\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[c_2(x) = (1+x) \left[\log\frac{1+x}{x}\right]^2 - [\log x]^2 - 2\text{Li}_2(-x)\]</div>
+<p>with <span class="math notranslate nohighlight">\(\text{Li}_2\)</span> the dilogarithm function.</p>
+</section>
+</section>
+</section>
+<section id="input-parameters">
+<h2>Input Parameters<a class="headerlink" href="#input-parameters" title="Permalink to this heading"></a></h2>
+<section id="ams-lswt-calculation">
+<h3>AMS/LSWT Calculation<a class="headerlink" href="#ams-lswt-calculation" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">do_ams</span></code></p></td>
+<td><p>Character(1)</p></td>
+<td><p>‘N’</p></td>
+<td><div class="line-block">
+<div class="line">Calculate AMS (Adiabatic Magnon Spectra) using collinear LSWT.</div>
+<div class="line"><strong>Y</strong>: Perform calculation</div>
+<div class="line"><strong>N</strong>: Skip</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">do_diamag</span></code></p></td>
+<td><p>Character(1)</p></td>
+<td><p>‘N’</p></td>
+<td><div class="line-block">
+<div class="line">Calculate magnon dispersions using non-collinear LSWT formalism.</div>
+<div class="line"><strong>Y</strong>: Full non-collinear LSWT</div>
+<div class="line"><strong>N</strong>: Skip</div>
+<div class="line"><strong>Note</strong>: Use for non-collinear ground states or spin spirals</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nc_qvect</span></code></p></td>
+<td><p>Real(3)</p></td>
+<td><p>0 0 0</p></td>
+<td><p>Ordering wave vector <span class="math notranslate nohighlight">\(\mathbf{q}_0\)</span> for non-collinear calculations (reduced coordinates)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nc_nvect</span></code></p></td>
+<td><p>Real(3)</p></td>
+<td><p>0 0 1</p></td>
+<td><p>Spin rotation axis for non-collinear LSWT (Cartesian unit vector)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nc_eps</span></code></p></td>
+<td><p>Real</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-6}\)</span></p></td>
+<td><div class="line-block">
+<div class="line">Diagonal offset for ensuring positive-definite dynamical matrix.</div>
+<div class="line">Increase (e.g., <span class="math notranslate nohighlight">\(10^{-4}\)</span>) if Cholesky decomposition fails near instabilities.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="magnon-density-of-states">
+<h3>Magnon Density of States<a class="headerlink" href="#magnon-density-of-states" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">do_magdos</span></code></p></td>
+<td><p>Character(1)</p></td>
+<td><p>‘N’</p></td>
+<td><div class="line-block">
+<div class="line">Calculate magnon density of states (DOS).</div>
+<div class="line"><strong>Y</strong>: Calculate and output DOS</div>
+<div class="line"><strong>N</strong>: Skip</div>
+<div class="line"><strong>A</strong>: Read DOS from file (useful for multiphase simulations)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">magdos_sigma</span></code></p></td>
+<td><p>Real</p></td>
+<td><p>1.0</p></td>
+<td><p>Gaussian broadening <span class="math notranslate nohighlight">\(\sigma\)</span> for DOS (meV). Typical: 0.5-2.0 meV</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">magdos_freq</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>200</p></td>
+<td><p>Number of frequency bins in DOS histogram</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">magdos_lfreq</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>0</p></td>
+<td><div class="line-block">
+<div class="line">Low-frequency cutoff (meV).</div>
+<div class="line"><strong>0</strong>: Use minimum eigenfrequency</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">magdos_hfreq</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>0</p></td>
+<td><div class="line-block">
+<div class="line">High-frequency cutoff (meV).</div>
+<div class="line"><strong>0</strong>: Use maximum eigenfrequency</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">magdosfile</span></code></p></td>
+<td><p>String</p></td>
+<td><p>‘’</p></td>
+<td><p>Input file for reading DOS (used when <code class="docutils literal notranslate"><span class="pre">do_magdos='A'</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">magdos_rasamples</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>1</p></td>
+<td><p>Number of random samples for random alloy DOS averaging</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="topological-analysis">
+<h3>Topological Analysis<a class="headerlink" href="#topological-analysis" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">do_chern</span></code></p></td>
+<td><p>Character(1)</p></td>
+<td><p>‘N’</p></td>
+<td><div class="line-block">
+<div class="line">Calculate Chern numbers and Berry curvature.</div>
+<div class="line"><strong>Y</strong>: Perform topological analysis</div>
+<div class="line"><strong>N</strong>: Skip</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Nx</span></code>, <code class="docutils literal notranslate"><span class="pre">Ny</span></code>, <code class="docutils literal notranslate"><span class="pre">Nz</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>100, 100, 1</p></td>
+<td><div class="line-block">
+<div class="line">Reciprocal space grid dimensions for Chern number integration.</div>
+<div class="line">Typical: 50-200 points per direction (convergence test required).</div>
+<div class="line"><strong>Note</strong>: Increase for accurate Chern numbers near topological phase transitions.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Chern_qvect</span></code></p></td>
+<td><p>Real(3)</p></td>
+<td><p>0 0 0</p></td>
+<td><p>Center of the Brillouin zone for Chern integration (typically <span class="math notranslate nohighlight">\(\Gamma\)</span>-point)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="q-point-specification">
+<h3>Q-point Specification<a class="headerlink" href="#q-point-specification" title="Permalink to this heading"></a></h3>
+<p>Magnon dispersions require a list of <strong>q-points</strong> (momentum space sampling). See <a class="reference internal" href="../correlations/"><span class="doc">Correlation functions</span></a> for details on q-point generation and dynamic structure factor output.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qpoints</span></code></p></td>
+<td><p>Character(1)</p></td>
+<td><p>‘C’</p></td>
+<td><div class="line-block">
+<div class="line">Q-point generation mode:</div>
+<div class="line"><strong>F</strong>: Read from file (<code class="docutils literal notranslate"><span class="pre">qfile</span></code>)</div>
+<div class="line"><strong>A</strong>: Automatic generation (uniform grid)</div>
+<div class="line"><strong>C</strong>: Complete unit cell sampling</div>
+<div class="line"><strong>D</strong>: Automatic with symmetry reduction</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qfile</span></code></p></td>
+<td><p>String</p></td>
+<td><p>‘./qfile’</p></td>
+<td><div class="line-block">
+<div class="line">File containing q-points (when <code class="docutils literal notranslate"><span class="pre">qpoints='F'</span></code>).</div>
+<div class="line">Format: First line = number of q-points, subsequent lines = <span class="math notranslate nohighlight">\(q_x \, q_y \, q_z\)</span> (reduced coordinates)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="output-files">
+<h2>Output Files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h2>
+<section id="ams-calculations-do-ams-y">
+<h3>AMS Calculations (<code class="docutils literal notranslate"><span class="pre">do_ams='Y'</span></code>)<a class="headerlink" href="#ams-calculations-do-ams-y" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>ams.&lt;simid&gt;.out</strong></p>
+<p>Magnon dispersion relations (eigenfrequencies in meV).</p>
+<p>Format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># q-point   qx       qy       qz       Band 1   Band 2   ...   Band NA</span>
+    <span class="mi">1</span>     <span class="mf">0.0000</span>   <span class="mf">0.0000</span>  <span class="o">-</span><span class="mf">0.5000</span>    <span class="mf">12.345</span>   <span class="mf">12.345</span>   <span class="o">...</span>   <span class="mf">45.678</span>
+    <span class="mi">2</span>     <span class="mf">0.0000</span>   <span class="mf">0.0000</span>  <span class="o">-</span><span class="mf">0.4900</span>    <span class="mf">12.456</span>   <span class="mf">12.456</span>   <span class="o">...</span>   <span class="mf">45.789</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>First column: q-point index</p></li>
+<li><p>Columns 2-4: q-vector components (reduced coordinates)</p></li>
+<li><p>Subsequent columns: Magnon eigenfrequencies (meV), sorted by magnitude</p></li>
+</ul>
+</li>
+<li><p><strong>jqams.&lt;simid&gt;.out</strong></p>
+<p>Alternative eigenvalues from <span class="math notranslate nohighlight">\(J(\mathbf{q})\)</span> diagonalization (for comparison).</p>
+</li>
+<li><p><strong>evams.&lt;simid&gt;.out</strong></p>
+<p>Eigenvectors (magnon polarization vectors) at each q-point. Useful for analyzing magnon character.</p>
+</li>
+<li><p><strong>magdos.&lt;simid&gt;.out</strong></p>
+<p>Magnon density of states (when <code class="docutils literal notranslate"><span class="pre">do_magdos='Y'</span></code>).</p>
+<p>Format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#          E(meV)         D(S(q,E))         Int(D(S))</span>
+      <span class="mf">0.000000000</span>      <span class="mf">0.012345678</span>      <span class="mf">0.000000000</span>
+      <span class="mf">0.100000000</span>      <span class="mf">0.023456789</span>      <span class="mf">0.001234567</span>
+      <span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Column 1: Energy (meV)</p></li>
+<li><p>Column 2: DOS (states/meV)</p></li>
+<li><p>Column 3: Integrated DOS (cumulative)</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="non-collinear-lswt-do-diamag-y">
+<h3>Non-collinear LSWT (<code class="docutils literal notranslate"><span class="pre">do_diamag='Y'</span></code>)<a class="headerlink" href="#non-collinear-lswt-do-diamag-y" title="Permalink to this heading"></a></h3>
+<ol class="arabic" start="5">
+<li><p><strong>ncams.&lt;simid&gt;.out</strong></p>
+<p>Magnon dispersions for q-points (phason modes).</p>
+</li>
+<li><p><strong>ncams+q.&lt;simid&gt;.out</strong>, <strong>ncams-q.&lt;simid&gt;.out</strong></p>
+<p>Magnon dispersions for <span class="math notranslate nohighlight">\(\mathbf{q} + \mathbf{q}_0\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q} - \mathbf{q}_0\)</span> (spin spiral satellites).</p>
+</li>
+<li><p><strong>ncsqw.&lt;simid&gt;.out</strong>, <strong>ncsqw_intensity.&lt;simid&gt;.out</strong></p>
+<p>Dynamical structure factor <span class="math notranslate nohighlight">\(S(\mathbf{q}, \omega)\)</span> tensorial components and scattering intensity.</p>
+</li>
+</ol>
+</section>
+<section id="topological-analysis-do-chern-y">
+<h3>Topological Analysis (<code class="docutils literal notranslate"><span class="pre">do_chern='Y'</span></code>)<a class="headerlink" href="#topological-analysis-do-chern-y" title="Permalink to this heading"></a></h3>
+<ol class="arabic" start="8">
+<li><p><strong>chern.&lt;simid&gt;.out</strong></p>
+<p>Chern numbers for all magnon bands and thermal Hall conductivity.</p>
+<p>Format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Band</span> <span class="n">number</span> <span class="o">-&gt;</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="o">...</span>
+<span class="n">Ch_Number</span>   <span class="o">-&gt;</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>  <span class="o">-</span><span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="o">...</span>
+<span class="n">Ch_Number</span><span class="o">+</span><span class="n">Q</span> <span class="o">-&gt;</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>  <span class="o">-</span><span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="o">...</span>
+<span class="n">Ch_Number</span><span class="o">-</span><span class="n">Q</span> <span class="o">-&gt;</span>   <span class="mi">0</span>   <span class="mi">0</span>  <span class="o">-</span><span class="mi">1</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="o">...</span>
+<span class="n">Magnon</span> <span class="n">Thermal</span> <span class="n">Conductivity</span> <span class="ow">in</span> <span class="n">W</span><span class="o">/</span><span class="n">K</span> <span class="o">-&gt;</span>  <span class="mf">1.234567890123456E-08</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Row 1: Band indices</p></li>
+<li><p>Row 2: Chern numbers for phason bands</p></li>
+<li><p>Rows 3-4: Chern numbers for <span class="math notranslate nohighlight">\(\pm\mathbf{q}_0\)</span> satellites (for non-collinear systems)</p></li>
+<li><p>Row 5: Thermal Hall conductivity <span class="math notranslate nohighlight">\(\kappa_{xy}\)</span> (W/K) at specified temperature</p></li>
+</ul>
+</li>
+<li><p><strong>bphase.&lt;simid&gt;.out</strong>, <strong>bphase+q.&lt;simid&gt;.out</strong>, <strong>bphase-q.&lt;simid&gt;.out</strong></p>
+<p>Berry phase <span class="math notranslate nohighlight">\(\text{Im}[F_n(\mathbf{q})]\)</span> at each plaquette for all bands.</p>
+<p>Format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Band</span> <span class="c1">#          qx          qy          qz       Band1       Band2       ...</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="practical-examples">
+<h2>Practical Examples<a class="headerlink" href="#practical-examples" title="Permalink to this heading"></a></h2>
+<section id="example-1-ferromagnetic-heisenberg-chain">
+<h3>Example 1: Ferromagnetic Heisenberg Chain<a class="headerlink" href="#example-1-ferromagnetic-heisenberg-chain" title="Permalink to this heading"></a></h3>
+<p>Calculate magnon dispersion along the chain direction (<span class="math notranslate nohighlight">\(\Gamma \to X\)</span>).</p>
+<p><strong>inpsd.dat</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>     <span class="n">HeisChain</span>
+<span class="n">ncell</span>     <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">100</span>
+<span class="n">BC</span>        <span class="mi">0</span>  <span class="mi">0</span>  <span class="n">P</span>
+
+<span class="n">posfile</span>   <span class="o">./</span><span class="n">posfile</span>
+<span class="n">exchange</span>  <span class="o">./</span><span class="n">jfile</span>
+<span class="n">momfile</span>   <span class="o">./</span><span class="n">momfile</span>
+
+<span class="n">Mensemble</span> <span class="mi">1</span>
+<span class="n">Initmag</span>   <span class="mi">3</span>
+
+<span class="n">ip_mode</span>   <span class="n">S</span>
+<span class="n">ip_nphase</span> <span class="mi">1</span>
+<span class="mi">20000</span> <span class="mf">1.0e-3</span> <span class="mf">1e-16</span> <span class="mf">4.0</span>
+
+<span class="n">mode</span>      <span class="n">S</span>
+<span class="n">temp</span>      <span class="mf">1.0e-3</span>
+<span class="n">damping</span>   <span class="mf">0.0010</span>
+<span class="n">Nstep</span>     <span class="mi">20000</span>
+<span class="n">timestep</span>  <span class="mf">1.0e-15</span>
+
+<span class="n">qpoints</span>   <span class="n">F</span>
+<span class="n">qfile</span>     <span class="o">./</span><span class="n">qfile</span>
+
+<span class="n">do_ams</span>    <span class="n">Y</span>
+<span class="n">do_magdos</span> <span class="n">Y</span>
+</pre></div>
+</div>
+<p><strong>qfile</strong> (101 q-points along chain):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">101</span>
+<span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">0.50</span>
+<span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">0.49</span>
+<span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">0.48</span>
+<span class="o">...</span>
+<span class="mf">0.0</span>  <span class="mf">0.0</span>   <span class="mf">0.48</span>
+<span class="mf">0.0</span>  <span class="mf">0.0</span>   <span class="mf">0.49</span>
+<span class="mf">0.0</span>  <span class="mf">0.0</span>   <span class="mf">0.50</span>
+</pre></div>
+</div>
+<p><strong>Expected Output</strong>: Cosine dispersion <span class="math notranslate nohighlight">\(\omega(q) = 2JS[1 - \cos(qa)]\)</span> where <span class="math notranslate nohighlight">\(J\)</span> is the exchange constant, <span class="math notranslate nohighlight">\(S\)</span> the spin magnitude, and <span class="math notranslate nohighlight">\(a\)</span> the lattice constant.</p>
+<section id="physical-interpretation">
+<h4>Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Acoustic mode</strong>: <span class="math notranslate nohighlight">\(\omega(0) = 0\)</span> (Goldstone mode from broken <span class="math notranslate nohighlight">\(\text{SO}(3)\)</span> symmetry)</p></li>
+<li><p><strong>Maximum at zone boundary</strong>: <span class="math notranslate nohighlight">\(\omega_{\max} = 4JS\)</span> for <span class="math notranslate nohighlight">\(q = \pi/a\)</span></p></li>
+<li><p><strong>Quadratic near</strong> <span class="math notranslate nohighlight">\(\Gamma\)</span>: <span class="math notranslate nohighlight">\(\omega(q) \approx JSa^2 q^2\)</span> (long-wavelength limit)</p></li>
+</ul>
+</section>
+</section>
+<section id="example-2-antiferromagnetic-square-lattice-with-dmi">
+<h3>Example 2: Antiferromagnetic Square Lattice with DMI<a class="headerlink" href="#example-2-antiferromagnetic-square-lattice-with-dmi" title="Permalink to this heading"></a></h3>
+<p>Compute topological magnons in a 2D AFM with Dzyaloshinskii-Moriya interaction.</p>
+<p><strong>inpsd.dat</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>     <span class="n">AFM_DMI_2D</span>
+<span class="n">ncell</span>     <span class="mi">20</span>  <span class="mi">20</span>  <span class="mi">1</span>
+<span class="n">BC</span>        <span class="n">P</span>   <span class="n">P</span>   <span class="mi">0</span>
+
+<span class="n">posfile</span>   <span class="o">./</span><span class="n">posfile</span>
+<span class="n">exchange</span>  <span class="o">./</span><span class="n">jfile</span>
+<span class="n">dm</span>        <span class="o">./</span><span class="n">dmfile</span>
+<span class="n">momfile</span>   <span class="o">./</span><span class="n">momfile</span>
+
+<span class="n">Mensemble</span> <span class="mi">1</span>
+<span class="n">Initmag</span>   <span class="mi">3</span>
+
+<span class="n">ip_mode</span>   <span class="n">S</span>
+<span class="n">ip_nphase</span> <span class="mi">1</span>
+<span class="mi">50000</span> <span class="mf">1.0</span> <span class="mf">1e-16</span> <span class="mf">4.0</span>
+
+<span class="n">mode</span>      <span class="n">S</span>
+<span class="n">temp</span>      <span class="mf">0.001</span>
+<span class="n">damping</span>   <span class="mf">0.01</span>
+<span class="n">Nstep</span>     <span class="mi">50000</span>
+<span class="n">timestep</span>  <span class="mf">1.0e-15</span>
+
+<span class="n">qpoints</span>   <span class="n">D</span>          <span class="c1"># Automatic with symmetry</span>
+<span class="n">qfile</span>     <span class="o">./</span><span class="n">qfile</span>
+
+<span class="n">do_ams</span>    <span class="n">Y</span>
+<span class="n">do_magdos</span> <span class="n">Y</span>
+<span class="n">magdos_sigma</span> <span class="mf">0.5</span>
+<span class="n">magdos_freq</span>  <span class="mi">500</span>
+
+<span class="n">do_chern</span>  <span class="n">Y</span>
+<span class="n">Nx</span>        <span class="mi">100</span>
+<span class="n">Ny</span>        <span class="mi">100</span>
+<span class="n">Nz</span>        <span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>dmfile</strong> (example DMI vectors):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mf">0.5</span>  <span class="mf">0.0</span>  <span class="mf">0.0</span>    <span class="c1"># DMI along x-bonds</span>
+<span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">1</span>  <span class="mf">0.0</span>  <span class="mf">0.5</span>  <span class="mf">0.0</span>    <span class="c1"># DMI along y-bonds</span>
+</pre></div>
+</div>
+<p><strong>Expected Output</strong>: Non-trivial Chern numbers (<span class="math notranslate nohighlight">\(C_n = \pm 1\)</span>) for acoustic magnon branches, indicating topological protection. Magnon band gaps open due to DMI.</p>
+<section id="id5">
+<h4>Physical Interpretation<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Band inversion</strong>: DMI induces avoided crossings at high-symmetry points</p></li>
+<li><p><strong>Topological edge states</strong>: Chern numbers predict chiral edge magnons (not directly visible in bulk calculation but detectable via nanoribbon calculations)</p></li>
+<li><p><strong>Thermal Hall effect</strong>: <span class="math notranslate nohighlight">\(\kappa_{xy} \neq 0\)</span> even without external magnetic field</p></li>
+</ul>
+</section>
+</section>
+<section id="example-3-non-collinear-spin-spiral">
+<h3>Example 3: Non-collinear Spin Spiral<a class="headerlink" href="#example-3-non-collinear-spin-spiral" title="Permalink to this heading"></a></h3>
+<p>Calculate magnon spectrum for a conical spin spiral with ordering vector <span class="math notranslate nohighlight">\(\mathbf{q}_0 = (0, 0, 0.3)\)</span>.</p>
+<p><strong>inpsd.dat</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>     <span class="n">SpinSpiral_3D</span>
+<span class="n">ncell</span>     <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">20</span>
+<span class="n">BC</span>        <span class="n">P</span>   <span class="n">P</span>   <span class="n">P</span>
+
+<span class="n">posfile</span>   <span class="o">./</span><span class="n">posfile</span>
+<span class="n">exchange</span>  <span class="o">./</span><span class="n">jfile</span>
+<span class="n">momfile</span>   <span class="o">./</span><span class="n">momfile</span>
+
+<span class="n">Mensemble</span> <span class="mi">1</span>
+<span class="n">Initmag</span>   <span class="mi">3</span>
+
+<span class="n">ip_mode</span>   <span class="n">S</span>
+<span class="n">ip_nphase</span> <span class="mi">1</span>
+<span class="mi">30000</span> <span class="mf">1.0</span> <span class="mf">1e-16</span> <span class="mf">4.0</span>
+
+<span class="n">mode</span>      <span class="n">S</span>
+<span class="n">temp</span>      <span class="mf">0.01</span>
+<span class="n">damping</span>   <span class="mf">0.01</span>
+<span class="n">Nstep</span>     <span class="mi">30000</span>
+<span class="n">timestep</span>  <span class="mf">1.0e-15</span>
+
+<span class="n">qpoints</span>   <span class="n">F</span>
+<span class="n">qfile</span>     <span class="o">./</span><span class="n">qfile</span>
+
+<span class="n">do_diamag</span> <span class="n">Y</span>
+<span class="n">nc_qvect</span>  <span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="mf">0.3</span>
+<span class="n">nc_nvect</span>  <span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="mf">1.0</span>
+<span class="n">nc_eps</span>    <span class="mf">1.0e-5</span>
+
+<span class="n">do_magdos</span> <span class="n">Y</span>
+<span class="n">magdos_sigma</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p><strong>Expected Output</strong>: Three output files (<code class="docutils literal notranslate"><span class="pre">ncams.&lt;simid&gt;.out</span></code>, <code class="docutils literal notranslate"><span class="pre">ncams+q.&lt;simid&gt;.out</span></code>, <code class="docutils literal notranslate"><span class="pre">ncams-q.&lt;simid&gt;.out</span></code>) corresponding to phason and satellite modes. The phason mode (<code class="docutils literal notranslate"><span class="pre">ncams.&lt;simid&gt;.out</span></code>) has <span class="math notranslate nohighlight">\(\omega(\mathbf{q}_0) \approx 0\)</span> (soft mode at ordering vector).</p>
+<section id="id6">
+<h4>Physical Interpretation<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Phason branch</strong>: Goldstone mode associated with helical ordering</p></li>
+<li><p><strong>Amplitudon branches</strong>: Gapped modes from transverse fluctuations</p></li>
+<li><p><strong>Folded Brillouin zone</strong>: Effective BZ reduced due to incommensurate ordering</p></li>
+</ul>
+</section>
+</section>
+<section id="example-4-random-alloy-feco">
+<h3>Example 4: Random Alloy - FeCo<a class="headerlink" href="#example-4-random-alloy-feco" title="Permalink to this heading"></a></h3>
+<p>Magnon DOS for a random Fe₀.₅Co₀.₅ alloy with chemical disorder.</p>
+<p><strong>inpsd.dat</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>     <span class="n">FeCo_Alloy</span>
+<span class="n">ncell</span>     <span class="mi">10</span>  <span class="mi">10</span>  <span class="mi">10</span>
+<span class="n">BC</span>        <span class="n">P</span>   <span class="n">P</span>   <span class="n">P</span>
+
+<span class="n">posfile</span>   <span class="o">./</span><span class="n">posfile</span>
+<span class="n">exchange</span>  <span class="o">./</span><span class="n">jfile</span>
+<span class="n">momfile</span>   <span class="o">./</span><span class="n">momfile</span>
+<span class="n">do_ralloy</span> <span class="mi">1</span>
+<span class="n">Nchmax</span>    <span class="mi">2</span>
+
+<span class="n">Mensemble</span> <span class="mi">1</span>
+<span class="n">Initmag</span>   <span class="mi">3</span>
+
+<span class="n">ip_mode</span>   <span class="n">S</span>
+<span class="n">ip_nphase</span> <span class="mi">1</span>
+<span class="mi">20000</span> <span class="mf">1.0e-3</span> <span class="mf">1e-16</span> <span class="mf">4.0</span>
+
+<span class="n">mode</span>      <span class="n">S</span>
+<span class="n">temp</span>      <span class="mf">0.01</span>
+<span class="n">damping</span>   <span class="mf">0.01</span>
+<span class="n">Nstep</span>     <span class="mi">20000</span>
+<span class="n">timestep</span>  <span class="mf">1.0e-15</span>
+
+<span class="n">qpoints</span>   <span class="n">C</span>          <span class="c1"># Full cell sampling</span>
+<span class="n">qfile</span>     <span class="o">./</span><span class="n">qfile</span>
+
+<span class="n">do_ams</span>    <span class="n">Y</span>
+<span class="n">do_magdos</span> <span class="n">Y</span>
+<span class="n">magdos_sigma</span> <span class="mf">2.0</span>
+<span class="n">magdos_rasamples</span> <span class="mi">10</span>   <span class="c1"># Average over 10 random configurations</span>
+</pre></div>
+</div>
+<p><strong>Expected Output</strong>: Broadened magnon DOS reflecting chemical disorder. Multiple magnon branches with varying exchange stiffness.</p>
+<section id="id7">
+<h4>Physical Interpretation<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>DOS broadening</strong>: Disorder induces magnon lifetime effects (captured phenomenologically)</p></li>
+<li><p><strong>Configurational averaging</strong>: Multiple random alloy samples reduce statistical noise</p></li>
+<li><p><strong>Effective medium</strong>: Average DOS reflects mean-field properties of alloy</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
+<section id="common-issues">
+<h3>Common Issues<a class="headerlink" href="#common-issues" title="Permalink to this heading"></a></h3>
+<p><strong>Problem 1: Negative or imaginary eigenfrequencies</strong></p>
+<p>Symptoms:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">Warning</span> <span class="ow">in</span> <span class="n">diamag</span><span class="p">:</span> <span class="n">non</span><span class="o">-</span><span class="n">positive</span> <span class="n">definite</span> <span class="n">matrix</span> <span class="ow">in</span> <span class="n">zpotrf</span>
+</pre></div>
+</div>
+<p><strong>Causes</strong>:</p>
+<ul class="simple">
+<li><p>Magnetic configuration not in equilibrium (residual forces)</p></li>
+<li><p>Numerical instability near phase transition or soft modes</p></li>
+<li><p>Insufficient <code class="docutils literal notranslate"><span class="pre">nc_eps</span></code> for Cholesky stability</p></li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol class="arabic">
+<li><p><strong>Improve initial relaxation</strong>:</p>
+<p>Increase <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> iterations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_nphase</span> <span class="mi">2</span>
+<span class="mi">50000</span> <span class="mf">5.0</span> <span class="mf">1e-16</span> <span class="mf">4.0</span>    <span class="c1"># High-temp relaxation</span>
+<span class="mi">50000</span> <span class="mf">0.1</span> <span class="mf">1e-16</span> <span class="mf">4.0</span>    <span class="c1"># Low-temp relaxation</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Increase diagonal offset</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nc_eps</span> <span class="mf">1.0e-4</span>    <span class="c1"># Default: 1e-6</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Use Monte Carlo initialization</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mode</span> <span class="n">M</span>
+<span class="n">ip_mcanneal</span> <span class="mi">1</span>
+<span class="n">ip_nphase</span> <span class="mi">1</span>
+<span class="mi">50000</span> <span class="mf">10.0</span> <span class="mf">0.01</span> <span class="mf">4.0</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Problem 2: Chern numbers are non-integer</strong></p>
+<p>Symptoms:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ch_Number</span>   <span class="o">-&gt;</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mf">0.842</span>  <span class="o">-</span><span class="mf">0.937</span>   <span class="mi">0</span>   <span class="mi">0</span>
+</pre></div>
+</div>
+<p><strong>Causes</strong>:</p>
+<ul class="simple">
+<li><p>Insufficient q-space sampling (grid too coarse)</p></li>
+<li><p>Berry curvature singularities at high-symmetry points</p></li>
+<li><p>Temperature effects (thermal fluctuations)</p></li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol class="arabic">
+<li><p><strong>Increase grid resolution</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Nx</span> <span class="mi">200</span>
+<span class="n">Ny</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>Test convergence: Calculate Chern numbers for <code class="docutils literal notranslate"><span class="pre">Nx</span> <span class="pre">=</span> <span class="pre">50,</span> <span class="pre">100,</span> <span class="pre">150,</span> <span class="pre">200</span></code> and verify integer convergence.</p>
+</li>
+<li><p><strong>Check ground state quality</strong>:</p>
+<p>Ensure magnetic configuration is fully relaxed (visualize spin structure).</p>
+</li>
+<li><p><strong>Lower temperature</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="mf">0.001</span>    <span class="c1"># LSWT requires T &lt;&lt; Tc</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Problem 3: Magnon DOS has negative values</strong></p>
+<p>Symptoms:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DOS</span> <span class="n">contains</span> <span class="n">small</span> <span class="n">negative</span> <span class="n">values</span> <span class="n">near</span> <span class="n">zero</span> <span class="n">energy</span>
+</pre></div>
+</div>
+<p><strong>Causes</strong>:</p>
+<ul class="simple">
+<li><p>Negative eigenfrequencies (see Problem 1)</p></li>
+<li><p>Insufficient Gaussian broadening</p></li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol class="arabic">
+<li><p>Fix negative eigenfrequencies (see Problem 1 solutions)</p></li>
+<li><p>Increase broadening:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magdos_sigma</span> <span class="mf">2.0</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Problem 4: AMS output contains only acoustic modes</strong></p>
+<p>Symptoms:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">All</span> <span class="n">magnon</span> <span class="n">branches</span> <span class="n">start</span> <span class="kn">from</span><span class="w"> </span><span class="nn">zero</span> <span class="n">at</span> <span class="n">Gamma</span> <span class="n">point</span>
+</pre></div>
+</div>
+<p><strong>Causes</strong>:</p>
+<ul class="simple">
+<li><p>System has continuous symmetry (FM without anisotropy)</p></li>
+<li><p>Missing gap-opening interactions (anisotropy, external field, DMI)</p></li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol class="arabic">
+<li><p><strong>Add uniaxial anisotropy</strong>:</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">kfile</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>  <span class="mf">0.01</span>  <span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="mf">1.0</span>    <span class="c1"># 0.01 meV easy-axis anisotropy</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Apply external field</strong>:</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hfield</span> <span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="mf">1.0</span>    <span class="c1"># 1 T along z</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Problem 5: Cholesky decomposition fails frequently</strong></p>
+<p>Symptoms:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Multiple</span> <span class="s2">&quot;non-positive definite matrix&quot;</span> <span class="n">warnings</span> <span class="n">across</span> <span class="n">many</span> <span class="n">q</span><span class="o">-</span><span class="n">points</span>
+</pre></div>
+</div>
+<p><strong>Causes</strong>:</p>
+<ul class="simple">
+<li><p>System near magnetic instability (soft modes)</p></li>
+<li><p>Strong frustration (competing interactions)</p></li>
+<li><p>Non-collinear ground state with <code class="docutils literal notranslate"><span class="pre">do_ams='Y'</span></code> (should use <code class="docutils literal notranslate"><span class="pre">do_diamag='Y'</span></code>)</p></li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol class="arabic">
+<li><p><strong>Switch to non-collinear formalism</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_ams</span> <span class="n">N</span>
+<span class="n">do_diamag</span> <span class="n">Y</span>
+<span class="n">nc_qvect</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span>
+<span class="n">nc_nvect</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Use robust solver</strong>:</p>
+<p>The fallback <code class="docutils literal notranslate"><span class="pre">zggev</span></code> solver automatically activates when Cholesky fails.</p>
+</li>
+<li><p><strong>Increase stabilization</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nc_eps</span> <span class="mf">1.0e-3</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="convergence-tests">
+<h3>Convergence Tests<a class="headerlink" href="#convergence-tests" title="Permalink to this heading"></a></h3>
+<p><strong>Q-point Sampling</strong></p>
+<p>Magnon DOS and Chern numbers require dense sampling:</p>
+<ul class="simple">
+<li><p><strong>DOS</strong>: Test convergence with <code class="docutils literal notranslate"><span class="pre">qpoints='C'</span></code> for increasing system sizes (<code class="docutils literal notranslate"><span class="pre">ncell</span></code>). Typical: 20×20×20 cells minimum.</p></li>
+<li><p><strong>Chern numbers</strong>: Test <code class="docutils literal notranslate"><span class="pre">Nx,</span> <span class="pre">Ny</span></code> convergence explicitly. Integer Chern numbers should stabilize by 100×100 grid.</p></li>
+</ul>
+<p>Example convergence script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for Nx in 50 75 100 125 150; do
+    sed -i &quot;s/Nx .*/Nx $Nx/&quot; inpsd.dat
+    sed -i &quot;s/Ny .*/Ny $Nx/&quot; inpsd.dat
+    uppasd &gt; log_Nx${Nx}.txt
+    grep &quot;Ch_Number&quot; chern.HeisAFM.out &gt;&gt; chern_convergence.txt
+done
+</pre></div>
+</div>
+<p><strong>Broadening Parameter</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">magdos_sigma</span></code> controls DOS smoothness:</p>
+<ul class="simple">
+<li><p>Too small: Noisy, spiky DOS</p></li>
+<li><p>Too large: Over-smoothed, missing fine structure</p></li>
+</ul>
+<p>Optimal choice: <span class="math notranslate nohighlight">\(\sigma \approx 0.1 \times\)</span> (bandwidth). Typical: 0.5-2.0 meV.</p>
+</section>
+<section id="performance-considerations">
+<h3>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permalink to this heading"></a></h3>
+<p><strong>Memory Scaling</strong></p>
+<p>LSWT memory usage: <span class="math notranslate nohighlight">\(\mathcal{O}(N_A^2 \times N_q)\)</span> where <span class="math notranslate nohighlight">\(N_A\)</span> = atoms per cell, <span class="math notranslate nohighlight">\(N_q\)</span> = q-points.</p>
+<p>Large systems (&gt;100 atoms/cell) may require:</p>
+<ul class="simple">
+<li><p>Reduced q-point sampling (use symmetry reduction: <code class="docutils literal notranslate"><span class="pre">qpoints='D'</span></code>)</p></li>
+<li><p>Sparse matrix techniques (future feature)</p></li>
+</ul>
+<p><strong>CPU Scaling</strong></p>
+<p>Diagonalization dominates: <span class="math notranslate nohighlight">\(\mathcal{O}(N_A^3 \times N_q)\)</span> operations.</p>
+<p>Parallelization:</p>
+<ul class="simple">
+<li><p>OpenMP: Q-point loop parallelized (export <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS=8</span></code>)</p></li>
+<li><p>MPI: Not yet supported for LSWT (use OpenMP on single node)</p></li>
+</ul>
+<p><strong>Typical Timings</strong> (Intel Xeon, 16 cores):</p>
+<ul class="simple">
+<li><p>1D chain (1 atom/cell, 100 q-points): &lt;1 second</p></li>
+<li><p>2D square (1 atom/cell, 10000 q-points): ~10 seconds</p></li>
+<li><p>3D bulk (4 atoms/cell, 1000 q-points): ~60 seconds</p></li>
+<li><p>Topological analysis (100×100 grid): ~5 minutes</p></li>
+</ul>
+</section>
+</section>
+<section id="physical-validation">
+<h2>Physical Validation<a class="headerlink" href="#physical-validation" title="Permalink to this heading"></a></h2>
+<section id="analytical-benchmarks">
+<h3>Analytical Benchmarks<a class="headerlink" href="#analytical-benchmarks" title="Permalink to this heading"></a></h3>
+<p><strong>Ferromagnetic Heisenberg Chain</strong></p>
+<p>Exact dispersion:</p>
+<div class="math notranslate nohighlight">
+\[\omega(q) = 2JS[1 - \cos(qa)]\]</div>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> = exchange (meV), <span class="math notranslate nohighlight">\(S\)</span> = spin, <span class="math notranslate nohighlight">\(a\)</span> = lattice constant (Å).</p>
+<p><strong>Square Lattice FM</strong></p>
+<div class="math notranslate nohighlight">
+\[\omega(q_x, q_y) = 4JS[2 - \cos(q_x a) - \cos(q_y a)]\]</div>
+<p>Compare with <code class="docutils literal notranslate"><span class="pre">ams.&lt;simid&gt;.out</span></code> output.</p>
+<p><strong>AFM with Sublattice Magnetization</strong></p>
+<p>Two magnon branches:</p>
+<div class="math notranslate nohighlight">
+\[\omega_\pm(\mathbf{q}) = \sqrt{A(\mathbf{q})^2 - B(\mathbf{q})^2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(A, B\)</span> are matrix elements from AMS calculation.</p>
+</section>
+<section id="comparison-with-experiment">
+<h3>Comparison with Experiment<a class="headerlink" href="#comparison-with-experiment" title="Permalink to this heading"></a></h3>
+<p><strong>Inelastic Neutron Scattering (INS)</strong></p>
+<p>The magnetic cross-section is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d^2\sigma}{d\Omega dE} \propto |F(\mathbf{Q})|^2 \sum_{\alpha\beta} \left(\delta_{\alpha\beta} - \frac{Q_\alpha Q_\beta}{Q^2}\right) S^{\alpha\beta}(\mathbf{q}, \omega)\]</div>
+<p>UppASD output <code class="docutils literal notranslate"><span class="pre">ncsqw_intensity.&lt;simid&gt;.out</span></code> includes the polarization factor <span class="math notranslate nohighlight">\((\delta_{\alpha\beta} - Q_\alpha Q_\beta / Q^2)\)</span>.</p>
+<p><strong>Spin-Polarized EELS</strong></p>
+<p>High-resolution electron energy loss spectroscopy can resolve magnon dispersions in thin films. Compare peak positions in <code class="docutils literal notranslate"><span class="pre">ams.&lt;simid&gt;.out</span></code> with experimental dispersion curves.</p>
+</section>
+</section>
+<section id="limitations-and-extensions">
+<h2>Limitations and Extensions<a class="headerlink" href="#limitations-and-extensions" title="Permalink to this heading"></a></h2>
+<section id="known-limitations">
+<h3>Known Limitations<a class="headerlink" href="#known-limitations" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Linear approximation</strong>: LSWT fails for large-amplitude fluctuations (<span class="math notranslate nohighlight">\(T \sim T_c\)</span>, low-dimensional systems at finite <span class="math notranslate nohighlight">\(T\)</span>)</p></li>
+<li><p><strong>Magnon-magnon interactions</strong>: Anharmonic effects (magnon decay, thermal broadening) not included</p></li>
+<li><p><strong>Quantum corrections</strong>: <span class="math notranslate nohighlight">\(1/S\)</span> corrections (quantum fluctuations) require higher-order spin-wave theory</p></li>
+<li><p><strong>Finite-T effects</strong>: Zero-temperature formalism only (thermal renormalization of parameters needed)</p></li>
+</ol>
+</section>
+<section id="when-to-use-atomistic-spin-dynamics-instead">
+<h3>When to Use Atomistic Spin Dynamics Instead<a class="headerlink" href="#when-to-use-atomistic-spin-dynamics-instead" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Finite temperature</strong> (<span class="math notranslate nohighlight">\(T &gt; 0.1 T_c\)</span>): Magnon-magnon scattering, temperature-dependent linewidths</p></li>
+<li><p><strong>Non-perturbative regimes</strong>: Large DMI, strong frustration, non-collinear excitations</p></li>
+<li><p><strong>Metastable states</strong>: Skyrmions, domain walls (topology-driven dynamics)</p></li>
+<li><p><strong>Long-time dynamics</strong>: Magnon transport, magnon-phonon coupling</p></li>
+</ul>
+</section>
+<section id="future-features">
+<h3>Future Features<a class="headerlink" href="#future-features" title="Permalink to this heading"></a></h3>
+<p>Planned extensions:</p>
+<ul class="simple">
+<li><p><strong>Magnon-phonon coupling</strong>: Spin-lattice dynamics (joint DOS, hybrid excitations)</p></li>
+<li><p><strong>Disorder effects</strong>: Alloy-induced magnon scattering (beyond configurational averaging)</p></li>
+<li><p><strong>Surface/edge states</strong>: Real-space Green’s function methods for topological edge magnons</p></li>
+<li><p><strong>Time-resolved spectroscopy</strong>: Pump-probe magnon dynamics after laser excitation</p></li>
+</ul>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h3>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#tothlake2015" id="id8"><span>[TothLake2015]</span></a> - Linear spin wave theory for single-Q incommensurate magnetic structures</p></li>
+<li><p><a class="reference internal" href="../../references/#colpa1978" id="id9"><span>[Colpa1978]</span></a> - Diagonalization of the quadratic boson Hamiltonian</p></li>
+<li><p><a class="reference internal" href="../../references/#holstein1940" id="id10"><span>[Holstein1940]</span></a> - Holstein-Primakoff transformation and ferromagnetic field dependence</p></li>
+<li><p><a class="reference internal" href="../../references/#halilov1998" id="id11"><span>[Halilov1998]</span></a> - Adiabatic spin dynamics from spin-density-functional theory</p></li>
+</ul>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../correlations/"><span class="doc">Correlation functions</span></a> (Q-point generation and dynamic structure factor)</p></li>
+<li><p><a class="reference internal" href="../correlations/"><span class="doc">Correlation functions</span></a> (Dynamical spin correlation <span class="math notranslate nohighlight">\(S(\mathbf{q}, \omega)\)</span>)</p></li>
+<li><p><a class="reference internal" href="../stiffness/"><span class="doc">Spin Stiffness and Micromagnetic Parameters</span></a> (Spin-wave stiffness and micromagnetic parameters)</p></li>
+<li><p><a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a> (Temperature control and equilibration)</p></li>
+</ul>
+<p>For computational methods, see:</p>
+<ul class="simple">
+<li><p><strong>LAPACK Documentation</strong>: Linear algebra routines (<code class="docutils literal notranslate"><span class="pre">zheev</span></code>, <code class="docutils literal notranslate"><span class="pre">zpotrf</span></code>, <code class="docutils literal notranslate"><span class="pre">zggev</span></code>)</p></li>
+<li><p><strong>SpinW Software</strong>: Alternative LSWT package with GUI [Toth et al., <em>J. Phys.: Condens. Matter</em> (2015)]</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../averages/" class="btn btn-neutral float-left" title="Averages and cumulants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../correlations/" class="btn btn-neutral float-right" title="Correlation functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

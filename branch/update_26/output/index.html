@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Output files &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Detailed background and inputs" href="../detailed-input-background/" />
+    <link rel="prev" title="Observables and measurements" href="../input/observables/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input/">Input files</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulation-and-hamiltonian-output">Simulation and Hamiltonian output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#measured-observables">Measured observables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lattice-dynamics-observables">Lattice dynamics observables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../detailed-input-background/">Detailed background and inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Output files</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/output/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="output-files">
+<h1>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h1>
+<p>Depending on the settings chosen in the input file, UppASD prints out a varying number of output files. These all share the suffix <em>.simid.out</em> where <em>simid</em> is the simulation handle defined in the input file.</p>
+<section id="simulation-and-hamiltonian-output">
+<h2>Simulation and Hamiltonian output<a class="headerlink" href="#simulation-and-hamiltonian-output" title="Permalink to this heading"></a></h2>
+<p><strong>coord.simid.out</strong> is written if <code class="docutils literal notranslate"><span class="pre">do_prnstruct</span></code> equals <cite>1</cite> or <cite>2</cite>. Prints out the coordinates of each moment in the system in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(z\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>struct.simid.out</strong> is written if <code class="docutils literal notranslate"><span class="pre">do_prnstruct</span> <span class="pre">1</span></code> is switched on. Prints out the neighbour coupling list for the exchange couplings of the system, including Cartesian coordinates of exchange couplings grouped into coordination shells. Handy for checking if the system is set up correctly. <em>Warning:</em> this file might be very large for a realistic system, be mindful of that.</p>
+<p>For scalar exchange interactions (default), the format is:</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{jatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{itype}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{jtype}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(|r_{ij}|\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>For tensor exchange interactions (when exchange coupling matrices are used), the format includes all nine tensor components:</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{jatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{itype}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{jtype}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{xx}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{xy}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{xz}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{yx}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{yy}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{yz}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{zx}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{zy}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(J_{ij}^{zz}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(|r_{ij}|\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>dmdata.simid.out</strong> is written if the DM interaction is defined. Prints out the DM coupling for each atom in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{jatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{itype}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{jtype}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{ij}^z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{ij}^x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{ij}^y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{ij}^z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(|r_{ij}|\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>aniso1.simid.out</strong> is written if the anisotropy is defined. Prints the anisotropy parameters for each atom in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(e_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(e_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(e_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(k_1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(k_2\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where the first three entries are the direction of the anisotropy axis.</p>
+<p><strong>biqdmdata.simid.out</strong> is written if the effective quadratic DM interaction is defined. Prints out the effective quadratic DM coupling for each atom.</p>
+<p><strong>bqdata.simid.out</strong> is written if the bq interaction is defined. Prints out the bq coupling for each atom.</p>
+<p><strong>pddata.simid.out</strong> is written if anisotropic exchange interaction pd interaction is defined. Prints out the effective pd couplings for each atom.</p>
+<p><strong>inp.simid.out</strong> extensive output of the values assigned to global variables after reading <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> and accompanying files.</p>
+</section>
+<section id="measured-observables">
+<h2>Measured observables<a class="headerlink" href="#measured-observables" title="Permalink to this heading"></a></h2>
+<p><strong>averages.simid.out</strong> is written if measurement phase is run in SD mode. Prints out the average magnetization as a function of simulation time, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(m)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(step\)</span> is the simulation time expressed in terms of the number of time steps, <span class="math notranslate nohighlight">\(m_x\)</span>, <span class="math notranslate nohighlight">\(m_y\)</span> and <span class="math notranslate nohighlight">\(m_z\)</span> are the components of the intensive average magnetization <em>i.e.</em>, <span class="math notranslate nohighlight">\(m_x=\frac{1}{N}\sum_i m_{x,i}\)</span>), <span class="math notranslate nohighlight">\(m=\sqrt{m_x^2+m_y^2+m_z^2}\)</span>, and so on. <span class="math notranslate nohighlight">\(\sigma(m)\)</span> is the standard deviation of <span class="math notranslate nohighlight">\(m\)</span> when the number of ensembles is larger than one.</p>
+<p><strong>cumulants.simid.out</strong> prints out the running time averages of the intensive magnetization and its higher order moments, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle^2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle^4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(U_4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\chi\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(C_V\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where, brackets denote time averaged quantities and <span class="math notranslate nohighlight">\(U_4=1-\frac{1 \langle M \rangle^4}{3 \langle M \rangle^2}\)</span> is the fourth order Binder cumulant, useful for estimating transition temperatures <a class="reference internal" href="../references/#binder2009" id="id1"><span>[Binder2009]</span></a>, <span class="math notranslate nohighlight">\(\chi\)</span> is the magnetic susceptibility, and <span class="math notranslate nohighlight">\(C_V\)</span> is the heat capacity.</p>
+<p><strong>afmcumulants.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_cumu_proj</span></code> flag is switched on. Prints out the running time averages of the antiferromagnetic order parameter and its higher order moments, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle L \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle L^2 \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle L^4 \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(U_4^L\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\chi\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(C_V\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(U_4^L\)</span> is the Binder cumulant for the AFM order parameter <span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(\chi\)</span> is the susceptibility, and <span class="math notranslate nohighlight">\(C_V\)</span> is the heat capacity.</p>
+<p><strong>projcumulants.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_cumu_proj</span></code> flag is switched on. Prints out the running time averages of the intensive magnetization and its higher order moments, projected to each atom type, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{type}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M^2 \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M^4 \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(U_4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\chi\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where the <cite>type</cite> column indicates the atom type index.</p>
+<p><strong>moments.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_tottraj</span></code> flag is switched on. Prints the configuration of all magnetic moments at regular interval in time in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{x,i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{y,i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{z,i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_i\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>note that this file is very large. It is useful for creating animations of the evolution in time of the magnetic configuration of the system. Printed for ensemble nr 1.</p>
+<p><strong>polarization.simid.out</strong> prints out the average ferroelectric polarization as a function of simulation time, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(p)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(step\)</span> is the simulation time expressed in terms of the number of time steps, <span class="math notranslate nohighlight">\(p_x\)</span>, <span class="math notranslate nohighlight">\(p_y\)</span> and <span class="math notranslate nohighlight">\(p_z\)</span> are the components of the intensive average polarization (<em>i.e</em>, <span class="math notranslate nohighlight">\(p_x=\frac{1}{N}\sum_i p_{x,i}\)</span>,ldots, ) and <span class="math notranslate nohighlight">\(p=\sqrt{p_x^2+p_y^2+p_z^2}\)</span>. <span class="math notranslate nohighlight">\(\sigma(p)\)</span> is the standard deviation of <span class="math notranslate nohighlight">\(p\)</span> when the number of ensembles is larger than one.</p>
+<p><strong>projavgs.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_proj_avrg</span></code> flag is switched on. Prints out the same thermodynamic averages printed in <code class="docutils literal notranslate"><span class="pre">averages.simid.out</span></code>, but projected to each atom type sublattice, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{type}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(M)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle_z\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where the <cite>type</cite> column indicates the atom type index.</p>
+<p><strong>projchavgs.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_proj_avrg</span></code> flag is switched on. Prints out the same thermodynamic averages printed in <code class="docutils literal notranslate"><span class="pre">averages.simid.out</span></code>, but projected to each chemical type sublattice, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{type}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(M)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle M \rangle_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum\langle M \rangle\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where the <cite>type</cite> column indicates the chemical type index.</p>
+<p><strong>restart.simid.out</strong> the magnetic configuration of the system at a specific point in time. Can be used as input when the <code class="docutils literal notranslate"><span class="pre">initmag</span></code> flag is set to 4. The format is:</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{ensemble}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(|m_i|\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{x,i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{y,i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{z,i}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The first line contains the time step, followed by all magnetic moments for each ensemble.</p>
+<p><strong>trajectory.simid.out</strong> the trajectory as a function of time step for an individual magnetic moment in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{x,i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{y,i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{z,i}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_i\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>If the number <code class="docutils literal notranslate"><span class="pre">ntraj</span></code> is also defined to be greater than 1, the code prints out ntraj files named <code class="docutils literal notranslate"><span class="pre">trajectory.simid.XXX.Y.out</span></code> where XXX is the trajectory number (padded to 3 digits) and Y is the ensemble number.</p>
+<p><strong>sq.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_sc</span></code> flag is Y or C. Prints out the static correlation function in reciprocal space <span class="math notranslate nohighlight">\(S(q)\)</span> in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{nq}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^x(\mathbf{q})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^y(\mathbf{q})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^z(\mathbf{q})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>sqt0.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_sc</span></code> flag is Y or C and the <code class="docutils literal notranslate"><span class="pre">do_qt_traj</span></code> flag is Y. Prints out the trajectory in time of the equal time correlation function <span class="math notranslate nohighlight">\(S(q)\)</span> in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{nq}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^x(\mathbf{q})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^y(\mathbf{q})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^z(\mathbf{q})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S(\mathbf{q})\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>sra.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_sc</span></code> flag is Y or C. Prints out the static correlation function in real space <span class="math notranslate nohighlight">\(S(r)\)</span> in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(|r|\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^x(r)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^y(r)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^z(r)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S(r)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>sqt.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_sc</span></code> flag is switched on. Prints out the time-resolved structure factor <span class="math notranslate nohighlight">\(S(q,t)\)</span> in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{nstep}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{nq}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\operatorname{Re}[S^x(\mathbf{q},t)]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\operatorname{Im}[S^x(\mathbf{q},t)]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\operatorname{Re}[S^y(\mathbf{q},t)]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\operatorname{Im}[S^y(\mathbf{q},t)]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\operatorname{Re}[S^z(\mathbf{q},t)]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\operatorname{Im}[S^z(\mathbf{q},t)]\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>projsqt.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_sc_proj</span></code> flag is switched on. Prints out the same information printed in <code class="docutils literal notranslate"><span class="pre">sqt.simid.out</span></code>, but projected to each atom type present in the system.</p>
+<p><strong>sqw.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_sc</span></code> flag is switched on. Prints out the frequency-resolved dynamic structure factor <span class="math notranslate nohighlight">\(S(q,\omega)\)</span> in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{nq}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(q_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{nstep}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^x(\mathbf{q},\omega)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^y(\mathbf{q},\omega)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S^z(\mathbf{q},\omega)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(S(\mathbf{q},\omega)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>projsqw.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_sc_proj</span></code> flag is switched on. Prints out the same information printed in <code class="docutils literal notranslate"><span class="pre">sqw.simid.out</span></code>, but projected to each atom type present in the system.</p>
+<p><strong>swdos.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_sc</span></code> flag is switched on. Prints out the <span class="math notranslate nohighlight">\(S(q,\omega)\)</span> ‘density of states’ as a function of energy, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(E\)</span> (meV)</p></td>
+<td><p><span class="math notranslate nohighlight">\(D(S^x(q,E))\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(D(S^y(q,E))\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(D(S^z(q,E))\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(D(|S(q,E)|)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(D\)</span> denotes the density of states obtained by integrating over all q-points. For scalar correlation functions, only two columns are printed: <span class="math notranslate nohighlight">\(E\)</span> and <span class="math notranslate nohighlight">\(D(S(q,E))\)</span>.</p>
+<p><strong>sknumber.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">skyno</span></code> flag is Y. Prints out the skyrmion number as a function of time, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(N_{\text{sk}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle N_{\text{sk}} \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(N_{\text{sk}})\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(N_{\text{sk}}\)</span> is the instantaneous skyrmion number, <span class="math notranslate nohighlight">\(\langle N_{\text{sk}} \rangle\)</span> is the cumulative average, and <span class="math notranslate nohighlight">\(\sigma(N_{\text{sk}})\)</span> is the standard deviation.</p>
+<p><strong>cmass_skynum.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_skyno_cmass</span></code> flag is Y. Prints out the center of mass position of the skyrmion charge density, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{\text{sk},x}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{\text{sk},y}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{\text{sk},z}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{r}_{\text{sk}}\)</span> is the center of mass coordinate of the topological charge.</p>
+<p><strong>proj_sknumber.XX.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_proj_skyno</span></code> flag is Y. Prints out the skyrmion number projected onto each atom type, where XX is the atom type index. Format is the same as <code class="docutils literal notranslate"><span class="pre">sknumber.simid.out</span></code>.</p>
+<p><strong>dens_skynum.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_skyno_den</span></code> flag is Y. Prints out the site-dependent skyrmion number density, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{site}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n_{\text{sk},i}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(n_{\text{sk},i}\)</span> is the local skyrmion number density at site <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p><strong>totenergy.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">plotenergy</span></code> flag is switched on. Prints out the total energy of the system as a function of time step, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{tot}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{exc}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{ani}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{DM}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{PD}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{BiqDM}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{BQ}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{dip}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{Zeeman}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{LSF}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{chir}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{ring}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{SA}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where the columns represent total energy, exchange, anisotropy, DM interaction, pseudo-dipolar, biquadratic DM, biquadratic, dipolar, Zeeman (external field), lattice spin fluctuation, chiral, ring exchange, and shape anisotropy contributions respectively. The unit for all entries is mRy per atom.</p>
+<p><strong>stdenergy.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">plotenergy</span></code> flag is switched on and <code class="docutils literal notranslate"><span class="pre">Mensemble</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. Prints out the standard deviation of the energy contributions across ensembles, using the same format as <code class="docutils literal notranslate"><span class="pre">totenergy.simid.out</span></code>.</p>
+<section id="lattice-dynamics-observables">
+<h3>Lattice dynamics observables<a class="headerlink" href="#lattice-dynamics-observables" title="Permalink to this heading"></a></h3>
+<p><strong>lattaverages.simid.out</strong> is written if the lattice dynamics module is active. Prints out the average ionic displacements and velocities as a function of simulation time, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(u)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(v)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> is the average displacement vector and <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is the average velocity vector.</p>
+<p><strong>lattmomenta.simid.out</strong> is written if the lattice dynamics module is active. Prints out the average ionic momenta and angular momenta, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(p)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(L)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{p}\)</span> is the momentum vector and <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> is the angular momentum vector.</p>
+<p><strong>lattenergy.simid.out</strong> is written if the lattice dynamics module is active. Prints out the lattice energy components, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{ld-pot}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{sd-pot}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{sld-pot}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{tot-pot}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{kin}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{\text{tot}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(T_{\text{ion}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where the columns represent lattice-derived potential, spin-derived potential, spin-lattice coupling potential, total potential, kinetic energy, total energy, and ionic temperature respectively.</p>
+<p><strong>lattcumenergy.simid.out</strong> is written if the lattice dynamics module is active. Prints out cumulative lattice energy statistics including heat capacity, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle E_{\text{pot}} \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle E_{\text{kin}} \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\langle E_{\text{tot}} \rangle\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma(E_{\text{tot}})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(C_V\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where brackets denote time-averaged quantities, <span class="math notranslate nohighlight">\(C_V\)</span> is the heat capacity, and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.</p>
+<p><strong>lattprojavgs.simid.out</strong> is written if the lattice dynamics module is active and <code class="docutils literal notranslate"><span class="pre">do_proj_avrg</span></code> is switched on. Prints out the same lattice dynamics averages printed in <code class="docutils literal notranslate"><span class="pre">lattaverages.simid.out</span></code>, but projected to each atom type.</p>
+<p><strong>lattprojchavrgs.simid.out</strong> is written if the lattice dynamics module is active and <code class="docutils literal notranslate"><span class="pre">do_proj_avrg</span></code> is switched on. Prints out the same lattice dynamics averages printed in <code class="docutils literal notranslate"><span class="pre">lattaverages.simid.out</span></code>, but projected to each chemical type.</p>
+<p><strong>disp.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_tottraj</span></code> flag is switched on for lattice dynamics. Prints out the displacement and velocity trajectories for all atoms, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_z\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>gdisp.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_tottraj</span></code> flag is switched on for lattice dynamics. Prints out the global (lab frame) coordinates and velocities, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(v_z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(L_z\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where the coordinates include both initial positions and displacements (global coordinates), <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is the velocity vector, and <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> is the angular momentum vector.</p>
+<p><strong>rcoord.simid.out</strong> is written if the <code class="docutils literal notranslate"><span class="pre">do_tottraj</span></code> flag is switched on for lattice dynamics. Prints out the real-space coordinates including displacements, in the format</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{iatom}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(z\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>disptraj.simid.T.E.out</strong> is written if lattice dynamics trajectories are sampled (similar to <code class="docutils literal notranslate"><span class="pre">trajectory.simid.out</span></code> for magnetic moments). Prints selected atomic displacement trajectories where T is the trajectory number and E is the ensemble number.</p>
+<p><strong>References</strong></p>
+<p>See the centralized <a class="reference internal" href="../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../references/#binder2009" id="id2"><span>[Binder2009]</span></a> - Guide to Monte Carlo simulation in statistical physics</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../input/observables/" class="btn btn-neutral float-left" title="Observables and measurements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../detailed-input-background/" class="btn btn-neutral float-right" title="Detailed background and inputs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

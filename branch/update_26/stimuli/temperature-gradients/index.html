@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temperature Gradients &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Observable Measurements and Analysis" href="../../observables/" />
+    <link rel="prev" title="Three-temperature models" href="../temperature-3tm/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">External Stimuli and Control</a></li>
+      <li class="breadcrumb-item active">Temperature Gradients</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/stimuli/temperature-gradients.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="temperature-gradients">
+<span id="input-keywords-temperature-gradients"></span><h1>Temperature Gradients<a class="headerlink" href="#temperature-gradients" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>The temperature gradient feature enables simulations of spatially non-uniform temperature distributions throughout the magnetic system. This capability is essential for studying thermal transport phenomena, including:</p>
+<ul class="simple">
+<li><p><strong>Thermal transport and Seebeck effects</strong>: Understanding heat flow in magnetic materials</p></li>
+<li><p><strong>Temperature-dependent phase transitions</strong>: Studying how temperature variations drive magnetic phase changes</p></li>
+<li><p><strong>Magnon/magneto-thermoelectric effects</strong>: Coupling temperature gradients to spin dynamics</p></li>
+<li><p><strong>Thermal gradients in nanostructures</strong>: Investigating temperature effects in finite-size systems</p></li>
+</ul>
+<p>Temperature gradients are calculated by solving the <strong>Poisson or Laplace equation</strong> with user-defined boundary conditions. This produces a spatially varying temperature field that is then applied to each atom during the simulation, allowing thermal properties to vary across the system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The 3-Temperature Model (3TM) for electron-lattice-spin dynamics is documented separately in <a class="reference internal" href="../temperature-3tm/"><span class="doc">Three-temperature models</span></a>. These features can be combined: temperature gradients can be applied to the lattice temperature in 3TM simulations.</p>
+</div>
+</section>
+<section id="physics-background">
+<h2>Physics Background<a class="headerlink" href="#physics-background" title="Permalink to this heading"></a></h2>
+<p>The temperature gradient is obtained by solving:</p>
+<div class="math notranslate nohighlight">
+\[\nabla^2 T(\mathbf{r}) = S(\mathbf{r})\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong>Laplace equation</strong> (S = 0): Used when no heat sources are present; temperature satisfies <span class="math notranslate nohighlight">\(\nabla^2 T = 0\)</span></p></li>
+<li><p><strong>Poisson equation</strong> (S ≠ 0): Used with localized heat sources, e.g., Gaussian heat distribution</p></li>
+</ul>
+<p>Boundary conditions are specified at the supercell edges (faces), allowing:</p>
+<ul class="simple">
+<li><p><strong>Constant temperature</strong>: Fixed temperature on a boundary face</p></li>
+<li><p><strong>Linear temperature variation</strong>: Temperature varies linearly across a boundary</p></li>
+<li><p><strong>Periodic boundaries</strong>: Supported via crystallographic symmetry</p></li>
+</ul>
+<p>The solver then interpolates the temperature field to each atom’s position in the unit cell and supercell coordinate system.</p>
+</section>
+<section id="activation-and-configuration">
+<h2>Activation and Configuration<a class="headerlink" href="#activation-and-configuration" title="Permalink to this heading"></a></h2>
+<section id="main-enable-flag">
+<h3>Main Enable Flag<a class="headerlink" href="#main-enable-flag" title="Permalink to this heading"></a></h3>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">grad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="w">  </span><span class="c">! Default: no temperature gradient</span>
+</pre></div>
+</div>
+<p>The gradient flag controls three modes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">=</span> <span class="pre">'N'</span></code> : Homogeneous temperature (constant over all atoms)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">=</span> <span class="pre">'Y'</span></code> : Calculate gradient from boundary conditions and equation type</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">=</span> <span class="pre">'F'</span></code> : Read pre-calculated temperature field from file</p></li>
+</ul>
+<p>When <code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>, the system:</p>
+<ol class="arabic simple">
+<li><p>Reads parameters from a temperature configuration file (<code class="docutils literal notranslate"><span class="pre">tempfile</span></code>)</p></li>
+<li><p>Sets up grid and identifies boundary atoms</p></li>
+<li><p>Solves Poisson or Laplace equation</p></li>
+<li><p>Interpolates temperature to each atom</p></li>
+</ol>
+<p>When <code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">=</span> <span class="pre">'F'</span></code>, a previously calculated temperature field is loaded directly from disk.</p>
+</section>
+</section>
+<section id="equation-type-and-solver">
+<h2>Equation Type and Solver<a class="headerlink" href="#equation-type-and-solver" title="Permalink to this heading"></a></h2>
+<p>The temperature field is computed by solving a partial differential equation specified by:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">eq_type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="w">    </span><span class="c">! Equation type: &#39;P&#39;=Poisson or &#39;L&#39;=Laplace</span>
+<span class="n">temp_solver</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">      </span><span class="c">! Solver: 1=Finite Differences, 2=Meshless (MLS)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Laplace Equation</strong> (<code class="docutils literal notranslate"><span class="pre">eq_type</span> <span class="pre">=</span> <span class="pre">'L'</span></code>)</dt><dd><p>No heat sources; temperature satisfies harmonic condition. Used for passive thermal gradients driven by boundary conditions alone.</p>
+</dd>
+<dt><strong>Poisson Equation</strong> (<code class="docutils literal notranslate"><span class="pre">eq_type</span> <span class="pre">=</span> <span class="pre">'P'</span></code>)</dt><dd><p>Includes heat source term; allows localized heating with Gaussian source profile.</p>
+</dd>
+<dt><strong>Finite Difference Solver</strong> (<code class="docutils literal notranslate"><span class="pre">temp_solver</span> <span class="pre">=</span> <span class="pre">1</span></code>)</dt><dd><p>Uses standard FD stencil approximation to derivatives on nearest-neighbor lattice. Fast but requires regular atomic arrangement.</p>
+</dd>
+<dt><strong>Meshless Solver (MLS)</strong> (<code class="docutils literal notranslate"><span class="pre">temp_solver</span> <span class="pre">=</span> <span class="pre">2</span></code>)</dt><dd><p>Moving Least Squares method; more flexible, can handle irregular geometries. Requires higher computational cost.</p>
+</dd>
+</dl>
+</section>
+<section id="boundary-conditions">
+<h2>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this heading"></a></h2>
+<p>The temperature gradient is constrained by boundary conditions on the supercell faces. Six boundaries are defined corresponding to the three lattice vector directions:</p>
+<p><strong>Boundary Parameter Names:</strong></p>
+<ul class="simple">
+<li><p><strong>X-direction faces</strong>: <code class="docutils literal notranslate"><span class="pre">I1_min_border</span></code> (x=0), <code class="docutils literal notranslate"><span class="pre">I1_max_border</span></code> (x=max)</p></li>
+<li><p><strong>Y-direction faces</strong>: <code class="docutils literal notranslate"><span class="pre">I2_min_border</span></code> (y=0), <code class="docutils literal notranslate"><span class="pre">I2_max_border</span></code> (y=max)</p></li>
+<li><p><strong>Z-direction faces</strong>: <code class="docutils literal notranslate"><span class="pre">I3_min_border</span></code> (z=0), <code class="docutils literal notranslate"><span class="pre">I3_max_border</span></code> (z=max)</p></li>
+</ul>
+<p><strong>Boundary Condition Types:</strong></p>
+<p>Each boundary can be set to one of:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'N'</span></code> : No boundary condition (face is inactive)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'constant'</span></code> : Fixed constant temperature</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">I1_min_border</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;constant&#39;</span>
+<span class="c">! Followed by single temperature value:</span>
+<span class="n">temp_I1_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="mf">0.0</span><span class="w"> </span><span class="n">K</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'linear'</span></code> : Temperature varies linearly on the face</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">I1_min_border</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;linear&#39;</span>
+<span class="c">! Followed by two temperature values:</span>
+<span class="c">! (minimum temperature, maximum temperature)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Temperature Parameters:</strong></p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Boundary Temperature Values</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 27.8%" />
+<col style="width: 16.7%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default [K]</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">temp_I1_min</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Temperature at x=0 face (constant)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">temp_I1_max</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Temperature at x=max face (constant)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">temp_I1_min_low</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Lower temperature at x=0 (linear mode)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">temp_I1_min_high</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Upper temperature at x=0 (linear mode)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">temp_I1_max_low</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Lower temperature at x=max (linear mode)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">temp_I1_max_high</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Upper temperature at x=max (linear mode)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">temp_I2_min</span></code>, <code class="docutils literal notranslate"><span class="pre">temp_I2_max</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Y-direction boundaries (same structure as I1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">temp_I3_min</span></code>, <code class="docutils literal notranslate"><span class="pre">temp_I3_max</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Z-direction boundaries (same structure as I1)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="heat-source-gaussian-profile">
+<h2>Heat Source (Gaussian Profile)<a class="headerlink" href="#heat-source-gaussian-profile" title="Permalink to this heading"></a></h2>
+<p>When using the <strong>Poisson equation</strong> with <code class="docutils literal notranslate"><span class="pre">source_type</span> <span class="pre">=</span> <span class="pre">'G'</span></code>, a localized Gaussian heat source can be added:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">source_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;G&#39;</span><span class="w">           </span><span class="c">! Gaussian heat source</span>
+<span class="n">temp_max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="mf">0.0</span><span class="w">         </span><span class="c">! Source amplitude [K]</span>
+<span class="n">sigmatemp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="c">! Spatial width in x, y, z [Å]</span>
+<span class="n">r_center</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="w"> </span><span class="c">! Center position [Å]</span>
+</pre></div>
+</div>
+<p>The heat source is given by:</p>
+<div class="math notranslate nohighlight">
+\[S(\mathbf{r}) = T_{\text{max}} \exp\left(-\frac{(x-x_0)^2}{2\sigma_x^2} - \frac{(y-y_0)^2}{2\sigma_y^2} - \frac{(z-z_0)^2}{2\sigma_z^2}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\((x_0, y_0, z_0)\)</span> is the source center and <span class="math notranslate nohighlight">\((\sigma_x, \sigma_y, \sigma_z)\)</span> control the spatial extent.</p>
+<p><strong>Parameters:</strong></p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Gaussian Source Parameters</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 27.8%" />
+<col style="width: 16.7%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source_type</span></code></p></td>
+<td><p>‘N’</p></td>
+<td><p>Source type: ‘N’=none, ‘G’=Gaussian, ‘P’=point</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">temp_max</span></code></p></td>
+<td><p>0.0 K</p></td>
+<td><p>Amplitude of Gaussian source</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sigmatemp(1:3)</span></code></p></td>
+<td><p>0.0 Å</p></td>
+<td><p>Gaussian width in x, y, z directions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">r_center(1:3)</span></code></p></td>
+<td><p>0.0 Å</p></td>
+<td><p>Center position of Gaussian source</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="grid-and-solver-configuration">
+<h2>Grid and Solver Configuration<a class="headerlink" href="#grid-and-solver-configuration" title="Permalink to this heading"></a></h2>
+<p>The temperature gradient calculation requires a computational grid based on atomic neighbor relationships:</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Grid Configuration Parameters</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 27.8%" />
+<col style="width: 16.7%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">crys_symm</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Crystallographic symmetry (0=none, 1-3=increasing symmetry)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dim_sys</span></code></p></td>
+<td><p>3</p></td>
+<td><p>System dimensionality (1=1D, 2=2D, 3=3D)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">grid_type</span></code></p></td>
+<td><p>‘N’</p></td>
+<td><p>Grid type for FD: ‘N’=standard, ‘O’=optimal</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">init_temp</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Initial guess for iterative solver (flag)</p></td>
+</tr>
+</tbody>
+</table>
+<p>For Meshless solver (<code class="docutils literal notranslate"><span class="pre">temp_solver</span> <span class="pre">=</span> <span class="pre">2</span></code>), additional parameters control the MLS shape functions:</p>
+<ul class="simple">
+<li><p>Radial basis weight type</p></li>
+<li><p>Polynomial basis dimension</p></li>
+<li><p>Influence radius</p></li>
+<li><p>Distance metric parameters</p></li>
+</ul>
+</section>
+<section id="temperature-file-format">
+<h2>Temperature File Format<a class="headerlink" href="#temperature-file-format" title="Permalink to this heading"></a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">=</span> <span class="pre">'Y'</span></code>, a temperature configuration file (default name: <code class="docutils literal notranslate"><span class="pre">tempfile</span></code>) specifies the problem setup:</p>
+<p><strong>File Structure:</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Example temperature configuration file</span>
+<span class="p">%</span><span class="w"> </span><span class="n">Temperature</span><span class="w"> </span><span class="n">gradient</span><span class="w"> </span><span class="n">configuration</span>
+<span class="n">shells_nums</span>
+<span class="mi">12</span><span class="w">                                  </span><span class="c">! Number of neighbor shells</span>
+
+<span class="n">num_tot_neigh</span>
+<span class="mi">96</span><span class="w">                                  </span><span class="c">! Total neighbor connections</span>
+
+<span class="n">temp_solver</span>
+<span class="mi">1</span><span class="w">                                   </span><span class="c">! Solver: 1=FD, 2=MLS</span>
+
+<span class="n">crys_symm</span>
+<span class="mi">1</span><span class="w">                                   </span><span class="c">! Symmetry level</span>
+
+<span class="n">dim_sys</span>
+<span class="mi">3</span><span class="w">                                   </span><span class="c">! System dimensionality</span>
+
+<span class="n">eq_type</span>
+<span class="n">L</span><span class="w">                                   </span><span class="c">! Equation: P=Poisson, L=Laplace</span>
+
+<span class="n">init_temp</span>
+<span class="mi">1</span>
+
+<span class="n">grid_type</span>
+<span class="n">N</span><span class="w">                                   </span><span class="c">! Grid type</span>
+
+<span class="n">x_min_border</span>
+<span class="n">constant</span><span class="w">                            </span><span class="c">! Boundary type</span>
+<span class="mi">30</span><span class="mf">0.0</span><span class="w">                               </span><span class="c">! Temperature value [K]</span>
+
+<span class="n">x_max_border</span>
+<span class="n">constant</span>
+<span class="mi">40</span><span class="mf">0.0</span><span class="w">                               </span><span class="c">! Temperature value [K]</span>
+
+<span class="n">y_min_border</span>
+<span class="n">N</span><span class="w">                                   </span><span class="c">! Inactive</span>
+
+<span class="n">y_max_border</span>
+<span class="n">N</span>
+
+<span class="n">z_min_border</span>
+<span class="n">N</span>
+
+<span class="n">z_max_border</span>
+<span class="n">N</span>
+
+<span class="n">source_type</span>
+<span class="n">N</span><span class="w">                                   </span><span class="c">! No heat source</span>
+
+<span class="n">load_temp</span>
+<span class="n">temperature_initial</span><span class="p">.</span><span class="n">dat</span><span class="w">            </span><span class="c">! File with pre-calculated field (if grad=&#39;F&#39;)</span>
+
+<span class="n">temp_neigh</span>
+<span class="p">%</span><span class="w"> </span><span class="n">Neighbor</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="n">vectors</span>
+<span class="p">%</span><span class="w"> </span><span class="k">Format</span><span class="p">:</span><span class="w"> </span><span class="n">site_type</span><span class="w">  </span><span class="n">neighbor_site_type</span><span class="w">  </span><span class="n">distance_vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">1.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mf">0.0</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mf">1.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="o">-</span><span class="mf">1.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">1.0</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">   </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span>
+<span class="p">%</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">neighbor</span><span class="w"> </span><span class="n">pairs</span>
+</pre></div>
+</div>
+</section>
+<section id="output-files">
+<h2>Output Files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h2>
+<p>When temperature gradients are calculated (<code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">=</span> <span class="pre">'Y'</span></code> or <code class="docutils literal notranslate"><span class="pre">grad</span> <span class="pre">=</span> <span class="pre">'F'</span></code>), output files are generated:</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Temperature Output Files</span><a class="headerlink" href="#id4" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 41.2%" />
+<col style="width: 58.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Filename</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">temperature.&lt;simid&gt;.out</span></code></p></td>
+<td><p>Atom positions and calculated temperatures at each position</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">temperature_initial.&lt;simid&gt;.out</span></code></p></td>
+<td><p>Initial temperature field (boundary conditions + source term)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>File Format:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>atom_id   x(Å)    y(Å)    z(Å)    T_final(K)   T_initial(K)
+
+1  0.0000  0.0000  0.0000   300.000   300.000
+2  1.0000  0.0000  0.0000   301.234   301.000
+3  2.0000  0.0000  0.0000   302.456   302.000
+...
+</pre></div>
+</div>
+</section>
+<section id="exponential-temperature-time-dependence">
+<h2>Exponential Temperature Time-Dependence<a class="headerlink" href="#exponential-temperature-time-dependence" title="Permalink to this heading"></a></h2>
+<p>Independent from spatial gradients, the system temperature can follow an exponential cooling or heating curve over time:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">do_tempexp</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="w">        </span><span class="c">! Enable exponential cooling/heating</span>
+<span class="n">tempexp_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="mf">0.0</span><span class="w"> </span><span class="n">K</span><span class="w">  </span><span class="c">! Initial temperature</span>
+<span class="n">tempexp_end</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="mf">0.0</span><span class="w"> </span><span class="n">K</span><span class="w">  </span><span class="c">! Final temperature</span>
+<span class="n">tempexp_tau</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0e-9</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="c">! Time constant</span>
+<span class="n">tempexp_step</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w">      </span><span class="c">! Printing interval</span>
+</pre></div>
+</div>
+<p>When enabled (<code class="docutils literal notranslate"><span class="pre">do_tempexp</span> <span class="pre">=</span> <span class="pre">'Y'</span></code> or <code class="docutils literal notranslate"><span class="pre">do_tempexp</span> <span class="pre">=</span> <span class="pre">'E'</span></code>), the system temperature varies as:</p>
+<div class="math notranslate nohighlight">
+\[T(t) = T_{\text{start}} e^{-t/\tau} + T_{\text{end}}(1 - e^{-t/\tau})\]</div>
+<p>This provides smooth thermal transitions from one temperature to another over the course of the simulation. The temperature evolves exponentially toward the final temperature <code class="docutils literal notranslate"><span class="pre">tempexp_end</span></code> with time constant <code class="docutils literal notranslate"><span class="pre">tempexp_tau</span></code>.</p>
+<p><strong>Output:</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_exp</span><span class="p">.</span><span class="o">&lt;</span><span class="n">simid</span><span class="o">&gt;</span><span class="p">.</span><span class="n">out</span>
+</pre></div>
+</div>
+<p>Format: <code class="docutils literal notranslate"><span class="pre">step</span>&#160; <span class="pre">time(s)</span>&#160; <span class="pre">temperature(K)</span></code></p>
+</section>
+<section id="keywords-reference-table">
+<h2>Keywords Reference Table<a class="headerlink" href="#keywords-reference-table" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>grad</dt><dd><p>Enable gradient: ‘N’=none, ‘Y’=calculate, ‘F’=from file. Default: ‘N’.</p>
+</dd>
+<dt>tempfile</dt><dd><p>Name of temperature configuration file. Default: ‘tempfile’.</p>
+</dd>
+<dt>eq_type</dt><dd><p>Equation type: ‘P’=Poisson (with sources), ‘L’=Laplace (no sources). Default: ‘N’.</p>
+</dd>
+<dt>temp_solver</dt><dd><p>Solver selection: 1=Finite Difference, 2=Meshless (MLS). Default: 1.</p>
+</dd>
+<dt>source_type</dt><dd><p>Source term: ‘N’=none, ‘G’=Gaussian, ‘P’=point. Default: ‘N’.</p>
+</dd>
+<dt>temp_max</dt><dd><p>Gaussian source amplitude [K]. Default: 0.0.</p>
+</dd>
+<dt>sigmatemp(1:3)</dt><dd><p>Gaussian source width in x, y, z [Å]. Default: 0.0.</p>
+</dd>
+<dt>r_center(1:3)</dt><dd><p>Gaussian source center coordinates [Å]. Default: 0.0.</p>
+</dd>
+<dt>crys_symm</dt><dd><p>Crystallographic symmetry level (integer). Default: 1.</p>
+</dd>
+<dt>dim_sys</dt><dd><p>System dimensionality (1,2,3). Default: 3.</p>
+</dd>
+<dt>grid_type</dt><dd><p>Grid type for finite-difference solver: ‘N’=standard, ‘O’=optimal. Default: ‘N’.</p>
+</dd>
+<dt>init_temp</dt><dd><p>Initial temperature guess flag for iterative solver. Default: 1.</p>
+</dd>
+<dt>I1_min_border, I1_max_border, I2_min_border, I2_max_border, I3_min_border, I3_max_border</dt><dd><p>Boundary types for each face: ‘N’=inactive, ‘constant’, or ‘linear’. Default: ‘N’.</p>
+</dd>
+<dt>temp_I1_min, temp_I1_max, temp_I2_min, temp_I2_max, temp_I3_min, temp_I3_max</dt><dd><p>Temperature values for boundary faces (K). Defaults: 0.0.</p>
+</dd>
+<dt>do_tempexp</dt><dd><p>Enable exponential temperature time-dependence: ‘N’=no, ‘Y’=yes, ‘E’=extended. Default: ‘N’.</p>
+</dd>
+<dt>tempexp_start</dt><dd><p>Initial temperature for exponential schedule (K). Default: 0.0.</p>
+</dd>
+<dt>tempexp_end</dt><dd><p>Final temperature for exponential schedule (K). Default: 0.0.</p>
+</dd>
+<dt>tempexp_tau</dt><dd><p>Exponential time constant (s). Default: 1.0e-9.</p>
+</dd>
+<dt>tempexp_step</dt><dd><p>Output printing interval (steps) for exponential schedule. Default: 100.</p>
+</dd>
+</dl>
+<p>Linear boundary profile parameters (for <code class="docutils literal notranslate"><span class="pre">_border</span> <span class="pre">=</span> <span class="pre">'linear'</span></code>) use <code class="docutils literal notranslate"><span class="pre">_low</span></code> and <code class="docutils literal notranslate"><span class="pre">_high</span></code> suffixes (e.g., <code class="docutils literal notranslate"><span class="pre">temp_I1_min_low</span></code>, <code class="docutils literal notranslate"><span class="pre">temp_I1_min_high</span></code>).</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<section id="example-1-simple-1d-temperature-gradient">
+<h3>Example 1: Simple 1D Temperature Gradient<a class="headerlink" href="#example-1-simple-1d-temperature-gradient" title="Permalink to this heading"></a></h3>
+<p>Create a linear temperature gradient along the x-direction from 300 K to 500 K:</p>
+<p><strong>Main Input File:</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Geometry</span>
+<span class="n">N1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w">   </span><span class="c">! 10 cells in x</span>
+<span class="n">N2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c">! 1 cell in y</span>
+<span class="n">N3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c">! 1 cell in z</span>
+
+<span class="c">! Temperature gradient activation</span>
+<span class="n">grad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Y&#39;</span>
+<span class="n">tempfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;tempfile_1d.dat&#39;</span>
+</pre></div>
+</div>
+<p><strong>Temperature Configuration File (tempfile_1d.dat):</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">shells_nums</span>
+<span class="mi">6</span>
+
+<span class="n">num_tot_neigh</span>
+<span class="mi">48</span>
+
+<span class="n">temp_solver</span>
+<span class="mi">1</span>
+
+<span class="n">crys_symm</span>
+<span class="mi">1</span>
+
+<span class="n">dim_sys</span>
+<span class="mi">1</span><span class="w">                  </span><span class="c">! 1D problem</span>
+
+<span class="n">eq_type</span>
+<span class="n">L</span><span class="w">                  </span><span class="c">! Laplace (no sources)</span>
+
+<span class="n">grid_type</span>
+<span class="n">N</span>
+
+<span class="n">x_min_border</span>
+<span class="n">constant</span>
+<span class="mi">30</span><span class="mf">0.0</span><span class="w">              </span><span class="c">! Start temperature</span>
+
+<span class="n">x_max_border</span>
+<span class="n">constant</span>
+<span class="mi">50</span><span class="mf">0.0</span><span class="w">              </span><span class="c">! End temperature</span>
+
+<span class="n">y_min_border</span>
+<span class="n">N</span>
+
+<span class="n">y_max_border</span>
+<span class="n">N</span>
+
+<span class="n">z_min_border</span>
+<span class="n">N</span>
+
+<span class="n">z_max_border</span>
+<span class="n">N</span>
+
+<span class="n">source_type</span>
+<span class="n">N</span>
+
+<span class="n">temp_neigh</span>
+<span class="mi">6</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mf">1.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="mi">1</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">  </span><span class="mf">0.0</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>Result:</strong> Linear temperature variation from 300 K (x=0) to 500 K (x=max), with all atoms receiving spatially interpolated temperatures based on their x-coordinate.</p>
+</section>
+<section id="example-2-2d-thermal-gradient-with-gaussian-source">
+<h3>Example 2: 2D Thermal Gradient with Gaussian Source<a class="headerlink" href="#example-2-2d-thermal-gradient-with-gaussian-source" title="Permalink to this heading"></a></h3>
+<p>Create a 2D temperature field with linear boundary conditions and a localized Gaussian heat source:</p>
+<p><strong>Temperature Configuration:</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">shells_nums</span>
+<span class="mi">12</span>
+
+<span class="n">dim_sys</span>
+<span class="mi">2</span><span class="w">                  </span><span class="c">! 2D problem</span>
+
+<span class="n">eq_type</span>
+<span class="n">P</span><span class="w">                  </span><span class="c">! Poisson (with source)</span>
+
+<span class="n">x_min_border</span>
+<span class="n">linear</span>
+<span class="mi">25</span><span class="mf">0.0</span><span class="w">              </span><span class="c">! min</span>
+<span class="mi">35</span><span class="mf">0.0</span><span class="w">              </span><span class="c">! max</span>
+
+<span class="n">x_max_border</span>
+<span class="n">linear</span>
+<span class="mi">30</span><span class="mf">0.0</span>
+<span class="mi">40</span><span class="mf">0.0</span>
+
+<span class="n">y_min_border</span>
+<span class="n">linear</span>
+<span class="mi">25</span><span class="mf">0.0</span>
+<span class="mi">35</span><span class="mf">0.0</span>
+
+<span class="n">y_max_border</span>
+<span class="n">linear</span>
+<span class="mi">30</span><span class="mf">0.0</span>
+<span class="mi">40</span><span class="mf">0.0</span>
+
+<span class="n">z_min_border</span>
+<span class="n">N</span>
+
+<span class="n">z_max_border</span>
+<span class="n">N</span>
+
+<span class="n">source_type</span>
+<span class="n">G</span><span class="w">                  </span><span class="c">! Gaussian source</span>
+
+<span class="c">! Source parameters (placed in center of cell)</span>
+<span class="n">temp_max</span><span class="w">           </span><span class="c">! Amplitude</span>
+<span class="mi">30</span><span class="mf">0.0</span>
+<span class="n">sigmatemp</span>
+<span class="mf">2.0</span><span class="w">  </span><span class="mf">2.0</span><span class="w">  </span><span class="mi">1</span><span class="mf">0.0</span><span class="w">     </span><span class="c">! Narrow in x,y; wide in z (unused for 2D)</span>
+<span class="n">r_center</span>
+<span class="mf">5.0</span><span class="w">  </span><span class="mf">5.0</span><span class="w">  </span><span class="mf">0.0</span><span class="w">      </span><span class="c">! Center in cell coordinates</span>
+</pre></div>
+</div>
+<p><strong>Effect:</strong> Base temperature gradient set by boundaries, superimposed with Gaussian heating around the cell center.</p>
+</section>
+<section id="example-3-exponential-cooling-during-simulation">
+<h3>Example 3: Exponential Cooling During Simulation<a class="headerlink" href="#example-3-exponential-cooling-during-simulation" title="Permalink to this heading"></a></h3>
+<p>Cool the system exponentially from 400 K to 100 K over the simulation time:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Temperature control</span>
+<span class="n">do_tempexp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Y&#39;</span>
+<span class="n">tempexp_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="mf">0.0</span><span class="w"> </span><span class="n">K</span><span class="w">   </span><span class="c">! Start temperature</span>
+<span class="n">tempexp_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="mf">0.0</span><span class="w"> </span><span class="n">K</span><span class="w">     </span><span class="c">! Final temperature</span>
+<span class="n">tempexp_tau</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0e-9</span><span class="w"> </span><span class="n">s</span><span class="w">    </span><span class="c">! 1 nanosecond time constant</span>
+<span class="n">tempexp_step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w">        </span><span class="c">! Output every 100 steps</span>
+
+<span class="c">! Can be combined with spatial gradient</span>
+<span class="n">grad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Y&#39;</span><span class="w">                </span><span class="c">! Also use spatial gradient</span>
+<span class="n">tempfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;tempfile.dat&#39;</span>
+</pre></div>
+</div>
+<p><strong>Result:</strong> Temperature field varies both spatially (from gradient) and temporally (exponential decay). Each atom experiences a temperature that is the product of the gradient field and the exponential scaling function.</p>
+</section>
+<section id="example-4-meshless-mls-solver-for-irregular-geometry">
+<h3>Example 4: Meshless (MLS) Solver for Irregular Geometry<a class="headerlink" href="#example-4-meshless-mls-solver-for-irregular-geometry" title="Permalink to this heading"></a></h3>
+<p>Use the meshless solver for a system with non-standard atomic arrangement:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Solver selection</span>
+<span class="n">temp_solver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">            </span><span class="c">! Meshless solver (MLS)</span>
+
+<span class="n">eq_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;L&#39;</span><span class="w">              </span><span class="c">! Laplace equation</span>
+
+<span class="c">! Boundary conditions (same as FD)</span>
+<span class="n">I1_min_border</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;constant&#39;</span>
+<span class="n">temp_I1_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="mf">0.0</span>
+
+<span class="n">I1_max_border</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;constant&#39;</span>
+<span class="n">temp_I1_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="mf">0.0</span>
+</pre></div>
+</div>
+<p><strong>Configuration in tempfile:</strong></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">temp_solver</span>
+<span class="mi">2</span><span class="w">                          </span><span class="c">! Use MLS solver</span>
+</pre></div>
+</div>
+<p>The meshless solver automatically adapts to the atomic positions without requiring a regular grid.</p>
+</section>
+</section>
+<section id="physical-interpretations">
+<h2>Physical Interpretations<a class="headerlink" href="#physical-interpretations" title="Permalink to this heading"></a></h2>
+<p><strong>Heat Flow and Transport</strong></p>
+<p>The temperature gradient induces:</p>
+<ul class="simple">
+<li><p><strong>Magnon thermal transport</strong>: Heat-driven magnon currents in magnetic systems</p></li>
+<li><p><strong>Spin Seebeck effect</strong>: Temperature gradient generates spin current</p></li>
+<li><p><strong>Anomalous Nernst effect</strong>: Temperature gradient leads to transverse magnetization changes</p></li>
+</ul>
+<p><strong>Boundary Condition Choices</strong></p>
+<ul class="simple">
+<li><p><strong>Constant boundaries</strong>: Model thermostatic reservoirs (e.g., thermal baths)</p></li>
+<li><p><strong>Linear boundaries</strong>: Represent linearly varying thermal contact</p></li>
+<li><p><strong>Gaussian sources</strong>: Model localized heating (e.g., laser focus, electrical heater)</p></li>
+</ul>
+<p><strong>Equation Selection</strong></p>
+<ul class="simple">
+<li><p><strong>Laplace (eq_type=’L’)</strong>: Passive thermal diffusion; steady-state heat distribution</p></li>
+<li><p><strong>Poisson (eq_type=’P’)</strong>: Active heat generation; includes internal heat sources</p></li>
+</ul>
+</section>
+<section id="performance-considerations">
+<h2>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Finite Difference Solver</strong> (temp_solver=1): Fast, scales linearly with system size</p></li>
+<li><p><strong>Meshless Solver</strong> (temp_solver=2): More flexible but ~10-100× slower; use for complex geometries</p></li>
+<li><p><strong>Temperature file I/O</strong>: Gradient calculation is done once at initialization; negligible ongoing cost</p></li>
+<li><p><strong>Memory</strong>: Stores temperature array (1 float per atom) plus temporary working arrays during setup</p></li>
+</ul>
+<p><strong>Grid Density:</strong> The temperature field quality depends on the neighbor shell structure. Ensure sufficient shells (<code class="docutils literal notranslate"><span class="pre">shells_nums</span></code> ≥ 6) for smooth interpolation.</p>
+</section>
+<section id="combining-with-other-features">
+<h2>Combining with Other Features<a class="headerlink" href="#combining-with-other-features" title="Permalink to this heading"></a></h2>
+<p>Temperature gradients can be combined with:</p>
+<ul class="simple">
+<li><p><strong>3-Temperature Model (3TM)</strong>: Apply gradient to lattice temperature in electron-lattice-spin dynamics</p></li>
+<li><p><strong>Exponential Cooling</strong>: Simultaneous spatial and temporal temperature variations</p></li>
+<li><p><strong>Spin Torques</strong>: Seebeck effect with temperature-dependent STT coefficients</p></li>
+<li><p><strong>Spin-Transfer Torque</strong>: Temperature-driven current injection effects</p></li>
+<li><p><strong>Anisotropy and Exchange</strong>: Temperature-dependent Hamiltonian parameters</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
+<p><strong>Issue: Solver does not converge</strong></p>
+<ul class="simple">
+<li><p>Reduce grid complexity; ensure <code class="docutils literal notranslate"><span class="pre">crys_symm</span></code> and <code class="docutils literal notranslate"><span class="pre">dim_sys</span></code> match problem geometry</p></li>
+<li><p>Increase <code class="docutils literal notranslate"><span class="pre">temp_solver=2</span></code> (meshless) if system is highly non-regular</p></li>
+<li><p>Check boundary condition definitions; conflicting boundaries cause non-convergence</p></li>
+</ul>
+<p><strong>Issue: Unphysical temperature values</strong></p>
+<ul class="simple">
+<li><p>Verify boundary conditions are reasonable (typically 50-500 K for magnetic systems)</p></li>
+<li><p>For Gaussian sources, check that <code class="docutils literal notranslate"><span class="pre">temp_max</span></code> doesn’t exceed feasible values</p></li>
+<li><p>Ensure source center <code class="docutils literal notranslate"><span class="pre">r_center</span></code> is within system bounds</p></li>
+</ul>
+<p><strong>Issue: Temperature file I/O errors</strong></p>
+<ul class="simple">
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">tempfile</span></code> path is correct and file is readable</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">load_temp</span></code> filename when using <code class="docutils literal notranslate"><span class="pre">grad='F'</span></code></p></li>
+<li><p>Ensure temperature file uses consistent coordinate units (Ångströms)</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for temperature gradient implementations. The calculation is based on finite difference and meshless methods for solving PDEs.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../temperature-3tm/" class="btn btn-neutral float-left" title="Three-temperature models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../observables/" class="btn btn-neutral float-right" title="Observable Measurements and Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

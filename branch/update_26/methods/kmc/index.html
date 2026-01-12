@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinetic Monte Carlo (KMC) &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Spin-lattice dynamics (SLD) simulations" href="../spin-lattice/" />
+    <link rel="prev" title="Spin-spiral minimization" href="../spin-spiral/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Kinetic Monte Carlo (KMC)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/kmc.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kinetic-monte-carlo-kmc">
+<span id="input-keywords-kmc"></span><h1>Kinetic Monte Carlo (KMC)<a class="headerlink" href="#kinetic-monte-carlo-kmc" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>The <strong>Kinetic Monte Carlo (KMC)</strong> module in UppASD implements a <strong>rare event dynamics</strong> approach
+for modeling slow particle motion coupled to magnetic dynamics. This is particularly relevant for
+systems where certain degrees of freedom (e.g., charge carriers, vacancies, interstitials) evolve
+on much longer timescales than spin dynamics.</p>
+<p><strong>Primary applications:</strong></p>
+<ul class="simple">
+<li><p><strong>Magnetic polarons</strong>: Charge carriers (electrons/holes) that locally distort magnetic structure</p></li>
+<li><p><strong>Vacancy diffusion</strong>: Point defects hopping between lattice sites</p></li>
+<li><p><strong>Interstitial migration</strong>: Diffusion of interstitial atoms in magnetic materials</p></li>
+<li><p><strong>Spin-lattice coupling</strong>: Systems where atomic motion affects magnetic interactions</p></li>
+</ul>
+<p><strong>Key concept:</strong> Particles overcome energy barriers between lattice sites with transition rates
+governed by the Arrhenius law. The magnetic Hamiltonian is dynamically updated as particles move,
+allowing self-consistent treatment of coupled spin-charge or spin-lattice dynamics.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Inherent symmetry breaking:</strong> Due to the nature of particle localization, the KMC module
+is <strong>not compatible</strong> with <code class="docutils literal notranslate"><span class="pre">do_reduced='Y'</span></code> simulations.</p>
+</div>
+</section>
+<section id="physical-background">
+<h2>Physical Background<a class="headerlink" href="#physical-background" title="Permalink to this heading"></a></h2>
+<section id="arrhenius-law-and-transition-rates">
+<h3>Arrhenius Law and Transition Rates<a class="headerlink" href="#arrhenius-law-and-transition-rates" title="Permalink to this heading"></a></h3>
+<p>Thermally activated hopping processes follow the Arrhenius law for transition rates:</p>
+<div class="math notranslate nohighlight">
+\[\Gamma_{i \to j} = \nu_0 \exp\left(-\frac{\Delta E_{ij}}{k_B T}\right)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Gamma_{i \to j}\)</span>: Transition rate from site <span class="math notranslate nohighlight">\(i\)</span> to site <span class="math notranslate nohighlight">\(j\)</span> (Hz)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nu_0\)</span>: Attempt frequency (<code class="docutils literal notranslate"><span class="pre">rate0</span></code> parameter), typically <span class="math notranslate nohighlight">\(10^{12}\)</span> Hz for phonon-assisted processes</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta E_{ij}\)</span>: Energy barrier between sites (from <code class="docutils literal notranslate"><span class="pre">barrfile</span></code>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(k_B\)</span>: Boltzmann constant</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span>: Temperature</p></li>
+</ul>
+<p><strong>Physical interpretation:</strong> <span class="math notranslate nohighlight">\(\nu_0\)</span> represents the fundamental vibrational frequency of the
+particle in its local potential well (harmonic approximation). For atomic processes, this is typically
+the Debye frequency; for electronic processes (polarons), it may be related to phonon modes.</p>
+</section>
+<section id="electric-field-effects">
+<h3>Electric Field Effects<a class="headerlink" href="#electric-field-effects" title="Permalink to this heading"></a></h3>
+<p>For charged particles (polarons), an external electric field modifies the barrier:</p>
+<div class="math notranslate nohighlight">
+\[\Delta E_{ij}^{\text{eff}} = \Delta E_{ij} + q \mathbf{E} \cdot \mathbf{r}_{ij}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q \mathbf{E} \cdot \mathbf{r}_{ij}\)</span>: Electrostatic energy change (<code class="docutils literal notranslate"><span class="pre">do_efield='Y'</span></code>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{E}\)</span>: Applied electric field vector (<code class="docutils literal notranslate"><span class="pre">efield</span></code>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{r}_{ij}\)</span>: Displacement vector between sites</p></li>
+</ul>
+<p>This creates a bias in hopping rates, driving <strong>directed migration</strong> (drift) in addition to diffusion.</p>
+</section>
+<section id="kinetic-monte-carlo-algorithm">
+<h3>Kinetic Monte Carlo Algorithm<a class="headerlink" href="#kinetic-monte-carlo-algorithm" title="Permalink to this heading"></a></h3>
+<p>Standard KMC (<code class="docutils literal notranslate"><span class="pre">kmc_method=1</span></code>) proceeds as follows:</p>
+<p><strong>1. Calculate transition rates:</strong></p>
+<blockquote>
+<div><p>For each KMC particle at site <span class="math notranslate nohighlight">\(i\)</span>, compute rates to all neighboring sites <span class="math notranslate nohighlight">\(j\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\Gamma_{i \to j} = \nu_0 \exp\left(-\frac{\Delta E_{ij} + \mathbf{E} \cdot \mathbf{r}_{ij}}{k_B T}\right)\]</div>
+<p><strong>Site blocking:</strong> If target site <span class="math notranslate nohighlight">\(j\)</span> is already occupied, <span class="math notranslate nohighlight">\(\Gamma_{i \to j} = 0\)</span>.</p>
+</div></blockquote>
+<p><strong>2. Select event stochastically:</strong></p>
+<blockquote>
+<div><p>Total rate: <span class="math notranslate nohighlight">\(\Gamma_{\text{tot}} = \sum_j \Gamma_{i \to j}\)</span></p>
+<p>Randomly select jump <span class="math notranslate nohighlight">\(i \to k\)</span> with probability:</p>
+<div class="math notranslate nohighlight">
+\[P(i \to k) = \frac{\Gamma_{i \to k}}{\Gamma_{\text{tot}}}\]</div>
+</div></blockquote>
+<p><strong>3. Calculate waiting time:</strong></p>
+<blockquote>
+<div><p>The time until the next jump is exponentially distributed:</p>
+<div class="math notranslate nohighlight">
+\[\tau_{\text{KMC}} = -\frac{1}{\Gamma_{\text{tot}}} \ln(\text{rand})\]</div>
+<p>Convert to simulation time steps:</p>
+<div class="math notranslate nohighlight">
+\[\Delta t_{\text{steps}} = \text{nint}\left(\frac{\tau_{\text{KMC}}}{\delta t}\right) + m_{\text{step}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta t\)</span> is the integration timestep and <span class="math notranslate nohighlight">\(m_{\text{step}}\)</span> is the current step.</p>
+</div></blockquote>
+<p><strong>4. Update Hamiltonian:</strong></p>
+<blockquote>
+<div><p>When the particle moves:</p>
+<ul class="simple">
+<li><p>Swap atomic types, chemical identities, and moment magnitudes between sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(k\)</span></p></li>
+<li><p>Update exchange couplings <span class="math notranslate nohighlight">\(J_{ij}\)</span> for neighboring bonds affected by the particle</p></li>
+<li><p>Recalculate effective fields and transition rates</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="dynamic-hamiltonian-coupling">
+<h3>Dynamic Hamiltonian Coupling<a class="headerlink" href="#dynamic-hamiltonian-coupling" title="Permalink to this heading"></a></h3>
+<p>The KMC module implements <strong>full self-consistency</strong> between particle positions and magnetic interactions:</p>
+<p><strong>Central site update:</strong></p>
+<ul class="simple">
+<li><p>Atomic type <code class="docutils literal notranslate"><span class="pre">atype(i)</span></code> ↔ <code class="docutils literal notranslate"><span class="pre">atype(k)</span></code></p></li>
+<li><p>Chemical type <code class="docutils literal notranslate"><span class="pre">achem_ch(i)</span></code> ↔ <code class="docutils literal notranslate"><span class="pre">achem_ch(k)</span></code></p></li>
+<li><p>Moment magnitude <code class="docutils literal notranslate"><span class="pre">mmom(i)</span></code> ↔ <code class="docutils literal notranslate"><span class="pre">mmom(k)</span></code></p></li>
+</ul>
+<p><strong>Neighbor coupling update:</strong></p>
+<p>For all neighbors <span class="math notranslate nohighlight">\(n\)</span> of both sites <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(k\)</span>, exchange interactions
+<span class="math notranslate nohighlight">\(J_{in}\)</span> and <span class="math notranslate nohighlight">\(J_{kn}\)</span> are swapped if they connect to equivalent bonding vectors.</p>
+<p>This ensures that the <strong>magnetic environment follows the particle</strong>, enabling accurate treatment
+of magnetic polarons where local exchange is modified by the charge carrier.</p>
+<p><strong>Tolerance:</strong> Bonding vectors are compared with tolerance <span class="math notranslate nohighlight">\(\epsilon = 0.005\)</span> to identify equivalent neighbors.</p>
+</section>
+</section>
+<section id="input-parameters">
+<h2>Input Parameters<a class="headerlink" href="#input-parameters" title="Permalink to this heading"></a></h2>
+<p>The following keywords control KMC behavior in the <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> file:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">KMC Keywords</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 50.0%" />
+<col style="width: 15.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">do_kmc</span></code></p></td>
+<td><p>Character(1)</p></td>
+<td><p>Enable Kinetic Monte Carlo (<code class="docutils literal notranslate"><span class="pre">'Y'</span></code>/<code class="docutils literal notranslate"><span class="pre">'N'</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'N'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kmc_method</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Algorithm: <code class="docutils literal notranslate"><span class="pre">1</span></code> = Standard KMC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rate0</span></code></p></td>
+<td><p>Real</p></td>
+<td><p>Attempt frequency <span class="math notranslate nohighlight">\(\nu_0\)</span> (Hz)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">barrfile</span></code></p></td>
+<td><p>Character(35)</p></td>
+<td><p>Filename with energy barriers</p></td>
+<td><p>(required)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kmc_posfile</span></code></p></td>
+<td><p>Character(35)</p></td>
+<td><p>Filename with initial particle positions</p></td>
+<td><p>(required)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">do_efield</span></code></p></td>
+<td><p>Character(1)</p></td>
+<td><p>Enable external electric field (<code class="docutils literal notranslate"><span class="pre">'Y'</span></code>/<code class="docutils literal notranslate"><span class="pre">'N'</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'N'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">efield</span></code></p></td>
+<td><p>Real(3)</p></td>
+<td><p>Electric field vector (eV/Å or dimensionless)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">0.0</span> <span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kmc_step</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Measurement interval (time steps)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kmc_buff</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>Buffer size for trajectory output</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">do_prn_kmc</span></code></p></td>
+<td><p>Character(1)</p></td>
+<td><p>Output mode: <code class="docutils literal notranslate"><span class="pre">'Y'</span></code> = regular, <code class="docutils literal notranslate"><span class="pre">'D'</span></code> = adaptive</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'N'</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<section id="parameter-details">
+<h3>Parameter Details<a class="headerlink" href="#parameter-details" title="Permalink to this heading"></a></h3>
+<p><strong>``rate0`` - Attempt Frequency</strong></p>
+<p>Typical values depend on the physical process:</p>
+<ul class="simple">
+<li><p><strong>Phonon-assisted atomic diffusion:</strong> <span class="math notranslate nohighlight">\(\nu_0 \sim 10^{12} - 10^{13}\)</span> Hz (Debye frequency)</p></li>
+<li><p><strong>Magnetic polaron hopping:</strong> <span class="math notranslate nohighlight">\(\nu_0 \sim 10^{11} - 10^{12}\)</span> Hz (magnon-electron coupling)</p></li>
+<li><p><strong>Vacancy migration in metals:</strong> <span class="math notranslate nohighlight">\(\nu_0 \sim 10^{12}\)</span> Hz</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">rate0</span></code> must be specified in <strong>Hz</strong>. It fundamentally sets the timescale for rare event dynamics.</p>
+</div>
+<p><strong>``barrfile`` - Energy Barrier File</strong></p>
+<p>Similar format to <code class="docutils literal notranslate"><span class="pre">jfile</span></code> (exchange file):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Format (without random alloy):
+isite  jsite  rx  ry  rz  barrier(eV)
+
+# Format (with random alloy):
+isite  jsite  ichem  jchem  rx  ry  rz  barrier(eV)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">isite</span></code>, <code class="docutils literal notranslate"><span class="pre">jsite</span></code>: Atom indices</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rx,</span> <span class="pre">ry,</span> <span class="pre">rz</span></code>: Neighbor vector (Cartesian or Direct coordinates matching <code class="docutils literal notranslate"><span class="pre">posfiletype</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">barrier</span></code>: Energy barrier <span class="math notranslate nohighlight">\(\Delta E_{ij}\)</span> in <strong>eV</strong></p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1   2   1.0  0.0  0.0   0.15
+1   3   0.0  1.0  0.0   0.15
+1   5  -1.0  0.0  0.0   0.20
+</pre></div>
+</div>
+<p><strong>Physical meaning:</strong> Barriers represent saddle point energies for particle migration. For polarons,
+these include both elastic distortion energy and magnetic exchange differences.</p>
+<p><strong>``kmc_posfile`` - Initial Particle Positions</strong></p>
+<p>Specifies starting positions of KMC particles:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Format (Cartesian coordinates):
+site  type  Rx  Ry  Rz
+
+# Format (Direct coordinates):
+site  type  rx  ry  rz
+
+# Format (random alloy):
+site  type  chem  conc  Rx  Ry  Rz
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">site</span></code>: Atom index where particle is initially located</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Particle type (1=polaron site, others=host)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chem</span></code>, <code class="docutils literal notranslate"><span class="pre">conc</span></code>: Chemical type and concentration (for random alloys)</p></li>
+<li><p>Coordinates: Match <code class="docutils literal notranslate"><span class="pre">posfiletype</span></code> (<code class="docutils literal notranslate"><span class="pre">'C'</span></code> or <code class="docutils literal notranslate"><span class="pre">'D'</span></code>)</p></li>
+</ul>
+<p><strong>Example (Cartesian):</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>512  2  5.0  5.0  5.0
+1024 2  10.0 10.0 10.0
+</pre></div>
+</div>
+<p>This places two KMC particles at atoms 512 and 1024.</p>
+<p><strong>``efield`` - Electric Field</strong></p>
+<p>Vector format: <code class="docutils literal notranslate"><span class="pre">efield(1)</span> <span class="pre">efield(2)</span> <span class="pre">efield(3)</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>efield   0.01   0.0   0.0
+</pre></div>
+</div>
+<p>Applies field along <span class="math notranslate nohighlight">\(x\)</span>-axis. <strong>Units:</strong> The energy term <span class="math notranslate nohighlight">\(\mathbf{E} \cdot \mathbf{r}\)</span>
+should give eV when <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> is in Ångströms.</p>
+<p><strong>Typical values:</strong></p>
+<ul class="simple">
+<li><p>Lab-scale fields: <span class="math notranslate nohighlight">\(E \sim 0.001 - 0.1\)</span> eV/Å (<span class="math notranslate nohighlight">\(\sim 10^8 - 10^{10}\)</span> V/m)</p></li>
+<li><p>Effective polaron fields: <span class="math notranslate nohighlight">\(E \sim 0.01\)</span> eV/Å</p></li>
+</ul>
+</section>
+</section>
+<section id="output-files">
+<h2>Output Files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h2>
+<section id="kmc-info-simid-out">
+<h3><code class="docutils literal notranslate"><span class="pre">kmc_info.&lt;simid&gt;.out</span></code><a class="headerlink" href="#kmc-info-simid-out" title="Permalink to this heading"></a></h3>
+<p>Main trajectory output file with format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Columns:
+# 1: Particle index
+# 2: Time step (or real time if real_time_measure=&#39;Y&#39;)
+# 3: Current site index
+# 4-6: Cartesian coordinates (x, y, z)
+# 7: KMC time step counter (next jump at this step)
+# 8-10: Average magnetic moment in polaron cloud (mx, my, mz)
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1     1000    512    5.0000    5.0000    5.0000     1250    0.9850   0.0000   0.0000
+2     1000   1024   10.0000   10.0000   10.0000     1300   -0.9750   0.0000   0.0000
+1     1250    513    6.0000    5.0000    5.0000     1480    0.9700   0.1200   0.0000
+</pre></div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<ul class="simple">
+<li><p>Particle 1 jumped from site 512 → 513 at step 1250</p></li>
+<li><p>Average moment in polaron 1’s neighborhood: <span class="math notranslate nohighlight">\(\mathbf{m} = (0.97, 0.12, 0)\)</span> at step 1250</p></li>
+<li><p>Next jump for particle 1 scheduled at step 1480</p></li>
+</ul>
+<p><strong>Printing modes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">do_prn_kmc='Y'</span></code>: Output every <code class="docutils literal notranslate"><span class="pre">kmc_step</span></code> time steps</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_prn_kmc='D'</span></code>: Adaptive printing only when particle moves (saves disk space)</p></li>
+</ul>
+</section>
+<section id="struct-kmc-simid-out">
+<h3><code class="docutils literal notranslate"><span class="pre">struct_kmc.&lt;simid&gt;.out</span></code><a class="headerlink" href="#struct-kmc-simid-out" title="Permalink to this heading"></a></h3>
+<p><strong>Structural information</strong> (written once at initialization):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Sorted data from KMC
+----------------------------------
+Atom=    512    No neigh=     12
+                  513   514   ...
+      1.5000E-01   1.5000E-01   1.5000E-01   ...
+----------------------------------
+Atom=    513    No neigh=     12
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Lists neighbor indices and corresponding energy barriers for each site</p></li>
+<li><p>Useful for <strong>debugging</strong> barrier connectivity</p></li>
+</ul>
+</section>
+</section>
+<section id="physical-interpretation">
+<h2>Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Permalink to this heading"></a></h2>
+<section id="diffusion-coefficients">
+<h3>Diffusion Coefficients<a class="headerlink" href="#diffusion-coefficients" title="Permalink to this heading"></a></h3>
+<p>For isotropic barriers, the diffusion coefficient can be estimated from KMC trajectories:</p>
+<div class="math notranslate nohighlight">
+\[D = \frac{\langle |\mathbf{r}(t) - \mathbf{r}(0)|^2 \rangle}{6t}\]</div>
+<p>Track particle positions from <code class="docutils literal notranslate"><span class="pre">kmc_info</span></code> output and calculate mean-square displacement vs. time.</p>
+<p><strong>Arrhenius plot:</strong></p>
+<div class="math notranslate nohighlight">
+\[D(T) = D_0 \exp\left(-\frac{E_a}{k_B T}\right)\]</div>
+<p>Plot <span class="math notranslate nohighlight">\(\ln D\)</span> vs. <span class="math notranslate nohighlight">\(1/T\)</span> to extract activation energy <span class="math notranslate nohighlight">\(E_a\)</span> (should match average barrier).</p>
+</section>
+<section id="polaron-cloud-size">
+<h3>Polaron Cloud Size<a class="headerlink" href="#polaron-cloud-size" title="Permalink to this heading"></a></h3>
+<p>The <strong>average moment</strong> output (columns 8-10 in <code class="docutils literal notranslate"><span class="pre">kmc_info</span></code>) represents the local magnetization
+around the particle. For a magnetic polaron:</p>
+<ul class="simple">
+<li><p><strong>FM host:</strong> <span class="math notranslate nohighlight">\(|\mathbf{m}| \approx 1\)</span> → particle weakly perturbs spins</p></li>
+<li><p><strong>AFM host:</strong> <span class="math notranslate nohighlight">\(|\mathbf{m}| \ll 1\)</span> → strong local spin canting (polaron formation)</p></li>
+</ul>
+<p>Monitor <span class="math notranslate nohighlight">\(|\mathbf{m}(t)|\)</span> to track polaron stability and distortion dynamics.</p>
+</section>
+<section id="residence-time-distribution">
+<h3>Residence Time Distribution<a class="headerlink" href="#residence-time-distribution" title="Permalink to this heading"></a></h3>
+<p>The distribution of waiting times <span class="math notranslate nohighlight">\(\tau_{\text{KMC}}\)</span> before jumps follows:</p>
+<div class="math notranslate nohighlight">
+\[P(\tau) = \Gamma_{\text{tot}} \exp(-\Gamma_{\text{tot}} \tau)\]</div>
+<p>Extract from differences in column 7 (<code class="docutils literal notranslate"><span class="pre">kmc_time_steps</span></code>). Deviations from exponential indicate:</p>
+<ul class="simple">
+<li><p><strong>Trapped particles:</strong> <span class="math notranslate nohighlight">\(\Gamma_{\text{tot}} \to 0\)</span> at some sites (high barriers or blocked neighbors)</p></li>
+<li><p><strong>Correlated jumps:</strong> Multiple particles interacting via excluded volume</p></li>
+</ul>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<section id="example-1-single-vacancy-diffusion-in-fm-ni">
+<h3>Example 1: Single Vacancy Diffusion in FM Ni<a class="headerlink" href="#example-1-single-vacancy-diffusion-in-fm-ni" title="Permalink to this heading"></a></h3>
+<p><strong>System:</strong> FCC Ni (<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3.52</span></code> Å), single vacancy, nearest-neighbor barriers.</p>
+<p><strong>``inpsd.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>do_kmc          Y
+kmc_method      1
+rate0           1.0e12           # Debye frequency (Hz)
+barrfile        barriers.dat
+kmc_posfile     vacancy.dat
+kmc_step        100
+kmc_buff        50
+do_prn_kmc      Y
+</pre></div>
+</div>
+<p><strong>``barriers.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Nearest-neighbor hopping (12 neighbors in FCC)
+512  513   1.0  0.0  0.0   1.05
+512  514  -1.0  0.0  0.0   1.05
+512  515   0.0  1.0  0.0   1.05
+512  516   0.0 -1.0  0.0   1.05
+512  517   0.0  0.0  1.0   1.05
+512  518   0.0  0.0 -1.0   1.05
+...
+# (Repeat for all sites with consistent 1.05 eV barrier)
+</pre></div>
+</div>
+<p><strong>``vacancy.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>512  1  17.6  17.6  17.6
+</pre></div>
+</div>
+<p><strong>Expected results:</strong></p>
+<ul class="simple">
+<li><p>Vacancy performs random walk with average rate <span class="math notranslate nohighlight">\(\Gamma \approx 10^{12} \exp(-1.05/0.026) \sim 10^{-5}\)</span> Hz at 300 K</p></li>
+<li><p>Mean-square displacement: <span class="math notranslate nohighlight">\(\langle r^2(t) \rangle \sim 6Dt\)</span> with <span class="math notranslate nohighlight">\(D \sim 10^{-16}\)</span> m²/s</p></li>
+<li><p>Trajectory output shows isotropic diffusion</p></li>
+</ul>
+<p><strong>Physical validation:</strong></p>
+<p>Compare extracted <span class="math notranslate nohighlight">\(D(T)\)</span> with experimental vacancy diffusion in Ni (literature: <span class="math notranslate nohighlight">\(E_a \sim 1.0 - 1.1\)</span> eV).</p>
+</section>
+<section id="example-2-magnetic-polaron-with-electric-field">
+<h3>Example 2: Magnetic Polaron with Electric Field<a class="headerlink" href="#example-2-magnetic-polaron-with-electric-field" title="Permalink to this heading"></a></h3>
+<p><strong>System:</strong> Skyrmion-hosting chiral magnet, single polaron, applied electric field.</p>
+<p><strong>``inpsd.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>do_kmc          Y
+kmc_method      1
+rate0           5.0e11
+barrfile        polaron_barriers.dat
+kmc_posfile     polaron_init.dat
+do_efield       Y
+efield          0.02  0.0  0.0    # Field along x
+kmc_step        50
+kmc_buff        100
+do_prn_kmc      D                 # Adaptive printing
+</pre></div>
+</div>
+<p><strong>``polaron_barriers.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Lower barriers in FM regions, higher in skyrmion cores
+256  257   1.0  0.0  0.0   0.08   # FM region
+512  513   1.0  0.0  0.0   0.25   # Skyrmion boundary
+768  769   1.0  0.0  0.0   0.50   # Skyrmion core
+</pre></div>
+</div>
+<p><strong>``polaron_init.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>256  2  10.0  10.0  10.0
+</pre></div>
+</div>
+<p><strong>Expected results:</strong></p>
+<ul class="simple">
+<li><p><strong>Drift velocity:</strong> <span class="math notranslate nohighlight">\(v_d \propto E\)</span> along <span class="math notranslate nohighlight">\(x\)</span>-axis (extract from mean displacement <span class="math notranslate nohighlight">\(\langle x(t) \rangle\)</span>)</p></li>
+<li><p><strong>Skyrmion trapping:</strong> Polaron slows near skyrmion cores (high barriers <span class="math notranslate nohighlight">\(\sim 0.5\)</span> eV)</p></li>
+<li><p><strong>Local moment distortion:</strong> Columns 8-10 show reduced <span class="math notranslate nohighlight">\(|\mathbf{m}|\)</span> when polaron enters skyrmion</p></li>
+</ul>
+<p><strong>Physical insight:</strong> Electric field drives polaron motion, but topological barriers from skyrmions
+create <strong>pinning sites</strong>. Useful for modeling skyrmionics applications.</p>
+</section>
+<section id="example-3-two-polaron-system-with-coulomb-repulsion">
+<h3>Example 3: Two-Polaron System with Coulomb Repulsion<a class="headerlink" href="#example-3-two-polaron-system-with-coulomb-repulsion" title="Permalink to this heading"></a></h3>
+<p><strong>System:</strong> Two like-charged polarons with excluded volume interactions.</p>
+<p><strong>``inpsd.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>do_kmc          Y
+kmc_method      1
+rate0           1.0e12
+barrfile        two_polaron_barr.dat
+kmc_posfile     two_polarons.dat
+kmc_step        100
+do_prn_kmc      Y
+</pre></div>
+</div>
+<p><strong>``two_polarons.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>128  2   5.0   5.0   5.0
+384  2  15.0  15.0  15.0
+</pre></div>
+</div>
+<p><strong>Algorithm behavior:</strong></p>
+<ul class="simple">
+<li><p>When polaron 1 attempts to jump to an occupied site → <span class="math notranslate nohighlight">\(\Gamma = 0\)</span> (blocked)</p></li>
+<li><p><strong>Correlation effects:</strong> Particles avoid each other, leading to reduced effective diffusion</p></li>
+<li><p>Output: Track separation <span class="math notranslate nohighlight">\(|\mathbf{r}_1(t) - \mathbf{r}_2(t)|\)</span> to study pair correlation</p></li>
+</ul>
+<p><strong>Physical relevance:</strong> Models <strong>polaron-polaron interactions</strong> in manganites or cuprates, where
+Coulomb repulsion prevents site double occupancy.</p>
+</section>
+<section id="example-4-random-alloy-with-site-dependent-barriers">
+<h3>Example 4: Random Alloy with Site-Dependent Barriers<a class="headerlink" href="#example-4-random-alloy-with-site-dependent-barriers" title="Permalink to this heading"></a></h3>
+<p><strong>System:</strong> Fe₅₀Co₅₀ random alloy, barriers depend on local chemical environment.</p>
+<p><strong>``inpsd.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>do_kmc          Y
+do_ralloy       1
+kmc_method      1
+rate0           8.0e11
+barrfile        alloy_barriers.dat
+kmc_posfile     alloy_vacancy.dat
+kmc_step        100
+</pre></div>
+</div>
+<p><strong>``alloy_barriers.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Site  Neigh  iChem  jChem  rx  ry  rz  Barrier
+512    513      1      1    1.0  0.0  0.0   0.95   # Fe-Fe
+512    514      1      2    1.0  0.0  0.0   1.10   # Fe-Co
+512    515      2      1    1.0  0.0  0.0   1.10   # Co-Fe
+512    516      2      2    1.0  0.0  0.0   1.20   # Co-Co
+</pre></div>
+</div>
+<p><strong>``alloy_vacancy.dat``:</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>512  1  1  0.5  10.0  10.0  10.0   # At Fe site with 50% Fe concentration
+</pre></div>
+</div>
+<p><strong>Expected results:</strong></p>
+<ul class="simple">
+<li><p><strong>Heterogeneous diffusion:</strong> Vacancy hops faster in Fe-rich regions (lower barriers)</p></li>
+<li><p>Extract site-resolved diffusion coefficient from trajectory</p></li>
+<li><p>Compare with compositional dependence of diffusion in Fe-Co alloys</p></li>
+</ul>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
+<section id="issue-very-long-or-very-short-kmc-time-steps">
+<h3>Issue: Very Long or Very Short KMC Time Steps<a class="headerlink" href="#issue-very-long-or-very-short-kmc-time-steps" title="Permalink to this heading"></a></h3>
+<p><strong>Symptom:</strong> <code class="docutils literal notranslate"><span class="pre">kmc_time_steps</span></code> in output are extremely large (&gt;10⁶) or very small (&lt;10).</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Incorrect ``rate0``:</strong> Check units (must be Hz). Too small → unrealistic long waits.</p></li>
+<li><p><strong>Unphysical barriers:</strong> Very high <span class="math notranslate nohighlight">\(\Delta E\)</span> (&gt;2 eV) → exponentially suppressed rates.</p></li>
+<li><p><strong>Timestep mismatch:</strong> Ensure <code class="docutils literal notranslate"><span class="pre">delta_t</span></code> is appropriate for KMC timescale.</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Verify <span class="math notranslate nohighlight">\(\Gamma_{\text{tot}} \sim \nu_0 \exp(-\Delta E / k_B T)\)</span> is in reasonable range (10² - 10⁶ Hz)</p></li>
+<li><p>Adjust <code class="docutils literal notranslate"><span class="pre">rate0</span></code> or barriers to match physical system</p></li>
+<li><p>Check that <span class="math notranslate nohighlight">\(\delta t \ll \tau_{\text{KMC}}\)</span> (otherwise KMC steps skip MD dynamics)</p></li>
+</ul>
+</section>
+<section id="issue-particle-appears-trapped">
+<h3>Issue: Particle Appears Trapped<a class="headerlink" href="#issue-particle-appears-trapped" title="Permalink to this heading"></a></h3>
+<p><strong>Symptom:</strong> Particle does not move for entire simulation (<code class="docutils literal notranslate"><span class="pre">site</span></code> column in output stays constant).</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>All neighbors blocked:</strong> In multi-particle system, surrounding sites may be occupied.</p></li>
+<li><p><strong>No neighbors defined:</strong> <code class="docutils literal notranslate"><span class="pre">barrfile</span></code> missing entries for current particle site.</p></li>
+<li><p><strong>Infinitely high barriers:</strong> All <span class="math notranslate nohighlight">\(\Gamma_{i \to j} \to 0\)</span>.</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">struct_kmc</span></code> output to verify neighbor list is correct</p></li>
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">barrfile</span></code> covers all reachable states</p></li>
+<li><p>Inspect barrier magnitudes: typical activated processes have <span class="math notranslate nohighlight">\(\Delta E = 0.5 - 2.0\)</span> eV</p></li>
+</ul>
+</section>
+<section id="issue-hamiltonian-update-errors">
+<h3>Issue: Hamiltonian Update Errors<a class="headerlink" href="#issue-hamiltonian-update-errors" title="Permalink to this heading"></a></h3>
+<p><strong>Symptom:</strong> Simulation crashes or produces unphysical moment configurations after KMC jump.</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Inconsistent neighbor maps:</strong> <code class="docutils literal notranslate"><span class="pre">barrfile</span></code> and <code class="docutils literal notranslate"><span class="pre">jfile</span></code> use different coordinate conventions.</p></li>
+<li><p><strong>Tolerance too strict:</strong> Bonding vector comparison fails (<code class="docutils literal notranslate"><span class="pre">tol</span> <span class="pre">=</span> <span class="pre">0.005</span></code> in code).</p></li>
+<li><p><strong>Missing random alloy data:</strong> Chemical types not properly swapped for <code class="docutils literal notranslate"><span class="pre">do_ralloy=1</span></code>.</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">barrfile</span></code> and <code class="docutils literal notranslate"><span class="pre">jfile</span></code> use same <code class="docutils literal notranslate"><span class="pre">posfiletype</span></code> (<code class="docutils literal notranslate"><span class="pre">'C'</span></code> or <code class="docutils literal notranslate"><span class="pre">'D'</span></code>)</p></li>
+<li><p>Verify coordinate transformations (Cartesian ↔ Direct) are consistent</p></li>
+<li><p>For random alloys, check <code class="docutils literal notranslate"><span class="pre">kmc_posfile</span></code> includes chemical types</p></li>
+</ul>
+</section>
+<section id="issue-no-output-in-kmc-info-file">
+<h3>Issue: No Output in <code class="docutils literal notranslate"><span class="pre">kmc_info</span></code> File<a class="headerlink" href="#issue-no-output-in-kmc-info-file" title="Permalink to this heading"></a></h3>
+<p><strong>Symptom:</strong> File <code class="docutils literal notranslate"><span class="pre">kmc_info.&lt;simid&gt;.out</span></code> is empty or not created.</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>``do_prn_kmc=’N’``:</strong> Printing is disabled.</p></li>
+<li><p><strong>Adaptive mode with no jumps:</strong> <code class="docutils literal notranslate"><span class="pre">do_prn_kmc='D'</span></code> only writes when particles move.</p></li>
+<li><p><strong>Buffer not flushed:</strong> Simulation ended before <code class="docutils literal notranslate"><span class="pre">kmc_buff</span></code> entries accumulated.</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">do_prn_kmc='Y'</span></code> for regular output</p></li>
+<li><p>Ensure simulation runs long enough for particles to jump</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">kmc_step</span></code> is not too large (reduce for more frequent measurements)</p></li>
+</ul>
+</section>
+</section>
+<section id="performance-considerations">
+<h2>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permalink to this heading"></a></h2>
+<section id="computational-cost">
+<h3>Computational Cost<a class="headerlink" href="#computational-cost" title="Permalink to this heading"></a></h3>
+<p>KMC adds <strong>minimal overhead</strong> to UppASD simulations:</p>
+<ul class="simple">
+<li><p><strong>Rate calculation:</strong> <span class="math notranslate nohighlight">\(O(N_{\text{part}} \times N_{\text{neigh}})\)</span> per time step</p></li>
+<li><p><strong>Hamiltonian update:</strong> <span class="math notranslate nohighlight">\(O(N_{\text{neigh}}^2)\)</span> when particle jumps</p></li>
+</ul>
+<p>For typical systems (<span class="math notranslate nohighlight">\(N_{\text{part}} \sim 1 - 10\)</span>, <span class="math notranslate nohighlight">\(N_{\text{neigh}} \sim 12\)</span>),
+KMC overhead is &lt; 1% of total simulation time.</p>
+</section>
+<section id="timescale-separation">
+<h3>Timescale Separation<a class="headerlink" href="#timescale-separation" title="Permalink to this heading"></a></h3>
+<p>KMC is efficient when:</p>
+<div class="math notranslate nohighlight">
+\[\tau_{\text{KMC}} \gg \delta t_{\text{MD}}\]</div>
+<p>Typical: <span class="math notranslate nohighlight">\(\tau_{\text{KMC}} \sim 10^{-8}\)</span> s vs. <span class="math notranslate nohighlight">\(\delta t_{\text{MD}} \sim 10^{-15}\)</span> s
+→ <span class="math notranslate nohighlight">\(10^7\)</span> MD steps between KMC events.</p>
+<p><strong>Caution:</strong> If barriers are very low (<span class="math notranslate nohighlight">\(\Delta E &lt; 0.1\)</span> eV), KMC becomes inefficient
+(frequent jumps every few MD steps). In this limit, use full molecular dynamics instead.</p>
+</section>
+<section id="parallelization">
+<h3>Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this heading"></a></h3>
+<p>Current implementation:</p>
+<ul class="simple">
+<li><p><strong>Setup phases</strong> (<code class="docutils literal notranslate"><span class="pre">setup_barriers</span></code>, rate calculation) are OpenMP parallelized</p></li>
+<li><p><strong>Hamiltonian updates</strong> are serial (due to data dependencies)</p></li>
+</ul>
+<p>For large <code class="docutils literal notranslate"><span class="pre">NA_KMC</span></code> (&gt;100 particles), consider subdividing system if particles are spatially separated.</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p><strong>KMC Theory:</strong></p>
+<ol class="arabic simple">
+<li><ol class="upperalpha simple">
+<li><ol class="upperalpha simple" start="6">
+<li><p>Voter, “Introduction to the Kinetic Monte Carlo Method,” <em>Radiation Effects in Solids</em> (Springer, 2007)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol class="upperalpha simple">
+<li><ol class="upperalpha simple" start="16">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Jansen, <em>An Introduction to Kinetic Monte Carlo Simulations of Surface Reactions</em> (Springer, 2012)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>Magnetic Polarons:</strong></p>
+<ol class="arabic simple" start="3">
+<li><ol class="upperalpha simple" start="5">
+<li><p>Dagotto, “Nanoscale Phase Separation and Colossal Magnetoresistance,” <em>Springer Series in Solid-State Sciences</em> (2003)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="13">
+<li><ol class="upperalpha simple" start="2">
+<li><p>Salamon and M. Jaime, “The physics of manganites: Structure and transport,” <em>Rev. Mod. Phys.</em> <strong>73</strong>, 583 (2001)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>Vacancy Diffusion:</strong></p>
+<ol class="arabic simple" start="5">
+<li><ol class="upperalpha simple" start="8">
+<li><p>Mehrer, <em>Diffusion in Solids</em> (Springer, 2007)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="7">
+<li><ol class="upperalpha simple" start="8">
+<li><p>Vineyard, “Frequency factors and isotope effects in solid state rate processes,” <em>J. Phys. Chem. Solids</em> <strong>3</strong>, 121 (1957)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>UppASD Implementation:</strong></p>
+<ol class="arabic simple" start="7">
+<li><ol class="upperalpha simple" start="10">
+<li><p>Chico et al., “KMC module in UppASD for coupled spin-charge dynamics” (in code documentation)</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="summary-of-workflow">
+<h2>Summary of Workflow<a class="headerlink" href="#summary-of-workflow" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Prepare input files:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code>: Set <code class="docutils literal notranslate"><span class="pre">do_kmc='Y'</span></code>, specify <code class="docutils literal notranslate"><span class="pre">rate0</span></code>, file names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">barrfile</span></code>: Energy barriers for all hopping connections</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kmc_posfile</span></code>: Initial particle positions</p></li>
+</ul>
+</li>
+<li><p><strong>Run simulation:</strong></p>
+<ul class="simple">
+<li><p>KMC particles jump stochastically based on Arrhenius rates</p></li>
+<li><p>Magnetic Hamiltonian updates after each jump</p></li>
+<li><p>Spins evolve via Landau-Lifshitz-Gilbert between KMC events</p></li>
+</ul>
+</li>
+<li><p><strong>Analyze output:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kmc_info</span></code>: Extract trajectories, calculate <span class="math notranslate nohighlight">\(D(T)\)</span>, plot mean-square displacement</p></li>
+<li><p>Monitor polaron cloud magnetization (columns 8-10)</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">struct_kmc</span></code> for barrier connectivity</p></li>
+</ul>
+</li>
+<li><p><strong>Physical validation:</strong></p>
+<ul class="simple">
+<li><p>Compare <span class="math notranslate nohighlight">\(E_a\)</span> from Arrhenius plot with known activation energies</p></li>
+<li><p>Verify diffusion coefficients match experimental data</p></li>
+<li><p>Check that polaron formation energy is consistent with model parameters</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../stimuli/temperature-gradients/"><span class="doc">Temperature Gradients</span></a> for coupling KMC with spatially varying temperatures</p></li>
+<li><p><a class="reference internal" href="../spin-lattice/"><span class="doc">Spin-lattice dynamics (SLD) simulations</span></a> for full spin-lattice dynamics (alternative to KMC for faster motion)</p></li>
+<li><p><a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a> for temperature control and ensemble settings in equilibrium simulations</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Future extensions:</strong> Planned features include <code class="docutils literal notranslate"><span class="pre">kmc_method=2</span></code> (dynamic barriers calculated
+from current spin configuration) and <code class="docutils literal notranslate"><span class="pre">kmc_method=3</span></code> (adiabatic exchange interpolation). Currently
+only <code class="docutils literal notranslate"><span class="pre">kmc_method=1</span></code> (fixed barriers from input) is implemented.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../spin-spiral/" class="btn btn-neutral float-left" title="Spin-spiral minimization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../spin-lattice/" class="btn btn-neutral float-right" title="Spin-lattice dynamics (SLD) simulations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

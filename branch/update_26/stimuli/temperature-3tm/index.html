@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Three-temperature models &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Temperature Gradients" href="../temperature-gradients/" />
+    <link rel="prev" title="Spin torques" href="../currents/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">External Stimuli and Control</a></li>
+      <li class="breadcrumb-item active">Three-temperature models</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/stimuli/temperature-3tm.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="three-temperature-models">
+<h1>Three-temperature models<a class="headerlink" href="#three-temperature-models" title="Permalink to this heading"></a></h1>
+<p>This section documents the implementation of temperature–bath models used to
+describe energy flow between electrons, spins, and lattice degrees of freedom.
+Two related models are supported:</p>
+<ul class="simple">
+<li><p>Conventional three-temperature model (3TM)</p></li>
+<li><p>Heat-conserving three-temperature model (HC-3TM)</p></li>
+</ul>
+<p>Both are used primarily in ultrafast laser-excitation and non-equilibrium
+thermalization studies.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>In multireservoir models, the system is divided into three coupled subsystems:</p>
+<ul class="simple">
+<li><p>Electron bath (e)</p></li>
+<li><p>Spin bath (s)</p></li>
+<li><p>Lattice bath (l)</p></li>
+</ul>
+<p>Each bath is assigned a temperature <span class="math notranslate nohighlight">\(T_e, T_s, T_l\)</span> and exchanges energy
+with the others. These temperatures then control the stochastic terms in the
+equations of motion.</p>
+<p>Two philosophies exist:</p>
+<ul class="simple">
+<li><p><strong>3TM</strong>: temperatures are governed by coupled differential equations with
+phenomenological coupling constants.</p></li>
+<li><p><strong>HC-3TM</strong>: spin and lattice temperatures are measured dynamically during
+simulation, and the electron temperature is adjusted to conserve total energy.</p></li>
+</ul>
+</section>
+<section id="supported-modes">
+<h2>Supported modes<a class="headerlink" href="#supported-modes" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Conventional 3TM with fixed coupling constants</p></li>
+<li><p>Conventional 3TM with temperature-dependent heat capacities</p></li>
+<li><p>Optional inclusion of spin–lattice coupling through explicit SLD</p></li>
+</ul>
+</section>
+<section id="keyword-summary">
+<h2>Keyword summary<a class="headerlink" href="#keyword-summary" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_3tm</span></code></dt><dd><p>Activate 3TM: <cite>Y</cite> = full, <cite>E</cite> = electron-only, <cite>N</cite> = off.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">temp_elec_init</span></code></dt><dd><p>Initial electron temperature (K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">temp_spin_init</span></code></dt><dd><p>Initial spin temperature (K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">temp_latt_init</span></code></dt><dd><p>Initial lattice temperature (K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Gel</span></code></dt><dd><p>Electron–lattice coupling (W/m³/K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Ges</span></code></dt><dd><p>Electron–spin coupling (W/m³/K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Gsl</span></code></dt><dd><p>Spin–lattice coupling (W/m³/K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">P_pulse</span></code></dt><dd><p>Pulse fluence (J/m²).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">t0_pulse</span></code></dt><dd><p>Pulse center time (s).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sigma_pulse</span></code></dt><dd><p>Pulse width (s).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gamma_Ce</span></code></dt><dd><p>Electron Sommerfeld constant (J/m³/K²).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Cs</span></code></dt><dd><p>Spin heat capacity (J/m³/K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Cl</span></code></dt><dd><p>Lattice heat capacity (J/m³/K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">G_cool</span></code></dt><dd><p>Cooling rate to ambient (W/m³/K).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">print_3tm_step</span></code></dt><dd><p>Print interval (number of simulation steps).</p>
+</dd>
+</dl>
+</section>
+<section id="conventional-three-temperature-model-3tm">
+<h2>Conventional three-temperature model (3TM)<a class="headerlink" href="#conventional-three-temperature-model-3tm" title="Permalink to this heading"></a></h2>
+<p>In the conventional 3TM, temperatures are governed by coupled differential
+equations [Beaurepaire1996]</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+C_e(T_e)\frac{dT_e}{dt} &amp;= -G_{el}(T_e-T_l) - G_{es}(T_e-T_s) + P(t) \\
+C_s(T_s)\frac{dT_s}{dt} &amp;= -G_{es}(T_s-T_e) - G_{sl}(T_s-T_l) \\
+C_l(T_l)\frac{dT_l}{dt} &amp;= -G_{el}(T_l-T_e) - G_{sl}(T_l-T_s)
+\end{aligned}\end{split}\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C_e, C_s, C_l\)</span> are heat capacities.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G_{el}, G_{es}, G_{sl}\)</span> are phenomenological coupling constants.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(t)\)</span> is the laser source term.</p></li>
+</ul>
+<p>In this approach:</p>
+<ul class="simple">
+<li><p>Spin and lattice temperatures are not measured from dynamics.</p></li>
+<li><p>Energy flow is imposed through fitted coupling parameters.</p></li>
+<li><p>Results depend sensitively on the chosen <span class="math notranslate nohighlight">\(G\)</span> values.</p></li>
+</ul>
+<p>This model is useful for:</p>
+<ul class="simple">
+<li><p>Simple ultrafast demagnetization studies</p></li>
+<li><p>Benchmarking against earlier literature</p></li>
+<li><p>Systems where couplings are well constrained</p></li>
+</ul>
+</section>
+<section id="heat-conserving-three-temperature-model-hc-3tm">
+<h2>Heat-conserving three-temperature model (HC-3TM)<a class="headerlink" href="#heat-conserving-three-temperature-model-hc-3tm" title="Permalink to this heading"></a></h2>
+<p>The HC-3TM removes the phenomenological inter-bath coupling constants and
+instead enforces energy conservation dynamically <a class="reference internal" href="../../references/#pankratova2022" id="id1"><span>[Pankratova2022]</span></a>.</p>
+<p>The HC-3TM removes the phenomenological inter-bath coupling constants and
+instead enforces energy conservation dynamically.</p>
+<section id="philosophy">
+<h3>Philosophy<a class="headerlink" href="#philosophy" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p>Spin and lattice temperatures are measured directly from simulation:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}T_l = \langle E_{kin}^{lattice} \rangle / k_B\\T_s = \langle E_{ex}^{spin} \rangle / k_B\end{aligned}\end{align} \]</div>
+</li>
+<li><p>These temperatures emerge from Langevin dynamics driven by the electron bath.</p></li>
+<li><p>The electron temperature is then adjusted to conserve total energy.</p></li>
+</ul>
+<p>Electron temperature evolution:</p>
+<div class="math notranslate nohighlight">
+\[\Delta T_e(t) =
+-\frac{C_l(T_l)}{C_e(T_e)}T_l(t)
+-\frac{C_s(T_s)}{C_e(T_e)}T_s(t)
++\frac{W(t)}{C_e(T_e)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(W(t)\)</span> is the laser source term.</p>
+</section>
+<section id="algorithm">
+<h3>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this heading"></a></h3>
+<p>At each time step:</p>
+<ol class="arabic simple">
+<li><p>Propagate spin and lattice with stochastic terms set by current <span class="math notranslate nohighlight">\(T_e\)</span>.</p></li>
+<li><p>Measure <span class="math notranslate nohighlight">\(T_s\)</span> and <span class="math notranslate nohighlight">\(T_l\)</span> from instantaneous energies.</p></li>
+<li><p>Update <span class="math notranslate nohighlight">\(T_e\)</span> so that total energy is conserved.</p></li>
+</ol>
+<p>No explicit <span class="math notranslate nohighlight">\(G_{el}, G_{es}, G_{sl}\)</span> are used.</p>
+<p>Key consequences:</p>
+<ul class="simple">
+<li><p>Heat flow is emergent, not imposed.</p></li>
+<li><p>Fewer poorly known parameters.</p></li>
+<li><p>Faster initial demagnetization due to direct electron-controlled noise.</p></li>
+</ul>
+</section>
+</section>
+<section id="comparison-3tm-vs-hc-3tm">
+<h2>Comparison: 3TM vs HC-3TM<a class="headerlink" href="#comparison-3tm-vs-hc-3tm" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>3TM</p></th>
+<th class="head"><p>HC-3TM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Energy exchange</p></td>
+<td><p>Phenomenological G’s</p></td>
+<td><p>Emergent from dynamics</p></td>
+</tr>
+<tr class="row-odd"><td><p>Spin temperature</p></td>
+<td><p>Solved from ODEs</p></td>
+<td><p>Measured from spin energy</p></td>
+</tr>
+<tr class="row-even"><td><p>Lattice temperature</p></td>
+<td><p>Solved from ODEs</p></td>
+<td><p>Measured from kinetic energy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Electron temperature</p></td>
+<td><p>ODE with couplings</p></td>
+<td><p>Adjusted for energy balance</p></td>
+</tr>
+<tr class="row-even"><td><p>Number of fit parameters</p></td>
+<td><p>Several (Gel, Ges, Gsl)</p></td>
+<td><p>None (besides damping)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ultrafast demagnetization</p></td>
+<td><p>Often too slow</p></td>
+<td><p>Correct sub-ps timescale</p></td>
+</tr>
+</tbody>
+</table>
+<p>The faster demagnetization in HC-3TM originates from the fact that the stochastic
+fields acting on spins are governed directly by the electron temperature, which
+rises rapidly after laser excitation.</p>
+</section>
+<section id="laser-source-term">
+<h2>Laser source term<a class="headerlink" href="#laser-source-term" title="Permalink to this heading"></a></h2>
+<p>The laser pulse enters through:</p>
+<div class="math notranslate nohighlight">
+\[W(t) = A \exp\left[-\frac{(t-t_0)^2}{2\sigma^2}\right]\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is related to the absorbed fluence.</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_0\)</span> is the pulse center.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> is the temporal width.</p></li>
+</ul>
+<p>This affects only the electron bath, in both 3TM and HC-3TM.</p>
+</section>
+<section id="heat-capacities">
+<h2>Heat capacities<a class="headerlink" href="#heat-capacities" title="Permalink to this heading"></a></h2>
+<p>Available models:</p>
+<ul class="simple">
+<li><p>Electron:
+<span class="math notranslate nohighlight">\(C_e = \gamma_e T_e\)</span></p></li>
+<li><p>Lattice:
+Debye model</p></li>
+<li><p>Spin:
+* Classical
+* Quantum (Bose-Einstein)
+* Mixed</p></li>
+</ul>
+<p>Temperature-dependent capacities are strongly recommended, especially near
+<span class="math notranslate nohighlight">\(T_C\)</span>.</p>
+</section>
+<section id="spinlattice-coupling">
+<h2>Spin–lattice coupling<a class="headerlink" href="#spinlattice-coupling" title="Permalink to this heading"></a></h2>
+<p>If explicit spin–lattice dynamics (SLD) is enabled, exchange parameters depend on
+atomic displacements. This allows direct microscopic energy exchange between
+spin and lattice subsystems.</p>
+<p>In HC-3TM:</p>
+<ul class="simple">
+<li><p>This provides an additional physical channel.</p></li>
+<li><p>For many systems (e.g. fcc Ni) the effect is small compared to electron-spin
+energy transfer.</p></li>
+</ul>
+</section>
+<section id="example-conventional-3tm">
+<h2>Example: Conventional 3TM<a class="headerlink" href="#example-conventional-3tm" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_3tm</span>              <span class="n">Y</span>
+<span class="n">temp_elec_init</span>      <span class="mi">300</span>
+<span class="n">temp_spin_init</span>      <span class="mi">300</span>
+<span class="n">temp_latt_init</span>      <span class="mi">300</span>
+
+<span class="n">Gel</span>                 <span class="mf">8.0e17</span>
+<span class="n">Ges</span>                 <span class="mf">6.0e17</span>
+<span class="n">Gsl</span>                 <span class="mf">0.3e17</span>
+
+<span class="n">P_pulse</span>             <span class="mf">5.0</span>
+<span class="n">t0_pulse</span>            <span class="mf">1.0e-12</span>
+<span class="n">sigma_pulse</span>         <span class="mf">1.0e-13</span>
+</pre></div>
+</div>
+</section>
+<section id="example-3tm-with-temperature-dependent-heat-capacities">
+<h2>Example: 3TM with temperature-dependent heat capacities<a class="headerlink" href="#example-3tm-with-temperature-dependent-heat-capacities" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>do_3tm              Y
+temp_elec_init      300
+temp_spin_init      300
+temp_latt_init      300
+
+! Use temperature-dependent heat capacities
+do_cs_temp          Y
+cv_spinfile         spin_cv.dat
+do_cl_temp          Y
+cv_lattfile         latt_cv.dat
+
+Gel                 8.0e17
+Ges                 6.0e17
+Gsl                 0.3e17
+
+P_pulse             5.0
+t0_pulse            1.0e-12
+sigma_pulse         1.0e-13
+</pre></div>
+</div>
+</section>
+<section id="notes-and-recommendations">
+<h2>Notes and recommendations<a class="headerlink" href="#notes-and-recommendations" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Use 3TM for ultrafast demagnetization studies with fitted coupling constants.</p></li>
+<li><p>Temperature-dependent heat capacities are recommended, especially near <span class="math notranslate nohighlight">\(T_C\)</span>.</p></li>
+<li><p>Treat coupling constants (Gel, Ges, Gsl) as fit parameters to experimental data.</p></li>
+<li><p>For simple studies, use constant heat capacities (gamma_Ce, Cs, Cl).</p></li>
+<li><p>Monitor output in <code class="docutils literal notranslate"><span class="pre">temperature_3tm.&lt;simid&gt;.out</span></code> to verify multi-timescale dynamics.</p></li>
+</ul>
+</section>
+<section id="related-keywords-and-cross-references">
+<h2>Related keywords and cross-references<a class="headerlink" href="#related-keywords-and-cross-references" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">temp</span></code>: Equilibrium temperature for non-3TM simulations (see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">damping</span></code>: Gilbert damping <span class="math notranslate nohighlight">\(\alpha\)</span> influences spin-lattice relaxation
+timescales (see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alat</span></code>: Lattice parameter, required for volume/density calculations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mensemble</span></code>: Ensemble averaging for thermal fluctuations</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h1>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#beaurepaire1996" id="id2"><span>[Beaurepaire1996]</span></a> - Ultrafast spin dynamics in ferromagnetic nickel</p></li>
+<li><p><a class="reference internal" href="../../references/#koopmans2010" id="id3"><span>[Koopmans2010]</span></a> - Diversity of ultrafast laser-induced demagnetization</p></li>
+<li><p><a class="reference internal" href="../../references/#mentink2012" id="id4"><span>[Mentink2012]</span></a> - Ultrafast spin dynamics in multisublattice magnets</p></li>
+<li><p><a class="reference internal" href="../../references/#rethfeld2002" id="id5"><span>[Rethfeld2002]</span></a> - Ultrafast dynamics of nonequilibrium electrons in metals</p></li>
+<li><p><a class="reference internal" href="../../references/#atxitia2010" id="id6"><span>[Atxitia2010]</span></a> - Multiscale modeling of ultrafast element-specific magnetization dynamics</p></li>
+<li><p><a class="reference internal" href="../../references/#pankratova2022" id="id7"><span>[Pankratova2022]</span></a> - Heat-conserving three-temperature model for ultrafast demagnetization</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../currents/" class="btn btn-neutral float-left" title="Spin torques" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../temperature-gradients/" class="btn btn-neutral float-right" title="Temperature Gradients" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

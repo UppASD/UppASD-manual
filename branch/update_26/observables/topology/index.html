@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Topological measurements and observables &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Spin Stiffness and Micromagnetic Parameters" href="../stiffness/" />
+    <link rel="prev" title="Polarization and chirality measurements" href="../polarization/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Observable Measurements and Analysis</a></li>
+      <li class="breadcrumb-item active">Topological measurements and observables</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/observables/topology.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="topological-measurements-and-observables">
+<h1>Topological measurements and observables<a class="headerlink" href="#topological-measurements-and-observables" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<span id="input-topology"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>UppASD provides comprehensive tools for characterizing topological magnetic
+textures, primarily through the calculation of the skyrmion number (Pontryagin
+index) and related local density measures. Two complementary methods are
+implemented:</p>
+<ol class="arabic simple">
+<li><p><strong>Gradient-based (finite-difference)</strong> approach using derivatives of the
+magnetization field</p></li>
+<li><p><strong>Triangulation-based (volume integral)</strong> approach using Delaunay simplices</p></li>
+</ol>
+<p>Both methods compute the topological charge density integrated over the system,
+but differ in numerical accuracy, computational cost, and sensitivity to lattice
+discretization.</p>
+</section>
+<section id="skyrmion-number-definition-and-physical-meaning">
+<h2>Skyrmion number: definition and physical meaning<a class="headerlink" href="#skyrmion-number-definition-and-physical-meaning" title="Permalink to this heading"></a></h2>
+<p>The skyrmion number <span class="math notranslate nohighlight">\(Q\)</span> (or Pontryagin index) quantifies the topological
+winding of a magnetization texture in two-dimensional (or quasi-2D) systems. It
+counts how many times the magnetization vector wraps around the unit sphere when
+mapped over real space:</p>
+<div class="math notranslate nohighlight">
+\[Q = \frac{1}{4\pi} \int\!\int \mathbf{m}\cdot\Bigl(\frac{\partial\mathbf{m}}{\partial x}
+\times \frac{\partial\mathbf{m}}{\partial y}\Bigr)\,dx\,dy,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{m}(\mathbf{r})\)</span> is the unit magnetization field. For a
+discrete lattice, this becomes a sum over sites or simplices. A <strong>skyrmion</strong> has
+<span class="math notranslate nohighlight">\(Q=-1\)</span> (or <span class="math notranslate nohighlight">\(+1\)</span> depending on convention); an <strong>antiskyrmion</strong> has
+opposite sign; ferromagnetic domains have <span class="math notranslate nohighlight">\(Q=0\)</span>.</p>
+</section>
+<section id="gradient-based-method-finite-difference-stencils">
+<h2>Gradient-based method (finite-difference stencils)<a class="headerlink" href="#gradient-based-method-finite-difference-stencils" title="Permalink to this heading"></a></h2>
+<p>The gradient-based approach evaluates the topological charge density at each
+lattice site using finite-difference approximations of <span class="math notranslate nohighlight">\(\nabla\mathbf{m}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[Q = \frac{1}{4\pi} \sum_i \mathbf{m}_i \cdot \Bigl(\frac{\partial\mathbf{m}}{\partial x}\Big|_i
+\times \frac{\partial\mathbf{m}}{\partial y}\Big|_i\Bigr) \Delta A,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta A\)</span> is the effective area per site. The code computes
+<span class="math notranslate nohighlight">\(\nabla\mathbf{m}\)</span> via central differences over the neighbor list.</p>
+<p>Implemented in <code class="docutils literal notranslate"><span class="pre">pontryagin_no(Natom,</span> <span class="pre">Mensemble,</span> <span class="pre">emomM,</span> <span class="pre">grad_mom)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">pontryagin_no_density(iatom,</span> <span class="pre">Natom,</span> <span class="pre">Mensemble,</span> <span class="pre">emomM,</span> <span class="pre">grad_mom)</span></code>.</p>
+<p><strong>Advantages:</strong></p>
+<ul class="simple">
+<li><p>Straightforward implementation using existing neighbor lists and gradient routines</p></li>
+<li><p>Naturally provides site-resolved topological density <span class="math notranslate nohighlight">\(q_i\)</span> for visualization</p></li>
+<li><p>Works for arbitrary lattices (not restricted to triangular grids)</p></li>
+<li><p>Accurate when the magnetization field is smooth on the lattice scale</p></li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul class="simple">
+<li><p>Requires pre-computed gradients (<code class="docutils literal notranslate"><span class="pre">grad_mom</span></code> array), adding memory overhead</p></li>
+<li><p>Accuracy depends on stencil order (typically 2nd-order central differences)</p></li>
+<li><p>Sensitive to lattice discretization; coarse grids introduce numerical errors</p></li>
+<li><p>May be less accurate near domain walls or defects where <span class="math notranslate nohighlight">\(\mathbf{m}\)</span> varies rapidly</p></li>
+</ul>
+</section>
+<section id="triangulation-based-method-volume-integrals">
+<h2>Triangulation-based method (volume integrals)<a class="headerlink" href="#triangulation-based-method-volume-integrals" title="Permalink to this heading"></a></h2>
+<p>The triangulation method divides the 2D lattice into Delaunay triangles (simplices)
+and computes the solid angle subtended by the magnetization triple
+<span class="math notranslate nohighlight">\((\mathbf{m}_1,\mathbf{m}_2,\mathbf{m}_3)\)</span> at each triangle vertex on the
+unit sphere:</p>
+<div class="math notranslate nohighlight">
+\[Q = \frac{1}{4\pi}\sum_{\text{triangles}} \Omega(\mathbf{m}_1,\mathbf{m}_2,\mathbf{m}_3),\]</div>
+<p>where the solid angle is</p>
+<div class="math notranslate nohighlight">
+\[\Omega = 2\arctan\Bigl(\frac{\mathbf{m}_1\cdot(\mathbf{m}_2\times\mathbf{m}_3)}
+{1 + \mathbf{m}_1\cdot\mathbf{m}_2 + \mathbf{m}_1\cdot\mathbf{m}_3
++ \mathbf{m}_2\cdot\mathbf{m}_3}\Bigr).\]</div>
+<p>This formula (the Berg-Lüscher winding number) is exact for piecewise-linear
+interpolation of <span class="math notranslate nohighlight">\(\mathbf{m}\)</span> over triangles.</p>
+<p>Implemented in <code class="docutils literal notranslate"><span class="pre">pontryagin_tri(Natom,</span> <span class="pre">Mensemble,</span> <span class="pre">emom)</span></code> and related functions.
+The Delaunay triangulation is precomputed via <code class="docutils literal notranslate"><span class="pre">delaunay_tri_tri(nx,</span> <span class="pre">ny,</span> <span class="pre">nz,</span> <span class="pre">NT)</span></code>
+for triangular lattices with periodic boundary conditions.</p>
+<p><strong>Advantages:</strong></p>
+<ul class="simple">
+<li><p>Numerically robust; no explicit gradients needed</p></li>
+<li><p>Exact for smooth textures when the mesh resolves the structure</p></li>
+<li><p>Less sensitive to local noise in <span class="math notranslate nohighlight">\(\mathbf{m}\)</span> compared to finite differences</p></li>
+<li><p>Natural for triangular or hexagonal lattices</p></li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul class="simple">
+<li><p>Requires a triangulation (currently hard-coded for triangular lattices)</p></li>
+<li><p>More complex bookkeeping (simplex indices, neighbor connectivity)</p></li>
+<li><p>Not easily extended to non-regular or 3D grids without external triangulation libraries</p></li>
+<li><p>Slight computational overhead from trigonometric functions (<code class="docutils literal notranslate"><span class="pre">atan</span></code>)</p></li>
+</ul>
+</section>
+<section id="comparison-and-recommendations">
+<h2>Comparison and recommendations<a class="headerlink" href="#comparison-and-recommendations" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Gradient vs Triangulation methods</span><a class="headerlink" href="#id4" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Gradient (finite-difference)</p></th>
+<th class="head"><p>Triangulation (volume integral)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Accuracy</strong></p></td>
+<td><p>2nd-order (central diff); sensitive to grid spacing</p></td>
+<td><p>Exact for piecewise-linear <span class="math notranslate nohighlight">\(\mathbf{m}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Lattice restriction</strong></p></td>
+<td><p>Any lattice with neighbors</p></td>
+<td><p>Currently triangular only</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Memory</strong></p></td>
+<td><p>Requires <code class="docutils literal notranslate"><span class="pre">grad_mom(3,3,Natom,Mensemble)</span></code></p></td>
+<td><p>Requires <code class="docutils literal notranslate"><span class="pre">simp(3,nsimp)</span></code> index array</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Local density</strong></p></td>
+<td><p>Direct per-site <span class="math notranslate nohighlight">\(q_i\)</span></p></td>
+<td><p>Indirect (sum over simplices sharing site <span class="math notranslate nohighlight">\(i\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Speed</strong></p></td>
+<td><p>Fast (simple dot/cross products)</p></td>
+<td><p>Slightly slower (<code class="docutils literal notranslate"><span class="pre">atan</span></code> calls)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Robustness</strong></p></td>
+<td><p>Sensitive to noise and sharp features</p></td>
+<td><p>More stable for smooth textures</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Guidelines:</strong></p>
+<ul class="simple">
+<li><p>Use <strong>gradient method</strong> for quick screening, arbitrary lattices, or when local
+density maps are the primary goal.</p></li>
+<li><p>Use <strong>triangulation method</strong> for high-accuracy skyrmion counting on triangular/hexagonal
+lattices, especially for publication-quality topological charge.</p></li>
+<li><p>For spin dynamics (SD), gradient-based is more common; for Monte Carlo (MC),
+both are viable (triangulation may be preferred for better convergence).</p></li>
+</ul>
+</section>
+<section id="keyword-reference">
+<h2>Keyword reference<a class="headerlink" href="#keyword-reference" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>skyno</dt><dd><p>Enable skyrmion number measurement (Y/<em>N</em>). Set to <code class="docutils literal notranslate"><span class="pre">Y</span></code> to activate
+triangulation-based calculation via <code class="docutils literal notranslate"><span class="pre">pontryagin_tri</span></code> or gradient-based via
+<code class="docutils literal notranslate"><span class="pre">pontryagin_no</span></code>, depending on internal flags.</p>
+</dd>
+<dt>skyno_step</dt><dd><p>Number of time steps between skyrmion number samples (integer, default 100).
+Controls sampling frequency for time-resolved topological dynamics.</p>
+</dd>
+<dt>skyno_buff</dt><dd><p>Number of samples to buffer before writing to file (integer, default 10).
+Reduces I/O overhead for large simulations.</p>
+</dd>
+<dt>do_proj_skyno</dt><dd><p>Type-projected (sublattice) skyrmion number (Y/<em>N</em>). Computes
+<span class="math notranslate nohighlight">\(Q_{\alpha}\)</span> for each atom type <span class="math notranslate nohighlight">\(\alpha\)</span> using
+<code class="docutils literal notranslate"><span class="pre">proj_pontryagin_no</span></code>. Useful for multi-component systems (e.g., Néel vs
+Bloch skyrmions on different sublattices).</p>
+</dd>
+<dt>do_skyno_den</dt><dd><p>Site-resolved skyrmion number density (Y/<em>N</em>). Outputs local topological
+charge <span class="math notranslate nohighlight">\(q_i\)</span> at each site via <code class="docutils literal notranslate"><span class="pre">pontryagin_tri_dens</span></code> or
+<code class="docutils literal notranslate"><span class="pre">pontryagin_no_density</span></code>. Essential for visualizing skyrmion cores, domain
+walls, and merons.</p>
+</dd>
+<dt>do_skyno_cmass</dt><dd><p>Center-of-mass skyrmion tracking (Y/<em>N</em>). Experimental feature for tracking
+skyrmion positions and velocities. Requires spatial integration of
+<span class="math notranslate nohighlight">\(q_i\)</span>.</p>
+</dd>
+</dl>
+</section>
+<section id="gradient-calculation-and-stencils">
+<h2>Gradient calculation and stencils<a class="headerlink" href="#gradient-calculation-and-stencils" title="Permalink to this heading"></a></h2>
+<p>When using gradient-based methods, UppASD computes <span class="math notranslate nohighlight">\(\nabla\mathbf{m}\)</span> via
+central finite differences:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial\mathbf{m}}{\partial x}\Big|_i \approx
+\frac{\mathbf{m}_{i+\hat{x}} - \mathbf{m}_{i-\hat{x}}}{2\Delta x},\]</div>
+<p>where neighbors are identified from the exchange neighbor list. The accuracy is
+<span class="math notranslate nohighlight">\(O(\Delta x^2)\)</span>. For anisotropic lattices, coordinate transformations
+ensure consistent units.</p>
+<p><strong>Improving gradient accuracy:</strong></p>
+<ul class="simple">
+<li><p>Use denser lattices (smaller <span class="math notranslate nohighlight">\(\Delta x\)</span>) for sharper textures</p></li>
+<li><p>Ensure exchange cutoff <code class="docutils literal notranslate"><span class="pre">rcutoff</span></code> includes sufficient neighbors for stencil</p></li>
+<li><p>For higher-order schemes, custom gradient routines can replace the default
+2-point stencil (not currently automated in UppASD)</p></li>
+</ul>
+</section>
+<section id="delaunay-triangulation-details">
+<h2>Delaunay triangulation details<a class="headerlink" href="#delaunay-triangulation-details" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">delaunay_tri_tri</span></code> routine constructs a triangulation for a regular
+<span class="math notranslate nohighlight">\(N_x\times N_y\times N_z\)</span> lattice (with <span class="math notranslate nohighlight">\(N_{\text{type}}\)</span> atoms per
+cell) assuming a triangular base:</p>
+<ul class="simple">
+<li><p>Each unit cell contributes two triangles</p></li>
+<li><p>Periodic boundary conditions wrap indices via <code class="docutils literal notranslate"><span class="pre">wrap_idx</span></code></p></li>
+<li><p>The simplex array <code class="docutils literal notranslate"><span class="pre">simp(3,nsimp)</span></code> stores vertex indices</p></li>
+</ul>
+<p>For non-triangular lattices, external triangulation (e.g., Qhull, Triangle) is
+required and must be interfaced manually.</p>
+</section>
+<section id="output-files-and-analysis">
+<h2>Output files and analysis<a class="headerlink" href="#output-files-and-analysis" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>skyrmion.&lt;simid&gt;.out</dt><dd><p>Time-series of total skyrmion number <span class="math notranslate nohighlight">\(Q(t)\)</span> and ensemble statistics.
+Format: <code class="docutils literal notranslate"><span class="pre">step</span></code>, <span class="math notranslate nohighlight">\(Q_{\text{mean}}\)</span>, <span class="math notranslate nohighlight">\(\sigma_Q\)</span>.</p>
+</dd>
+<dt>skyrmion_proj.&lt;simid&gt;.out</dt><dd><p>Type-projected skyrmion numbers <span class="math notranslate nohighlight">\(Q_{\alpha}(t)\)</span> for each sublattice.</p>
+</dd>
+<dt>skyrmion_dens.&lt;simid&gt;.out</dt><dd><p>Site-resolved topological density <span class="math notranslate nohighlight">\(q_i\)</span> at each atom. Used for
+real-space visualization of skyrmion cores.</p>
+</dd>
+</dl>
+</section>
+<section id="example-setup">
+<h2>Example setup<a class="headerlink" href="#example-setup" title="Permalink to this heading"></a></h2>
+<p><strong>Gradient-based skyrmion counting:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Enable gradient calculation in Hamiltonian setup
+do_jtensor   1          ! Ensure gradients are computed
+
+! Skyrmion measurements
+skyno        Y          ! Enable skyrmion number
+skyno_step   50         ! Sample every 50 steps
+skyno_buff   20         ! Buffer 20 samples
+do_skyno_den Y          ! Output local density
+</pre></div>
+</div>
+<p><strong>Triangulation-based skyrmion counting (triangular lattice):</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>skyno        Y
+skyno_step   100
+skyno_buff   10
+do_proj_skyno Y         ! Type-projected Q
+
+! Ensure lattice is triangular/hexagonal for automatic triangulation
+</pre></div>
+</div>
+</section>
+<section id="related-keywords">
+<h2>Related keywords<a class="headerlink" href="#related-keywords" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">do_jtensor</span></code>: Enable gradient calculations (see <a class="reference internal" href="../../input/hamiltonian/"><span class="doc">Hamiltonian parameters</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_no_neigh</span></code>: Sufficient neighbors for gradient stencils</p></li>
+<li><p>Visualization tools: use <code class="docutils literal notranslate"><span class="pre">skyrmion_dens.&lt;simid&gt;.out</span></code> with ParaView or
+matplotlib for real-space topological maps</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h1>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#berg1981" id="id1"><span>[Berg1981]</span></a> - Definition and statistical distributions of topological number in lattice O(3) sigma-model</p></li>
+<li><p><a class="reference internal" href="../../references/#nagaosa2013" id="id2"><span>[Nagaosa2013]</span></a> - Topological properties and dynamics of magnetic skyrmions</p></li>
+<li><p><a class="reference internal" href="../../references/#rohart2013" id="id3"><span>[Rohart2013]</span></a> - Skyrmion confinement in ultrathin films with DMI</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../polarization/" class="btn btn-neutral float-left" title="Polarization and chirality measurements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../stiffness/" class="btn btn-neutral float-right" title="Spin Stiffness and Micromagnetic Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

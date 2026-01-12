@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time- and space-dependent fields &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Spin torques" href="../currents/" />
+    <link rel="prev" title="External Stimuli and Control" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">External Stimuli and Control</a></li>
+      <li class="breadcrumb-item active">Time- and space-dependent fields</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/stimuli/fields.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="time-and-space-dependent-fields">
+<h1>Time- and space-dependent fields<a class="headerlink" href="#time-and-space-dependent-fields" title="Permalink to this heading"></a></h1>
+<section id="parameters-for-applying-time-and-space-dependent-magnetic-fields">
+<h2>Parameters for applying time and space-dependent magnetic fields<a class="headerlink" href="#parameters-for-applying-time-and-space-dependent-magnetic-fields" title="Permalink to this heading"></a></h2>
+<p>The UppASD code supports a comprehensive suite of <strong>time and space-dependent magnetic field
+profiles</strong> that can be applied to the system during simulations. These include pulsed
+fields with various temporal shapes, monochromatic and broadened microwave fields with
+spatial and temporal modulation, moving field profiles, and demagnetization effects.</p>
+<section id="field-overview-and-use-cases">
+<h3>Field overview and use cases<a class="headerlink" href="#field-overview-and-use-cases" title="Permalink to this heading"></a></h3>
+<p>Time and space-dependent fields enable:</p>
+<ul class="simple">
+<li><p><strong>Magnetic field pulses</strong>: Ultra-short field transients with various shapes (square, exponential, Gaussian, polynomial decay)</p></li>
+<li><p><strong>Microwave excitation</strong>: Monochromatic, broadband, and amplitude-modulated microwave fields at frequencies up to THz</p></li>
+<li><p><strong>Spatial field inhomogeneity</strong>: Gaussian, circular, and square-shaped field profiles localized in space</p></li>
+<li><p><strong>Moving field patterns</strong>: Dynamically positioned fields that traverse the sample (e.g., field-driven domain wall motion)</p></li>
+<li><p><strong>Demagnetization effects</strong>: Back-action of the sample’s magnetization on applied fields via shape anisotropy</p></li>
+<li><p><strong>Frequency broadening</strong>: Spectral richness for simulating laboratory pulse shapes with finite bandwidth</p></li>
+</ul>
+<p>The microwave field module supports nine types of electromagnetic pulses and fields:</p>
+<ol class="arabic simple">
+<li><p><strong>Global Monochromatic Microwave Field</strong> - Uniform sinusoidal oscillating field applied to the entire system</p></li>
+<li><p><strong>Site-Dependent Monochromatic Field</strong> - Spatially varying sinusoidal field with different amplitudes at different sites</p></li>
+<li><p><strong>Frequency-Broadened Gaussian Microwave Field</strong> - Monochromatic field with Gaussian frequency envelope (FT-limited pulse)</p></li>
+<li><p><strong>Spatially Gaussian-Shaped Frequency-Broadened Field</strong> - Frequency-broadened field with additional Gaussian spatial distribution</p></li>
+<li><p><strong>Static Gaussian Pulse</strong> - Spatially localized static magnetic pulse with Gaussian profile</p></li>
+<li><p><strong>Moving Gaussian Pulse</strong> - Gaussian-shaped static field that moves along a predefined trajectory</p></li>
+<li><p><strong>Moving Circular Pulse</strong> - Circular-shaped static field moving along a trajectory</p></li>
+<li><p><strong>Moving Cubic Pulse</strong> - Cubic-shaped static field moving along a trajectory</p></li>
+<li><p><strong>Moving Microwave Fields</strong> - Time-dependent Gaussian/circular/cubic shaped fields moving along trajectories</p></li>
+</ol>
+<p>Applications include:</p>
+<ul class="simple">
+<li><p><strong>Spin dynamics</strong>: Response of magnetic systems to femtosecond laser-induced magnetization changes</p></li>
+<li><p><strong>Microwave ferromagnetic resonance (FMR)</strong>: Frequency-dependent resonance behavior</p></li>
+<li><p><strong>Domain wall motion</strong>: Driving and tracking magnetic domain wall propagation</p></li>
+<li><p><strong>Magnon dynamics</strong>: Creating and studying coherent spin wave excitations</p></li>
+<li><p><strong>Thermally-assisted switching</strong>: Field-assisted magnetization reversal at elevated temperatures</p></li>
+</ul>
+</section>
+<section id="static-and-pulsed-field-overview">
+<h3>Static and pulsed field overview<a class="headerlink" href="#static-and-pulsed-field-overview" title="Permalink to this heading"></a></h3>
+<p>The external field is calculated as the superposition of:</p>
+<ol class="arabic simple">
+<li><p><strong>Global static field</strong> <code class="docutils literal notranslate"><span class="pre">hfield</span></code>: Uniform field applied everywhere</p></li>
+<li><p><strong>Site-dependent fields</strong>: Field variations by atomic type or position</p></li>
+<li><p><strong>Pulsed field</strong>: Time-dependent field envelope <code class="docutils literal notranslate"><span class="pre">bpulsefield(t)</span></code></p></li>
+<li><p><strong>Microwave fields</strong>: Oscillating fields at specified frequencies</p></li>
+<li><p><strong>Spatial fields</strong>: Position-dependent field envelopes (Gaussian, circular, square)</p></li>
+<li><p><strong>Moving fields</strong>: Spatially and temporally varying field profiles</p></li>
+<li><p><strong>Demagnetization field</strong>: Self-consistent back-action of magnetization</p></li>
+</ol>
+<p>The total field at atom <code class="docutils literal notranslate"><span class="pre">i</span></code> at time <code class="docutils literal notranslate"><span class="pre">t</span></code> is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}(i,t) = \mathbf{B}_0 + \mathbf{B}_{site}(i) + \mathbf{B}_{\text{pulse}}(t) + \mathbf{B}_{\text{MW}}(i,t) + \mathbf{B}_{\text{spatial}}(i,t) + \mathbf{B}_{\text{demag}}(t)\]</div>
+</section>
+<section id="magnetic-field-pulses">
+<h3>Magnetic field pulses<a class="headerlink" href="#magnetic-field-pulses" title="Permalink to this heading"></a></h3>
+<p>Field pulses are time-dependent field envelopes defined by the parameter <code class="docutils literal notranslate"><span class="pre">do_bpulse</span></code>.</p>
+<dl class="simple">
+<dt>do_bpulse</dt><dd><p>Enable magnetic field pulse. Values: <code class="docutils literal notranslate"><span class="pre">0``=disabled,</span> <span class="pre">``1``=exponential,</span> <span class="pre">``2``=Gaussian,</span>
+<span class="pre">``3``=polynomial</span> <span class="pre">decay,</span> <span class="pre">``4``=square</span> <span class="pre">pulse,</span> <span class="pre">``5``=site-dependent</span> <span class="pre">static,</span> <span class="pre">``6``=atom-dependent</span> <span class="pre">static.</span>
+<span class="pre">Default:</span> <span class="pre">``0</span></code>.</p>
+</dd>
+<dt>bpulsefile</dt><dd><p>File containing pulse parameters (amplitude, time window, shape details). Required if <code class="docutils literal notranslate"><span class="pre">do_bpulse</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.
+Default: <code class="docutils literal notranslate"><span class="pre">bpulsefile</span></code>.</p>
+</dd>
+</dl>
+<p><strong>Field pulse file format</strong> (<code class="docutils literal notranslate"><span class="pre">bpulsefile</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Header
+B0_x B0_y B0_z         ! Initial amplitude (Tesla)
+dt_pulse                ! Time step for pulse (seconds)
+nstep_pulse             ! Number of pulse time steps
+npar                    ! Number of parameters for pulse shape
+par1 par2 ... par_npar  ! Shape-dependent parameters
+</pre></div>
+</div>
+<p><strong>Pulse shapes:</strong></p>
+<ol class="arabic">
+<li><p><strong>Exponential pulse</strong> (<code class="docutils literal notranslate"><span class="pre">do_bpulse</span> <span class="pre">=</span> <span class="pre">1</span></code>): Smooth onset and offset with constant plateau</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B(t) = B_0 \begin{cases}
+A \cdot \exp\left(\frac{t - t_{\text{start}}}{\tau_1}\right) &amp; t \le t_{\text{start}} \\
+A &amp; t_{\text{start}} &lt; t &lt; t_{\text{end}} \\
+A \cdot \exp\left(\frac{t_{\text{end}} - t}{\tau_2}\right) &amp; t \ge t_{\text{end}}
+\end{cases}\end{split}\]</div>
+<p>Parameters: <code class="docutils literal notranslate"><span class="pre">[t_rise,</span> <span class="pre">t_start,</span> <span class="pre">t_end,</span> <span class="pre">t_fall,</span> <span class="pre">B_rise,</span> <span class="pre">B_max]</span></code></p>
+</li>
+<li><p><strong>Gaussian pulse</strong> (<code class="docutils literal notranslate"><span class="pre">do_bpulse</span> <span class="pre">=</span> <span class="pre">2</span></code>): Symmetric smooth pulse</p>
+<div class="math notranslate nohighlight">
+\[B(t) = B_0 \cdot A \cdot \exp\left(-\frac{(t - t_{\text{center}})^2}{2\sigma^2}\right)\]</div>
+<p>Parameters: <code class="docutils literal notranslate"><span class="pre">[t_center,</span> <span class="pre">\sigma,</span> <span class="pre">B_peak,</span> <span class="pre">B_sustain]</span></code></p>
+</li>
+<li><p><strong>Polynomial decay</strong> (<code class="docutils literal notranslate"><span class="pre">do_bpulse</span> <span class="pre">=</span> <span class="pre">3</span></code>): Power-law decay envelope</p>
+<div class="math notranslate nohighlight">
+\[B(t) = B_0 \cdot B \cdot (t - t_0)^n \exp(-\alpha t)\]</div>
+<p>Parameters: <code class="docutils literal notranslate"><span class="pre">[t_0,</span> <span class="pre">t_max,</span> <span class="pre">n,</span> <span class="pre">\alpha,</span> <span class="pre">B_rise,</span> <span class="pre">B_max]</span></code></p>
+</li>
+<li><p><strong>Square pulse</strong> (<code class="docutils literal notranslate"><span class="pre">do_bpulse</span> <span class="pre">=</span> <span class="pre">4</span></code>): Instantaneous rise and fall</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B(t) = B_0 \begin{cases}
+0 &amp; t &lt; t_{\text{start}} \\
+A &amp; t_{\text{start}} \le t \le t_{\text{end}} \\
+0 &amp; t &gt; t_{\text{end}}
+\end{cases}\end{split}\]</div>
+<p>Parameters: <code class="docutils literal notranslate"><span class="pre">[dummy,</span> <span class="pre">t_start,</span> <span class="pre">t_end,</span> <span class="pre">dummy,</span> <span class="pre">dummy,</span> <span class="pre">A]</span></code></p>
+</li>
+</ol>
+</section>
+<section id="monochromatic-microwave-fields">
+<h3>Monochromatic microwave fields<a class="headerlink" href="#monochromatic-microwave-fields" title="Permalink to this heading"></a></h3>
+<p>Oscillating fields at a specific frequency can represent FMR excitation or
+resonant spin-wave coupling:</p>
+<dl class="simple">
+<dt>mwf</dt><dd><p>Enable monochromatic microwave field. Modes: <code class="docutils literal notranslate"><span class="pre">Y``=global,</span> <span class="pre">``S``=site-dependent,</span> <span class="pre">``W``=weighted</span> <span class="pre">site,</span>
+<span class="pre">``P``=printing,</span> <span class="pre">``I``=printing</span> <span class="pre">with</span> <span class="pre">intensity,</span> <span class="pre">``N``=disabled.</span> <span class="pre">Default:</span> <span class="pre">``N</span></code>.</p>
+</dd>
+<dt>mwfampl</dt><dd><p>Amplitude of the monochromatic microwave field (Tesla). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code> T.</p>
+</dd>
+<dt>mwffreq</dt><dd><p>Frequency of the monochromatic microwave field (GHz). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code> GHz.</p>
+</dd>
+<dt>mwfdir</dt><dd><p>Direction vector of the microwave field: <code class="docutils literal notranslate"><span class="pre">mwfdir</span> <span class="pre">&lt;x&gt;</span> <span class="pre">&lt;y&gt;</span> <span class="pre">&lt;z&gt;</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">0.0</span> <span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mwf_site_file</dt><dd><p>File with atom indices (one per line) specifying where the microwave field applies for site-dependent modes.</p>
+</dd>
+<dt>mwf_pulse_time</dt><dd><p>Duration in simulation steps for the monochromatic microwave field; 0 means applied for the entire simulation.</p>
+</dd>
+</dl>
+<p>The monochromatic field is evaluated as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}_{\text{MW}}(t) = B_0 \cos(2\pi f t) \hat{\mathbf{n}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(B_0\)</span> is amplitude, <span class="math notranslate nohighlight">\(f\)</span> is frequency, and <span class="math notranslate nohighlight">\(\hat{\mathbf{n}}\)</span> is direction.</p>
+</section>
+<section id="frequency-broadened-microwave-fields">
+<h3>Frequency-broadened microwave fields<a class="headerlink" href="#frequency-broadened-microwave-fields" title="Permalink to this heading"></a></h3>
+<p>For more realistic microwave pulses with finite spectral width:</p>
+<dl class="simple">
+<dt>mwf_gauss</dt><dd><p>Enable Gaussian-broadened microwave field. Modes analogous to <code class="docutils literal notranslate"><span class="pre">mwf</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>mwf_gauss_ampl</dt><dd><p>Amplitude (Tesla). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mwf_gauss_freq</dt><dd><p>Center frequency (GHz). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mwf_gauss_time_sigma</dt><dd><p>Frequency width (GHz). Default: <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+</dd>
+<dt>mwf_gauss_dir</dt><dd><p>Direction vector. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">0.0</span> <span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mwf_gauss_site_file</dt><dd><p>Atom index file for site-dependent broadened microwave fields.</p>
+</dd>
+<dt>mwf_gauss_pulse_time</dt><dd><p>Duration in steps; 0 for entire simulation.</p>
+</dd>
+</dl>
+<p>The frequency spectrum is generated via inverse Fourier transform to obtain time-domain
+waveform with spectral content defined by Gaussian envelope.</p>
+</section>
+<section id="static-gaussian-shaped-fields">
+<h3>Static Gaussian-shaped fields<a class="headerlink" href="#static-gaussian-shaped-fields" title="Permalink to this heading"></a></h3>
+<p>Spatially localized field profiles for studying local excitations:</p>
+<dl class="simple">
+<dt>do_gauss</dt><dd><p>Enable static Gaussian-shaped spatial field profile (Y=yes, P=printing, N=disabled). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>gauss_spatial_ampl</dt><dd><p>Amplitude (Tesla). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>gauss_spatial_sigma</dt><dd><p>Spatial width <code class="docutils literal notranslate"><span class="pre">&lt;x&gt;</span> <span class="pre">&lt;y&gt;</span> <span class="pre">&lt;z&gt;</span></code> in Å. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">1.0</span> <span class="pre">1.0</span></code>.</p>
+</dd>
+<dt>gauss_site_file</dt><dd><p>File specifying Gaussian center position.</p>
+</dd>
+<dt>gauss_pulse_time</dt><dd><p>Duration in steps; 0 means entire simulation.</p>
+</dd>
+</dl>
+<p>The spatial profile is:</p>
+<div class="math notranslate nohighlight">
+\[B_{\text{gauss}}(\mathbf{r}) = B_0 \exp\left(-\frac{(x-x_0)^2}{2\sigma_x^2} - \frac{(y-y_0)^2}{2\sigma_y^2} - \frac{(z-z_0)^2}{2\sigma_z^2}\right)\]</div>
+</section>
+<section id="moving-field-profiles">
+<h3>Moving field profiles<a class="headerlink" href="#moving-field-profiles" title="Permalink to this heading"></a></h3>
+<p>Fields that translate through the sample to drive domain walls or other localized excitations:</p>
+<p><strong>Moving Gaussian field:</strong></p>
+<dl class="simple">
+<dt>mov_gauss</dt><dd><p>Enable moving Gaussian field (Y=yes, P=printing, N=disabled). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>mov_gauss_ampl</dt><dd><p>Amplitude (Tesla). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mov_gauss_space_sigma</dt><dd><p>Spatial extent <code class="docutils literal notranslate"><span class="pre">&lt;x&gt;</span> <span class="pre">&lt;y&gt;</span> <span class="pre">&lt;z&gt;</span></code> in Å. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">1.0</span> <span class="pre">1.0</span></code>.</p>
+</dd>
+<dt>mov_gauss_file</dt><dd><p>Trajectory waypoint file (Cartesian coords, one per line).</p>
+</dd>
+<dt>mov_gauss_step</dt><dd><p>Steps between position updates. Default: <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+</dd>
+<dt>mov_gauss_pulse_time</dt><dd><p>Total duration in steps; 0 means entire simulation.</p>
+</dd>
+</dl>
+<p><strong>Moving circular field:</strong></p>
+<dl class="simple">
+<dt>mov_circle</dt><dd><p>Enable moving circular field (Y=yes, P=printing, N=disabled). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>mov_circle_ampl</dt><dd><p>Amplitude (Tesla). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mov_circle_radius</dt><dd><p>Radius in Å. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+</dd>
+<dt>mov_circle_file</dt><dd><p>Trajectory file for circular motion.</p>
+</dd>
+<dt>mov_circle_step</dt><dd><p>Steps between position updates. Default: <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+</dd>
+</dl>
+<p><strong>Moving square field:</strong></p>
+<dl class="simple">
+<dt>mov_square</dt><dd><p>Enable moving square/cubic field (Y=yes, P=printing, N=disabled). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>mov_square_ampl</dt><dd><p>Amplitude (Tesla). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mov_square_dimensions</dt><dd><p>Side lengths <code class="docutils literal notranslate"><span class="pre">&lt;x&gt;</span> <span class="pre">&lt;y&gt;</span> <span class="pre">&lt;z&gt;</span></code> in Å. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">1.0</span> <span class="pre">1.0</span></code>.</p>
+</dd>
+<dt>mov_square_file</dt><dd><p>Trajectory file for cubic motion.</p>
+</dd>
+</dl>
+</section>
+<section id="moving-microwave-fields">
+<h3>Moving microwave fields<a class="headerlink" href="#moving-microwave-fields" title="Permalink to this heading"></a></h3>
+<p>Combining oscillating microwave and static spatial/moving profiles:</p>
+<dl class="simple">
+<dt>mwf_mov_gauss</dt><dd><p>Moving microwave Gaussian field (Y=yes, P=printing, N=disabled). Oscillating field with moving Gaussian envelope. Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>mwf_mov_gauss_ampl</dt><dd><p>Amplitude (Tesla). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mwf_mov_gauss_freq</dt><dd><p>Oscillation frequency (GHz). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mwf_mov_gauss_time_sigma</dt><dd><p>Frequency broadening (GHz). Default: <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+</dd>
+<dt>mwf_mov_gauss_space_sigma</dt><dd><p>Spatial extent <code class="docutils literal notranslate"><span class="pre">&lt;x&gt;</span> <span class="pre">&lt;y&gt;</span> <span class="pre">&lt;z&gt;</span></code> in Å. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">1.0</span> <span class="pre">1.0</span></code>.</p>
+</dd>
+<dt>mwf_mov_gauss_file</dt><dd><p>Trajectory file. Default: <code class="docutils literal notranslate"><span class="pre">mwf_mov_gauss_file</span></code>.</p>
+</dd>
+<dt>mwf_mov_gauss_step</dt><dd><p>Position update interval (steps). Default: <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+</dd>
+</dl>
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">mwf_mov_circle</span></code> and <code class="docutils literal notranslate"><span class="pre">mwf_mov_square</span></code> provide moving microwave versions of
+circular and square field profiles with all analogous parameters.</p>
+<p><strong>Spatial Gaussian microwave field:</strong></p>
+<dl class="simple">
+<dt>mwf_gauss_spatial</dt><dd><p>Enable spatially-modulated broadened microwave field (Y=yes, P=printing, N=disabled). Combines Gaussian frequency broadening with spatial Gaussian envelope. Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>mwf_gauss_spatial_ampl</dt><dd><p>Amplitude (Tesla). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mwf_gauss_spatial_freq</dt><dd><p>Center frequency (GHz). Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>mwf_gauss_spatial_time_sigma</dt><dd><p>Frequency width (GHz). Default: <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+</dd>
+<dt>mwf_gauss_spatial_space_sigma</dt><dd><p>Spatial extent <code class="docutils literal notranslate"><span class="pre">&lt;x&gt;</span> <span class="pre">&lt;y&gt;</span> <span class="pre">&lt;z&gt;</span></code> in Å. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">1.0</span> <span class="pre">1.0</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="demagnetization-field">
+<h3>Demagnetization field<a class="headerlink" href="#demagnetization-field" title="Permalink to this heading"></a></h3>
+<p>Self-consistent back-action of the system’s magnetization on applied fields via shape anisotropy:</p>
+<dl class="simple">
+<dt>demag</dt><dd><p>Enable demagnetization field calculation (Y=yes, N=no). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>demag1, demag2, demag3</dt><dd><p>Include demagnetization in x, y, z directions (Y=yes, N=no). Defaults: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>demagvol</dt><dd><p>Effective volume for demagnetization calculations. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
+</dd>
+</dl>
+<p>The demagnetization field is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}_{\text{demag}} = -\frac{\mu_0}{\text{Vol}} \left(\mathbf{M}_{\text{total}} \odot \hat{\mathbf{n}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{M}_{\text{total}}\)</span> is the total magnetization, <span class="math notranslate nohighlight">\(\odot\)</span> is
+element-wise multiplication with the direction mask, and the negative sign indicates
+the field opposes magnetization (destabilizing in the magnetized direction).</p>
+<p>For a thin film with normal <code class="docutils literal notranslate"><span class="pre">z</span></code>:
+- Only <code class="docutils literal notranslate"><span class="pre">demag3='Y'</span></code> is needed (out-of-plane demagnetization)
+- <span class="math notranslate nohighlight">\(B_{\text{demag}} = -\frac{\mu_0}{V} M_z\)</span></p>
+<p>For a bulk sample, all three components may be relevant depending on magnetization direction.</p>
+</section>
+<section id="output-and-printing-options">
+<h3>Output and printing options<a class="headerlink" href="#output-and-printing-options" title="Permalink to this heading"></a></h3>
+<p>Several flags control whether field data is printed to files:</p>
+<dl class="simple">
+<dt>prn_mwf</dt><dd><p>Print monochromatic microwave field to output (Y/N). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>prn_gauss</dt><dd><p>Print static Gaussian field to output (Y/N). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>prn_mwf_gauss</dt><dd><p>Print broadened microwave field to output (Y/N). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>prn_mov_gauss</dt><dd><p>Print moving Gaussian field to output (Y/N). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+<dt>prn_mwf_mov_gauss</dt><dd><p>Print moving microwave Gaussian to output (Y/N). Default: <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+</dd>
+</dl>
+<p>When enabled, field data is written per time step for analysis and visualization.</p>
+</section>
+<section id="site-dependent-field-files">
+<h3>Site-dependent field files<a class="headerlink" href="#site-dependent-field-files" title="Permalink to this heading"></a></h3>
+<p>Several field types support site-dependent specification via external files:</p>
+<p><strong>Format: ``mwf_site_file``, ``mwf_gauss_site_file``, etc.</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;atom_index_1&gt;
+&lt;atom_index_2&gt;
+...
+</pre></div>
+</div>
+<p>Each line specifies one atom (1-indexed) that receives the field. Atoms not listed
+receive zero field (for site-dependent modes S/W).</p>
+<p><strong>Format: Trajectory files</strong> (<code class="docutils literal notranslate"><span class="pre">mov_gauss_file</span></code>, <code class="docutils literal notranslate"><span class="pre">mov_circle_file</span></code>, etc.)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;x_1&gt; &lt;y_1&gt; &lt;z_1&gt;
+&lt;x_2&gt; &lt;y_2&gt; &lt;z_2&gt;
+...
+</pre></div>
+</div>
+<p>Each line specifies a waypoint in Cartesian coordinates (Ångströms). The field is
+interpolated between waypoints over successive position-update intervals.</p>
+</section>
+<section id="example-microwave-ferromagnetic-resonance">
+<h3>Example: Microwave ferromagnetic resonance<a class="headerlink" href="#example-microwave-ferromagnetic-resonance" title="Permalink to this heading"></a></h3>
+<p>Simulating FMR by applying a monochromatic microwave field:</p>
+<p><strong>inpsd.dat:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>!! Global static field
+hfield           0.1  0.0  0.0
+
+!! Monochromatic microwave field
+mwf              Y
+mwfampl          0.001
+mwffreq          10.0
+mwfdir           0.0  1.0  0.0
+mwf_pulse_time   0
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">mwfampl</span> <span class="pre">=</span> <span class="pre">0.001</span></code> T and <code class="docutils literal notranslate"><span class="pre">mwffreq</span> <span class="pre">=</span> <span class="pre">10</span></code> GHz, this simulates small-angle FMR
+excitation perpendicular to the applied field. The frequency-dependent absorption
+can be studied by sweeping <code class="docutils literal notranslate"><span class="pre">mwffreq</span></code> or <code class="docutils literal notranslate"><span class="pre">hfield</span></code> across resonance.</p>
+</section>
+<section id="example-femtosecond-laser-induced-switching">
+<h3>Example: Femtosecond laser-induced switching<a class="headerlink" href="#example-femtosecond-laser-induced-switching" title="Permalink to this heading"></a></h3>
+<p>Simulating ultrafast magnetization dynamics from laser pulse:</p>
+<p><strong>inpsd.dat:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>!! Pulse shape (exponential with rapid rise/fall)
+do_bpulse        1
+bpulsefile       laser.pulse
+
+!! Demagnetization due to sample shape
+demag            Y
+demag3           Y
+demagvol         100.0
+</pre></div>
+</div>
+<p><strong>File: laser.pulse</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Laser-induced field parameters
+0.0  0.0  0.5    ! B0: 0.5 Tesla in z-direction
+0.1              ! dt_pulse: 0.1 fs time step
+100              ! nstep: 100 steps = 10 fs total
+6                ! 6 parameters for exponential shape
+0.05 0.5 9.95 0.5 0.1 1.0
+</pre></div>
+</div>
+<p>This applies a 0.5 T field pulse in the z-direction with exponential envelope,
+simulating ultrafast laser-induced (de)magnetization.</p>
+</section>
+<section id="example-domain-wall-motion-with-moving-field">
+<h3>Example: Domain wall motion with moving field<a class="headerlink" href="#example-domain-wall-motion-with-moving-field" title="Permalink to this heading"></a></h3>
+<p>Driving a domain wall using a moving field profile:</p>
+<p><strong>inpsd.dat:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>!! Moving Gaussian field
+mov_gauss        Y
+mov_gauss_ampl   0.05
+mov_gauss_space_sigma  5.0  5.0  5.0
+mov_gauss_file   trajectory.txt
+mov_gauss_step   10
+mov_gauss_pulse_time 0
+</pre></div>
+</div>
+<p><strong>File: trajectory.txt</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0.0   0.0   10.0
+10.0  0.0   10.0
+20.0  0.0   10.0
+30.0  0.0   10.0
+40.0  0.0   10.0
+</pre></div>
+</div>
+<p>This moves a Gaussian field along the x-direction at z = 10 Å with spatial width 5 Å.
+The field pushes the domain wall forward. Adjusting <code class="docutils literal notranslate"><span class="pre">mov_gauss_ampl</span></code> and <code class="docutils literal notranslate"><span class="pre">mov_gauss_step</span></code>
+controls wall velocity and possible depinning phenomena.</p>
+</section>
+<section id="flag-values">
+<h3>Flag Values<a class="headerlink" href="#flag-values" title="Permalink to this heading"></a></h3>
+<p><strong>Field Enable Flags</strong> (<code class="docutils literal notranslate"><span class="pre">mwf</span></code>, <code class="docutils literal notranslate"><span class="pre">mwf_gauss</span></code>, <code class="docutils literal notranslate"><span class="pre">do_gauss</span></code>, <code class="docutils literal notranslate"><span class="pre">mov_gauss</span></code>, <code class="docutils literal notranslate"><span class="pre">mov_circle</span></code>, <code class="docutils literal notranslate"><span class="pre">mov_square</span></code>, etc.):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code> - Enabled with standard behavior</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code> - Enabled with phase lag correction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">I</span></code> - Instantaneous field (monochromatic microwave only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S</span></code> - Site-dependent field using site file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code> - Weighted site-dependent field</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code> - Disabled (default)</p></li>
+</ul>
+<p><strong>Print Flags</strong> (<code class="docutils literal notranslate"><span class="pre">prn_mwf</span></code>, <code class="docutils literal notranslate"><span class="pre">prn_gauss</span></code>, <code class="docutils literal notranslate"><span class="pre">prn_mov_gauss</span></code>, <code class="docutils literal notranslate"><span class="pre">prn_mov_circle</span></code>, <code class="docutils literal notranslate"><span class="pre">prn_mov_square</span></code>, etc.):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code> - Enable output to file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code> - Disable output (default)</p></li>
+</ul>
+</section>
+<section id="output-files-and-naming-conventions">
+<h3>Output Files and Naming Conventions<a class="headerlink" href="#output-files-and-naming-conventions" title="Permalink to this heading"></a></h3>
+<p>The module generates output files when the respective <code class="docutils literal notranslate"><span class="pre">prn_*</span></code> flags are set to <code class="docutils literal notranslate"><span class="pre">Y</span></code>. All output files follow the naming convention <code class="docutils literal notranslate"><span class="pre">&lt;fieldtype&gt;.simid.out</span></code>:</p>
+<ul class="simple">
+<li><p>Monochromatic microwave field: <code class="docutils literal notranslate"><span class="pre">mwf.simid.out</span></code></p></li>
+<li><p>Frequency-broadened Gaussian microwave field: <code class="docutils literal notranslate"><span class="pre">mwf_gauss.simid.out</span></code></p></li>
+<li><p>Spatially Gaussian-shaped frequency-broadened field: <code class="docutils literal notranslate"><span class="pre">mwf_gauss_spatial.simid.out</span></code></p></li>
+<li><p>Static Gaussian pulse: <code class="docutils literal notranslate"><span class="pre">gauss.simid.out</span></code></p></li>
+<li><p>Moving Gaussian pulse: <code class="docutils literal notranslate"><span class="pre">mov_gauss.simid.out</span></code></p></li>
+<li><p>Moving circular pulse: <code class="docutils literal notranslate"><span class="pre">mov_circle.simid.out</span></code></p></li>
+<li><p>Moving cubic pulse: <code class="docutils literal notranslate"><span class="pre">mov_square.simid.out</span></code></p></li>
+<li><p>Moving Gaussian microwave: <code class="docutils literal notranslate"><span class="pre">mwf_mov_gauss.simid.out</span></code></p></li>
+<li><p>Moving circular microwave: <code class="docutils literal notranslate"><span class="pre">mwf_mov_circle.simid.out</span></code></p></li>
+<li><p>Moving cubic microwave: <code class="docutils literal notranslate"><span class="pre">mwf_mov_square.simid.out</span></code></p></li>
+</ul>
+<p><strong>Output format</strong> (generic):</p>
+<table class="borderless centered docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{step}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(B_x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(B_y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(B_z\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math notranslate nohighlight">\(B_i\)</span> are the field components in units matching the input amplitude.</p>
+</section>
+<section id="example-configuration">
+<h3>Example Configuration<a class="headerlink" href="#example-configuration" title="Permalink to this heading"></a></h3>
+<p>A typical configuration file section for time and space-dependent fields might look like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Monochromatic microwave field
+mwf              Y
+mwfampl          100.0
+mwffreq          10.0
+mwfdir           1.0  0.0  0.0
+mwf_pulse_time   10000
+prn_mwf          Y
+mwf_step         100
+mwf_buff         100
+
+# Frequency-broadened Gaussian microwave field
+mwf_gauss        Y
+mwf_gauss_ampl   150.0
+mwf_gauss_freq   10.5
+mwf_gauss_time_sigma  50.0
+mwf_gauss_dir    0.0  1.0  0.0
+mwf_gauss_pulse_time  5000
+prn_mwf_gauss    Y
+mwf_gauss_step   100
+mwf_gauss_buff   50
+
+# Moving Gaussian pulse (static)
+mov_gauss        Y
+mov_gauss_file   mov_gauss_traj.dat
+mov_gauss_step   100
+mov_gauss_pulse_time  8000
+mov_gauss_ampl   200.0
+mov_gauss_space_sigma  2.0  2.0  2.0
+prn_mov_gauss    Y
+mov_gauss_pstep  100
+mov_gauss_buff   80
+</pre></div>
+</div>
+</section>
+<section id="technical-considerations">
+<h3>Technical considerations<a class="headerlink" href="#technical-considerations" title="Permalink to this heading"></a></h3>
+<p><strong>Frequency sampling:</strong>
+- Microwave fields are evaluated at each time step, so maximum frequency accessible is limited by Nyquist: <span class="math notranslate nohighlight">\(f_{\max} = 1 / (2 \Delta t)\)</span>
+- For <code class="docutils literal notranslate"><span class="pre">timestep</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">fs</span></code> (typical), <span class="math notranslate nohighlight">\(f_{\max} \approx 0.5\)</span> PHz (infrared regime)
+- Typical GHz microwave: <span class="math notranslate nohighlight">\(f = 10\)</span> GHz is well-resolved</p>
+<p><strong>Spatial resolution:</strong>
+- Field profiles are evaluated at atom positions
+- Gaussian sigma should be &gt;~ 2× atomic spacing for smooth modulation
+- Smaller sigma values give sharper field gradients</p>
+<p><strong>Computational cost:</strong>
+- Pulsed and microwave fields add minimal cost (simple evaluations)
+- Moving fields require position tracking and interpolation
+- Demagnetization field requires global magnetization reduction (~O(Natom))</p>
+<p><strong>Units and Conventions:</strong>
+- <strong>Magnetic field amplitude</strong>: mT (millitesla) or Tesla (T), depending on parameter
+- <strong>Frequency</strong>: Gigahertz (GHz)
+- <strong>Spatial dimensions</strong>: Ångströms (Å)
+- <strong>Time</strong>: Simulation time steps or femtoseconds (fs)
+- <strong>Sigma parameters</strong>: Real space coordinates (Ångströms) for spatial dimensions, time steps for temporal widths</p>
+<p><strong>Important Notes:</strong></p>
+<ul class="simple">
+<li><p>Multiple field types can be enabled simultaneously and will be superposed</p></li>
+<li><p>The direction vectors should typically be normalized or scaled appropriately</p></li>
+<li><p>Site-dependent fields require corresponding input files with proper formatting</p></li>
+<li><p>Trajectory files for moving fields must contain sufficient data points for the entire simulation</p></li>
+<li><p>The temporal Gaussian envelope (<code class="docutils literal notranslate"><span class="pre">*_time_sigma</span></code>) creates FT-limited pulses with frequency bandwidth inversely proportional to the temporal width</p></li>
+<li><p>Spatial Gaussian widths (<code class="docutils literal notranslate"><span class="pre">*_space_sigma</span></code>) define the extent of field localization in 3D space</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#pereiro2014" id="id1"><span>[Pereiro2014]</span></a> - Topological properties in magnetic topological insulators</p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a> (system geometry for demagnetization)</p></li>
+<li><p><a class="reference internal" href="../../input/hamiltonian/"><span class="doc">Hamiltonian parameters</span></a> (static exchange interactions)</p></li>
+<li><p><a class="reference internal" href="../../input/core-files/"><span class="doc">Core input files</span></a> (core file formats: <code class="docutils literal notranslate"><span class="pre">posfile</span></code>, <code class="docutils literal notranslate"><span class="pre">momfile</span></code>, etc.)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="External Stimuli and Control" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../currents/" class="btn btn-neutral float-right" title="Spin torques" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

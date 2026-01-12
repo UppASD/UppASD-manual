@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polarization and chirality measurements &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Topological measurements and observables" href="../topology/" />
+    <link rel="prev" title="Autocorrelation functions" href="../autocorrelation/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Observable Measurements and Analysis</a></li>
+      <li class="breadcrumb-item active">Polarization and chirality measurements</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/observables/polarization.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="polarization-and-chirality-measurements">
+<h1>Polarization and chirality measurements<a class="headerlink" href="#polarization-and-chirality-measurements" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<span id="input-polarization"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>UppASD computes spin-driven <strong>ferroelectric polarization</strong> and <strong>local chirality</strong>
+from the inverse Dzyaloshinskii-Moriya (DM) mechanism and spin-current models.
+The polarization <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is proportional to the vector spin chirality
+<span class="math notranslate nohighlight">\(\sum_{i,j}\hat{\mathbf{e}}_{ij}\times(\mathbf{m}_i\times\mathbf{m}_j)\)</span>,
+where <span class="math notranslate nohighlight">\(\hat{\mathbf{e}}_{ij}\)</span> is the normalized bond vector connecting
+neighboring spins. This quantity is crucial for multiferroic systems where
+magnetic order induces electric polarization.</p>
+</section>
+<section id="physical-mechanism-and-formula">
+<h2>Physical mechanism and formula<a class="headerlink" href="#physical-mechanism-and-formula" title="Permalink to this heading"></a></h2>
+<p>The spin-induced polarization originates from relativistic spin-orbit coupling
+and inverse DM interactions. For a pair of spins <span class="math notranslate nohighlight">\(\mathbf{m}_i\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{m}_j\)</span> separated by <span class="math notranslate nohighlight">\(\mathbf{r}_{ij}=\mathbf{r}_j-\mathbf{r}_i\)</span>,
+the local contribution is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{p}_{ij} \propto \hat{\mathbf{e}}_{ij} \times (\mathbf{m}_i \times \mathbf{m}_j),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{\mathbf{e}}_{ij} = \mathbf{r}_{ij}/|\mathbf{r}_{ij}|\)</span>. The
+total polarization is the sum over all bonds (typically nearest neighbors):</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{P} = \gamma \sum_{i,j} \hat{\mathbf{e}}_{ij} \times (\mathbf{m}_i \times \mathbf{m}_j),\]</div>
+<p>with <span class="math notranslate nohighlight">\(\gamma\)</span> a material-dependent coupling constant (absorbed into the
+definition here). This form captures cycloidal and helical spin spirals that
+break inversion symmetry.</p>
+<p><strong>Key points:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is zero for collinear ferromagnets and antiferromagnets</p></li>
+<li><p>Non-zero for non-collinear structures (spirals, skyrmions, conical phases)</p></li>
+<li><p>Sign of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> flips under time reversal or spatial inversion</p></li>
+<li><p>Magnitude scales with spin canting angle and DM coupling strength</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Input keywords:</strong> For a complete list of all polarization and chirality
+measurement parameters (<code class="docutils literal notranslate"><span class="pre">do_pol</span></code>, <code class="docutils literal notranslate"><span class="pre">max_pol_nn</span></code>, <code class="docutils literal notranslate"><span class="pre">pol_step</span></code>, <code class="docutils literal notranslate"><span class="pre">do_chir</span></code>, etc.),
+see the comprehensive reference in <a class="reference internal" href="../../input/observables/"><span class="doc">Observables and measurements</span></a>.</p>
+</div>
+</section>
+<section id="mathematical-derivation">
+<h2>Mathematical derivation<a class="headerlink" href="#mathematical-derivation" title="Permalink to this heading"></a></h2>
+<p>Starting from the cross product identity, we expand the scalar triple product:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{p}_{ij} = \hat{\mathbf{e}}_{ij} \times (\mathbf{m}_i \times \mathbf{m}_j).\]</div>
+<p>Using the vector identity <span class="math notranslate nohighlight">\(\mathbf{a}\times(\mathbf{b}\times\mathbf{c})=
+\mathbf{b}(\mathbf{a}\cdot\mathbf{c}) - \mathbf{c}(\mathbf{a}\cdot\mathbf{b})\)</span>,
+we can write:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{m}_i \times \mathbf{m}_j = \begin{vmatrix}
+\hat{\mathbf{x}} &amp; \hat{\mathbf{y}} &amp; \hat{\mathbf{z}} \\
+m_i^x &amp; m_i^y &amp; m_i^z \\
+m_j^x &amp; m_j^y &amp; m_j^z
+\end{vmatrix},\end{split}\]</div>
+<p>and then form the triple product with <span class="math notranslate nohighlight">\(\hat{\mathbf{e}}_{ij}\)</span>. In
+component form (as implemented in <code class="docutils literal notranslate"><span class="pre">buffer_pol</span></code>):</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}t_x &amp;= m_i^y m_j^z - m_i^z m_j^y, \\
+t_y &amp;= m_i^z m_j^x - m_i^x m_j^z, \\
+t_z &amp;= m_i^x m_j^y - m_i^y m_j^x,\end{split}\\\begin{split}p_x &amp;= e_{ij}^y t_z - e_{ij}^z t_y, \\
+p_y &amp;= e_{ij}^z t_x - e_{ij}^x t_z, \\
+p_z &amp;= e_{ij}^x t_y - e_{ij}^y t_x.\end{split}\end{aligned}\end{align} \]</div>
+<p>The code sums these contributions over all neighbor pairs (up to <code class="docutils literal notranslate"><span class="pre">max_pol_nn</span></code>)
+and all atoms.</p>
+</section>
+<section id="local-chirality-scalar-vs-vector">
+<h2>Local chirality: scalar vs vector<a class="headerlink" href="#local-chirality-scalar-vs-vector" title="Permalink to this heading"></a></h2>
+<p><strong>Vector chirality</strong> (or spin chirality) is the antisymmetric part of the spin
+correlation between neighbors:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\chi}_{ij} = \mathbf{m}_i \times \mathbf{m}_j.\]</div>
+<p>This measures the local rotation sense of the magnetization. A finite
+<span class="math notranslate nohighlight">\(\boldsymbol{\chi}\)</span> indicates broken mirror symmetry.</p>
+<p><strong>Scalar chirality</strong> is the projection of <span class="math notranslate nohighlight">\(\boldsymbol{\chi}\)</span> onto a third
+spin direction (triangular plaquette). In UppASD, the local chirality
+(<code class="docutils literal notranslate"><span class="pre">s_cross_s</span></code>) is the bond-wise vector <span class="math notranslate nohighlight">\(\mathbf{m}_i\times\mathbf{m}_j\)</span>,
+summed over neighbors of each atom.</p>
+<p>Implemented in <code class="docutils literal notranslate"><span class="pre">measure_chirality(Natom,</span> <span class="pre">Mensemble,</span> <span class="pre">emomM,</span> <span class="pre">max_no_neigh,</span> <span class="pre">nlist,</span> <span class="pre">nlistsize)</span></code>.</p>
+<p><strong>Physical interpretation:</strong></p>
+<ul class="simple">
+<li><p>Non-zero <span class="math notranslate nohighlight">\(\boldsymbol{\chi}\)</span> signals non-coplanar spin textures</p></li>
+<li><p>Related to topological Hall effect and Berry curvature in electronic structure</p></li>
+<li><p>For triangular lattices, the scalar chirality over a plaquette
+<span class="math notranslate nohighlight">\(\mathbf{m}_1\cdot(\mathbf{m}_2\times\mathbf{m}_3)\)</span> is directly tied to
+the topological charge density</p></li>
+</ul>
+</section>
+<section id="local-polarization-site-resolved">
+<h2>Local polarization: site-resolved<a class="headerlink" href="#local-polarization-site-resolved" title="Permalink to this heading"></a></h2>
+<p>Local polarization <span class="math notranslate nohighlight">\(\mathbf{p}_i\)</span> at site <span class="math notranslate nohighlight">\(i\)</span> is the sum of
+polarization contributions from all bonds <span class="math notranslate nohighlight">\(ij\)</span> connected to <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{p}_i = \sum_{j\in\text{neighbors}(i)} \hat{\mathbf{e}}_{ij} \times (\mathbf{m}_i \times \mathbf{m}_j).\]</div>
+<p>This provides a real-space map of polarization density, useful for visualizing
+domain walls, skyrmion cores, or spiral modulations.</p>
+<p>Implemented in <code class="docutils literal notranslate"><span class="pre">measure_local_pol(Natom,</span> <span class="pre">Mensemble,</span> <span class="pre">emomM,</span> <span class="pre">max_no_neigh,</span> <span class="pre">nlist,</span> <span class="pre">nlistsize)</span></code>.</p>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Identify regions of strong ferroelectric response</p></li>
+<li><p>Correlate with topological structures (skyrmions induce radial <span class="math notranslate nohighlight">\(\mathbf{p}\)</span>)</p></li>
+<li><p>Analyze magnetoelectric coupling at interfaces or defects</p></li>
+</ul>
+</section>
+<section id="neighbor-list-and-cutoff-considerations">
+<h2>Neighbor list and cutoff considerations<a class="headerlink" href="#neighbor-list-and-cutoff-considerations" title="Permalink to this heading"></a></h2>
+<p>Polarization calculations sum over neighbors in the exchange neighbor list up to
+index <code class="docutils literal notranslate"><span class="pre">max_pol_nn</span></code>. This cutoff controls which bonds contribute:</p>
+<ul class="simple">
+<li><p><strong>Short cutoff</strong> (nearest neighbors only): Captures local spiral twists but
+may miss long-range correlations</p></li>
+<li><p><strong>Long cutoff</strong> (many shells): Includes distant pairs, increasing computational
+cost and potentially introducing spurious contributions</p></li>
+</ul>
+<p><strong>Recommendation:</strong> Set <code class="docutils literal notranslate"><span class="pre">max_pol_nn</span></code> to the number of nearest-neighbor shells
+relevant for the magnetic structure (typically 6-12 for 2D lattices, 1-2 for
+simple spirals).</p>
+<p><strong>Important flag:</strong> Use <code class="docutils literal notranslate"><span class="pre">do_sortcoup</span> <span class="pre">N</span></code> to prevent reordering of the neighbor
+list, which would break the correspondence between geometric bonds
+(<span class="math notranslate nohighlight">\(\hat{\mathbf{e}}_{ij}\)</span>) and exchange neighbors. Without this, the
+polarization formula is undefined.</p>
+</section>
+<section id="keyword-reference">
+<h2>Keyword reference<a class="headerlink" href="#keyword-reference" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>do_pol</dt><dd><p>Enable polarization measurement (Y/<em>N</em>). Activates calculation of total
+<span class="math notranslate nohighlight">\(\mathbf{P}\)</span> and writes <code class="docutils literal notranslate"><span class="pre">polarization.&lt;simid&gt;.out</span></code>.</p>
+</dd>
+<dt>pol_step</dt><dd><p>Number of time steps between polarization samples (integer, default 100).</p>
+</dd>
+<dt>pol_buff</dt><dd><p>Number of samples to buffer before writing to file (integer, default 10).</p>
+</dd>
+<dt>do_loc_pol</dt><dd><p>Local (site-resolved) polarization (Y/<em>N</em>). Outputs <span class="math notranslate nohighlight">\(\mathbf{p}_i\)</span> to
+<code class="docutils literal notranslate"><span class="pre">prestart.&lt;simid&gt;.out</span></code> for visualization.</p>
+</dd>
+<dt>do_chiral</dt><dd><p>Chirality measurement (Y/<em>N</em>). Computes and outputs local vector chirality
+<span class="math notranslate nohighlight">\(\mathbf{m}_i\times\mathbf{m}_j\)</span> summed over neighbors. Writes
+<code class="docutils literal notranslate"><span class="pre">crestart.&lt;simid&gt;.out</span></code>.</p>
+</dd>
+<dt>max_pol_nn</dt><dd><p>Maximum number of neighbors for polarization sum (integer, default 6). Must
+not exceed the exchange neighbor list size. Larger values include more shells
+but increase computational cost.</p>
+</dd>
+</dl>
+</section>
+<section id="output-files-and-analysis">
+<h2>Output files and analysis<a class="headerlink" href="#output-files-and-analysis" title="Permalink to this heading"></a></h2>
+<dl>
+<dt>polarization.&lt;simid&gt;.out</dt><dd><p>Time-series of ensemble-averaged polarization. Format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">step</span>   <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="n">_x</span>   <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="n">_y</span>   <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="n">_z</span>   <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span>   <span class="n">sigma</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(\langle P\rangle = \sqrt{\langle P_x\rangle^2 + \langle P_y\rangle^2
++ \langle P_z\rangle^2}\)</span> and <span class="math notranslate nohighlight">\(\sigma(P)\)</span> is the standard deviation over
+ensembles.</p>
+</dd>
+<dt>prestart.&lt;simid&gt;.out</dt><dd><p>Site-resolved local polarization <span class="math notranslate nohighlight">\(\mathbf{p}_i\)</span> at the final time step.
+Format per atom: <code class="docutils literal notranslate"><span class="pre">step</span></code>, <code class="docutils literal notranslate"><span class="pre">iatom</span></code>, <span class="math notranslate nohighlight">\(p_x\)</span>, <span class="math notranslate nohighlight">\(p_y\)</span>, <span class="math notranslate nohighlight">\(p_z\)</span>,
+<span class="math notranslate nohighlight">\(|\mathbf{p}_i|\)</span>.</p>
+</dd>
+<dt>crestart.&lt;simid&gt;.out</dt><dd><p>Site-resolved local chirality <span class="math notranslate nohighlight">\(\boldsymbol{\chi}_i\)</span> (sum of
+<span class="math notranslate nohighlight">\(\mathbf{m}_i\times\mathbf{m}_j\)</span> over neighbors). Format identical to
+<code class="docutils literal notranslate"><span class="pre">prestart.&lt;simid&gt;.out</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="example-setup">
+<h2>Example setup<a class="headerlink" href="#example-setup" title="Permalink to this heading"></a></h2>
+<p><strong>Basic polarization measurement:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Ensure neighbor list is not reordered
+do_sortcoup  N
+
+! Polarization settings
+do_pol       Y
+pol_step     50
+pol_buff     20
+max_pol_nn   12         ! Include up to 2nd neighbors
+</pre></div>
+</div>
+<p><strong>Local polarization and chirality:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>do_sortcoup  N
+do_pol       Y
+do_loc_pol   Y          ! Output site-resolved polarization
+do_chiral    Y          ! Output site-resolved chirality
+pol_step     100
+max_pol_nn   6
+</pre></div>
+</div>
+</section>
+<section id="physical-examples-and-use-cases">
+<h2>Physical examples and use cases<a class="headerlink" href="#physical-examples-and-use-cases" title="Permalink to this heading"></a></h2>
+<p><strong>Cycloidal spin spirals:</strong></p>
+<p>In a cycloidal spiral with <span class="math notranslate nohighlight">\(\mathbf{q}\parallel\hat{\mathbf{z}}\)</span> and
+rotation in the <span class="math notranslate nohighlight">\(xy\)</span>-plane, the polarization is perpendicular to both
+<span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and the spiral plane:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{m}(z) = \cos(qz)\,\hat{\mathbf{x}} + \sin(qz)\,\hat{\mathbf{y}}
+\quad\Rightarrow\quad \mathbf{P}\parallel\hat{\mathbf{z}}.\]</div>
+<p><strong>Néel skyrmions:</strong></p>
+<p>Skyrmions with radial magnetization profiles induce radial or tangential
+<span class="math notranslate nohighlight">\(\mathbf{p}_i\)</span> patterns, depending on the Bloch vs Néel character.
+Summing over the skyrmion gives a net <span class="math notranslate nohighlight">\(\mathbf{P}=0\)</span> for isolated
+skyrmions (topological cancellation), but non-zero at domain walls or
+lattice edges.</p>
+<p><strong>Multiferroic domain walls:</strong></p>
+<p>At a 180° domain wall separating opposite spiral helicities, the local
+polarization <span class="math notranslate nohighlight">\(\mathbf{p}_i\)</span> flips sign, creating a ferroelectric domain
+structure co-located with the magnetic wall.</p>
+</section>
+<section id="computational-performance-and-accuracy">
+<h2>Computational performance and accuracy<a class="headerlink" href="#computational-performance-and-accuracy" title="Permalink to this heading"></a></h2>
+<p><strong>Performance:</strong></p>
+<ul class="simple">
+<li><p>Polarization calculation is <span class="math notranslate nohighlight">\(O(N\times N_{\text{neigh}})\)</span> per time step</p></li>
+<li><p>Negligible overhead compared to energy/force calculations for typical
+<code class="docutils literal notranslate"><span class="pre">max_pol_nn</span></code> values (≤12)</p></li>
+<li><p>Local polarization (<code class="docutils literal notranslate"><span class="pre">do_loc_pol</span></code>) adds <span class="math notranslate nohighlight">\(O(N)\)</span> storage but minimal CPU cost</p></li>
+</ul>
+<p><strong>Numerical accuracy:</strong></p>
+<ul class="simple">
+<li><p>Results are exact for the discrete lattice (no gradient approximations)</p></li>
+<li><p>Sensitive to the quality of the magnetic structure (equilibration, convergence)</p></li>
+<li><p>Ensemble averaging (<code class="docutils literal notranslate"><span class="pre">Mensemble</span></code> &gt; 1) reduces thermal fluctuations in
+<span class="math notranslate nohighlight">\(\mathbf{P}\)</span></p></li>
+</ul>
+<p><strong>Improving results:</strong></p>
+<ul class="simple">
+<li><p>Use fine lattices to resolve short-wavelength spirals</p></li>
+<li><p>Ensure sufficient equilibration before sampling (especially in Monte Carlo)</p></li>
+<li><p>Cross-check with analytical models for simple spirals (e.g., single-<span class="math notranslate nohighlight">\(q\)</span>
+helices should give <span class="math notranslate nohighlight">\(|\mathbf{P}|\propto|\sin\theta|\)</span> for canting
+angle <span class="math notranslate nohighlight">\(\theta\)</span>)</p></li>
+</ul>
+</section>
+<section id="related-keywords-and-cross-references">
+<h2>Related keywords and cross-references<a class="headerlink" href="#related-keywords-and-cross-references" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">do_sortcoup</span></code>: Must be <code class="docutils literal notranslate"><span class="pre">N</span></code> for polarization (see <a class="reference internal" href="../../input/hamiltonian/"><span class="doc">Hamiltonian parameters</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_no_neigh</span></code>: Defines exchange neighbor list size</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_skyno</span></code>, <code class="docutils literal notranslate"><span class="pre">do_skyno_den</span></code>: Topological measurements often correlate with
+local polarization (see <a class="reference internal" href="../topology/"><span class="doc">Topological measurements and observables</span></a>)</p></li>
+<li><p>Spin dynamics: polarization dynamics can track magnon-driven ferroelectric
+switching</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h1>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#katsura2005" id="id1"><span>[Katsura2005]</span></a> - Spin current and magnetoelectric effect in noncollinear magnets</p></li>
+<li><p><a class="reference internal" href="../../references/#mostovoy2006" id="id2"><span>[Mostovoy2006]</span></a> - Ferroelectricity in spiral magnets</p></li>
+<li><p><a class="reference internal" href="../../references/#tokura2010" id="id3"><span>[Tokura2010]</span></a> - Multiferroics with spiral spin orders</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../autocorrelation/" class="btn btn-neutral float-left" title="Autocorrelation functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../topology/" class="btn btn-neutral float-right" title="Topological measurements and observables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cluster embedding &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="External Stimuli and Control" href="../../stimuli/" />
+    <link rel="prev" title="Multiscale atomistic-continuum simulations" href="../multiscale/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../observables/">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Simulation Methods and Algorithms</a></li>
+      <li class="breadcrumb-item active">Cluster embedding</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/methods/clusters.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cluster-embedding">
+<h1>Cluster embedding<a class="headerlink" href="#cluster-embedding" title="Permalink to this heading"></a></h1>
+<section id="parameters-for-embedding-impurity-clusters-within-a-host-system">
+<h2>Parameters for embedding impurity clusters within a host system<a class="headerlink" href="#parameters-for-embedding-impurity-clusters-within-a-host-system" title="Permalink to this heading"></a></h2>
+<p>The UppASD code provides functionality to <strong>embed magnetic impurity clusters</strong>
+within a host system, allowing users to study local properties of defects, interfaces,
+and heterostructures without breaking full system symmetries. The cluster method enables
+different magnetic moments, exchange interactions, Dzyaloshinskii-Moriya (DM) interactions,
+anisotropies, and gyromagnetic ratios inside the cluster compared to the host.</p>
+<section id="cluster-embedding-concept-and-use-cases">
+<h3>Cluster embedding: concept and use cases<a class="headerlink" href="#cluster-embedding-concept-and-use-cases" title="Permalink to this heading"></a></h3>
+<p>The cluster embedding approach is particularly useful for:</p>
+<ul class="simple">
+<li><p><strong>Impurity atoms or clusters</strong>: Studying magnetic defects embedded in a magnetic host</p></li>
+<li><p><strong>Interface magnetism</strong>: Analyzing magnetic properties at heterostructure interfaces</p></li>
+<li><p><strong>Alloyed systems</strong>: Modeling chemical disorder with distinct magnetic properties</p></li>
+<li><p><strong>Magnetic inhomogeneities</strong>: Systems where different regions have fundamentally different exchange coupling</p></li>
+<li><p><strong>Multi-phase structures</strong>: Interfaces between ferromagnetic and antiferromagnetic regions</p></li>
+</ul>
+<p>The method works by:</p>
+<ol class="arabic simple">
+<li><p>Defining a <strong>cluster unit cell</strong> with its own lattice vectors and atomic basis</p></li>
+<li><p>Specifying the number of <strong>repetitions</strong> of this unit cell in each direction</p></li>
+<li><p>Providing separate Hamiltonian parameters (exchange, DM, anisotropy) for cluster atoms</p></li>
+<li><p>Mapping cluster atoms to specific positions in the host supercell</p></li>
+<li><p>Overwriting host Hamiltonian with cluster values for mapped atoms</p></li>
+</ol>
+<p>This allows arbitrary spatial distribution of impurities while treating them with
+a potentially very different magnetic structure than the host.</p>
+</section>
+<section id="cluster-geometry-and-structure">
+<h3>Cluster geometry and structure<a class="headerlink" href="#cluster-geometry-and-structure" title="Permalink to this heading"></a></h3>
+<p>The cluster is defined by:</p>
+<ul class="simple">
+<li><p><strong>Unit cell</strong>: A cluster basis of <span class="math notranslate nohighlight">\(N_A^{(c)}\)</span> atoms and lattice vectors <span class="math notranslate nohighlight">\(\mathbf{C}_1^{(c)}, \mathbf{C}_2^{(c)}, \mathbf{C}_3^{(c)}\)</span></p></li>
+<li><p><strong>Supercell</strong>: Repetitions <span class="math notranslate nohighlight">\(N_1^{(c)} \times N_2^{(c)} \times N_3^{(c)}\)</span> of the cluster unit cell</p></li>
+<li><p><strong>Total atoms</strong>: <span class="math notranslate nohighlight">\(N_{\text{atom}}^{(c)} = N_A^{(c)} \times N_1^{(c)} \times N_2^{(c)} \times N_3^{(c)}\)</span></p></li>
+<li><p><strong>Mapping</strong>: Each cluster atom is mapped to a specific position in the host via <code class="docutils literal notranslate"><span class="pre">index_clus</span></code></p></li>
+</ul>
+<p>The cluster lattice is <strong>independent</strong> of the host lattice, allowing flexible positioning
+and orientation of the cluster within the host supercell.</p>
+</section>
+<section id="input-file-parameters-for-cluster-embedding">
+<h3>Input file parameters for cluster embedding<a class="headerlink" href="#input-file-parameters-for-cluster-embedding" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>do_cluster</dt><dd><p>Enable cluster embedding functionality (Y=yes, N=no). When enabled, the code reads separate cluster data files and maps cluster atoms to the host system. Default: <strong>N</strong>.</p>
+</dd>
+<dt>posfile_clus</dt><dd><p>File containing cluster unit cell atomic positions and lattice vectors. Format depends on <code class="docutils literal notranslate"><span class="pre">posfiletype</span></code>: Cartesian (C) or direct/fractional (D). Default: <strong>posfile_clus</strong>.</p>
+</dd>
+<dt>momfile_clus</dt><dd><p>File containing cluster magnetic moments (magnitude, direction, Landé if present). One line per atom type in the cluster unit cell. Default: <strong>momfile_clus</strong>.</p>
+</dd>
+<dt>jfile_clus</dt><dd><p>Exchange coupling files for the cluster (same format as host <code class="docutils literal notranslate"><span class="pre">jfile</span></code>). May be multiple files for different shells. Default: <strong>jfile_clus</strong>.</p>
+</dd>
+<dt>dmfile_clus</dt><dd><p>Dzyaloshinskii-Moriya (DM) vectors for the cluster (site1 site2 [chem_i chem_j] DM_x DM_y DM_z). Only read if <code class="docutils literal notranslate"><span class="pre">do_dm=1</span></code>. Default: <strong>dmfile_clus</strong>.</p>
+</dd>
+<dt>safile_clus</dt><dd><p>Scalar anisotropic exchange (DM-like) for cluster (same format as <code class="docutils literal notranslate"><span class="pre">dmfile_clus</span></code>). Default: <strong>safile_clus</strong>.</p>
+</dd>
+<dt>kfile_clus</dt><dd><p>Magnetic anisotropy data for cluster atoms. Format: site type K_1 K_2 K_3 K_4 K_5 K_6. Read if <code class="docutils literal notranslate"><span class="pre">do_anisotropy_clus=1</span></code>. Default: <strong>kfile_clus</strong>.</p>
+</dd>
+<dt>N1_clus, N2_clus, N3_clus</dt><dd><p>Number of cluster unit cell repetitions in x, y, z directions (defines the cluster supercell). Defaults: <strong>1</strong>.</p>
+</dd>
+<dt>NA_clus</dt><dd><p>Number of atoms in cluster unit cell (must match positions in <code class="docutils literal notranslate"><span class="pre">posfile_clus</span></code>). Default: <strong>1</strong>.</p>
+</dd>
+<dt>C1_clus, C2_clus, C3_clus</dt><dd><p>Cluster unit cell lattice vectors (Cartesian). Example: <code class="docutils literal notranslate"><span class="pre">C1_clus</span> <span class="pre">3.0</span> <span class="pre">0.0</span> <span class="pre">0.0</span></code>.</p>
+</dd>
+<dt>bc_clus</dt><dd><p>Boundary conditions for cluster: <strong>P</strong>: periodic, <strong>O</strong>: open. Default: <strong>P</strong>.</p>
+</dd>
+<dt>do_anisotropy_clus</dt><dd><p>Read anisotropy data for cluster atoms from <code class="docutils literal notranslate"><span class="pre">kfile_clus</span></code> (1=yes, 0=no). Default: <strong>0</strong>.</p>
+</dd>
+<dt>mult_axis_clus</dt><dd><p>Multiple anisotropy axes for cluster atoms (Y=yes, N=no). Default: <strong>N</strong>.</p>
+</dd>
+<dt>random_anis_clus</dt><dd><p>Randomize anisotropy directions in cluster (Y=yes, N=no). Default: <strong>N</strong>.</p>
+</dd>
+<dt>random_anis_den_clus</dt><dd><p>Density of random anisotropy (0.0-1.0). Used if <code class="docutils literal notranslate"><span class="pre">random_anis_clus=Y</span></code>. Default: <strong>0.0</strong>.</p>
+</dd>
+<dt>do_fixed_mom</dt><dd><p>Fixed moment calculation (Y=yes, N=no). When enabled, atoms marked with <code class="docutils literal notranslate"><span class="pre">fixed_flag=1</span></code> in restart files remain frozen. Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="cluster-position-file-format">
+<h3>Cluster position file format<a class="headerlink" href="#cluster-position-file-format" title="Permalink to this heading"></a></h3>
+<p><strong>File: ``posfile_clus``</strong> (Cartesian coordinates, <code class="docutils literal notranslate"><span class="pre">posfiletype=C</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;site&gt; &lt;type&gt; &lt;chem_type&gt; &lt;concentration&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt;
+</pre></div>
+</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">site</span></code>: Atom number in the cluster unit cell (1 to NA_clus)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Atom type (integer; types are renumbered: cluster types = host_types + NT_host)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chem_type</span></code>: Chemical species (for random alloys)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concentration</span></code>: Occupancy probability (0.0-1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>: Cartesian coordinates (Ångströms)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>File: ``posfile_clus``</strong> (Direct/fractional coordinates, <code class="docutils literal notranslate"><span class="pre">posfiletype=D</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;site&gt; &lt;type&gt; &lt;chem_type&gt; &lt;concentration&gt; &lt;q1&gt; &lt;q2&gt; &lt;q3&gt;
+</pre></div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{r} = q_1 \mathbf{C}_1^{(c)} + q_2 \mathbf{C}_2^{(c)} + q_3 \mathbf{C}_3^{(c)}\)</span>.</p>
+<p><strong>File: ``momfile_clus``</strong> (magnetic moments):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;site&gt; &lt;chem_type&gt; &lt;magnitude&gt; &lt;e_x&gt; &lt;e_y&gt; &lt;e_z&gt; [&lt;Landeg&gt;] [&lt;induced_flag&gt;]
+</pre></div>
+</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">site</span></code>: Atom number in cluster unit cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chem_type</span></code>: Chemical species</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">magnitude</span></code>: Magnetic moment magnitude <span class="math notranslate nohighlight">\(|\mathbf{m}|\)</span> (in <span class="math notranslate nohighlight">\(\mu_B\)</span>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e_x,</span> <span class="pre">e_y,</span> <span class="pre">e_z</span></code>: Unit direction vector (will be normalized automatically)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Landeg</span></code>: Gyromagnetic ratio (optional, only if <code class="docutils literal notranslate"><span class="pre">set_landeg=1</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">induced_flag</span></code>: Whether moment is induced (1) or permanent (0) (optional, for LSF)</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="hamiltonian-files-for-clusters">
+<h3>Hamiltonian files for clusters<a class="headerlink" href="#hamiltonian-files-for-clusters" title="Permalink to this heading"></a></h3>
+<p><strong>File: ``jfile_clus``</strong> (Exchange couplings):</p>
+<p>For non-random alloys (<code class="docutils literal notranslate"><span class="pre">do_ralloy=0</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;site_i&gt; &lt;site_j&gt; [&lt;distance_x&gt; &lt;distance_y&gt; &lt;distance_z&gt;] &lt;J&gt;
+</pre></div>
+</div>
+<p>For random alloys (<code class="docutils literal notranslate"><span class="pre">do_ralloy=1</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;site_i&gt; &lt;site_j&gt; &lt;chem_i&gt; &lt;chem_j&gt; [&lt;distance_x&gt; &lt;distance_y&gt; &lt;distance_z&gt;] &lt;J&gt;
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">do_jtensor=1</span></code>, the coupling is a <span class="math notranslate nohighlight">\(3 \times 3\)</span> tensor:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;site_i&gt; &lt;site_j&gt; &lt;J_xx&gt; &lt;J_xy&gt; &lt;J_xz&gt; &lt;J_yx&gt; &lt;J_yy&gt; &lt;J_yz&gt; &lt;J_zx&gt; &lt;J_zy&gt; &lt;J_zz&gt;
+</pre></div>
+</div>
+<p><strong>File: ``dmfile_clus``</strong> (DM vectors):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;site_i&gt; &lt;site_j&gt; [&lt;chem_i&gt; &lt;chem_j&gt;] &lt;DM_x&gt; &lt;DM_y&gt; &lt;DM_z&gt;
+</pre></div>
+</div>
+<p>The DM interaction contributes:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}_{\text{DM}} = \mathbf{D}_{ij} \cdot (\mathbf{S}_i \times \mathbf{S}_j)\]</div>
+<p><strong>File: ``kfile_clus``</strong> (Anisotropy):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;site&gt; &lt;aniso_type&gt; &lt;K_1&gt; &lt;K_2&gt; &lt;K_3&gt; &lt;K_4&gt; &lt;K_5&gt; &lt;K_6&gt;
+</pre></div>
+</div>
+<dl class="simple">
+<dt>where <code class="docutils literal notranslate"><span class="pre">aniso_type</span></code> specifies the anisotropy form:</dt><dd><ul class="simple">
+<li><p><strong>0</strong>: No anisotropy</p></li>
+<li><p><strong>1</strong>: Uniaxial (easy axis): <span class="math notranslate nohighlight">\(\mathcal{H} = -K (S_z)^2\)</span></p></li>
+<li><p><strong>2</strong>: Cubic: <span class="math notranslate nohighlight">\(\mathcal{H} = -K (S_x^4 + S_y^4 + S_z^4)\)</span></p></li>
+</ul>
+</dd>
+</dl>
+<p>The six parameters are axis components and coupling constants.</p>
+</section>
+<section id="cluster-atom-index-mapping">
+<h3>Cluster atom index mapping<a class="headerlink" href="#cluster-atom-index-mapping" title="Permalink to this heading"></a></h3>
+<p>The code maintains a <strong>mapping array</strong> <code class="docutils literal notranslate"><span class="pre">index_clus</span></code> that connects each cluster atom
+to its position in the host system. This is determined by:</p>
+<ol class="arabic simple">
+<li><p><strong>Cluster generation</strong>: A regular lattice of cluster unit cells is created</p></li>
+<li><p><strong>Host overlap</strong>: The generated cluster positions are compared to host atom positions</p></li>
+<li><p><strong>Nearest-neighbor matching</strong>: Each cluster atom is mapped to the nearest host atom within tolerance</p></li>
+<li><p><strong>Index array</strong>: <code class="docutils literal notranslate"><span class="pre">index_clus(i_clus)</span> <span class="pre">=</span> <span class="pre">i_host</span></code> stores the mapping</p></li>
+</ol>
+<p>Once mapping is complete:</p>
+<ul class="simple">
+<li><p>Host atom types at mapped positions are renumbered: <span class="math notranslate nohighlight">\(\text{type}_{\text{host}} + N_T^{\text{host}}\)</span></p></li>
+<li><p>Host Hamiltonian values (exchange, DM, anisotropy) are <strong>overwritten</strong> with cluster values</p></li>
+<li><p>Unmapped cluster atoms expand the host system size</p></li>
+</ul>
+</section>
+<section id="interaction-handling-overwrite-strategy">
+<h3>Interaction handling: overwrite strategy<a class="headerlink" href="#interaction-handling-overwrite-strategy" title="Permalink to this heading"></a></h3>
+<p>When cluster embedding is active, the code replaces host Hamiltonian parameters with cluster
+values for all atoms identified as part of the cluster:</p>
+<ol class="arabic simple">
+<li><p><strong>Exchange couplings</strong>: For each cluster atom and its neighbors, the exchange tensor is
+replaced with the cluster-specified value. New interactions not in the host are added.</p></li>
+<li><p><strong>DM interactions</strong>: Cluster DM vectors completely replace host DM vectors for mapped pairs.</p></li>
+<li><p><strong>Anisotropy</strong>: Cluster anisotropy constants and axes replace host values.</p></li>
+<li><p><strong>Gyromagnetic ratio</strong>: Cluster-specific <code class="docutils literal notranslate"><span class="pre">Landeg</span></code> overrides host value for each atom.</p></li>
+</ol>
+<p>This allows <strong>sharp interfaces</strong> between host and cluster with potentially very different
+magnetic properties.</p>
+</section>
+<section id="fixed-moment-calculations">
+<h3>Fixed moment calculations<a class="headerlink" href="#fixed-moment-calculations" title="Permalink to this heading"></a></h3>
+<p>The <strong>fixed moment approach</strong> allows selective freezing of magnetic moments:</p>
+<dl class="simple">
+<dt>do_fixed_mom</dt><dd><p>Enable fixed moment mode (Y=yes, N=no). When active, uses restart files that include a <code class="docutils literal notranslate"><span class="pre">fixed_flag</span></code> for each atom. Atoms with <code class="docutils literal notranslate"><span class="pre">fixed_flag=1</span></code> are frozen while others evolve normally. Default: <strong>N</strong>.</p>
+</dd>
+</dl>
+<p>In fixed moment mode:</p>
+<ul class="simple">
+<li><p>Atoms with <code class="docutils literal notranslate"><span class="pre">fixed_flag=1</span></code> have their magnetic moments frozen (no dynamics)</p></li>
+<li><p>Atoms with <code class="docutils literal notranslate"><span class="pre">fixed_flag=0</span></code> evolve normally</p></li>
+<li><p>Useful for <strong>studying excitations in a static background</strong>: e.g., magnons above a frozen skyrmion</p></li>
+<li><p>Compatible with cluster embedding: entire cluster can be frozen or individual atoms</p></li>
+</ul>
+<p>The restart/configuration file format includes this flag:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;step_number&gt; (header)
+&lt;iatom&gt; &lt;itype&gt; &lt;mmom&gt; &lt;e_x&gt; &lt;e_y&gt; &lt;e_z&gt; &lt;fixed_flag&gt; [&lt;induced_flag&gt;]
+...
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">initmag=4</span></code> (restart-based initialization), the fixed_flag values are read from file.
+Otherwise, they are determined from <code class="docutils literal notranslate"><span class="pre">inp_fixed_mom_flag</span></code> in the input structure.</p>
+</section>
+<section id="example-impurity-cluster-in-a-host">
+<h3>Example: Impurity cluster in a host<a class="headerlink" href="#example-impurity-cluster-in-a-host" title="Permalink to this heading"></a></h3>
+<p>Setup for embedding a 2×2×2 cluster of 4 Fe atoms at positions (0,0,0) and fractional
+translations within a larger host system:</p>
+<p><strong>inpsd.dat settings:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>! Cluster embedding
+do_cluster       Y
+posfile_clus     cluster_pos.txt
+momfile_clus     cluster_mom.txt
+jfile_clus       cluster_J.txt
+N1_clus          2
+N2_clus          2
+N3_clus          2
+NA_clus          1
+C1_clus          3.0  0.0  0.0
+C2_clus          0.0  3.0  0.0
+C3_clus          0.0  0.0  3.0
+</pre></div>
+</div>
+<p><strong>File: cluster_pos.txt</strong> (1 atom in unit cell):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 1 1 1.0 0.0 0.0 0.0
+</pre></div>
+</div>
+<p><strong>File: cluster_mom.txt</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 1 2.5 0.0 0.0 1.0
+</pre></div>
+</div>
+<p>(2.5 μ_B pointing along z)</p>
+<p><strong>File: cluster_J.txt</strong> (nearest-neighbor in-cluster coupling):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 1 1 0 1.0 0.0 0.0 -5.0
+1 1 1 0 0.0 1.0 0.0 -5.0
+1 1 1 0 0.0 0.0 1.0 -5.0
+</pre></div>
+</div>
+<p>This creates a 2×2×2 cluster of 8 Fe atoms with strong FM coupling within the cluster,
+which is embedded at the location where host atoms are found.</p>
+</section>
+<section id="example-interface-magnetism-with-fixed-moment">
+<h3>Example: Interface magnetism with fixed moment<a class="headerlink" href="#example-interface-magnetism-with-fixed-moment" title="Permalink to this heading"></a></h3>
+<p>Studying interface excitations between ferromagnetic (FM) and antiferromagnetic (AFM) clusters:</p>
+<p><strong>inpsd.dat:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>do_cluster       Y
+do_fixed_mom     Y
+posfile_clus     interface_pos.txt
+momfile_clus     interface_mom.txt
+jfile_clus       interface_J.txt
+N1_clus          1
+N2_clus          1
+N3_clus          4
+NA_clus          2
+C1_clus          3.0  0.0  0.0
+C2_clus          0.0  3.0  0.0
+C3_clus          0.0  0.0  3.0
+</pre></div>
+</div>
+<p><strong>File: interface_pos.txt</strong> (2 atoms per unit cell):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 1 1 1.0 0.0 0.0 0.0
+2 2 1 1.0 0.5 0.5 0.0
+</pre></div>
+</div>
+<p>(Two sublattices at (0,0,0) and (0.5,0.5,0) in fractional coordinates)</p>
+<p><strong>File: interface_mom.txt</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 1 2.0 0.0 0.0  1.0 1
+2 1 2.0 0.0 0.0 -1.0 1
+</pre></div>
+</div>
+<p>(Both sublattices frozen: fixed_flag=1)</p>
+<p><strong>File: interface_J.txt</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 2 1 0 1 -8.0
+1 2 1 0 0 -8.0
+1 2 1 0 0 -8.0
+2 1 1 0 -1 -8.0
+2 1 1 0 0 -8.0
+2 1 1 0 0 -8.0
+</pre></div>
+</div>
+<p>This AFM alignment (opposite moments, AFM coupling) remains static while allowing other
+atoms in the system to evolve.</p>
+</section>
+<section id="technical-notes-and-limitations">
+<h3>Technical notes and limitations<a class="headerlink" href="#technical-notes-and-limitations" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>Symmetry breaking:</strong></dt><dd><p>The cluster method explicitly breaks crystal and magnetic symmetries. Consequently:
+- The <code class="docutils literal notranslate"><span class="pre">do_reduced</span></code> option is not compatible with cluster embedding
+- Full supercell treatment is required
+- Simulation times may be longer due to reduced symmetry</p>
+</dd>
+<dt><strong>Boundary effects:</strong></dt><dd><ul class="simple">
+<li><p>Cluster atoms at boundaries may have fewer neighbors than bulk atoms</p></li>
+<li><p>The mapping tolerance (0.005 Ångströms) may need adjustment for mismatched lattices</p></li>
+<li><p>Atoms not successfully mapped expand the host system</p></li>
+</ul>
+</dd>
+<dt><strong>Performance:</strong></dt><dd><ul class="simple">
+<li><p>Cluster embedding adds minimal computational overhead during simulation</p></li>
+<li><p>Most cost is in initial setup and neighbor list generation</p></li>
+<li><p>For very small clusters or large host cells, overhead is negligible</p></li>
+</ul>
+</dd>
+<dt><strong>LSF (Local Spin Frame) compatibility:</strong></dt><dd><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">do_lsf=Y</span></code>, cluster momfiles must include configuration numbers as first column</p></li>
+<li><p>Multiple configurations can be specified for LSF-based sampling</p></li>
+</ul>
+</dd>
+<dt><strong>Random alloys:</strong></dt><dd><ul class="simple">
+<li><p>Cluster atoms can have chemical disorder (<code class="docutils literal notranslate"><span class="pre">do_ralloy=1</span></code>)</p></li>
+<li><p>Chemical types and concentrations are specified in <code class="docutils literal notranslate"><span class="pre">posfile_clus</span></code></p></li>
+<li><p>Different exchange couplings can apply to each chemical combination</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="references-and-further-reading">
+<h3>References and further reading<a class="headerlink" href="#references-and-further-reading" title="Permalink to this heading"></a></h3>
+<p>For the cluster embedding methodology and applications:</p>
+</section>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a> (host system definition)</p></li>
+<li><p><a class="reference internal" href="../../input/core-files/"><span class="doc">Core input files</span></a> (core file formats: <code class="docutils literal notranslate"><span class="pre">posfile</span></code>, <code class="docutils literal notranslate"><span class="pre">momfile</span></code>, etc.)</p></li>
+<li><p><a class="reference internal" href="../../input/hamiltonian/"><span class="doc">Hamiltonian parameters</span></a> (exchange coupling definitions)</p></li>
+<li><p><a class="reference internal" href="../../input/observables/"><span class="doc">Observables and measurements</span></a> (site-resolved outputs and per-site writing)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../multiscale/" class="btn btn-neutral float-left" title="Multiscale atomistic-continuum simulations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../stimuli/" class="btn btn-neutral float-right" title="External Stimuli and Control" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

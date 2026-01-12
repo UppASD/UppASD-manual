@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autocorrelation functions &mdash; UppASD Manual  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Polarization and chirality measurements" href="../polarization/" />
+    <link rel="prev" title="Correlation functions" href="../correlations/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Manual
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/">Output files</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../detailed-input-background/">Detailed background and inputs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#simulation-methods-and-algorithms">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../detailed-input-background/#external-stimuli-and-control">External Stimuli and Control</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../detailed-input-background/#observable-measurements-and-analysis">Observable Measurements and Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#magnetization-observables">Magnetization Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#spin-wave-spectra-ams-lswt">Spin-wave Spectra (AMS/LSWT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#correlations-and-structure-factors">Correlations and Structure Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#polarization-and-chirality">Polarization and Chirality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../detailed-input-background/#configuration-analysis-and-topology">Configuration Analysis and Topology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../detailed-input-background/#micromagnetic-stiffness-and-parameters">Micromagnetic Stiffness and Parameters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../methods/">Simulation Methods and Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../stimuli/">External Stimuli and Control</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../">Observable Measurements and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../detailed-input-background/">Detailed background and inputs</a></li>
+          <li class="breadcrumb-item"><a href="../">Observable Measurements and Analysis</a></li>
+      <li class="breadcrumb-item active">Autocorrelation functions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-manual/blob/main/content/observables/autocorrelation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="autocorrelation-functions">
+<h1>Autocorrelation functions<a class="headerlink" href="#autocorrelation-functions" title="Permalink to this heading"></a></h1>
+<section id="parameters-for-time-resolved-autocorrelation-measurements">
+<h2>Parameters for time-resolved autocorrelation measurements<a class="headerlink" href="#parameters-for-time-resolved-autocorrelation-measurements" title="Permalink to this heading"></a></h2>
+<p>The UppASD code supports measurement of autocorrelation functions to characterize
+the relaxation dynamics and equilibration timescales of magnetic systems.
+Autocorrelation measurements provide <a class="reference internal" href="../../references/#reif1965" id="id1"><span>[Reif1965]</span></a>, <a class="reference internal" href="../../references/#evans2000" id="id2"><span>[Evans2000]</span></a>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#autocorr-definition"><span class="std std-ref">Spin autocorrelation functions at multiple waiting times</span></a></p></li>
+<li><p><a class="reference internal" href="#autocorr-spatial"><span class="std std-ref">Site-resolved and macrocell-averaged spatial correlations</span></a></p></li>
+<li><p><a class="reference internal" href="#autocorr-waiting-times"><span class="std std-ref">Flexible waiting time sampling with external specification</span></a></p></li>
+</ul>
+<p>The autocorrelation measurement scheme allows extraction of dynamical properties
+such as relaxation times, correlation decay rates, and aging effects in
+non-equilibrium simulations. Results are written to <code class="docutils literal notranslate"><span class="pre">autocorr.simid.out</span></code> with
+optional spatial binning into macrocells for coarse-grained analysis.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Input keywords:</strong> For a complete list of all autocorrelation measurement
+parameters (<code class="docutils literal notranslate"><span class="pre">do_autocorr</span></code>, <code class="docutils literal notranslate"><span class="pre">acfile</span></code>, <code class="docutils literal notranslate"><span class="pre">ac_step</span></code>, etc.), see the
+comprehensive reference in <a class="reference internal" href="../../input/observables/"><span class="doc">Observables and measurements</span></a>.</p>
+</div>
+<section id="autocorrelation-function-definition">
+<span id="autocorr-definition"></span><h3>Autocorrelation function definition<a class="headerlink" href="#autocorrelation-function-definition" title="Permalink to this heading"></a></h3>
+<p>The spin autocorrelation function measures the persistence of magnetic moment
+orientations as the system evolves. For a system with <span class="math notranslate nohighlight">\(N_{\text{atom}}\)</span> atoms,
+the global autocorrelation is defined as <a class="reference internal" href="../../references/#reif1965" id="id3"><span>[Reif1965]</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[C(t_w, t) = \frac{1}{N_{\text{atom}}} \sum_{i=1}^{N_{\text{atom}}}
+\hat{\mathbf{m}}_i(t_w) \cdot \hat{\mathbf{m}}_i(t_w + t),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t_w\)</span> is the <strong>waiting time</strong> (initial measurement time)</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> is the <strong>time separation</strong> (evolution time)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\mathbf{m}}_i\)</span> is the unit magnetic moment vector at atom <span class="math notranslate nohighlight">\(i\)</span></p></li>
+</ul>
+<p>The autocorrelation probes how well the system “remembers” its earlier state.
+Typical behavior:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C(t_w, 0) = 1\)</span> at <span class="math notranslate nohighlight">\(t = 0\)</span> (perfect initial correlation)</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(t_w, t) \to 0\)</span> as <span class="math notranslate nohighlight">\(t \to \infty\)</span> (decorrelation in equilibrium)</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(t_w, t) &gt; 0\)</span> during thermalization (slow relaxation)</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(t_w, t)\)</span> exhibits subdiffusive or glassy decay in disordered systems</p></li>
+</ul>
+<p>The implementation in UppASD computes correlations only over ensemble 1
+(first replica) and averages over all atoms to improve statistics.</p>
+</section>
+<section id="spatial-binning-and-macrocell-averaging">
+<span id="autocorr-spatial"></span><h3>Spatial binning and macrocell averaging<a class="headerlink" href="#spatial-binning-and-macrocell-averaging" title="Permalink to this heading"></a></h3>
+<p>For spatially-resolved analysis, autocorrelation can be computed separately within
+each <strong>macrocell</strong> (computational domain subdivision).</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">do_macro_cells</span> <span class="pre">Y</span></code> is set in the input, the code:</p>
+<ol class="arabic simple">
+<li><p>Partitions the system into equal-sized cubic macrocells</p></li>
+<li><p>Computes autocorrelation separately within each macrocell</p></li>
+<li><p>Outputs per-macrocell correlations to files <code class="docutils literal notranslate"><span class="pre">autocorr_loc.XXXX.simid.out</span></code></p></li>
+</ol>
+<p>This approach is useful for:</p>
+<ul class="simple">
+<li><p>Studying domain wall motion and propagation</p></li>
+<li><p>Detecting spatial phase separation</p></li>
+<li><p>Analyzing non-uniform relaxation in thin films or defect-containing systems</p></li>
+<li><p>Validating assumptions of spatial homogeneity</p></li>
+</ul>
+</section>
+<section id="waiting-time-specification">
+<span id="autocorr-waiting-times"></span><h3>Waiting time specification<a class="headerlink" href="#waiting-time-specification" title="Permalink to this heading"></a></h3>
+<p>The autocorrelation function is computed at <span class="math notranslate nohighlight">\(N_{\text{wait}}\)</span> different
+waiting times <span class="math notranslate nohighlight">\(t_{w,i}\)</span>. These times can be:</p>
+<ul class="simple">
+<li><p>Equally spaced (simple case)</p></li>
+<li><p>Logarithmically spaced (to cover multiple decades of timescale)</p></li>
+<li><p>Irregularly spaced (to focus on regions of interest)</p></li>
+</ul>
+<p>All waiting times are specified externally in a dedicated text file (<code class="docutils literal notranslate"><span class="pre">acfile</span></code>)
+containing one waiting time per line (in simulation steps). This design allows
+reuse across different simulations and avoids hardcoding timescales.</p>
+</section>
+<section id="basic-autocorrelation-keywords">
+<h3>Basic autocorrelation keywords<a class="headerlink" href="#basic-autocorrelation-keywords" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">do_autocorr</span></code></dt><dd><p>Enable autocorrelation function sampling (Y=yes, <em>N=no</em>). When enabled, the code measures spin
+autocorrelation at specified waiting times. Waiting times must be provided in an external file
+specified by <code class="docutils literal notranslate"><span class="pre">acfile</span></code>. Output is written to <code class="docutils literal notranslate"><span class="pre">autocorr.simid.out</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">acfile</span></code></dt><dd><p>Name of external file containing waiting times for autocorrelation measurements. Each line should
+contain one integer (simulation step number). At least 2 waiting times should be provided to
+establish a meaningful correlation decay. The file is read once at initialization.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ac_step</span></code></dt><dd><p>Sampling interval in simulation steps (integer). Determines how frequently autocorrelation samples
+are accumulated in the measurement buffer. Default: 100. Must be set if <code class="docutils literal notranslate"><span class="pre">do_autocorr</span> <span class="pre">Y</span></code>. Smaller
+values increase temporal resolution but increase memory and I/O overhead.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ac_buff</span></code></dt><dd><p>Buffer size for autocorrelation samples (integer). Number of samples to accumulate before writing
+to file. Default: 10. Larger buffers reduce I/O overhead but increase memory. Total output samples
+= <code class="docutils literal notranslate"><span class="pre">ac_buff</span></code> <span class="math notranslate nohighlight">\(\times\)</span> (number of flush cycles).</p>
+</dd>
+</dl>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Waiting time file format</strong>: The external file specified by <code class="docutils literal notranslate"><span class="pre">acfile</span></code> should
+contain one or more waiting times (simulation step numbers), one per line.
+Example file <code class="docutils literal notranslate"><span class="pre">twfile</span></code> with waiting times at steps 0, 100, 1000, 10000:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">100</span>
+<span class="mi">1000</span>
+<span class="mi">10000</span>
+</pre></div>
+</div>
+<p>The number of waiting times (<code class="docutils literal notranslate"><span class="pre">nspinwait</span></code>) is inferred from the file length
+automatically.</p>
+</div>
+</section>
+<section id="workflow-for-autocorrelation-measurements">
+<h3>Workflow for autocorrelation measurements<a class="headerlink" href="#workflow-for-autocorrelation-measurements" title="Permalink to this heading"></a></h3>
+<p>The measurement process follows these stages:</p>
+<p><strong>1. Initialization phase</strong> (<code class="docutils literal notranslate"><span class="pre">initmag</span></code> = new simulation)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>At step <span class="math notranslate nohighlight">\(mstep = 0\)</span>, the code reads the current moment configuration</p></li>
+<li><p>For each atom <span class="math notranslate nohighlight">\(i\)</span> and waiting time <span class="math notranslate nohighlight">\(w_i\)</span>, stores
+<span class="math notranslate nohighlight">\(\hat{\mathbf{m}}_i(t = t_{w,i})\)</span></p></li>
+<li><p>Writes initial moments to auxiliary files <code class="docutils literal notranslate"><span class="pre">spin.simid.J.out</span></code> (one per
+waiting time <span class="math notranslate nohighlight">\(J = 1, \ldots, N_{\text{wait}}\)</span>)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>2. Sampling phase</strong> (during simulation)</p>
+<blockquote>
+<div><ul>
+<li><p>At steps matching the waiting times (<code class="docutils literal notranslate"><span class="pre">spinwaitt(j)</span></code>), the current moment
+configuration is stored in <code class="docutils literal notranslate"><span class="pre">spin.simid.J.out</span></code></p></li>
+<li><p>At regular intervals (<code class="docutils literal notranslate"><span class="pre">ac_step</span></code>), autocorrelations are computed:</p>
+<div class="math notranslate nohighlight">
+\[\text{corr}(j) = \frac{1}{N_{\text{atom}}} \sum_{i=1}^{N_{\text{atom}}}
+\hat{\mathbf{m}}_i(t_{w,j}) \cdot \hat{\mathbf{m}}_i(\text{current step})\]</div>
+</li>
+<li><p>Computed correlations are buffered in memory</p></li>
+</ul>
+</div></blockquote>
+<p><strong>3. Output phase</strong> (every <code class="docutils literal notranslate"><span class="pre">ac_buff</span></code> samples)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Buffered autocorrelations are written to <code class="docutils literal notranslate"><span class="pre">autocorr.simid.out</span></code></p></li>
+<li><p>One row per sampling point</p></li>
+<li><p>Columns: iteration (or time) + correlations for each waiting time</p></li>
+<li><p>Optional spatial data written to <code class="docutils literal notranslate"><span class="pre">autocorr_loc.XXXX.simid.out</span></code> if
+<code class="docutils literal notranslate"><span class="pre">do_macro_cells</span> <span class="pre">Y</span></code></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="output-file-formats">
+<h3>Output file formats<a class="headerlink" href="#output-file-formats" title="Permalink to this heading"></a></h3>
+<p><strong>Global autocorrelation file: ``autocorr.simid.out``</strong></p>
+<p>Columns:</p>
+<ul class="simple">
+<li><p>Column 1: Simulation step or real time (seconds if <code class="docutils literal notranslate"><span class="pre">real_time_measure</span> <span class="pre">Y</span></code>)</p></li>
+<li><p>Columns 2–(1+N_wait): <span class="math notranslate nohighlight">\(C(t_{w,j}, t)\)</span> for each waiting time <span class="math notranslate nohighlight">\(j = 1, \ldots, N_{\text{wait}}\)</span></p></li>
+</ul>
+<p>Example output (3 waiting times: 0, 100, 1000 steps):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">0</span>        <span class="mf">1.000000e+00</span>  <span class="mf">1.000000e+00</span>  <span class="mf">1.000000e+00</span>
+  <span class="mi">100</span>        <span class="mf">9.834562e-01</span>  <span class="mf">1.000000e+00</span>  <span class="mf">1.000000e+00</span>
+ <span class="mi">1000</span>        <span class="mf">8.245671e-01</span>  <span class="mf">9.921342e-01</span>  <span class="mf">1.000000e+00</span>
+<span class="mi">10000</span>        <span class="mf">6.123456e-01</span>  <span class="mf">8.756234e-01</span>  <span class="mf">9.876543e-01</span>
+</pre></div>
+</div>
+<p><strong>Spatial macrocell files: ``autocorr_loc.XXXX.simid.out``</strong></p>
+<p>One file per macrocell (XXXX = 4-digit macrocell index). Same format as global
+file but autocorrelation normalized by <code class="docutils literal notranslate"><span class="pre">max_num_atom_macro_cell</span></code> (maximum
+number of atoms in any macrocell).</p>
+</section>
+<section id="practical-considerations-and-timescale-selection">
+<h3>Practical considerations and timescale selection<a class="headerlink" href="#practical-considerations-and-timescale-selection" title="Permalink to this heading"></a></h3>
+<p><strong>Choosing waiting times:</strong></p>
+<p>The choice of waiting times depends on the timescale of interest <a class="reference internal" href="../../references/#evans2000" id="id4"><span>[Evans2000]</span></a>:</p>
+<ul class="simple">
+<li><p><strong>Fast dynamics</strong>: Use waiting times spaced by <span class="math notranslate nohighlight">\(\sim 10\)</span>–<span class="math notranslate nohighlight">\(100\)</span> steps</p></li>
+<li><p><strong>Aging/slow dynamics</strong>: Use logarithmically spaced times: <span class="math notranslate nohighlight">\(t_w \propto 10^k\)</span></p></li>
+<li><p><strong>Equilibrium studies</strong>: Use early waiting time (<span class="math notranslate nohighlight">\(t_w \approx 0\)</span>) and track decay</p></li>
+<li><p><strong>Non-equilibrium</strong>: Use multiple waiting times to identify aging exponents</p></li>
+</ul>
+<p><strong>Memory and I/O overhead:</strong></p>
+<ul class="simple">
+<li><p>Auxiliary storage for moment snapshots: <span class="math notranslate nohighlight">\(N_{\text{wait}} \times N_{\text{atom}} \times 8\)</span> bytes per snapshot</p></li>
+<li><p>Files <code class="docutils literal notranslate"><span class="pre">spin.simid.J.out</span></code> are overwritten at each waiting time (not accumulated)</p></li>
+<li><p>Autocorrelation buffer: <span class="math notranslate nohighlight">\(N_{\text{wait}} \times \text{ac\_buff} \times 8\)</span> bytes</p></li>
+</ul>
+<p>For large <span class="math notranslate nohighlight">\(N_{\text{wait}}\)</span>, ensure adequate disk space for auxiliary files.</p>
+<p><strong>Performance notes:</strong></p>
+<ul class="simple">
+<li><p>Autocorrelation sampling only uses ensemble 1 (single replica)</p></li>
+<li><p>Spatial binning (macrocells) incurs modest computational overhead</p></li>
+<li><p>For very long simulations, consider reducing <code class="docutils literal notranslate"><span class="pre">ac_buff</span></code> to lower memory pressure</p></li>
+</ul>
+</section>
+<section id="interactions-with-other-measurement-modes">
+<h3>Interactions with other measurement modes<a class="headerlink" href="#interactions-with-other-measurement-modes" title="Permalink to this heading"></a></h3>
+<p>Autocorrelation measurements are independent but compatible with:</p>
+<ul class="simple">
+<li><p><strong>Averages</strong> (<code class="docutils literal notranslate"><span class="pre">do_avrg</span></code>): Can use overlapping <code class="docutils literal notranslate"><span class="pre">avrg_step</span></code> and <code class="docutils literal notranslate"><span class="pre">ac_step</span></code>
+for simultaneous measurements at same frequencies</p></li>
+<li><p><strong>Cumulants</strong> (<code class="docutils literal notranslate"><span class="pre">do_cumu</span></code>): Run separately; no resource conflicts</p></li>
+<li><p><strong>Trajectory output</strong> (<code class="docutils literal notranslate"><span class="pre">do_tottraj</span></code>): Complementary; trajectory files
+provide per-atom moment evolution if full detail needed</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike averages and cumulants which average over ensembles, autocorrelation
+currently samples only ensemble 1. Future versions may support ensemble
+averaging of autocorrelations for improved statistics.</p>
+</div>
+</section>
+<section id="restart-and-continuation">
+<h3>Restart and continuation<a class="headerlink" href="#restart-and-continuation" title="Permalink to this heading"></a></h3>
+<p>When restarting a simulation (<code class="docutils literal notranslate"><span class="pre">initmag</span></code> <span class="math notranslate nohighlight">\(\neq 1\)</span>):</p>
+<ul class="simple">
+<li><p>The code reads previously saved <code class="docutils literal notranslate"><span class="pre">spin.simid.J.out</span></code> files</p></li>
+<li><p>Determines the latest completed waiting time index <code class="docutils literal notranslate"><span class="pre">n0spinwait</span></code></p></li>
+<li><p>Continues autocorrelation computation from that point forward</p></li>
+<li><p>Existing autocorrelation output is appended to <code class="docutils literal notranslate"><span class="pre">autocorr.simid.out</span></code></p></li>
+</ul>
+<p>This allows extending autocorrelation measurements across multiple simulation
+segments without loss of continuity.</p>
+</section>
+<section id="example-inpsd-dat-snippet">
+<h3>Example inpsd.dat snippet<a class="headerlink" href="#example-inpsd-dat-snippet" title="Permalink to this heading"></a></h3>
+<p><strong>Basic autocorrelation measurement:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>do_autocorr   Y
+acfile        twfile          # External file with waiting times
+ac_step       100             # Sample autocorr every 100 steps
+ac_buff       10              # Buffer 10 samples before writing
+</pre></div>
+</div>
+<p><strong>Fine-grained temporal sampling:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>do_autocorr   Y
+acfile        twfile_fine     # File with densely-spaced waiting times
+ac_step       50              # High-frequency sampling
+ac_buff       20
+</pre></div>
+</div>
+<p><strong>With spatial macrocell analysis:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>do_autocorr       Y
+acfile            twfile
+ac_step           100
+ac_buff           10
+
+# Enable spatial binning
+do_macro_cells    Y
+macro_cell_size   10.0         # Macrocell edge length (Angstrom)
+</pre></div>
+</div>
+<p><strong>Aging study (logarithmic waiting times):</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>do_autocorr   Y
+acfile        twfile_aging    # Logarithmically spaced: 1, 10, 100, 1000, ...
+ac_step       10              # Fine temporal resolution
+ac_buff       50              # Large buffer for stability
+</pre></div>
+</div>
+<p><strong>Example ``twfile`` for logarithmic sampling (10 decades):</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0
+1
+10
+100
+1000
+10000
+100000
+</pre></div>
+</div>
+</section>
+<section id="relationship-to-other-dynamics-measures">
+<h3>Relationship to other dynamics measures<a class="headerlink" href="#relationship-to-other-dynamics-measures" title="Permalink to this heading"></a></h3>
+<p>Autocorrelation complements other dynamical quantities measured in UppASD:</p>
+<ul class="simple">
+<li><p><strong>Mean squared displacement</strong> (if implemented): Tracks position changes; autocorrelation tracks orientation</p></li>
+<li><p><strong>Energy fluctuations</strong>: Measure thermodynamic response; autocorrelation measures relaxation</p></li>
+<li><p><strong>Correlation functions</strong> (<code class="docutils literal notranslate"><span class="pre">do_sc</span></code>): Measure spatial structure at fixed times; autocorrelation measures temporal decay</p></li>
+</ul>
+<p>For a complete dynamical characterization, consider enabling multiple measurement
+modes simultaneously.</p>
+</section>
+<section id="related-keywords-and-cross-references">
+<h3>Related keywords and cross-references<a class="headerlink" href="#related-keywords-and-cross-references" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">delta_t</span></code>: Timestep for real-time measurements (see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real_time_measure</span></code>: Output physical time instead of steps (see <a class="reference internal" href="../../input/simulation/"><span class="doc">Simulation control and phases</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_macro_cells</span></code>: Enable spatial macrocell subdivision (see <a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">macro_cell_size</span></code>: Size of macrocells in physical units (see <a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">do_avrg</span></code>, <code class="docutils literal notranslate"><span class="pre">avrg_step</span></code>: Companion average magnetization measurements (see <a class="reference internal" href="../averages/"><span class="doc">Averages and cumulants</span></a>)</p></li>
+</ul>
+<p>Output files use the simulation identifier <code class="docutils literal notranslate"><span class="pre">simid</span></code> (see <a class="reference internal" href="../../input/system/"><span class="doc">System and geometry</span></a>).</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p>See the centralized <a class="reference internal" href="../../references/"><span class="doc">References</span></a> for full bibliographic entries:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../references/#reif1965" id="id5"><span>[Reif1965]</span></a> - Statistical and thermal physics fundamentals</p></li>
+<li><p><a class="reference internal" href="../../references/#evans2000" id="id6"><span>[Evans2000]</span></a> - Statistical mechanics of nonequilibrium systems</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../correlations/" class="btn btn-neutral float-left" title="Correlation functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../polarization/" class="btn btn-neutral float-right" title="Polarization and chirality measurements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
