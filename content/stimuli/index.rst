@@ -8,7 +8,6 @@ Apply external driving and thermal control modules.
    :hidden:
 
    fields
-   microwave_fields
    currents
    temperature-3tm
    temperature-gradients

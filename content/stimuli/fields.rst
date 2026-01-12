@@ -22,6 +22,18 @@ Time and space-dependent fields enable:
 - **Demagnetization effects**: Back-action of the sample's magnetization on applied fields via shape anisotropy
 - **Frequency broadening**: Spectral richness for simulating laboratory pulse shapes with finite bandwidth
 
+The microwave field module supports nine types of electromagnetic pulses and fields:
+
+1. **Global Monochromatic Microwave Field** - Uniform sinusoidal oscillating field applied to the entire system
+2. **Site-Dependent Monochromatic Field** - Spatially varying sinusoidal field with different amplitudes at different sites
+3. **Frequency-Broadened Gaussian Microwave Field** - Monochromatic field with Gaussian frequency envelope (FT-limited pulse)
+4. **Spatially Gaussian-Shaped Frequency-Broadened Field** - Frequency-broadened field with additional Gaussian spatial distribution
+5. **Static Gaussian Pulse** - Spatially localized static magnetic pulse with Gaussian profile
+6. **Moving Gaussian Pulse** - Gaussian-shaped static field that moves along a predefined trajectory
+7. **Moving Circular Pulse** - Circular-shaped static field moving along a trajectory
+8. **Moving Cubic Pulse** - Cubic-shaped static field moving along a trajectory
+9. **Moving Microwave Fields** - Time-dependent Gaussian/circular/cubic shaped fields moving along trajectories
+
 Applications include:
 
 - **Spin dynamics**: Response of magnetic systems to femtosecond laser-induced magnetization changes
@@ -485,6 +497,95 @@ The field pushes the domain wall forward. Adjusting ``mov_gauss_ampl`` and ``mov
 controls wall velocity and possible depinning phenomena.
 
 --------------------------------------------------
+Flag Values
+--------------------------------------------------
+
+**Field Enable Flags** (``mwf``, ``mwf_gauss``, ``do_gauss``, ``mov_gauss``, ``mov_circle``, ``mov_square``, etc.):
+
+- ``Y`` - Enabled with standard behavior
+- ``P`` - Enabled with phase lag correction
+- ``I`` - Instantaneous field (monochromatic microwave only)
+- ``S`` - Site-dependent field using site file
+- ``W`` - Weighted site-dependent field
+- ``N`` - Disabled (default)
+
+**Print Flags** (``prn_mwf``, ``prn_gauss``, ``prn_mov_gauss``, ``prn_mov_circle``, ``prn_mov_square``, etc.):
+
+- ``Y`` - Enable output to file
+- ``N`` - Disable output (default)
+
+--------------------------------------------------
+Output Files and Naming Conventions
+--------------------------------------------------
+
+The module generates output files when the respective ``prn_*`` flags are set to ``Y``. All output files follow the naming convention ``<fieldtype>.simid.out``:
+
+- Monochromatic microwave field: ``mwf.simid.out``
+- Frequency-broadened Gaussian microwave field: ``mwf_gauss.simid.out``
+- Spatially Gaussian-shaped frequency-broadened field: ``mwf_gauss_spatial.simid.out``
+- Static Gaussian pulse: ``gauss.simid.out``
+- Moving Gaussian pulse: ``mov_gauss.simid.out``
+- Moving circular pulse: ``mov_circle.simid.out``
+- Moving cubic pulse: ``mov_square.simid.out``
+- Moving Gaussian microwave: ``mwf_mov_gauss.simid.out``
+- Moving circular microwave: ``mwf_mov_circle.simid.out``
+- Moving cubic microwave: ``mwf_mov_square.simid.out``
+
+**Output format** (generic):
+
+.. list-table::
+   :widths: auto
+   :header-rows: 0
+   :class: borderless centered
+
+   * - :math:`\text{step}`
+     - :math:`B_x`
+     - :math:`B_y`
+     - :math:`B_z`
+
+where :math:`B_i` are the field components in units matching the input amplitude.
+
+--------------------------------------------------
+Example Configuration
+--------------------------------------------------
+
+A typical configuration file section for time and space-dependent fields might look like:
+
+.. code-block:: text
+
+    # Monochromatic microwave field
+    mwf              Y
+    mwfampl          100.0
+    mwffreq          10.0
+    mwfdir           1.0  0.0  0.0
+    mwf_pulse_time   10000
+    prn_mwf          Y
+    mwf_step         100
+    mwf_buff         100
+
+    # Frequency-broadened Gaussian microwave field
+    mwf_gauss        Y
+    mwf_gauss_ampl   150.0
+    mwf_gauss_freq   10.5
+    mwf_gauss_time_sigma  50.0
+    mwf_gauss_dir    0.0  1.0  0.0
+    mwf_gauss_pulse_time  5000
+    prn_mwf_gauss    Y
+    mwf_gauss_step   100
+    mwf_gauss_buff   50
+
+    # Moving Gaussian pulse (static)
+    mov_gauss        Y
+    mov_gauss_file   mov_gauss_traj.dat
+    mov_gauss_step   100
+    mov_gauss_pulse_time  8000
+    mov_gauss_ampl   200.0
+    mov_gauss_space_sigma  2.0  2.0  2.0
+    prn_mov_gauss    Y
+    mov_gauss_pstep  100
+    mov_gauss_buff   80
+
+--------------------------------------------------
 Technical considerations
 --------------------------------------------------
 
@@ -503,12 +604,21 @@ Technical considerations
 - Moving fields require position tracking and interpolation
 - Demagnetization field requires global magnetization reduction (~O(Natom))
 
-**Units:**
-- Magnetic field: Tesla (T)
-- Frequency: Gigahertz (GHz) (internally converted to rad/s)
-- Time: Femtoseconds (fs)
-- Length: Ångströms (Å)
-- Volume: Ų for demagnetization
+**Units and Conventions:**
+- **Magnetic field amplitude**: mT (millitesla) or Tesla (T), depending on parameter
+- **Frequency**: Gigahertz (GHz)
+- **Spatial dimensions**: Ångströms (Å)
+- **Time**: Simulation time steps or femtoseconds (fs)
+- **Sigma parameters**: Real space coordinates (Ångströms) for spatial dimensions, time steps for temporal widths
+
+**Important Notes:**
+
+- Multiple field types can be enabled simultaneously and will be superposed
+- The direction vectors should typically be normalized or scaled appropriately
+- Site-dependent fields require corresponding input files with proper formatting
+- Trajectory files for moving fields must contain sufficient data points for the entire simulation
+- The temporal Gaussian envelope (``*_time_sigma``) creates FT-limited pulses with frequency bandwidth inversely proportional to the temporal width
+- Spatial Gaussian widths (``*_space_sigma``) define the extent of field localization in 3D space
 
 --------------------------------------------------
 

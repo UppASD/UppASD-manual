@@ -70,7 +70,6 @@ Spatially and temporally varying magnetic fields
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - :doc:`stimuli/fields`
-- :doc:`stimuli/microwave_fields`
 
 Spin-polarized currents and torques
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
